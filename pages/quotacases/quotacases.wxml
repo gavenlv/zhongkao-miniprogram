@@ -1,0 +1,157 @@
+<view class="container">
+  <view class="header">
+    <view class="header-title">校内竞争案例分析</view>
+    <view class="header-desc">名额分配录取的核心是校内竞争</view>
+  </view>
+
+  <view class="info-card">
+    <view class="info-title">📌 名额分配校内竞争规则</view>
+    <view class="info-content">
+      <view class="info-item">1. 优质高中将部分名额分配到各初中学校</view>
+      <view class="info-item">2. 只有本校考生竞争本校分配到的名额</view>
+      <view class="info-item">3. 在本校考生中按分数从高到低录取</view>
+      <view class="info-item">4. 录取人数不超过分配给该校的名额数</view>
+    </view>
+  </view>
+
+  <view class="case-list">
+    <view class="case-card {{item.type}}" wx:for="{{cases}}" wx:key="id" bindtap="onViewDetail" data-id="{{item.id}}">
+      <view class="case-header">
+        <view class="case-type {{item.type}}">
+          {{item.type === 'success' ? '✅ 成功' : '❌ 落选'}}
+        </view>
+        <view class="case-title">{{item.title}}</view>
+      </view>
+      <view class="case-desc">{{item.desc}}</view>
+      <view class="case-info">
+        <view class="info-row">
+          <view class="info-item-box">
+            <text class="info-label">初中学校</text>
+            <text class="info-value">{{item.juniorSchool}}</text>
+          </view>
+        </view>
+        <view class="info-row">
+          <view class="info-item-box">
+            <text class="info-label">考生分数</text>
+            <text class="info-value">{{item.student.score}}分</text>
+          </view>
+          <view class="info-item-box">
+            <text class="info-label">竞争人数</text>
+            <text class="info-value">{{item.competitors.length + 1}}人</text>
+          </view>
+        </view>
+      </view>
+      <view class="case-key">
+        <text class="key-label">💡 关键点：</text>
+        <text class="key-text">{{item.keyPoint}}</text>
+      </view>
+      <view class="case-arrow">点击查看详情 ›</view>
+    </view>
+  </view>
+
+  <view class="detail-modal" wx:if="{{showDetail && currentCase}}">
+    <view class="modal-mask" bindtap="hideDetail"></view>
+    <view class="modal-content">
+      <view class="modal-header">
+        <view class="modal-title">{{currentCase.title}}</view>
+        <view class="modal-close" bindtap="hideDetail">✕</view>
+      </view>
+      
+      <scroll-view scroll-y="true" class="modal-body" enhanced="true" show-scrollbar="true">
+        <view class="detail-section">
+          <view class="section-title">考生信息</view>
+          <view class="info-grid">
+            <view class="grid-item">
+              <text class="grid-label">初中学校</text>
+              <text class="grid-value">{{currentCase.juniorSchool}}</text>
+            </view>
+            <view class="grid-item">
+              <text class="grid-label">分数</text>
+              <text class="grid-value">{{currentCase.student.score}}分</text>
+            </view>
+            <view class="grid-item">
+              <text class="grid-label">同分序号</text>
+              <text class="grid-value">{{currentCase.student.scoreSeq}}</text>
+            </view>
+            <view class="grid-item">
+              <text class="grid-label">梯度</text>
+              <text class="grid-value">{{currentCase.result.gradientLabel}}</text>
+            </view>
+          </view>
+        </view>
+
+        <view class="detail-section">
+          <view class="section-title">志愿填报</view>
+          <view class="volunteer-list">
+            <view class="volunteer-item" wx:for="{{currentCase.volunteers}}" wx:key="order">
+              <view class="volunteer-order">第{{item.order}}志愿</view>
+              <view class="volunteer-name">{{item.schoolName}}</view>
+            </view>
+          </view>
+        </view>
+
+        <view class="detail-section">
+          <view class="section-title">校内竞争考生</view>
+          <view class="competitor-list">
+            <view class="competitor-item" wx:for="{{currentCase.competitors}}" wx:key="score">
+              <view class="competitor-info">
+                <text>考生{{index + 1}}：{{item.score}}分</text>
+                <text wx:if="{{item.volunteers[0].schoolName}}"> → {{item.volunteers[0].schoolName}}</text>
+              </view>
+            </view>
+            <view class="competitor-item current">
+              <view class="competitor-info">
+                <text>当前考生：{{currentCase.student.score}}分</text>
+                <text> → {{currentCase.volunteers[0].schoolName}}</text>
+              </view>
+            </view>
+          </view>
+        </view>
+
+        <view class="detail-section">
+          <view class="section-title">录取结果</view>
+          <view class="result-box {{currentCase.result.admitted ? 'success' : 'fail'}}">
+            <view class="result-status">
+              {{currentCase.result.admitted ? '✅ 录取成功' : '❌ 录取失败'}}
+            </view>
+            <view class="result-school" wx:if="{{currentCase.result.admitted}}">
+              录取学校：{{currentCase.result.school.name}}
+            </view>
+            <view class="result-volunteer" wx:if="{{currentCase.result.admitted}}">
+              录取志愿：第{{currentCase.result.volunteerOrder}}志愿
+            </view>
+            <view class="result-quota" wx:if="{{currentCase.result.quotaInfo}}">
+              校内排名：第{{currentCase.result.quotaInfo.userRank}}名 / {{currentCase.result.quotaInfo.quota}}个名额
+            </view>
+          </view>
+        </view>
+
+        <view class="detail-section">
+          <view class="section-title">案例分析</view>
+          <view class="analysis-box">
+            <view class="analysis-line" wx:for="{{currentCase.analysisLines}}" wx:key="index">
+              {{item}}
+            </view>
+          </view>
+        </view>
+
+        <view class="detail-section">
+          <view class="section-title">💡 关键要点</view>
+          <view class="key-point-box">
+            <text>{{currentCase.keyPoint}}</text>
+          </view>
+        </view>
+
+        <view class="detail-section" wx:if="{{currentCase.result.processLog.length > 0}}">
+          <view class="section-title">录取过程</view>
+          <view class="process-log">
+            <view class="log-item {{item.status}}" wx:for="{{currentCase.result.processLog}}" wx:key="step">
+              <view class="log-step">{{item.step}}</view>
+              <view class="log-message">{{item.message}}</view>
+            </view>
+          </view>
+        </view>
+      </scroll-view>
+    </view>
+  </view>
+</view>

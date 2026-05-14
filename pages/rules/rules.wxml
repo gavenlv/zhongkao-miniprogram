@@ -1,0 +1,65 @@
+<view class="container">
+  <view class="header">
+    <view class="header-title">中考志愿录取规则</view>
+    <view class="header-desc">了解广州市中考投档录取规则，科学填报志愿</view>
+  </view>
+
+  <view class="menu-list">
+    <view class="menu-item" wx:for="{{menuItems}}" wx:key="id" bindtap="onNavigate" data-path="{{item.path}}">
+      <view class="menu-icon">{{item.icon}}</view>
+      <view class="menu-content">
+        <view class="menu-title">{{item.title}}</view>
+        <view class="menu-desc">{{item.desc}}</view>
+      </view>
+      <view class="menu-arrow">›</view>
+    </view>
+  </view>
+
+  <view class="gradient-card">
+    <view class="card-title">📌 2025年梯度控制线</view>
+    <view class="gradient-list">
+      <view class="gradient-item {{item.isLast ? 'last' : ''}}" wx:for="{{gradients}}" wx:key="order">
+        <view class="gradient-header">
+          <view class="gradient-name">{{item.name}}</view>
+          <view class="gradient-badge" wx:if="{{item.isLast}}">最后梯度</view>
+        </view>
+        <view class="gradient-info">
+          <view class="info-row">
+            <text class="info-label">控制线：</text>
+            <text class="info-value">{{item.controlLine}}分</text>
+          </view>
+          <view class="info-row">
+            <text class="info-label">分数范围：</text>
+            <text class="info-value">{{item.scoreRange}}</text>
+          </view>
+          <view class="info-row">
+            <text class="info-label">说明：</text>
+            <text class="info-value desc">{{item.description}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="rule-card">
+    <view class="rule-title">📋 投档规则要点</view>
+    <view class="rule-list">
+      <view class="rule-item">
+        <view class="rule-num">1</view>
+        <view class="rule-text">梯度优先：高分梯度考生优先投档</view>
+      </view>
+      <view class="rule-item">
+        <view class="rule-num">2</view>
+        <view class="rule-text">志愿优先：同一梯度内，按志愿顺序投档</view>
+      </view>
+      <view class="rule-item">
+        <view class="rule-num">3</view>
+        <view class="rule-text">同分排序：分数相同时，按同分序号排序</view>
+      </view>
+      <view class="rule-item">
+        <view class="rule-num">4</view>
+        <view class="rule-text">跨梯度录取：学校可在多个梯度录取考生</view>
+      </view>
+    </view>
+  </view>
+</view>

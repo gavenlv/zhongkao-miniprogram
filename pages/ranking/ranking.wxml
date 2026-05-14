@@ -1,0 +1,106 @@
+<view class="container">
+  <view class="header">
+    <text class="title">各学校历年录取最低排名</text>
+    <text class="subtitle">根据户籍生最低录取分数估算全市排名</text>
+  </view>
+
+  <view class="search-bar">
+    <input 
+      class="search-input" 
+      placeholder="搜索学校名称" 
+      value="{{searchKeyword}}"
+      bindinput="onSearch"
+    />
+  </view>
+
+  <view class="sort-bar">
+    <view class="sort-item {{sortField === 'avgRank' ? 'active' : ''}}" bindtap="onSort" data-field="avgRank">
+      平均排名 {{sortField === 'avgRank' ? (sortOrder === 'asc' ? '↑' : '↓') : ''}}
+    </view>
+    <view class="sort-item {{sortField === 'avgScore' ? 'active' : ''}}" bindtap="onSort" data-field="avgScore">
+      平均分 {{sortField === 'avgScore' ? (sortOrder === 'asc' ? '↑' : '↓') : ''}}
+    </view>
+    <view class="sort-item {{sortField === 'threeYearRankChange' ? 'active' : ''}}" bindtap="onSort" data-field="threeYearRankChange">
+      3年变化 {{sortField === 'threeYearRankChange' ? (sortOrder === 'asc' ? '↑' : '↓') : ''}}
+    </view>
+  </view>
+
+  <view class="school-list">
+    <view class="school-item" wx:for="{{filteredSchools}}" wx:key="name" bindtap="toggleDetail" data-name="{{item.name}}">
+      <view class="school-header">
+        <view class="school-info">
+          <text class="school-name">{{item.name}}</text>
+          <text class="school-type {{item.type === '公办' ? 'public' : 'private'}}">{{item.type}}</text>
+        </view>
+        <view class="trend-icon">
+          <text wx:if="{{item.threeYearTrend === 'up'}}">📈</text>
+          <text wx:elif="{{item.threeYearTrend === 'down'}}">📉</text>
+          <text wx:else>➡️</text>
+        </view>
+      </view>
+      
+      <view class="stats-row">
+        <view class="stat-item">
+          <text class="stat-label">平均分</text>
+          <text class="stat-value score">{{item.avgScore || '-'}}</text>
+        </view>
+        <view class="stat-item">
+          <text class="stat-label">平均排名</text>
+          <text class="stat-value rank">{{item.avgRank || '-'}}</text>
+        </view>
+        <view class="stat-item">
+          <text class="stat-label">平均比例</text>
+          <text class="stat-value percent">{{item.avgPercent || '-'}}%</text>
+        </view>
+      </view>
+
+      <view class="change-row" wx:if="{{item.threeYearRankChange !== undefined}}">
+        <view class="change-item {{item.threeYearTrend}}">
+          <text class="change-label">3年排名变化</text>
+          <text class="change-value">{{item.threeYearRankChange > 0 ? '+' : ''}}{{item.threeYearRankChange}}</text>
+        </view>
+        <view class="change-item {{item.threeYearTrend}}">
+          <text class="change-label">3年分数变化</text>
+          <text class="change-value">{{item.threeYearScoreChange > 0 ? '+' : ''}}{{item.threeYearScoreChange}}分</text>
+        </view>
+      </view>
+
+      <view class="year-scores">
+        <view class="year-item" wx:for="{{item.rankHistory}}" wx:for-item="r" wx:key="year">
+          <text class="year-label">{{r.year}}年</text>
+          <text class="year-score">{{r.score}}分</text>
+          <text class="year-rank">{{r.rank}}名</text>
+          <text class="year-percent">{{r.percent}}%</text>
+        </view>
+      </view>
+
+      <view class="detail-section" wx:if="{{showDetail === item.name && item.yearlyChanges.length > 0}}">
+        <view class="detail-title">📊 年度变化详情</view>
+        <view class="change-detail" wx:for="{{item.yearlyChanges}}" wx:for-item="change" wx:key="toYear">
+          <view class="change-header">
+            <text>{{change.fromYear}} → {{change.toYear}}</text>
+            <text class="change-trend {{change.trend}}">
+              {{change.trend === 'up' ? '📈 上升' : change.trend === 'down' ? '📉 下降' : '➡️ 稳定'}}
+            </text>
+          </view>
+          <view class="change-stats">
+            <text>排名变化: {{change.rankChange > 0 ? '+' : ''}}{{change.rankChange}}</text>
+            <text>分数变化: {{change.scoreChange > 0 ? '+' : ''}}{{change.scoreChange}}分</text>
+            <text>比例变化: {{change.percentChange > 0 ? '+' : ''}}{{change.percentChange}}%</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="empty" wx:if="{{filteredSchools.length === 0}}">
+    <text>暂无数据</text>
+  </view>
+
+  <view class="tips">
+    <text>💡 排名根据当年分数段统计表估算，仅供参考</text>
+    <text>📈 上升 = 录取分数线提高，排名上升</text>
+    <text>📉 下降 = 录取分数线降低，排名下降</text>
+    <text>📌 3年变化 = 2023年排名 - 2025年排名</text>
+  </view>
+</view>

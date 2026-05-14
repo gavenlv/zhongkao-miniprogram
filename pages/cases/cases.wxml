@@ -1,0 +1,156 @@
+<view class="container">
+  <view class="header">
+    <view class="header-title">录取案例分析</view>
+    <view class="header-desc">基于2025年实际录取数据的典型案例详解</view>
+  </view>
+
+  <view class="type-tabs">
+    <view class="type-tab {{currentType === item.key ? 'active' : ''}}" wx:for="{{typeTabs}}" wx:key="key" bindtap="onTypeChange" data-type="{{item.key}}">
+      {{item.label}}
+    </view>
+  </view>
+
+  <view class="case-list">
+    <view class="case-card {{item.type}}" wx:for="{{filteredCases}}" wx:key="id" bindtap="onViewDetail" data-id="{{item.id}}">
+      <view class="case-header">
+        <view class="case-type {{item.type}}">
+          {{item.type === 'success' ? '✅ 成功' : '❌ 落榜'}}
+        </view>
+        <view class="case-title">{{item.title}}</view>
+      </view>
+      <view class="case-desc">{{item.desc}}</view>
+      <view class="case-info">
+        <view class="info-row">
+          <view class="info-item">
+            <text class="info-label">分数</text>
+            <text class="info-value">{{item.student.score}}分</text>
+          </view>
+          <view class="info-item">
+            <text class="info-label">类型</text>
+            <text class="info-value">{{item.student.isHukou ? '户籍生' : '非户籍生'}}</text>
+          </view>
+          <view class="info-item">
+            <text class="info-label">志愿数</text>
+            <text class="info-value">{{item.volunteers.length}}个</text>
+          </view>
+        </view>
+      </view>
+      <view class="case-key">
+        <text class="key-label">💡 关键点：</text>
+        <text class="key-text">{{item.keyPoint}}</text>
+      </view>
+      <view class="case-arrow">点击查看详情 ›</view>
+    </view>
+  </view>
+
+  <view class="detail-modal" wx:if="{{showDetail && currentCase}}">
+    <view class="modal-mask" bindtap="hideDetail"></view>
+    <view class="modal-content">
+      <view class="modal-header">
+        <view class="modal-title">{{currentCase.title}}</view>
+        <view class="modal-close" bindtap="hideDetail">✕</view>
+      </view>
+      
+      <scroll-view scroll-y="true" class="modal-body" enhanced="true" show-scrollbar="true">
+        <view class="detail-section">
+          <view class="section-title">考生信息</view>
+          <view class="info-grid">
+            <view class="grid-item">
+              <text class="grid-label">分数</text>
+              <text class="grid-value">{{currentCase.student.score}}分</text>
+            </view>
+            <view class="grid-item">
+              <text class="grid-label">考生类型</text>
+              <text class="grid-value">{{currentCase.student.isHukou ? '户籍生' : '非户籍生'}}</text>
+            </view>
+            <view class="grid-item">
+              <text class="grid-label">同分序号</text>
+              <text class="grid-value">{{currentCase.student.scoreSeq}}</text>
+            </view>
+            <view class="grid-item">
+              <text class="grid-label">梯度</text>
+              <text class="grid-value">{{currentCase.result.gradientLabel}}</text>
+            </view>
+          </view>
+        </view>
+
+        <view class="detail-section">
+          <view class="section-title">志愿填报与录取详情</view>
+          <view class="volunteer-detail-list">
+            <view class="volunteer-detail-item" wx:for="{{currentCase.result.processLog}}" wx:key="step">
+              <view class="volunteer-detail-header {{item.status}}">
+                <view class="volunteer-detail-order">{{item.step}}</view>
+                <view class="volunteer-detail-status">
+                  <text wx:if="{{item.status === 'success'}}">✅ 录取成功</text>
+                  <text wx:elif="{{item.status === 'failed' || item.status === 'fail'}}">❌ 未录取</text>
+                  <text wx:else>📋 信息</text>
+                </view>
+              </view>
+              
+              <view class="volunteer-detail-school" wx:if="{{item.schoolName}}">
+                <text class="school-name">{{item.schoolName}}</text>
+              </view>
+              
+              <view class="volunteer-detail-info" wx:if="{{item.schoolMinScore}}">
+                <view class="info-line">
+                  <text class="info-title">📊 学校录取数据：</text>
+                </view>
+                <view class="info-line">
+                  <text class="info-key">最低录取分数：</text>
+                  <text class="info-val">{{item.schoolMinScore}}分</text>
+                </view>
+                <view class="info-line">
+                  <text class="info-key">最低同分序号：</text>
+                  <text class="info-val">{{item.schoolMinScoreSeq}}</text>
+                </view>
+                <view class="info-line">
+                  <text class="info-key">末位考生志愿：</text>
+                  <text class="info-val">第{{item.lastVolunteer}}志愿</text>
+                </view>
+                <view class="info-line">
+                  <text class="info-key">末位考生分数：</text>
+                  <text class="info-val">{{item.lastScore}}分</text>
+                </view>
+                <view class="info-line">
+                  <text class="info-key">末位同分序号：</text>
+                  <text class="info-val">{{item.lastScoreSeq}}</text>
+                </view>
+              </view>
+            </view>
+          </view>
+        </view>
+
+        <view class="detail-section">
+          <view class="section-title">录取结果</view>
+          <view class="result-box {{currentCase.result.admitted ? 'success' : 'fail'}}">
+            <view class="result-status">
+              {{currentCase.result.admitted ? '✅ 录取成功' : '❌ 录取失败'}}
+            </view>
+            <view class="result-school" wx:if="{{currentCase.result.admitted}}">
+              录取学校：{{currentCase.result.school.name}}
+            </view>
+            <view class="result-volunteer" wx:if="{{currentCase.result.admitted}}">
+              录取志愿：第{{currentCase.result.volunteerOrder}}志愿
+            </view>
+          </view>
+        </view>
+
+        <view class="detail-section">
+          <view class="section-title">案例分析</view>
+          <view class="analysis-box">
+            <view class="analysis-line" wx:for="{{currentCase.analysisLines}}" wx:key="index">
+              {{item}}
+            </view>
+          </view>
+        </view>
+
+        <view class="detail-section">
+          <view class="section-title">💡 关键要点</view>
+          <view class="key-point-box">
+            <text>{{currentCase.keyPoint}}</text>
+          </view>
+        </view>
+      </scroll-view>
+    </view>
+  </view>
+</view>

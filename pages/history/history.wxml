@@ -1,0 +1,44 @@
+<view class="container">
+  <view class="header">
+    <view class="header-title">历史数据</view>
+    <view class="header-desc">广州市中考历年录取数据统计分析</view>
+  </view>
+
+  <view class="data-info">
+    <view class="info-row">
+      <view class="info-item">
+        <view class="info-num">2025</view>
+        <view class="info-label">年数据</view>
+      </view>
+      <view class="info-item">
+        <view class="info-num">2024</view>
+        <view class="info-label">年数据</view>
+      </view>
+      <view class="info-item">
+        <view class="info-num">2023</view>
+        <view class="info-label">年数据</view>
+      </view>
+    </view>
+  </view>
+
+  <view class="menu-list">
+    <view class="menu-item" wx:for="{{menuItems}}" wx:key="id" bindtap="onNavigate" data-path="{{item.path}}">
+      <view class="menu-icon">{{item.icon}}</view>
+      <view class="menu-content">
+        <view class="menu-title">{{item.title}}</view>
+        <view class="menu-desc">{{item.desc}}</view>
+      </view>
+      <view class="menu-arrow">›</view>
+    </view>
+  </view>
+
+  <view class="usage-card">
+    <view class="usage-title">📖 数据使用说明</view>
+    <view class="usage-list">
+      <view class="usage-item">• 历史数据仅供参考，每年录取情况会有变化</view>
+      <view class="usage-item">• 建议结合多年度数据综合分析</view>
+      <view class="usage-item">• 分数段统计可用于估算排名位置</view>
+      <view class="usage-item">• 学校录取变化可观察趋势走向</view>
+    </view>
+  </view>
+</view>

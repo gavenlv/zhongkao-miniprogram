@@ -1,0 +1,187 @@
+<view class="container">
+  <view class="header-banner">
+    <text class="banner-text">📌 第二批模拟录取（基于2025年广州市中考录取数据）</text>
+  </view>
+  
+  <view class="batch-info">
+    <view class="info-row">
+      <text class="info-label">批次：</text>
+      <text class="info-value">{{batchInfo.name}}</text>
+    </view>
+    <view class="info-row">
+      <text class="info-label">可填志愿：</text>
+      <text class="info-value">{{batchInfo.maxVolunteers}}个</text>
+    </view>
+  </view>
+  
+  <view class="section">
+    <view class="section-title">📊 2026年中考排名估算</view>
+    <view class="section-desc">根据适应性测试成绩，使用精确插值算法估算中考排名</view>
+    
+    <view class="input-row">
+      <text class="label">适应性测试分数</text>
+      <input 
+        type="number" 
+        class="score-input" 
+        placeholder="满分690分" 
+        value="{{adaptiveScore}}"
+        bindinput="onAdaptiveScoreInput"
+      />
+    </view>
+    
+    <view class="input-row">
+      <text class="label">考生类型</text>
+      <switch checked="{{isHukou}}" bindchange="onHukouChange" color="#fa8c16"/>
+      <text class="switch-label">{{isHukou ? '户籍生' : '非户籍生'}}</text>
+    </view>
+    
+    <view class="input-row">
+      <text class="label">同分序号（可选）</text>
+      <input 
+        type="number" 
+        class="score-input" 
+        placeholder="默认为1" 
+        value="{{scoreSeq}}"
+        bindinput="onScoreSeqInput"
+      />
+    </view>
+    
+    <button class="estimate-btn" bindtap="estimateRank">估算中考排名</button>
+    
+    <view class="rank-result" wx:if="{{estimatedRank}}">
+      <view class="result-title">📈 精确估算结果</view>
+      <view class="result-grid">
+        <view class="result-item">
+          <text class="result-label">适应性测试排名</text>
+          <text class="result-value">{{estimatedRank.adaptive}}名</text>
+        </view>
+        <view class="result-item">
+          <text class="result-label">预估2025中考排名</text>
+          <text class="result-value highlight">{{estimatedRank.estimated2025}}名</text>
+        </view>
+        <view class="result-item">
+          <text class="result-label">预估中考分数</text>
+          <text class="result-value score">{{estimatedScore}}分</text>
+        </view>
+        <view class="result-item">
+          <text class="result-label">累计比例</text>
+          <text class="result-value percent">{{estimatedRank.percent}}%</text>
+        </view>
+      </view>
+      
+      <view class="interpolation-info" wx:if="{{estimatedRank.interpolation}}">
+        <view class="interpolation-title">📊 插值计算详情</view>
+        <view class="interpolation-detail">
+          <text>分数区间：{{estimatedRank.interpolation.lowerScore}}-{{estimatedRank.interpolation.upperScore}}分</text>
+        </view>
+        <view class="interpolation-detail">
+          <text>比例区间：{{estimatedRank.interpolation.upperPercent}}%-{{estimatedRank.interpolation.lowerPercent}}%</text>
+        </view>
+        <view class="interpolation-detail">
+          <text>位置比例：{{estimatedRank.interpolation.ratio}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="section" wx:if="{{recommendedSchools.length > 0}}">
+    <view class="section-title">🎯 推荐学校</view>
+    <view class="section-desc">基于预估分数{{estimatedScore}}分推荐（2025年录取数据）</view>
+    
+    <view class="recommend-list">
+      <view class="recommend-item {{item.level}}" wx:for="{{recommendedSchools}}" wx:key="id" bindtap="useRecommend" data-school="{{item}}">
+        <view class="recommend-header">
+          <text class="recommend-name">{{item.name}}</text>
+          <text class="recommend-tag {{item.level}}">
+            {{item.level === 'safe' ? '稳妥' : item.level === 'moderate' ? '适中' : item.level === 'risky' ? '冲刺' : '冒险'}}
+          </text>
+        </view>
+        <view class="recommend-info">
+          <text>2025年录取线: {{item.score2025}}分</text>
+          <text>差距: {{item.diff > 0 ? '+' : ''}}{{item.diff}}分</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="section">
+    <view class="section-title">📝 志愿填报（{{batchInfo.maxVolunteers}}个志愿）</view>
+    
+    <view class="volunteer-list">
+      <view class="volunteer-item" wx:for="{{volunteers}}" wx:key="order">
+        <view class="volunteer-header">
+          <text class="volunteer-order">第{{item.order}}志愿</text>
+          <text class="volunteer-clear" wx:if="{{item.schoolName}}" bindtap="clearVolunteer" data-index="{{index}}">清除</text>
+        </view>
+        <view class="volunteer-input" bindtap="showSchoolPicker" data-index="{{index}}">
+          <text wx:if="{{item.schoolName}}">{{item.schoolName}}</text>
+          <text class="placeholder" wx:else>点击选择学校</text>
+        </view>
+      </view>
+    </view>
+    
+    <button class="simulate-btn" bindtap="simulate" loading="{{loading}}">开始模拟录取</button>
+  </view>
+
+  <view class="section result-section" wx:if="{{result}}">
+    <view class="section-title">📋 模拟录取结果</view>
+    
+    <view class="result-header {{result.admitted ? 'success' : 'fail'}}">
+      <text wx:if="{{result.admitted}}">✅ 模拟录取成功</text>
+      <text wx:else>❌ 模拟录取失败</text>
+    </view>
+    
+    <view class="admitted-info" wx:if="{{result.admitted && result.school}}">
+      <text class="school-name">{{result.school.name}}</text>
+      <text class="volunteer-info">第{{result.volunteerOrder}}志愿录取</text>
+    </view>
+    
+    <view class="process-log">
+      <view class="log-item {{item.status}}" wx:for="{{result.processLog}}" wx:key="step">
+        <view class="log-icon">{{item.status === 'success' ? '✓' : item.status === 'failed' ? '✗' : item.status === 'info' ? 'i' : '○'}}</view>
+        <view class="log-content">
+          <view class="log-step">{{item.step}}<text wx:if="{{item.schoolName}}"> - {{item.schoolName}}</text></view>
+          <view class="log-message">{{item.message}}</view>
+          
+          <view class="log-details" wx:if="{{item.schoolMinScore}}">
+            <view class="detail-row">
+              <text>学校录取线：</text>
+              <text class="detail-value">{{item.schoolMinScore}}分</text>
+            </view>
+            <view class="detail-row" wx:if="{{item.lastVolunteer}}">
+              <text>末位志愿序号：</text>
+              <text class="detail-value">{{item.lastVolunteer}}</text>
+            </view>
+            <view class="detail-row" wx:if="{{item.lastScore}}">
+              <text>末位考生分数：</text>
+              <text class="detail-value">{{item.lastScore}}分</text>
+            </view>
+          </view>
+          
+          <view class="admission-badge" wx:if="{{item.admissionType}}">
+            {{item.admissionType}}
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="reset-btn" bindtap="reset">重置</view>
+
+  <view class="school-picker" wx:if="{{showSchoolPicker}}">
+    <view class="picker-mask" bindtap="hideSchoolPicker"></view>
+    <view class="picker-content">
+      <view class="picker-header">
+        <text>选择学校</text>
+        <text class="picker-close" bindtap="hideSchoolPicker">✕</text>
+      </view>
+      <input class="picker-search" placeholder="搜索学校" bindinput="onSchoolSearch"/>
+      <scroll-view scroll-y class="picker-list">
+        <view class="picker-item" wx:for="{{schoolList}}" wx:key="id" bindtap="selectSchool" data-school="{{item}}">
+          <text class="picker-name">{{item.name}}</text>
+          <text class="picker-score">2025年: {{item.hukou.minScore}}分</text>
+        </view>
+      </scroll-view>
+    </view>
+  </view>
+</view>

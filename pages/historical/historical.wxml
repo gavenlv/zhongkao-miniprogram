@@ -1,0 +1,69 @@
+<view class="container">
+  <view class="filter-bar">
+    <picker mode="selector" range="{{years}}" bindchange="onYearChange" value="{{years.indexOf(selectedYear)}}">
+      <view class="picker-btn">{{selectedYear}}年 ▼</view>
+    </picker>
+    
+    <switch checked="{{studentType === 'nonHukou'}}" bindchange="onStudentTypeChange" color="#1890ff"/>
+    <text class="switch-label">{{studentType === 'hukou' ? '户籍生' : '非户籍生'}}</text>
+  </view>
+
+  <view class="search-bar">
+    <input 
+      class="search-input" 
+      placeholder="搜索学校名称" 
+      value="{{searchKeyword}}"
+      bindinput="onSearch"
+    />
+  </view>
+
+  <view class="sort-bar">
+    <view class="sort-item {{sortField === 'minScore' ? 'active' : ''}}" bindtap="onSort" data-field="minScore">
+      最低分 {{sortField === 'minScore' ? (sortOrder === 'desc' ? '↓' : '↑') : ''}}
+    </view>
+    <view class="sort-item {{sortField === 'lastScore' ? 'active' : ''}}" bindtap="onSort" data-field="lastScore">
+      末位分 {{sortField === 'lastScore' ? (sortOrder === 'desc' ? '↓' : '↑') : ''}}
+    </view>
+    <view class="sort-item {{sortField === 'lastVolunteer' ? 'active' : ''}}" bindtap="onSort" data-field="lastVolunteer">
+      末位志愿 {{sortField === 'lastVolunteer' ? (sortOrder === 'desc' ? '↓' : '↑') : ''}}
+    </view>
+  </view>
+
+  <view class="school-list">
+    <view class="school-item" wx:for="{{filteredSchools}}" wx:key="name" bindtap="goToDetail" data-name="{{item.name}}">
+      <view class="school-header">
+        <text class="school-name">{{item.name}}</text>
+        <text class="school-type {{item.type === '公办' ? 'public' : 'private'}}">{{item.type}}</text>
+      </view>
+      
+      <view class="school-info" wx:if="{{item[studentType]}}">
+        <view class="info-row">
+          <view class="info-item">
+            <text class="label">最低分</text>
+            <text class="value score">{{item[studentType].minScore}}</text>
+          </view>
+          <view class="info-item">
+            <text class="label">同分序号</text>
+            <text class="value">{{item[studentType].minScoreSeq}}</text>
+          </view>
+          <view class="info-item">
+            <text class="label">末位志愿</text>
+            <text class="value">第{{item[studentType].lastVolunteer}}志愿</text>
+          </view>
+          <view class="info-item">
+            <text class="label">末位分数</text>
+            <text class="value score">{{item[studentType].lastScore}}</text>
+          </view>
+        </view>
+      </view>
+      
+      <view class="no-data" wx:else>
+        <text>暂无{{studentType === 'hukou' ? '户籍生' : '非户籍生'}}录取数据</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="empty" wx:if="{{filteredSchools.length === 0}}">
+    <text>暂无数据</text>
+  </view>
+</view>

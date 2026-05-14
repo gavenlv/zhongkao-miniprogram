@@ -1,0 +1,98 @@
+<view class="container">
+  <view class="fixed-header">
+    <view class="header-banner">
+      <text class="banner-text">📌 分数排名基于广州市中考数据</text>
+    </view>
+    
+    <view class="tabs">
+      <view 
+        class="tab {{currentTab === item.key ? 'active' : ''}}" 
+        wx:for="{{tabs}}" 
+        wx:key="key"
+        bindtap="onTabChange"
+        data-tab="{{item.key}}"
+      >
+        {{item.label}}
+      </view>
+    </view>
+
+    <view class="calculator">
+      <view class="calc-title">分数排名查询</view>
+      <view class="calc-input">
+        <input 
+          type="number" 
+          placeholder="输入分数查询排名" 
+          value="{{inputScore}}"
+          bindinput="onScoreInput"
+        />
+        <button class="calc-btn" bindtap="calculateRank">查询</button>
+      </view>
+      
+      <view class="rank-result" wx:if="{{estimatedRank}}">
+        <view class="rank-item">
+          <text class="rank-label">您的分数</text>
+          <text class="rank-value score">{{estimatedRank.score}}分</text>
+        </view>
+        <view class="rank-item">
+          <text class="rank-label">精确排名</text>
+          <text class="rank-value">{{estimatedRank.count}}名</text>
+        </view>
+        <view class="rank-item">
+          <text class="rank-label">累计比例</text>
+          <text class="rank-value percent">{{estimatedRank.percent}}%</text>
+        </view>
+        <view class="rank-item" wx:if="{{estimatedRank.totalStudents}}">
+          <text class="rank-label">参考总人数</text>
+          <text class="rank-value">{{estimatedRank.totalStudents}}人</text>
+        </view>
+        
+        <view class="interpolation-info" wx:if="{{estimatedRank.interpolation}}">
+          <view class="interpolation-title">📊 精确插值计算</view>
+          <view class="interpolation-detail">
+            <text>分数区间：{{estimatedRank.interpolation.lowerScore}}-{{estimatedRank.interpolation.upperScore}}分</text>
+          </view>
+          <view class="interpolation-detail">
+            <text>人数区间：{{estimatedRank.interpolation.upperCount}}-{{estimatedRank.interpolation.lowerCount}}人</text>
+          </view>
+          <view class="interpolation-detail">
+            <text>比例区间：{{estimatedRank.interpolation.upperPercent}}%-{{estimatedRank.interpolation.lowerPercent}}%</text>
+          </view>
+          <view class="interpolation-detail">
+            <text>位置比例：{{estimatedRank.interpolation.ratio}}</text>
+          </view>
+        </view>
+        
+        <view class="exact-info" wx:if="{{estimatedRank.isExact}}">
+          <text class="exact-badge">✓ 精确匹配分数段</text>
+        </view>
+      </view>
+    </view>
+
+    <view class="estimate-btn" wx:if="{{currentTab === '2026_adaptive'}}" bindtap="goToEstimate">
+      <text>📊 2026年中考排名估算</text>
+    </view>
+
+    <view class="table-title-bar">
+      <text class="table-title">{{currentYearLabel}} 分数段统计表</text>
+      <text class="table-count">共 {{distribution.length}} 条数据</text>
+    </view>
+
+    <view class="table-header">
+      <text class="col-score">分数段</text>
+      <text class="col-count">累计人数</text>
+      <text class="col-percent">累计比例</text>
+    </view>
+  </view>
+
+  <scroll-view scroll-y class="table-body" scroll-into-view="{{scrollIntoView}}">
+    <view class="table-row {{index === highlightIndex ? 'highlight' : ''}}" wx:for="{{distribution}}" wx:key="score" id="row-{{index}}">
+      <text class="col-score">≥{{item.score}}分</text>
+      <text class="col-count">{{item.count}}人</text>
+      <text class="col-percent">{{item.percent}}%</text>
+    </view>
+  </scroll-view>
+
+  <view class="tips">
+    <text>💡 提示：分数段表示达到该分数及以上的累计人数，排名通过线性插值精确计算</text>
+  </view>
+</view>

@@ -1,0 +1,153 @@
+<view class="container">
+  <view class="header-banner">
+    <text class="banner-text">📌 基于2025年广州市中考录取数据</text>
+  </view>
+  
+  <view class="card">
+    <view class="card-title">考生信息</view>
+    
+    <view class="form-item">
+      <view class="form-label">中考总分</view>
+      <input 
+        class="form-input" 
+        type="number" 
+        placeholder="请输入中考总分(0-810)" 
+        value="{{score}}"
+        bindinput="onScoreInput"
+      />
+    </view>
+    
+    <view class="form-item">
+      <view class="form-label">考生类型</view>
+      <radio-group bindchange="onHukouChange">
+        <label class="radio-label">
+          <radio value="{{true}}" checked="{{isHukou}}" /> 户籍生
+        </label>
+        <label class="radio-label">
+          <radio value="{{false}}" checked="{{!isHukou}}" /> 非户籍生
+        </label>
+      </radio-group>
+    </view>
+    
+    <view class="form-item">
+      <view class="form-label">同分序号（可选）</view>
+      <input 
+        class="form-input" 
+        type="number" 
+        placeholder="同分考生排序序号，默认为1" 
+        value="{{scoreSeq}}"
+        bindinput="onScoreSeqInput"
+      />
+    </view>
+  </view>
+  
+  <view class="card">
+    <view class="card-title">志愿填报</view>
+    
+    <view class="volunteer-list">
+      <view class="volunteer-item" wx:for="{{volunteers}}" wx:key="order">
+        <view class="volunteer-header">
+          <text class="volunteer-order">第{{item.order}}志愿</text>
+          <text class="btn-clear" wx:if="{{item.schoolId}}" bindtap="clearVolunteer" data-index="{{index}}">清除</text>
+        </view>
+        <view class="volunteer-school" bindtap="showSchoolPicker" data-index="{{index}}">
+          <text wx:if="{{item.schoolName}}">{{item.schoolName}}</text>
+          <text class="placeholder" wx:else>点击选择学校</text>
+          <text class="arrow">></text>
+        </view>
+      </view>
+    </view>
+  </view>
+  
+  <view class="btn-group">
+    <button class="btn btn-primary" bindtap="calculate" disabled="{{loading}}">
+      {{loading ? '计算中...' : '计算录取结果'}}
+    </button>
+    <button class="btn btn-default" bindtap="reset">重置</button>
+  </view>
+  
+  <view class="result-section" wx:if="{{result}}">
+    <view class="card">
+      <view class="card-title">录取结果</view>
+      
+      <view class="result-box {{result.admitted ? 'success' : 'failed'}}">
+        <view class="result-icon">{{result.admitted ? '✓' : '✗'}}</view>
+        <view class="result-text">
+          <text class="result-title">{{result.admitted ? '已被录取' : '未被录取'}}</text>
+          <text class="result-detail" wx:if="{{result.admitted}}">
+            {{result.school.name}} (第{{result.volunteerOrder}}志愿)
+          </text>
+          <text class="result-detail" wx:else>
+            {{result.message || '所有志愿均未达到录取要求'}}
+          </text>
+        </view>
+      </view>
+    </view>
+    
+    <view class="card">
+      <view class="card-title">投档录取过程</view>
+      
+      <view class="process-log">
+        <view class="process-item {{item.status}}" wx:for="{{result.processLog}}" wx:key="index">
+          <view class="process-icon">{{item.status === 'success' ? '✓' : item.status === 'failed' ? '✗' : item.status === 'info' ? 'i' : '○'}}</view>
+          <view class="process-content">
+            <view class="process-step">{{item.step}}<text wx:if="{{item.schoolName}}"> - {{item.schoolName}}</text></view>
+            <view class="process-message">{{item.message}}</view>
+            
+            <view class="process-details" wx:if="{{item.schoolMinScore}}">
+              <view class="detail-row">
+                <text>学校录取线：</text>
+                <text class="detail-value">{{item.schoolMinScore}}分</text>
+              </view>
+              <view class="detail-row">
+                <text>末位志愿序号：</text>
+                <text class="detail-value">{{item.lastVolunteer}}</text>
+              </view>
+              <view class="detail-row">
+                <text>末位考生分数：</text>
+                <text class="detail-value">{{item.lastScore}}分</text>
+              </view>
+            </view>
+            
+            <view class="admission-badge" wx:if="{{item.admissionType}}">
+              {{item.admissionType}}
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+
+<view class="picker-mask" wx:if="{{showSchoolPicker}}" bindtap="hideSchoolPicker"></view>
+<view class="school-picker {{showSchoolPicker ? 'show' : ''}}">
+  <view class="picker-header">
+    <text class="picker-title">选择学校</text>
+    <text class="picker-close" bindtap="hideSchoolPicker">×</text>
+  </view>
+  
+  <view class="picker-search">
+    <input 
+      class="search-input" 
+      placeholder="搜索学校名称或代码" 
+      value="{{schoolSearch}}"
+      bindinput="onSchoolSearch"
+    />
+  </view>
+  
+  <scroll-view class="picker-list" scroll-y>
+    <view 
+      class="school-item" 
+      wx:for="{{schoolList}}" 
+      wx:key="id"
+      bindtap="selectSchool"
+      data-school="{{item}}"
+    >
+      <view class="school-name">{{item.name}}</view>
+      <view class="school-info">
+        <text class="school-type">{{item.type}}</text>
+        <text class="school-score" wx:if="{{item.hukou}}">{{item.hukou.minScore}}分</text>
+      </view>
+    </view>
+  </scroll-view>
+</view>

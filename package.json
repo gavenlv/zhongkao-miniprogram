@@ -1,0 +1,20 @@
+{
+  "name": "zhongkao-miniprogram",
+  "version": "1.0.0",
+  "description": "广州中考投档系统 - 微信小程序",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "广州中考",
+    "投档系统",
+    "微信小程序",
+    "志愿填报"
+  ],
+  "author": "",
+  "license": "MIT",
+  "miniprogram": {
+    "compileType": "miniprogram"
+  }
+}

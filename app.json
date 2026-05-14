@@ -1,0 +1,51 @@
+{
+  "pages": [
+    "pages/rules/rules",
+    "pages/batch3/batch3",
+    "pages/history/history",
+    "pages/batch2/batch2",
+    "pages/volunteer/volunteer",
+    "pages/simulate2026/simulate2026",
+    "pages/batch2volunteer/batch2volunteer",
+    "pages/batch2simulate2026/batch2simulate2026",
+    "pages/flowchart/flowchart",
+    "pages/historical/historical",
+    "pages/scorestats/scorestats",
+    "pages/ranking/ranking",
+    "pages/cases/cases",
+    "pages/quotacases/quotacases"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#1890ff",
+    "navigationBarTitleText": "广州中考投档",
+    "navigationBarTextStyle": "white"
+  },
+  "tabBar": {
+    "color": "#666666",
+    "selectedColor": "#1890ff",
+    "backgroundColor": "#ffffff",
+    "borderStyle": "black",
+    "list": [
+      {
+        "pagePath": "pages/rules/rules",
+        "text": "录取规则"
+      },
+      {
+        "pagePath": "pages/batch3/batch3",
+        "text": "第三批模拟"
+      },
+      {
+        "pagePath": "pages/history/history",
+        "text": "历史数据"
+      },
+      {
+        "pagePath": "pages/batch2/batch2",
+        "text": "第二批模拟"
+      }
+    ]
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json",
+  "lazyCodeLoading": "requiredComponents"
+}

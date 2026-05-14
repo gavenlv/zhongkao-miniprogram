@@ -1,0 +1,39 @@
+<view class="container">
+  <view class="header">
+    <view class="header-title">第二批模拟志愿</view>
+    <view class="header-desc">广州市中考第二批学校志愿模拟填报</view>
+  </view>
+
+  <view class="batch-info">
+    <view class="info-title">📌 第二批录取说明</view>
+    <view class="info-content">
+      <view class="info-item">• 包含公办普通高中学校</view>
+      <view class="info-item">• 可填报4个志愿，按志愿顺序录取</view>
+      <view class="info-item">• 执行梯度投档、志愿优先规则</view>
+    </view>
+  </view>
+
+  <view class="menu-list">
+    <view class="menu-item" wx:for="{{menuItems}}" wx:key="id" bindtap="onNavigate" data-path="{{item.path}}">
+      <view class="menu-icon">{{item.icon}}</view>
+      <view class="menu-content">
+        <view class="menu-header">
+          <view class="menu-title">{{item.title}}</view>
+          <view class="menu-badge" wx:if="{{item.badge}}">{{item.badge}}</view>
+        </view>
+        <view class="menu-desc">{{item.desc}}</view>
+      </view>
+      <view class="menu-arrow">›</view>
+    </view>
+  </view>
+
+  <view class="tips-card">
+    <view class="tips-title">💡 填报建议</view>
+    <view class="tips-list">
+      <view class="tips-item">1. 第二批学校录取分数相对较低</view>
+      <view class="tips-item">2. 适合作为第三批的保底选择</view>
+      <view class="tips-item">3. 注意学校所在区域限制</view>
+      <view class="tips-item">4. 建议选择离家较近的学校</view>
+    </view>
+  </view>
+</view>

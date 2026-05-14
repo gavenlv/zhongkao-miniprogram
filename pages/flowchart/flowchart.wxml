@@ -1,0 +1,311 @@
+<view class="container">
+  <view class="header-banner">
+    <text class="banner-text">📌 2025年广州市中考投档录取流程</text>
+  </view>
+  
+  <view class="tabs">
+    <view 
+      class="tab {{activeTab === item.key ? 'active' : ''}}" 
+      wx:for="{{tabs}}" 
+      wx:key="key"
+      bindtap="onTabChange"
+      data-tab="{{item.key}}"
+    >
+      {{item.label}}
+    </view>
+  </view>
+  
+  <view class="content" wx:if="{{activeTab === 'main'}}">
+    <view class="card">
+      <view class="card-title">广州市中考投档录取主流程</view>
+      
+      <view class="flowchart">
+        <view class="flow-step {{currentStep >= 1 ? 'active' : ''}}">
+          <view class="step-number">1</view>
+          <view class="step-content">
+            <view class="step-title">梯度投档优先原则</view>
+            <view class="step-desc">高分优先投档，先投第一梯度考生，再投第二梯度，依此类推</view>
+          </view>
+        </view>
+        
+        <view class="flow-arrow">↓</view>
+        
+        <view class="flow-step {{currentStep >= 2 ? 'active' : ''}}">
+          <view class="step-number">2</view>
+          <view class="step-content">
+            <view class="step-title">同一梯度内志愿优先</view>
+            <view class="step-desc">同一梯度考生，按志愿顺序投档，第1志愿优先于第2志愿</view>
+          </view>
+        </view>
+        
+        <view class="flow-arrow">↓</view>
+        
+        <view class="flow-step {{currentStep >= 3 ? 'active' : ''}}">
+          <view class="step-number">3</view>
+          <view class="step-content">
+            <view class="step-title">分数优先原则</view>
+            <view class="step-desc">同一志愿内，分数高的考生优先录取</view>
+          </view>
+        </view>
+        
+        <view class="flow-arrow">↓</view>
+        
+        <view class="flow-step {{currentStep >= 4 ? 'active' : ''}}">
+          <view class="step-number">4</view>
+          <view class="step-content">
+            <view class="step-title">同分序号判定</view>
+            <view class="step-desc">分数相同按同分序号排序，序号小的优先录取</view>
+          </view>
+        </view>
+        
+        <view class="flow-arrow">↓</view>
+        
+        <view class="flow-step {{currentStep >= 5 ? 'active' : ''}}">
+          <view class="step-number">5</view>
+          <view class="step-content">
+            <view class="step-title">末位志愿判定</view>
+            <view class="step-desc">学校在某志愿完成招生，后续志愿不再录取该校</view>
+          </view>
+        </view>
+        
+        <view class="flow-arrow">↓</view>
+        
+        <view class="flow-step {{currentStep >= 6 ? 'active' : ''}}">
+          <view class="step-number">6</view>
+          <view class="step-content">
+            <view class="step-title">录取结果确定</view>
+            <view class="step-desc">满足条件则录取，否则进入下一志愿或梯度</view>
+          </view>
+        </view>
+      </view>
+      
+      <view class="btn-group">
+        <button class="btn btn-primary" bindtap="startAnimation" disabled="{{animationRunning}}">
+          {{animationRunning ? '演示中...' : '演示流程'}}
+        </button>
+        <button class="btn btn-default" bindtap="resetAnimation">重置</button>
+      </view>
+    </view>
+    
+    <view class="card">
+      <view class="card-title">2025年梯度控制线</view>
+      <view class="gradient-list">
+        <view class="gradient-item" wx:for="{{gradientList}}" wx:key="level">
+          <view class="gradient-label">{{item.label}}</view>
+          <view class="gradient-score">{{item.range}}</view>
+        </view>
+      </view>
+      <view class="data-note">数据来源：2025年广州市中考录取分数线</view>
+    </view>
+  </view>
+  
+  <view class="content" wx:if="{{activeTab === 'gradient'}}">
+    <view class="card">
+      <view class="card-title">同一梯度内投档流程</view>
+      
+      <view class="flowchart">
+        <view class="flow-step info">
+          <view class="step-number">1</view>
+          <view class="step-content">
+            <view class="step-title">获取本梯度所有考生</view>
+            <view class="step-desc">按分数从高到低排序，准备投档</view>
+          </view>
+        </view>
+        
+        <view class="flow-arrow">↓</view>
+        
+        <view class="flow-step info">
+          <view class="step-number">2</view>
+          <view class="step-content">
+            <view class="step-title">按志愿顺序投档</view>
+            <view class="step-desc">先处理所有考生的第1志愿，再处理第2志愿...</view>
+          </view>
+        </view>
+        
+        <view class="flow-arrow">↓</view>
+        
+        <view class="flow-step info">
+          <view class="step-number">3</view>
+          <view class="step-content">
+            <view class="step-title">检查学校招生状态</view>
+            <view class="step-desc">学校是否已在该志愿完成招生？</view>
+          </view>
+        </view>
+        
+        <view class="flow-arrow">↓</view>
+        
+        <view class="flow-step warning">
+          <view class="step-number">4</view>
+          <view class="step-content">
+            <view class="step-title">分数判定</view>
+            <view class="step-desc">考生分数是否达到学校录取线？</view>
+          </view>
+        </view>
+        
+        <view class="flow-arrow">↓</view>
+        
+        <view class="flow-step success">
+          <view class="step-number">5</view>
+          <view class="step-content">
+            <view class="step-title">录取或继续</view>
+            <view class="step-desc">满足条件录取，不满足则进入下一志愿</view>
+          </view>
+        </view>
+      </view>
+    </view>
+    
+    <view class="card">
+      <view class="card-title">关键规则说明</view>
+      <view class="rule-list">
+        <view class="rule-item">
+          <view class="rule-icon">📌</view>
+          <view class="rule-text">同一梯度内，志愿优先于分数</view>
+        </view>
+        <view class="rule-item">
+          <view class="rule-icon">📌</view>
+          <view class="rule-text">第1志愿未录取，不影响第2志愿投档</view>
+        </view>
+        <view class="rule-item">
+          <view class="rule-icon">📌</view>
+          <view class="rule-text">学校在某志愿招满后，后续志愿不再录取</view>
+        </view>
+      </view>
+    </view>
+  </view>
+  
+  <view class="content" wx:if="{{activeTab === 'volunteer'}}">
+    <view class="card">
+      <view class="card-title">志愿落榜处理流程</view>
+      
+      <view class="flowchart">
+        <view class="flow-step warning">
+          <view class="step-number">1</view>
+          <view class="step-content">
+            <view class="step-title">第1志愿未录取</view>
+            <view class="step-desc">分数不够或学校已在第1志愿招满</view>
+          </view>
+        </view>
+        
+        <view class="flow-arrow">↓</view>
+        
+        <view class="flow-step info">
+          <view class="step-number">2</view>
+          <view class="step-content">
+            <view class="step-title">进入第2志愿投档</view>
+            <view class="step-desc">仍在同一梯度内，继续投档</view>
+          </view>
+        </view>
+        
+        <view class="flow-arrow">↓</view>
+        
+        <view class="flow-step info">
+          <view class="step-number">3</view>
+          <view class="step-content">
+            <view class="step-title">检查第2志愿学校</view>
+            <view class="step-desc">学校是否已在第1志愿招满？</view>
+          </view>
+        </view>
+        
+        <view class="flow-arrow">↓</view>
+        
+        <view class="flow-step success">
+          <view class="step-number">4</view>
+          <view class="step-content">
+            <view class="step-title">录取或继续</view>
+            <view class="step-desc">满足条件录取，否则进入第3志愿</view>
+          </view>
+        </view>
+      </view>
+    </view>
+    
+    <view class="card">
+      <view class="card-title">示例说明</view>
+      <view class="example-box">
+        <view class="example-title">场景：第1志愿落榜</view>
+        <view class="example-content">
+          <text>考生分数：680分（第二梯度）</text>
+          <text>第1志愿：执信中学（录取线720分）→ 未录取</text>
+          <text>第2志愿：广州六中（录取线680分）→ 检查投档</text>
+          <text>结果：若六中第1志愿未招满，可被录取</text>
+        </view>
+      </view>
+    </view>
+  </view>
+  
+  <view class="content" wx:if="{{activeTab === 'all'}}">
+    <view class="card">
+      <view class="card-title">梯度落榜处理流程</view>
+      
+      <view class="flowchart">
+        <view class="flow-step danger">
+          <view class="step-number">1</view>
+          <view class="step-content">
+            <view class="step-title">本梯度所有志愿落榜</view>
+            <view class="step-desc">第1-6志愿均未录取</view>
+          </view>
+        </view>
+        
+        <view class="flow-arrow">↓</view>
+        
+        <view class="flow-step info">
+          <view class="step-number">2</view>
+          <view class="step-content">
+            <view class="step-title">进入下一梯度投档</view>
+            <view class="step-desc">降一个梯度，重新开始投档</view>
+          </view>
+        </view>
+        
+        <view class="flow-arrow">↓</view>
+        
+        <view class="flow-step info">
+          <view class="step-number">3</view>
+          <view class="step-content">
+            <view class="step-title">重新按志愿顺序投档</view>
+            <view class="step-desc">从第1志愿开始，在新梯度内投档</view>
+          </view>
+        </view>
+        
+        <view class="flow-arrow">↓</view>
+        
+        <view class="flow-step success">
+          <view class="step-number">4</view>
+          <view class="step-content">
+            <view class="step-title">录取或继续降梯度</view>
+            <view class="step-desc">直到录取或无更低梯度</view>
+          </view>
+        </view>
+      </view>
+    </view>
+    
+    <view class="card">
+      <view class="card-title">示例说明</view>
+      <view class="example-box">
+        <view class="example-title">场景：第一梯度全部落榜</view>
+        <view class="example-content">
+          <text>考生分数：710分（第一梯度）</text>
+          <text>志愿学校录取线均≥720分 → 全部落榜</text>
+          <text>进入第二梯度投档</text>
+          <text>若第2志愿学校录取线≤710分，可被录取</text>
+        </view>
+      </view>
+    </view>
+    
+    <view class="card">
+      <view class="card-title">注意事项</view>
+      <view class="notice-list">
+        <view class="notice-item">
+          <view class="notice-icon">⚠️</view>
+          <view class="notice-text">梯度降档后，志愿顺序仍然有效</view>
+        </view>
+        <view class="notice-item">
+          <view class="notice-icon">⚠️</view>
+          <view class="notice-text">学校录取线低于考生分数时，需检查末位志愿</view>
+        </view>
+        <view class="notice-item">
+          <view class="notice-icon">⚠️</view>
+          <view class="notice-text">所有梯度均落榜，考虑补录或中职</view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
