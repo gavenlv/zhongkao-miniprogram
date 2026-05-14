@@ -1,0 +1,262 @@
+---
+name: zhongkao-miniprogram
+description: "广州中考投档录取模拟系统微信小程序开发规范。此 Skill 用于对 zhongkao-miniprogram 项目进行任何开发、修改、调试、新增功能、数据更新等操作。当用户提到广州中考、中考志愿、投档录取、模拟填报、梯度投档、miniprogram、小程序开发等相关内容时触发。"
+---
+
+# 广州中考投档录取模拟系统 - 微信小程序开发规范
+
+## 项目概述
+
+本项目是已上线的微信小程序，帮助广州中考考生和家长理解投档规则、模拟志愿填报、分析录取概率。基于广州市中考实际录取数据（2023-2026年），严格遵循广州市招生考试委员会办公室（https://gzzk.gz.gov.cn）发布的官方政策。
+
+**核心功能模块：**
+1. **录取规则展示** - 梯度投档、志愿优先、分数优先等规则的流程图解
+2. **第三批模拟填报** - 示范性/省一级高中，6个志愿（2025年数据 + 2026年预测）
+3. **第二批模拟填报** - 名额分配招生，3个志愿（校内竞争模式）
+4. **历史数据查询** - 2023-2025年各校录取分数线、分数段统计、排名估算
+5. **2026年预测** - 根据适应性测试成绩估算中考分数并模拟填报
+6. **录取案例分析** - 第三批案例（10个）+ 名额分配案例（5个）
+
+## 项目结构
+
+```
+zhongkao-miniprogram/
+├── app.js              # 小程序入口，含 globalData（梯度控制线等）
+├── app.json            # 页面注册、TabBar 配置（4个Tab）
+├── app.wxss            # 全局样式（设计系统）
+├── utils/
+│   └── admission.js    # 核心录取算法（最关键文件，637行）
+├── data/
+│   ├── schools.js              # 2025年完整学校数据（主数据源）
+│   ├── schools2023.js          # 2023年学校数据
+│   ├── schools2024.js          # 2024年学校数据
+│   ├── schools2025.js          # 2025年学校数据（另一版本）
+│   ├── historicalSchools.js    # 历史数据汇总（含排名趋势）
+│   ├── scoreDistribution.js    # 分数段统计数据
+│   └── *.csv                   # 原始录取数据和分数段统计
+├── pages/
+│   ├── rules/          # Tab1: 录取规则首页（菜单入口）
+│   ├── batch3/         # Tab2: 第三批模拟（菜单入口）
+│   ├── history/        # Tab3: 历史数据（菜单入口）
+│   ├── batch2/         # Tab4: 第二批模拟（菜单入口）
+│   ├── volunteer/      # 第三批2025模拟填报
+│   ├── simulate2026/   # 第三批2026年预测填报
+│   ├── batch2volunteer/      # 第二批名额分配模拟
+│   ├── batch2simulate2026/   # 第二批2026年预测模拟
+│   ├── flowchart/      # 投档流程图解
+│   ├── cases/          # 第三批录取案例分析
+│   ├── quotacases/     # 名额分配案例分析
+│   ├── historical/     # 历史录取数据查询
+│   ├── scorestats/     # 分数段统计与排名估算
+│   └── ranking/        # 学校录取变化趋势
+└── *.js                # 数据分析和修复脚本（非小程序代码）
+```
+
+## 编码规范
+
+### JavaScript 编码风格
+
+1. **文件结构**：每个页面4个文件（.js / .wxml / .wxss / .json），命名与目录一致
+2. **模块引用**：使用 CommonJS `require()`，不用 ES Module
+   ```javascript
+   const app = getApp()
+   const admission = require('../../utils/admission.js')
+   ```
+3. **Page 结构**：
+   ```javascript
+   Page({
+     data: { /* 页面数据 */ },
+     onLoad() { /* 页面加载 */ },
+     // 事件处理函数使用 on 前缀
+     onScoreInput(e) { },
+     onNavigate(e) { },
+     // 业务方法直接命名
+     loadSchoolList() { },
+     calculate() { },
+     reset() { }
+   })
+   ```
+4. **事件处理**：通过 `e.currentTarget.dataset` 获取 dataset，通过 `e.detail.value` 获取表单值
+5. **数据更新**：使用 `this.setData()` 更新视图，避免频繁调用
+6. **页面导航**：Tab页使用 `wx.switchTab`，子页面使用 `wx.navigateTo`
+7. **提示反馈**：使用 `wx.showToast` / `wx.showModal`，统一用中文提示
+
+### WXML 模板规范
+
+1. **列表渲染**：统一使用 `wx:for` + `wx:key="id"` 或 `wx:key="order"`
+2. **条件渲染**：使用 `wx:if` / `wx:elif` / `wx:else`
+3. **事件绑定**：使用 `bindtap="methodName"`，传参用 `data-xxx`
+4. **页面容器**：顶层统一使用 `<view class="container">`
+5. **不用自定义组件**：项目当前未使用 components 目录，保持简单直接
+
+### WXSS 样式规范
+
+**严格遵循已有设计系统**，详见下方"设计系统"章节。关键原则：
+- 使用 `rpx` 单位（不用 px）
+- 圆角统一 `12rpx`（卡片）或 `8rpx`（按钮/标签）
+- 阴影统一 `box-shadow: 0 2rpx 12rpx rgba(0, 0, 0, 0.08)`
+- 不引入第三方 UI 框架
+
+### 数据规范
+
+1. **学校数据结构**（见 `references/school-data-schema.md`）
+2. **年份处理**：每年6-7月广州招考网公布新数据后更新 `data/` 目录
+3. **梯度控制线**：每年公布后同步更新 `app.js` 的 `globalData.gradientLines` 和 `utils/admission.js` 的 `GRADIENT_LINES`（两处需保持一致）
+
+## 设计系统
+
+### 主题色
+
+| 用途 | 颜色 | 色值 |
+|------|------|------|
+| 主色 | 蓝色 | `#1890ff` |
+| 导航栏 | 深蓝渐变 | `linear-gradient(135deg, #1890ff, #096dd9)` |
+| 成功 | 绿色 | `#52c41a` |
+| 警告 | 黄色 | `#faad14` |
+| 危险 | 红色 | `#ff4d4f` |
+| 背景色 | 浅灰 | `#f5f5f5` |
+| 卡片背景 | 白色 | `#ffffff` |
+| 主文字 | 深灰 | `#333` |
+| 次文字 | 中灰 | `#666` |
+| 辅助文字 | 浅灰 | `#999` |
+| 边框 | 浅灰 | `#d9d9d9` / `#e8e8e8` / `#f0f0f0` |
+
+### 全局样式类（app.wxss）
+
+直接复用已有的全局工具类：
+- **布局**：`.container` / `.card` / `.flex` / `.flex-column` / `.flex-wrap` / `.flex-1` / `.items-center` / `.justify-center` / `.justify-between`
+- **间距**：`.gap-8` / `.gap-16` / `.mt-8` / `.mt-16` / `.mb-8` / `.mb-16` / `.p-8` / `.p-16`
+- **按钮**：`.btn` / `.btn-primary` / `.btn-success` / `.btn-warning` / `.btn-danger`
+- **表单**：`.form-item` / `.form-label` / `.form-input` / `.form-select`
+- **标签**：`.badge` / `.badge-success` / `.badge-warning` / `.badge-danger` / `.badge-info`
+- **文本**：`.text-center` / `.text-right`
+
+### 页面通用布局模式
+
+1. **菜单入口页**（rules/batch3/history/batch2）：
+   - 顶部 header 带渐变背景 + 标题 + 描述
+   - 菜单列表（menu-list），每项含 emoji icon + 标题 + 描述 + 右箭头
+   - 信息卡片（可选）
+
+2. **功能页面**（volunteer/simulate2026等）：
+   - 顶部 banner 提示（数据年份）
+   - card 分组表单
+   - 按钮组（btn-group）
+   - 结果展示区域
+
+3. **数据展示页**（historical/scorestats/ranking）：
+   - 搜索/筛选区
+   - 数据列表/表格
+   - 空状态处理
+
+### 字体规范
+
+- 全局：`28rpx` 基础字号
+- 标题：`36rpx` bold（页面标题）/ `30rpx` bold（卡片标题）
+- 正文：`26rpx` / `28rpx`
+- 辅助：`24rpx`（标签、说明文字）
+- 行高：40rpx（正文行高）
+
+## 广州中考政策规则
+
+政策权威来源：广州市招生考试委员会办公室官网 https://gzzk.gz.gov.cn/zkzz/zkxx/wjtz/
+
+### 录取批次体系
+
+| 批次 | 类型 | 说明 |
+|------|------|------|
+| 提前批 | 自主招生/特长生 | 特色项目招生 |
+| 第一批 | 外国语学校/名额分配 | 部分特殊招生 |
+| 第二批 | 名额分配招生 | 示范性高中50%招生计划分配到初中 |
+| 第三批 | 示范性/省一级高中 | 主要录取批次，本系统核心 |
+| 第四批 | 其他普通高中 | 非示范性普通高中 |
+| 补录批次 | 补录 | 未完成招生计划的学校补录 |
+
+### 梯度投档规则（核心算法）
+
+**梯度控制线划分**：以一定分差划定多个梯度，高分梯度优先投档。
+
+2025年梯度线：
+- 第一梯度：≥707分
+- 第二梯度：≥667分
+- 第三梯度：≥627分
+- 第四梯度：≥587分
+- 第五梯度：≥547分
+- 第六梯度：≥507分
+- 普高最低线：≥487分
+
+**投档优先级**（从高到低）：
+1. **梯度优先**：高分梯度考生优先投档
+2. **志愿优先**：同一梯度内，按志愿顺序投档
+3. **分数优先**：同一志愿内，高分考生优先
+4. **同分序号**：分数完全相同时，按同分序号排序
+
+**录取判定逻辑**（第三批核心算法，详见 `references/admission-algorithm.md`）：
+- 学校末位志愿 < 考生当前志愿 → 不录取
+- 考生分数 > 学校最低录取分 → 可录取
+- 考生分数 = 学校最低录取分 → 比较同分序号
+
+### 名额分配规则（第二批）
+
+- 示范性高中招生计划的50%分配到全市各初中
+- 考生与同校同学竞争，非全市竞争
+- 分户籍生和非户籍生分别录取
+- 设有最低录取控制线
+
+### 考生分类
+
+| 类型 | 说明 | 录取差异 |
+|------|------|----------|
+| 户籍生 | 广州市户籍 | 录取分数一般较低 |
+| 非户籍生 | 非广州市户籍 | 部分学校录取分数更高或有额外限制 |
+
+### 同分序号规则
+
+同分考生按以下科目顺序比较：
+1. 语文
+2. 数学
+3. 英语
+4. 物理化学（合卷）
+5. 道德与法治
+6. 体育
+
+## 开发工作流
+
+### 新增页面流程
+
+1. 在 `pages/` 下创建4个文件：`xxx.js` / `xxx.wxml` / `xxx.wxss` / `xxx.json`
+2. 在 `app.json` 的 `pages` 数组中注册路径
+3. 如需加入 TabBar，更新 `app.json` 的 `tabBar.list`
+4. 如是子页面，在对应菜单入口页的 `menuItems` 中添加条目
+5. 严格遵循已有设计系统和编码规范
+
+### 数据更新流程
+
+1. 从广州招考网获取新年度录取数据
+2. 更新 `data/schools.js`（主数据源）和新年度文件如 `data/schools2026.js`
+3. 更新 `app.js` 的 `gradientLines`
+4. 更新 `utils/admission.js` 的 `GRADIENT_LINES` 和 `GRADIENT_INFO`
+5. 更新分数段统计数据 `data/scoreDistribution.js`
+6. 更新页面文案中的年份引用
+
+### 算法修改注意事项
+
+- `utils/admission.js` 是核心文件，修改前务必理解完整投档流程
+- 使用 `test-cases.js` 验证算法正确性
+- 梯度控制线在 `app.js` 和 `admission.js` 两处需保持同步
+- 第三批和第二批使用不同的录取算法
+
+## 已知注意事项
+
+1. **梯度线不一致**：`app.js` 的 globalData（707/662/622/582/542/502）与 `admission.js`（707/667/627/587/547/487）的梯度线数值不同，需确认哪个是最新年度数据并统一
+2. **TabBar 无图标**：当前 TabBar 未配置图标，仅使用文字
+3. **无自定义组件**：项目未使用 `components/` 目录，页面逻辑直接内联
+4. **无后端**：纯前端小程序，所有数据和计算在本地完成
+5. **数据文件较大**：`historicalSchools.js` 约364KB，注意小程序包体积限制
+
+## 参考资源
+
+- `references/admission-algorithm.md` - 核心录取算法详细说明
+- `references/school-data-schema.md` - 学校数据结构定义
+- `references/policy-timeline.md` - 广州中考年度政策时间线
+- `references/gradient-rules.md` - 梯度投档规则详解
