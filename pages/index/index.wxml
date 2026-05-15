@@ -1,0 +1,72 @@
+<view class="container">
+  <view class="header">
+    <view class="header-title">广州中考志愿模拟填报录取</view>
+    <view class="header-desc">帮助考生和家长理解投档规则、模拟志愿填报</view>
+  </view>
+
+  <view class="quick-nav">
+    <view class="quick-title">快速入口</view>
+    <view class="quick-grid">
+      <view class="quick-item" bindtap="onTabNav" data-id="rules">
+        <view class="quick-icon icon-rules"></view>
+        <view class="quick-text">规则总览</view>
+      </view>
+      <view class="quick-item" bindtap="onTabNav" data-id="simulate">
+        <view class="quick-icon icon-simulate"></view>
+        <view class="quick-text">模拟填报</view>
+      </view>
+      <view class="quick-item" bindtap="onTabNav" data-id="history">
+        <view class="quick-icon icon-history"></view>
+        <view class="quick-text">历史数据</view>
+      </view>
+    </view>
+  </view>
+
+  <view class="menu-section">
+    <view class="section-label">功能导航</view>
+    <view class="menu-list">
+      <view class="menu-card" wx:for="{{menuItems}}" wx:key="id">
+        <view class="card-header" bindtap="onTabNav" data-id="{{item.id}}">
+          <view class="card-icon icon-{{item.id}}"></view>
+          <view class="card-info">
+            <view class="card-title">{{item.title}}</view>
+            <view class="card-desc">{{item.desc}}</view>
+          </view>
+          <view class="card-arrow">
+            <view class="arrow-icon"></view>
+          </view>
+        </view>
+        <view class="sub-menu-list">
+          <view class="sub-menu-item" wx:for="{{item.subMenus}}" wx:for-item="sub" wx:key="title" bindtap="onSubMenu" data-path="{{sub.path}}">
+            <view class="sub-dot"></view>
+            <view class="sub-text">{{sub.title}}</view>
+            <view class="sub-arrow">›</view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="news-section">
+    <view class="section-label">官方链接</view>
+    <view class="link-list">
+      <view class="link-card" wx:for="{{officialLinks}}" wx:key="id" bindtap="onOpenLink" data-url="{{item.url}}">
+        <view class="link-left">
+          <view class="link-icon icon-{{item.icon}}"></view>
+        </view>
+        <view class="link-content">
+          <view class="link-title">{{item.title}}</view>
+          <view class="link-desc">{{item.desc}}</view>
+        </view>
+        <view class="link-arrow">
+          <view class="external-icon"></view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="footer">
+    <view class="footer-text">数据来源：广州市招生考试委员会办公室</view>
+    <view class="footer-link">gzzk.gz.gov.cn</view>
+  </view>
+</view>

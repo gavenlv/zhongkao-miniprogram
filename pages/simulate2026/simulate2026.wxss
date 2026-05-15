@@ -493,3 +493,36 @@
   color: #999;
   margin-top: 4rpx;
 }
+
+.disclaimer {
+  margin: 30rpx 20rpx;
+  padding: 20rpx;
+  background: linear-gradient(135deg, #fff7e6 0%, #fffbe6 100%);
+  border-radius: 12rpx;
+  border-left: 6rpx solid #faad14;
+  display: flex;
+  align-items: flex-start;
+}
+
+.disclaimer-icon {
+  font-size: 32rpx;
+  margin-right: 12rpx;
+  flex-shrink: 0;
+}
+
+.disclaimer-content {
+  flex: 1;
+}
+
+.disclaimer-title {
+  font-size: 26rpx;
+  font-weight: bold;
+  color: #d48806;
+  margin-bottom: 8rpx;
+}
+
+.disclaimer-text {
+  font-size: 24rpx;
+  color: #8c8c8c;
+  line-height: 1.5;
+}

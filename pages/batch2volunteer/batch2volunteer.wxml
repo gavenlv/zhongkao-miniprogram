@@ -1,15 +1,24 @@
 <view class="container">
   <view class="header">
-    <view class="header-title">第二批名额分配模拟</view>
+    <view class="header-title">2025第二批名额分配模拟</view>
     <view class="header-desc">名额分配招生，校内竞争，设3个志愿</view>
   </view>
 
-  <view class="info-card">
-    <view class="info-title">📌 名额分配说明</view>
-    <view class="info-content">
-      <view class="info-item">• 名额分配在第二批次单独录取</view>
-      <view class="info-item">• 只有本校考生竞争本校分配到的名额</view>
-      <view class="info-item">• 采用梯度控制线上志愿优先投档方式</view>
+  <view class="guide-card">
+    <view class="guide-title">💡 名额分配录取规则</view>
+    <view class="guide-content">
+      <view class="guide-item">
+        <view class="guide-number">1</view>
+        <view class="guide-text">选择你的初中学校，查看该校分配到的名额</view>
+      </view>
+      <view class="guide-item">
+        <view class="guide-number">2</view>
+        <view class="guide-text">填报志愿，只能选择有名额的学校</view>
+      </view>
+      <view class="guide-item">
+        <view class="guide-number">3</view>
+        <view class="guide-text">设置同校竞争考生的分数，模拟校内排名</view>
+      </view>
     </view>
   </view>
 
@@ -35,32 +44,75 @@
     </view>
   </view>
 
+  <view class="quota-info-card" wx:if="{{juniorSchool && availableQuotas.length > 0}}">
+    <view class="quota-header">
+      <view class="quota-title">📊 {{juniorSchool}} 名额分配情况</view>
+    </view>
+    <view class="quota-list">
+      <view class="quota-item" wx:for="{{availableQuotas}}" wx:key="schoolId">
+        <view class="quota-school">{{item.schoolName}}</view>
+        <view class="quota-count">名额：{{item.quota}}个</view>
+      </view>
+    </view>
+  </view>
+
   <view class="volunteer-card">
     <view class="volunteer-header">
-      <view class="volunteer-title">志愿填报（3个志愿）</view>
+      <view class="volunteer-title">志愿填报（最多3个志愿）</view>
     </view>
     
     <view class="volunteer-list">
       <view class="volunteer-item" wx:for="{{volunteers}}" wx:key="order">
         <view class="volunteer-order">第{{item.order}}志愿</view>
-        <view class="volunteer-school {{item.schoolName ? '' : 'empty'}}" bindtap="showSchoolPicker" data-index="{{index}}">
-          {{item.schoolName || '点击选择学校'}}
+        <view class="volunteer-content">
+          <view class="volunteer-school {{item.schoolName ? '' : 'empty'}}" bindtap="showSchoolPicker" data-index="{{index}}">
+            {{item.schoolName || '点击选择学校'}}
+          </view>
+          <view class="volunteer-quota" wx:if="{{item.quota}}">
+            名额：{{item.quota}}个
+          </view>
+          <view class="volunteer-warning" wx:if="{{item.schoolName && !item.quota}}">
+            ⚠️ 该校未分配名额，此志愿无效
+          </view>
         </view>
         <view class="volunteer-clear" wx:if="{{item.schoolName}}" bindtap="clearVolunteer" data-index="{{index}}">✕</view>
       </view>
     </view>
+    
+    <view class="volunteer-tip" wx:if="{{!juniorSchool}}">
+      💡 请先选择初中学校，再填报志愿
+    </view>
   </view>
 
-  <view class="competitor-card">
+  <view class="competitor-card" wx:if="{{validVolunteers.length > 0}}">
     <view class="competitor-header">
-      <view class="competitor-title">校内竞争考生</view>
-      <view class="competitor-add" bindtap="showCompetitorsSetup">设置竞争考生</view>
+      <view class="competitor-title">校内竞争考生设置</view>
     </view>
-    <view class="competitor-info" wx:if="{{competitors.length > 0}}">
-      已添加 {{competitors.length}} 名竞争考生
+    
+    <view class="competitor-guide">
+      为每个志愿学校设置竞争考生的分数，系统将按分数排序计算校内排名
     </view>
-    <view class="competitor-info" wx:else>
-      未设置竞争考生，仅计算当前考生录取情况
+    
+    <view class="competitor-school-list">
+      <view class="competitor-school-item" wx:for="{{validVolunteers}}" wx:key="schoolId">
+        <view class="competitor-school-header">
+          <view class="competitor-school-name">{{item.schoolName}}</view>
+          <view class="competitor-school-quota">名额：{{item.quota}}个</view>
+        </view>
+        <view class="competitor-input-area">
+          <view class="competitor-input-label">竞争考生分数（用逗号分隔）：</view>
+          <textarea 
+            class="competitor-textarea" 
+            placeholder="例如：720, 715, 710" 
+            value="{{item.competitorScores}}"
+            bindinput="onCompetitorScoresInput"
+            data-school-id="{{item.schoolId}}"
+          />
+          <view class="competitor-input-tip">
+            已输入 {{item.competitorCount || 0}} 名竞争考生
+          </view>
+        </view>
+      </view>
     </view>
   </view>
 
@@ -84,8 +136,14 @@
       <view class="result-type" wx:if="{{result.admitted}}">
         录取方式：{{result.admissionType}}
       </view>
+      <view class="result-gradient" wx:if="{{result.admissionGradient}}">
+        投档梯度：{{result.admissionGradient}}
+      </view>
+      <view class="result-volunteer" wx:if="{{result.volunteerOrder}}">
+        录取志愿：第{{result.volunteerOrder}}志愿
+      </view>
       <view class="result-quota" wx:if="{{result.quotaInfo}}">
-        校内排名：第{{result.quotaInfo.userRank}}名 / {{result.quotaInfo.quota}}个名额
+        校内排名：第{{result.quotaInfo.userRank}}名 / 共{{result.quotaInfo.totalCandidates}}人竞争{{result.quotaInfo.quota}}个名额
       </view>
       <view class="result-error" wx:if="{{result.error}}">
         {{result.error}}
@@ -93,10 +151,14 @@
     </view>
     
     <view class="process-log" wx:if="{{result.processLog.length > 0}}">
-      <view class="log-title">录取过程</view>
+      <view class="log-title">梯度投档过程</view>
       <view class="log-item {{item.status}}" wx:for="{{result.processLog}}" wx:key="step">
         <view class="log-step">{{item.step}}</view>
         <view class="log-message">{{item.message}}</view>
+        <view class="log-details" wx:if="{{item.userRank}}">
+          <text>校内排名：第{{item.userRank}}名</text>
+          <text>名额：{{item.quota}}个</text>
+        </view>
       </view>
     </view>
   </view>
@@ -112,10 +174,11 @@
         <input class="search-input" placeholder="搜索学校" value="{{schoolSearch}}" bindinput="onSchoolSearch" />
       </view>
       <scroll-view scroll-y class="modal-list">
-        <view class="school-item" wx:for="{{schoolList}}" wx:key="id" bindtap="selectSchool" data-school="{{item}}">
+        <view class="school-item {{item.hasQuota ? '' : 'no-quota'}}" wx:for="{{schoolList}}" wx:key="id" bindtap="selectSchool" data-school="{{item}}">
           <view class="school-name">{{item.name}}</view>
           <view class="school-info">
-            <text>名额：{{item.quotaPerSchool}}个/校</text>
+            <text wx:if="{{item.hasQuota}}">名额：{{item.quota}}个</text>
+            <text wx:else class="no-quota-text">未分配名额</text>
             <text>录取线：{{item.minScore}}分</text>
           </view>
         </view>
@@ -138,40 +201,11 @@
     </view>
   </view>
 
-  <view class="competitor-modal" wx:if="{{showCompetitorsSetup}}">
-    <view class="modal-mask" bindtap="hideCompetitorsSetup"></view>
-    <view class="modal-content">
-      <view class="modal-header">
-        <view class="modal-title">设置校内竞争考生</view>
-        <view class="modal-close" bindtap="hideCompetitorsSetup">✕</view>
-      </view>
-      <scroll-view scroll-y class="modal-body">
-        <view class="competitor-list">
-          <view class="competitor-item" wx:for="{{competitors}}" wx:key="id">
-            <view class="competitor-row">
-              <view class="competitor-label">考生{{index + 1}}</view>
-              <view class="competitor-remove" bindtap="removeCompetitor" data-id="{{item.id}}">删除</view>
-            </view>
-            <view class="competitor-row">
-              <text>分数：</text>
-              <input class="competitor-input" type="number" placeholder="分数" value="{{item.score}}" bindinput="onCompetitorScoreInput" data-id="{{item.id}}" />
-            </view>
-            <view class="competitor-row">
-              <text>同分序号：</text>
-              <input class="competitor-input" type="number" placeholder="序号" value="{{item.scoreSeq}}" bindinput="onCompetitorScoreSeqInput" data-id="{{item.id}}" />
-            </view>
-            <view class="competitor-row">
-              <text>志愿学校：</text>
-              <picker mode="selector" range="{{quotaSchools}}" range-key="name" bindchange="onCompetitorSchoolChange" data-id="{{item.id}}">
-                <view class="competitor-picker">
-                  {{item.volunteers[0].schoolName || '选择学校'}}
-                </view>
-              </picker>
-            </view>
-          </view>
-        </view>
-        <button class="btn-add-competitor" bindtap="addCompetitor">+ 添加竞争考生</button>
-      </scroll-view>
+  <view class="disclaimer">
+    <view class="disclaimer-icon">⚠️</view>
+    <view class="disclaimer-content">
+      <view class="disclaimer-title">免责声明</view>
+      <view class="disclaimer-text">本系统模拟结果仅供参考，数据来源于广州市招生考试委员会办公室公开发布的信息。实际录取结果请以官方公布为准。</view>
     </view>
   </view>
 </view>

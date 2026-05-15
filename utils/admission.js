@@ -472,13 +472,12 @@ function calculateQuotaAllocationAdmission(score, juniorSchool, volunteers, scor
   }
   
   const studentGradientLevel = getGradientLevel(s)
-  const studentGradientLine = getGradientControlLine(studentGradientLevel)
   
-  if (studentGradientLevel === 7) {
+  if (studentGradientLevel === 8) {
     return { 
       success: true, 
       admitted: false,
-      error: '分数未达到普高最低控制线(475分)，无法被普通高中录取',
+      error: '分数未达到普高最低控制线(' + GRADIENT_LINES.minimum + '分)，无法被普通高中录取',
       score: s,
       gradientLevel: studentGradientLevel,
       processLog: [{
@@ -497,113 +496,146 @@ function calculateQuotaAllocationAdmission(score, juniorSchool, volunteers, scor
   const processLog = []
   
   processLog.push({
-    step: '校内竞争',
+    step: '基本信息',
     status: 'info',
-    message: '考生来自【' + juniorSchool + '】，将在本校考生中竞争名额分配名额',
-    details: {
-      juniorSchool: juniorSchool,
-      totalCompetitors: competitors ? competitors.length + 1 : 1
-    }
+    message: '考生分数：' + s + '分，所在梯度：' + getGradientLabel(studentGradientLevel) + '，初中学校：' + juniorSchool,
   })
   
-  for (let i = 0; i < validVolunteers.length; i++) {
-    const volunteer = validVolunteers[i]
-    const school = QUOTA_ALLOCATION_SCHOOLS.find(function(s) { return s.id === volunteer.schoolId })
-    const volunteerOrder = i + 1
-    
-    if (!school) {
-      processLog.push({
-        step: '第' + volunteerOrder + '志愿',
-        status: 'error',
-        message: '该学校不参与名额分配招生',
-        volunteerOrder: volunteerOrder,
-      })
-      continue
-    }
-    
-    const quota = school.quotaPerSchool
-    const schoolMinScore = school.minScore
-    const schoolMinScoreSeq = school.minScoreSeq
-    const lastVolunteer = school.lastVolunteer
-    const lastScore = school.lastScore
-    const lastScoreSeq = school.lastScoreSeq
-    
-    const schoolCompetitors = competitors ? competitors.filter(function(c) {
-      return c.volunteers.some(function(v) { return v.schoolId === school.id })
-    }) : []
-    
-    const allCandidates = schoolCompetitors.concat([{
-      score: s,
-      scoreSeq: scoreSeq,
-      volunteerOrder: volunteerOrder,
-      isCurrentUser: true
-    }])
-    
-    allCandidates.sort(function(a, b) {
-      if (a.score !== b.score) return b.score - a.score
-      return a.scoreSeq - b.scoreSeq
-    })
-    
-    const userRank = allCandidates.findIndex(function(c) { return c.isCurrentUser }) + 1
+  processLog.push({
+    step: '录取规则',
+    status: 'info',
+    message: '名额分配录取采用"梯度控制线上志愿优先"投档方式，在本校考生中竞争名额',
+  })
+  
+  for (let gradientLevel = 1; gradientLevel <= 7; gradientLevel++) {
+    const gradientLine = getGradientControlLine(gradientLevel)
+    const gradientLabel = getGradientLabel(gradientLevel)
     
     processLog.push({
-      step: '第' + volunteerOrder + '志愿',
-      status: 'pending',
-      message: '正在检查校内竞争情况...',
-      volunteerOrder: volunteerOrder,
-      schoolName: school.name,
-      quota: quota,
-      userRank: userRank,
-      totalCandidates: allCandidates.length,
-      schoolMinScore: schoolMinScore,
+      step: gradientLabel + '投档',
+      status: 'info',
+      message: '梯度控制线：' + gradientLine + '分',
+      gradientLevel: gradientLevel,
     })
     
-    if (userRank > quota) {
-      processLog[processLog.length - 1].status = 'fail'
-      processLog[processLog.length - 1].message = '【落选】本校共有' + allCandidates.length + '人竞争该校' + quota + '个名额，您排名第' + userRank + '名，超出名额限制。'
+    if (s < gradientLine) {
+      processLog[processLog.length - 1].status = 'skip'
+      processLog[processLog.length - 1].message = '考生分数' + s + '分 < 梯度控制线' + gradientLine + '分，跳过该梯度投档'
       continue
     }
     
-    if (s < schoolMinScore) {
-      processLog[processLog.length - 1].status = 'fail'
-      processLog[processLog.length - 1].message = '【落选】分数' + s + '分低于学校名额分配录取最低分数' + schoolMinScore + '分。'
-      continue
-    }
-    
-    if (s === schoolMinScore && scoreSeq > schoolMinScoreSeq) {
-      processLog[processLog.length - 1].status = 'fail'
-      processLog[processLog.length - 1].message = '【落选】分数相同（' + s + '分），但同分序号' + scoreSeq + '>' + schoolMinScoreSeq + '，该校在同分考生中已完成招生计划。'
-      continue
-    }
-    
-    processLog[processLog.length - 1].status = 'success'
-    processLog[processLog.length - 1].message = '【录取成功】本校共有' + allCandidates.length + '人竞争该校' + quota + '个名额，您排名第' + userRank + '名，成功获得名额分配录取资格！'
-    processLog[processLog.length - 1].admissionType = '名额分配录取'
-    
-    return {
-      success: true,
-      admitted: true,
-      score: s,
-      gradientLevel: studentGradientLevel,
-      gradientLabel: getGradientLabel(studentGradientLevel),
-      school: {
-        id: school.id,
-        name: school.name,
-        minScore: schoolMinScore,
-        minScoreSeq: schoolMinScoreSeq,
-        lastVolunteer: lastVolunteer,
-        lastScore: lastScore,
-        lastScoreSeq: lastScoreSeq,
-      },
-      volunteerOrder: volunteerOrder,
-      admissionType: '名额分配录取',
-      processLog: processLog,
-      quotaInfo: {
-        quota: quota,
-        userRank: userRank,
-        totalCandidates: allCandidates.length,
+    const schoolsInGradient = []
+    for (let i = 0; i < validVolunteers.length; i++) {
+      const volunteer = validVolunteers[i]
+      const school = QUOTA_ALLOCATION_SCHOOLS.find(function(sch) { return sch.id === volunteer.schoolId })
+      
+      if (school && school.minScore >= gradientLine) {
+        schoolsInGradient.push({
+          volunteerOrder: i + 1,
+          school: school,
+          volunteerIndex: i
+        })
       }
     }
+    
+    if (schoolsInGradient.length === 0) {
+      processLog[processLog.length - 1].status = 'skip'
+      processLog[processLog.length - 1].message = '该梯度内没有符合投档条件的志愿学校'
+      continue
+    }
+    
+    processLog[processLog.length - 1].message = '梯度控制线：' + gradientLine + '分，共有' + schoolsInGradient.length + '个志愿符合投档条件'
+    
+    for (let j = 0; j < schoolsInGradient.length; j++) {
+      const item = schoolsInGradient[j]
+      const school = item.school
+      const volunteerOrder = item.volunteerOrder
+      
+      processLog.push({
+        step: '第' + volunteerOrder + '志愿',
+        status: 'pending',
+        message: '正在检查【' + school.name + '】校内竞争情况...',
+        volunteerOrder: volunteerOrder,
+        schoolName: school.name,
+      })
+      
+      const quota = school.quotaPerSchool
+      const schoolMinScore = school.minScore
+      const schoolMinScoreSeq = school.minScoreSeq
+      
+      const schoolCompetitors = competitors ? competitors.filter(function(c) {
+        return c.volunteers && c.volunteers.some(function(v) { return v.schoolId === school.id })
+      }) : []
+      
+      const allCandidates = schoolCompetitors.concat([{
+        score: s,
+        scoreSeq: scoreSeq,
+        volunteerOrder: volunteerOrder,
+        isCurrentUser: true
+      }])
+      
+      allCandidates.sort(function(a, b) {
+        if (a.score !== b.score) return b.score - a.score
+        return a.scoreSeq - b.scoreSeq
+      })
+      
+      const userRank = allCandidates.findIndex(function(c) { return c.isCurrentUser }) + 1
+      
+      if (userRank > quota) {
+        processLog[processLog.length - 1].status = 'fail'
+        processLog[processLog.length - 1].message = '【落选】本校共' + allCandidates.length + '人竞争' + quota + '个名额，您排第' + userRank + '名，超出名额'
+        processLog[processLog.length - 1].userRank = userRank
+        processLog[processLog.length - 1].quota = quota
+        continue
+      }
+      
+      if (s < schoolMinScore) {
+        processLog[processLog.length - 1].status = 'fail'
+        processLog[processLog.length - 1].message = '【落选】分数' + s + '分 < 学校名额分配录取线' + schoolMinScore + '分'
+        continue
+      }
+      
+      if (s === schoolMinScore && scoreSeq > schoolMinScoreSeq) {
+        processLog[processLog.length - 1].status = 'fail'
+        processLog[processLog.length - 1].message = '【落选】同分(' + s + '分)但序号' + scoreSeq + '>' + schoolMinScoreSeq + '，已完成招生'
+        continue
+      }
+      
+      processLog[processLog.length - 1].status = 'success'
+      processLog[processLog.length - 1].message = '【录取成功】本校共' + allCandidates.length + '人竞争' + quota + '个名额，您排第' + userRank + '名，成功录取！'
+      
+      return {
+        success: true,
+        admitted: true,
+        score: s,
+        gradientLevel: studentGradientLevel,
+        gradientLabel: getGradientLabel(studentGradientLevel),
+        school: {
+          id: school.id,
+          name: school.name,
+          minScore: schoolMinScore,
+          minScoreSeq: schoolMinScoreSeq,
+          lastVolunteer: school.lastVolunteer,
+          lastScore: school.lastScore,
+          lastScoreSeq: school.lastScoreSeq,
+        },
+        volunteerOrder: volunteerOrder,
+        admissionType: '名额分配录取',
+        admissionGradient: gradientLabel,
+        processLog: processLog,
+        quotaInfo: {
+          quota: quota,
+          userRank: userRank,
+          totalCandidates: allCandidates.length,
+        }
+      }
+    }
+    
+    processLog.push({
+      step: gradientLabel + '结束',
+      status: 'info',
+      message: '该梯度内所有志愿均未录取，继续下一梯度投档',
+    })
   }
   
   return {
@@ -612,7 +644,7 @@ function calculateQuotaAllocationAdmission(score, juniorSchool, volunteers, scor
     score: s,
     gradientLevel: studentGradientLevel,
     gradientLabel: getGradientLabel(studentGradientLevel),
-    error: '所有志愿均未录取',
+    error: '所有梯度投档结束，均未录取',
     processLog: processLog,
   }
 }

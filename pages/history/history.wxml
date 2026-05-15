@@ -1,44 +1,71 @@
 <view class="container">
   <view class="header">
-    <view class="header-title">历史数据</view>
-    <view class="header-desc">广州市中考历年录取数据统计分析</view>
+    <view class="header-title">历史数据分析</view>
+    <view class="header-desc">参考历年数据，科学定位目标学校</view>
   </view>
 
-  <view class="data-info">
-    <view class="info-row">
-      <view class="info-item">
-        <view class="info-num">2025</view>
-        <view class="info-label">年数据</view>
-      </view>
-      <view class="info-item">
-        <view class="info-num">2024</view>
-        <view class="info-label">年数据</view>
-      </view>
-      <view class="info-item">
-        <view class="info-num">2023</view>
-        <view class="info-label">年数据</view>
+  <view class="menu-section">
+    <view class="section-label">请选择要查看的数据</view>
+    <view class="menu-list">
+      <view class="menu-item" wx:for="{{menuItems}}" wx:key="id" bindtap="onNavigate" data-path="{{item.path}}">
+        <view class="item-left">
+          <view class="item-icon icon-{{item.id}}"></view>
+        </view>
+        <view class="item-content">
+          <view class="item-header">
+            <view class="item-title">{{item.title}}</view>
+            <view class="item-tag tag-{{item.tag === '推荐' ? 'recommend' : item.tag === '实用' ? 'useful' : 'trend'}}">{{item.tag}}</view>
+          </view>
+          <view class="item-desc">{{item.desc}}</view>
+        </view>
+        <view class="item-arrow">
+          <view class="arrow-icon"></view>
+        </view>
       </view>
     </view>
   </view>
 
-  <view class="menu-list">
-    <view class="menu-item" wx:for="{{menuItems}}" wx:key="id" bindtap="onNavigate" data-path="{{item.path}}">
-      <view class="menu-icon">{{item.icon}}</view>
-      <view class="menu-content">
-        <view class="menu-title">{{item.title}}</view>
-        <view class="menu-desc">{{item.desc}}</view>
+  <view class="data-card">
+    <view class="card-header">
+      <view class="card-icon icon-data"></view>
+      <view class="card-title">数据覆盖范围</view>
+    </view>
+    <view class="data-info">
+      <view class="info-row">
+        <view class="info-item">
+          <view class="info-num">2025</view>
+          <view class="info-label">年数据</view>
+        </view>
+        <view class="info-item">
+          <view class="info-num">2024</view>
+          <view class="info-label">年数据</view>
+        </view>
+        <view class="info-item">
+          <view class="info-num">2023</view>
+          <view class="info-label">年数据</view>
+        </view>
       </view>
-      <view class="menu-arrow">›</view>
     </view>
   </view>
 
-  <view class="usage-card">
-    <view class="usage-title">📖 数据使用说明</view>
-    <view class="usage-list">
-      <view class="usage-item">• 历史数据仅供参考，每年录取情况会有变化</view>
-      <view class="usage-item">• 建议结合多年度数据综合分析</view>
-      <view class="usage-item">• 分数段统计可用于估算排名位置</view>
-      <view class="usage-item">• 学校录取变化可观察趋势走向</view>
+  <view class="tips-card">
+    <view class="card-header">
+      <view class="card-icon icon-tips"></view>
+      <view class="card-title">数据使用建议</view>
+    </view>
+    <view class="tips-list">
+      <view class="tips-item">
+        <view class="tips-num">1</view>
+        <view class="tips-text">历史数据仅供参考，每年录取情况会有变化</view>
+      </view>
+      <view class="tips-item">
+        <view class="tips-num">2</view>
+        <view class="tips-text">建议结合多年度数据综合分析，观察趋势</view>
+      </view>
+      <view class="tips-item">
+        <view class="tips-num">3</view>
+        <view class="tips-text">分数段统计可用于估算自己在全市的排名位置</view>
+      </view>
     </view>
   </view>
 </view>

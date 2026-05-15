@@ -1,9 +1,9 @@
 {
   "pages": [
+    "pages/index/index",
     "pages/rules/rules",
-    "pages/batch3/batch3",
+    "pages/simulate/simulate",
     "pages/history/history",
-    "pages/batch2/batch2",
     "pages/volunteer/volunteer",
     "pages/simulate2026/simulate2026",
     "pages/batch2volunteer/batch2volunteer",
@@ -18,30 +18,31 @@
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#1890ff",
-    "navigationBarTitleText": "广州中考投档",
+    "navigationBarTitleText": "广州中考志愿模拟填报录取",
     "navigationBarTextStyle": "white"
   },
   "tabBar": {
+    "custom": true,
     "color": "#666666",
     "selectedColor": "#1890ff",
     "backgroundColor": "#ffffff",
     "borderStyle": "black",
     "list": [
       {
-        "pagePath": "pages/rules/rules",
-        "text": "录取规则"
+        "pagePath": "pages/index/index",
+        "text": "首页"
       },
       {
-        "pagePath": "pages/batch3/batch3",
-        "text": "第三批模拟"
+        "pagePath": "pages/rules/rules",
+        "text": "规则总览"
+      },
+      {
+        "pagePath": "pages/simulate/simulate",
+        "text": "模拟填报录取"
       },
       {
         "pagePath": "pages/history/history",
-        "text": "历史数据"
-      },
-      {
-        "pagePath": "pages/batch2/batch2",
-        "text": "第二批模拟"
+        "text": "历史数据分析"
       }
     ]
   },

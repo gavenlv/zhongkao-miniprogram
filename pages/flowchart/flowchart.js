@@ -66,7 +66,7 @@ Page({
   
   onShareAppMessage() {
     return {
-      title: '广州中考投档流程',
+      title: '广州中考志愿模拟填报录取流程',
       path: '/pages/flowchart/flowchart'
     }
   }

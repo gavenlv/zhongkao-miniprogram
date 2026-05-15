@@ -1,0 +1,49 @@
+<view class="container">
+  <view class="header">
+    <view class="header-title">模拟填报录取</view>
+    <view class="header-desc">输入分数和志愿，模拟录取结果</view>
+  </view>
+
+  <view class="menu-section">
+    <view class="section-label">请选择模拟填报类型</view>
+    <view class="menu-list">
+      <view class="menu-item" wx:for="{{menuItems}}" wx:key="id" bindtap="onNavigate" data-path="{{item.path}}">
+        <view class="item-left">
+          <view class="item-icon icon-{{item.id === 'batch2' ? 'batch2' : item.id === 'batch3' ? 'batch3' : 'predict'}}"></view>
+        </view>
+        <view class="item-content">
+          <view class="item-header">
+            <view class="item-title">{{item.title}}</view>
+            <view class="item-tag tag-{{item.tag === '推荐' ? 'recommend' : item.tag === '户籍生' ? 'hukou' : 'predict'}}">{{item.tag}}</view>
+          </view>
+          <view class="item-subtitle">{{item.subtitle}}</view>
+          <view class="item-desc">{{item.desc}}</view>
+        </view>
+        <view class="item-arrow">
+          <view class="arrow-icon"></view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="tips-card">
+    <view class="card-header">
+      <view class="card-icon icon-tips"></view>
+      <view class="card-title">填报说明</view>
+    </view>
+    <view class="tips-list">
+      <view class="tips-item">
+        <view class="tips-num">1</view>
+        <view class="tips-text">第二批为名额分配招生，仅限户籍生，校内竞争</view>
+      </view>
+      <view class="tips-item">
+        <view class="tips-num">2</view>
+        <view class="tips-text">第三批为示范性普高剩余计划，全市竞争</view>
+      </view>
+      <view class="tips-item">
+        <view class="tips-num">3</view>
+        <view class="tips-text">2026年预测功能根据适应性测试成绩估算中考分数</view>
+      </view>
+    </view>
+  </view>
+</view>

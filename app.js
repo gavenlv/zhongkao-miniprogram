@@ -12,6 +12,6 @@ App({
   },
   
   onLaunch() {
-    console.log('广州中考投档系统启动')
+    console.log('广州中考志愿模拟填报录取系统启动')
   }
 })

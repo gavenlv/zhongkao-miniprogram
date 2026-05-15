@@ -1,22 +1,35 @@
 <view class="container">
   <view class="header">
-    <view class="header-title">中考志愿录取规则</view>
+    <view class="header-title">规则总览</view>
     <view class="header-desc">了解广州市中考投档录取规则，科学填报志愿</view>
   </view>
 
-  <view class="menu-list">
-    <view class="menu-item" wx:for="{{menuItems}}" wx:key="id" bindtap="onNavigate" data-path="{{item.path}}">
-      <view class="menu-icon">{{item.icon}}</view>
-      <view class="menu-content">
-        <view class="menu-title">{{item.title}}</view>
-        <view class="menu-desc">{{item.desc}}</view>
+  <view class="menu-section">
+    <view class="section-label">请选择要查看的内容</view>
+    <view class="menu-list">
+      <view class="menu-item" wx:for="{{menuItems}}" wx:key="id" bindtap="onNavigate" data-path="{{item.path}}">
+        <view class="item-left">
+          <view class="item-icon {{item.id === 'flowchart' ? 'icon-flow' : 'icon-case'}}"></view>
+        </view>
+        <view class="item-content">
+          <view class="item-header">
+            <view class="item-title">{{item.title}}</view>
+            <view class="item-tag" wx:if="{{item.tag}}">{{item.tag}}</view>
+          </view>
+          <view class="item-desc">{{item.desc}}</view>
+        </view>
+        <view class="item-arrow">
+          <view class="arrow-icon"></view>
+        </view>
       </view>
-      <view class="menu-arrow">›</view>
     </view>
   </view>
 
   <view class="gradient-card">
-    <view class="card-title">📌 2025年梯度控制线</view>
+    <view class="card-header">
+      <view class="card-icon icon-gradient"></view>
+      <view class="card-title">2025年梯度控制线</view>
+    </view>
     <view class="gradient-list">
       <view class="gradient-item {{item.isLast ? 'last' : ''}}" wx:for="{{gradients}}" wx:key="order">
         <view class="gradient-header">
@@ -42,7 +55,10 @@
   </view>
 
   <view class="rule-card">
-    <view class="rule-title">📋 投档规则要点</view>
+    <view class="card-header">
+      <view class="card-icon icon-rule"></view>
+      <view class="card-title">投档规则要点</view>
+    </view>
     <view class="rule-list">
       <view class="rule-item">
         <view class="rule-num">1</view>

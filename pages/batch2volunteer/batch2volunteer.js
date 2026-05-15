@@ -19,9 +19,9 @@ Page({
     scoreSeq: 1,
     juniorSchool: '',
     volunteers: [
-      { order: 1, schoolId: '', schoolName: '' },
-      { order: 2, schoolId: '', schoolName: '' },
-      { order: 3, schoolId: '', schoolName: '' }
+      { order: 1, schoolId: '', schoolName: '', quota: 0, competitorScores: '', competitorCount: 0 },
+      { order: 2, schoolId: '', schoolName: '', quota: 0, competitorScores: '', competitorCount: 0 },
+      { order: 3, schoolId: '', schoolName: '', quota: 0, competitorScores: '', competitorCount: 0 }
     ],
     schoolSearch: '',
     schoolList: [],
@@ -33,17 +33,17 @@ Page({
     quotaSchools: [],
     juniorSchoolList: JUNIOR_SCHOOLS,
     showJuniorSchoolPicker: false,
-    competitors: [],
-    showCompetitorsSetup: false,
+    availableQuotas: [],
+    validVolunteers: [],
     batchInfo: {
-      name: '第二批（名额分配）',
+      name: '2025第二批（名额分配）',
       maxVolunteers: 3,
       desc: '名额分配招生，校内竞争'
     }
   },
   
   onLoad() {
-    wx.setNavigationBarTitle({ title: '第二批名额分配模拟' })
+    wx.setNavigationBarTitle({ title: '2025第二批名额分配模拟' })
     this.loadQuotaSchools()
   },
   
@@ -73,10 +73,37 @@ Page({
   
   selectJuniorSchool(e) {
     const school = e.currentTarget.dataset.school
+    const availableQuotas = this.getAvailableQuotas(school)
+    
     this.setData({ 
       juniorSchool: school,
-      showJuniorSchoolPicker: false
+      showJuniorSchoolPicker: false,
+      availableQuotas: availableQuotas,
+      volunteers: [
+        { order: 1, schoolId: '', schoolName: '', quota: 0, competitorScores: '', competitorCount: 0 },
+        { order: 2, schoolId: '', schoolName: '', quota: 0, competitorScores: '', competitorCount: 0 },
+        { order: 3, schoolId: '', schoolName: '', quota: 0, competitorScores: '', competitorCount: 0 }
+      ],
+      validVolunteers: []
     })
+  },
+  
+  getAvailableQuotas(juniorSchool) {
+    const quotas = []
+    const allSchools = this.data.quotaSchools
+    
+    for (let i = 0; i < allSchools.length; i++) {
+      const school = allSchools[i]
+      if (school.quotaPerSchool && school.quotaPerSchool > 0) {
+        quotas.push({
+          schoolId: school.id,
+          schoolName: school.name,
+          quota: school.quotaPerSchool
+        })
+      }
+    }
+    
+    return quotas
   },
   
   onSchoolSearch(e) {
@@ -84,17 +111,50 @@ Page({
     const schools = this.data.quotaSchools.filter(function(s) {
       return s.name.indexOf(keyword) !== -1
     })
+    
+    const availableQuotas = this.data.availableQuotas
+    const schoolListWithQuota = schools.map(function(s) {
+      const quotaInfo = availableQuotas.find(function(q) { return q.schoolId === s.id })
+      return {
+        id: s.id,
+        name: s.name,
+        minScore: s.minScore,
+        hasQuota: quotaInfo ? true : false,
+        quota: quotaInfo ? quotaInfo.quota : 0
+      }
+    })
+    
     this.setData({ 
       schoolSearch: keyword,
-      schoolList: schools 
+      schoolList: schoolListWithQuota
     })
   },
   
   showSchoolPicker(e) {
     const index = e.currentTarget.dataset.index
+    
+    if (!this.data.juniorSchool) {
+      wx.showToast({ title: '请先选择初中学校', icon: 'none' })
+      return
+    }
+    
+    const availableQuotas = this.data.availableQuotas
+    const schoolListWithQuota = this.data.quotaSchools.map(function(s) {
+      const quotaInfo = availableQuotas.find(function(q) { return q.schoolId === s.id })
+      return {
+        id: s.id,
+        name: s.name,
+        minScore: s.minScore,
+        hasQuota: quotaInfo ? true : false,
+        quota: quotaInfo ? quotaInfo.quota : 0
+      }
+    })
+    
     this.setData({ 
       showSchoolPicker: true,
-      currentVolunteerIndex: index 
+      currentVolunteerIndex: index,
+      schoolList: schoolListWithQuota,
+      schoolSearch: ''
     })
   },
   
@@ -113,11 +173,17 @@ Page({
     volunteers[index] = {
       order: index + 1,
       schoolId: school.id,
-      schoolName: school.name
+      schoolName: school.name,
+      quota: school.quota || 0,
+      competitorScores: '',
+      competitorCount: 0
     }
+    
+    const validVolunteers = this.updateValidVolunteers(volunteers)
     
     this.setData({ 
       volunteers: volunteers,
+      validVolunteers: validVolunteers,
       showSchoolPicker: false,
       currentVolunteerIndex: -1 
     })
@@ -126,72 +192,70 @@ Page({
   clearVolunteer(e) {
     const index = e.currentTarget.dataset.index
     const volunteers = this.data.volunteers
-    volunteers[index] = { order: index + 1, schoolId: '', schoolName: '' }
-    this.setData({ volunteers: volunteers })
-  },
-  
-  showCompetitorsSetup() {
-    this.setData({ showCompetitorsSetup: true })
-  },
-  
-  hideCompetitorsSetup() {
-    this.setData({ showCompetitorsSetup: false })
-  },
-  
-  addCompetitor() {
-    const competitors = this.data.competitors
-    competitors.push({
-      id: Date.now(),
-      score: '',
-      scoreSeq: 1,
-      volunteers: [
-        { order: 1, schoolId: '', schoolName: '' }
-      ]
+    volunteers[index] = { 
+      order: index + 1, 
+      schoolId: '', 
+      schoolName: '', 
+      quota: 0, 
+      competitorScores: '', 
+      competitorCount: 0 
+    }
+    
+    const validVolunteers = this.updateValidVolunteers(volunteers)
+    
+    this.setData({ 
+      volunteers: volunteers,
+      validVolunteers: validVolunteers
     })
-    this.setData({ competitors: competitors })
   },
   
-  removeCompetitor(e) {
-    const id = e.currentTarget.dataset.id
-    const competitors = this.data.competitors.filter(function(c) { return c.id !== id })
-    this.setData({ competitors: competitors })
+  updateValidVolunteers(volunteers) {
+    return volunteers.filter(function(v) {
+      return v.schoolId && v.quota > 0
+    })
   },
   
-  onCompetitorScoreInput(e) {
-    const id = e.currentTarget.dataset.id
-    const value = e.detail.value
-    const competitors = this.data.competitors.map(function(c) {
-      if (c.id === id) {
-        c.score = value
+  onCompetitorScoresInput(e) {
+    const schoolId = e.currentTarget.dataset.schoolId
+    const scoresText = e.detail.value
+    
+    const scores = scoresText.split(/[,，]/)
+      .map(function(s) { return s.trim() })
+      .filter(function(s) { return s !== '' })
+      .map(function(s) { return parseInt(s) })
+      .filter(function(s) { return !isNaN(s) && s >= 0 && s <= 810 })
+    
+    const validVolunteers = this.data.validVolunteers.map(function(v) {
+      if (v.schoolId === schoolId) {
+        return {
+          schoolId: v.schoolId,
+          schoolName: v.schoolName,
+          quota: v.quota,
+          competitorScores: scoresText,
+          competitorCount: scores.length
+        }
       }
-      return c
+      return v
     })
-    this.setData({ competitors: competitors })
-  },
-  
-  onCompetitorScoreSeqInput(e) {
-    const id = e.currentTarget.dataset.id
-    const value = parseInt(e.detail.value) || 1
-    const competitors = this.data.competitors.map(function(c) {
-      if (c.id === id) {
-        c.scoreSeq = value
+    
+    const volunteers = this.data.volunteers.map(function(v) {
+      if (v.schoolId === schoolId) {
+        return {
+          order: v.order,
+          schoolId: v.schoolId,
+          schoolName: v.schoolName,
+          quota: v.quota,
+          competitorScores: scoresText,
+          competitorCount: scores.length
+        }
       }
-      return c
+      return v
     })
-    this.setData({ competitors: competitors })
-  },
-  
-  onCompetitorSchoolChange(e) {
-    const id = e.currentTarget.dataset.id
-    const schoolId = e.detail.value
-    const school = this.data.quotaSchools.find(function(s) { return s.id === schoolId })
-    const competitors = this.data.competitors.map(function(c) {
-      if (c.id === id) {
-        c.volunteers = [{ order: 1, schoolId: schoolId, schoolName: school ? school.name : '' }]
-      }
-      return c
+    
+    this.setData({
+      validVolunteers: validVolunteers,
+      volunteers: volunteers
     })
-    this.setData({ competitors: competitors })
   },
   
   calculate() {
@@ -206,32 +270,54 @@ Page({
       return
     }
     
-    const validVolunteers = this.data.volunteers.filter(v => v.schoolId)
+    const validVolunteers = this.data.validVolunteers
     if (validVolunteers.length === 0) {
-      wx.showToast({ title: '请至少填报一个志愿', icon: 'none' })
+      wx.showToast({ title: '请至少填报一个有名额的志愿', icon: 'none' })
       return
     }
     
     this.setData({ loading: true })
     
-    setTimeout(() => {
-      const competitors = this.data.competitors.map(function(c) {
-        return {
-          score: parseInt(c.score) || 0,
-          scoreSeq: c.scoreSeq,
-          volunteers: c.volunteers
+    const that = this
+    setTimeout(function() {
+      const competitors = []
+      
+      for (let i = 0; i < validVolunteers.length; i++) {
+        const v = validVolunteers[i]
+        const scores = v.competitorScores.split(/[,，]/)
+          .map(function(s) { return s.trim() })
+          .filter(function(s) { return s !== '' })
+          .map(function(s) { return parseInt(s) })
+          .filter(function(s) { return !isNaN(s) && s >= 0 && s <= 810 })
+        
+        for (let j = 0; j < scores.length; j++) {
+          competitors.push({
+            score: scores[j],
+            scoreSeq: 1,
+            volunteers: [{
+              order: 1,
+              schoolId: v.schoolId,
+              schoolName: v.schoolName
+            }]
+          })
         }
-      })
+      }
       
       const result = admission.calculateQuotaAllocationAdmission(
         score,
-        this.data.juniorSchool,
-        validVolunteers,
-        this.data.scoreSeq,
+        that.data.juniorSchool,
+        validVolunteers.map(function(v) {
+          return {
+            order: v.order || 1,
+            schoolId: v.schoolId,
+            schoolName: v.schoolName
+          }
+        }),
+        that.data.scoreSeq,
         competitors
       )
       
-      this.setData({ 
+      that.setData({ 
         result: result,
         loading: false 
       })
@@ -241,13 +327,15 @@ Page({
   reset() {
     this.setData({
       score: '',
+      scoreSeq: 1,
       juniorSchool: '',
       volunteers: [
-        { order: 1, schoolId: '', schoolName: '' },
-        { order: 2, schoolId: '', schoolName: '' },
-        { order: 3, schoolId: '', schoolName: '' }
+        { order: 1, schoolId: '', schoolName: '', quota: 0, competitorScores: '', competitorCount: 0 },
+        { order: 2, schoolId: '', schoolName: '', quota: 0, competitorScores: '', competitorCount: 0 },
+        { order: 3, schoolId: '', schoolName: '', quota: 0, competitorScores: '', competitorCount: 0 }
       ],
-      competitors: [],
+      availableQuotas: [],
+      validVolunteers: [],
       result: null
     })
   }

@@ -103,4 +103,12 @@
     <text>📉 下降 = 录取分数线降低，排名下降</text>
     <text>📌 3年变化 = 2023年排名 - 2025年排名</text>
   </view>
+
+  <view class="disclaimer">
+    <view class="disclaimer-icon">⚠️</view>
+    <view class="disclaimer-content">
+      <view class="disclaimer-title">免责声明</view>
+      <view class="disclaimer-text">本系统数据来源于广州市招生考试委员会办公室公开发布的信息，仅供参考。实际录取数据请以官方公布为准。</view>
+    </view>
+  </view>
 </view>

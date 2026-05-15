@@ -6,16 +6,16 @@ Page({
     menuItems: [
       {
         id: 'flowchart',
-        title: '投档录取流程',
-        desc: '广州市中考梯度投档、志愿优先录取规则详解',
-        icon: '📊',
+        title: '梯度投档流程',
+        desc: '了解广州市中考梯度投档、志愿优先、分数优先等录取规则',
+        tag: '推荐',
         path: '/pages/flowchart/flowchart'
       },
       {
         id: 'cases',
-        title: '录取案例分析',
-        desc: '基于2025年实际数据的典型录取案例详解',
-        icon: '📋',
+        title: '志愿案例分析',
+        desc: '基于2025年实际数据的典型录取案例，帮助理解录取规则',
+        tag: '实用',
         path: '/pages/cases/cases'
       }
     ],
@@ -24,9 +24,15 @@ Page({
 
   onLoad() {
     wx.setNavigationBarTitle({
-      title: '中考志愿录取规则'
+      title: '规则总览'
     })
     this.loadGradients()
+  },
+
+  onShow() {
+    if (typeof this.getTabBar === 'function' && this.getTabBar()) {
+      this.getTabBar().setData({ selected: 1 })
+    }
   },
 
   loadGradients() {

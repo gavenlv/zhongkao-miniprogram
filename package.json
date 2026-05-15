@@ -1,7 +1,7 @@
 {
   "name": "zhongkao-miniprogram",
   "version": "1.0.0",
-  "description": "广州中考投档系统 - 微信小程序",
+  "description": "广州中考志愿模拟填报录取 - 微信小程序",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

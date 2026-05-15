@@ -1,0 +1,224 @@
+.tab-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 120rpx;
+  background: linear-gradient(180deg, #ffffff 0%, #f8f9fa 100%);
+  display: flex;
+  padding-bottom: env(safe-area-inset-bottom);
+  box-shadow: 0 -2rpx 20rpx rgba(0, 0, 0, 0.08);
+  z-index: 9999;
+}
+
+.tab-bar-border {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2rpx;
+  background: linear-gradient(90deg, 
+    transparent 0%, 
+    #e8e8e8 20%, 
+    #e8e8e8 80%, 
+    transparent 100%
+  );
+}
+
+.tab-bar-item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 12rpx 0;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.tab-bar-item::before {
+  content: '';
+  position: absolute;
+  top: 8rpx;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  background: #1890ff;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+.tab-bar-item.selected::before {
+  width: 8rpx;
+  height: 8rpx;
+}
+
+.tab-icon {
+  width: 48rpx;
+  height: 48rpx;
+  margin-bottom: 8rpx;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.tab-text {
+  font-size: 24rpx;
+  color: #666666;
+  transition: all 0.3s ease;
+  font-weight: 500;
+}
+
+.tab-bar-item.selected .tab-text {
+  color: #1890ff;
+  font-weight: 600;
+  transform: scale(1.05);
+}
+
+.tab-icon-home {
+  background: #666;
+  border-radius: 8rpx 8rpx 12rpx 12rpx;
+  position: relative;
+}
+
+.tab-icon-home::before {
+  content: '';
+  position: absolute;
+  top: -12rpx;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 24rpx solid transparent;
+  border-right: 24rpx solid transparent;
+  border-bottom: 20rpx solid #666;
+}
+
+.tab-icon-home::after {
+  content: '';
+  position: absolute;
+  bottom: 8rpx;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 16rpx;
+  height: 20rpx;
+  background: #fff;
+  border-radius: 2rpx;
+}
+
+.tab-icon-home.active {
+  background: #1890ff;
+}
+
+.tab-icon-home.active::before {
+  border-bottom-color: #1890ff;
+}
+
+.tab-icon-rules {
+  border: 4rpx solid #666;
+  border-radius: 4rpx;
+  position: relative;
+}
+
+.tab-icon-rules::before {
+  content: '';
+  position: absolute;
+  top: 8rpx;
+  left: 8rpx;
+  right: 8rpx;
+  height: 3rpx;
+  background: #666;
+  box-shadow: 0 8rpx 0 #666, 0 16rpx 0 #666;
+}
+
+.tab-icon-rules.active {
+  border-color: #1890ff;
+}
+
+.tab-icon-rules.active::before {
+  background: #1890ff;
+  box-shadow: 0 8rpx 0 #1890ff, 0 16rpx 0 #1890ff;
+}
+
+.tab-icon-simulate {
+  border: 4rpx solid #666;
+  border-radius: 50%;
+  position: relative;
+}
+
+.tab-icon-simulate::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 20rpx;
+  height: 20rpx;
+  border: 3rpx solid #666;
+  border-radius: 50%;
+}
+
+.tab-icon-simulate::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 8rpx;
+  height: 8rpx;
+  background: #666;
+  border-radius: 50%;
+}
+
+.tab-icon-simulate.active {
+  border-color: #1890ff;
+}
+
+.tab-icon-simulate.active::before {
+  border-color: #1890ff;
+}
+
+.tab-icon-simulate.active::after {
+  background: #1890ff;
+}
+
+.tab-icon-history {
+  position: relative;
+}
+
+.tab-icon-history::before {
+  content: '';
+  position: absolute;
+  top: 4rpx;
+  left: 4rpx;
+  width: 40rpx;
+  height: 40rpx;
+  border: 4rpx solid #666;
+  border-radius: 50%;
+  border-top-color: transparent;
+  border-right-color: transparent;
+  transform: rotate(-45deg);
+}
+
+.tab-icon-history::after {
+  content: '';
+  position: absolute;
+  top: 8rpx;
+  right: 8rpx;
+  width: 0;
+  height: 0;
+  border-left: 8rpx solid transparent;
+  border-right: 8rpx solid transparent;
+  border-bottom: 12rpx solid #666;
+  transform: rotate(45deg);
+}
+
+.tab-icon-history.active::before {
+  border-color: #1890ff;
+  border-top-color: transparent;
+  border-right-color: transparent;
+}
+
+.tab-icon-history.active::after {
+  border-bottom-color: #1890ff;
+}
