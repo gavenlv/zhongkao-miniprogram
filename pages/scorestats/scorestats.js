@@ -8,7 +8,7 @@ const YEAR_LABELS = {
 }
 
 const TOTAL_STUDENTS = {
-  '2026_adaptive': 150000,
+  '2026_adaptive': 151000,
   '2025': 139600,
   '2024': 106652,
   '2023': 104903
