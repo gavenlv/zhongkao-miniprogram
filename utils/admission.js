@@ -517,6 +517,8 @@ function calculateQuotaAllocationAdmission(score, juniorSchool, volunteers, scor
     message: '名额分配录取：梯度优先、志愿优先、分数优先，在本校考生中竞争名额',
   })
   
+  const fullyAdmittedSchools = {}
+  
   for (let gradientLevel = 1; gradientLevel <= 7; gradientLevel++) {
     const gradientLine = getGradientControlLine(gradientLevel)
     const gradientLabel = getGradientLabel(gradientLevel)
@@ -539,7 +541,7 @@ function calculateQuotaAllocationAdmission(score, juniorSchool, volunteers, scor
       const volunteer = validVolunteers[i]
       const school = QUOTA_ALLOCATION_SCHOOLS.find(function(sch) { return sch.id === volunteer.schoolId })
       
-      if (school && school.minScore >= gradientLine) {
+      if (school && school.minScore >= gradientLine && !fullyAdmittedSchools[school.id]) {
         schoolsInGradient.push({
           volunteerOrder: i + 1,
           school: school,
@@ -550,7 +552,7 @@ function calculateQuotaAllocationAdmission(score, juniorSchool, volunteers, scor
     
     if (schoolsInGradient.length === 0) {
       processLog[processLog.length - 1].status = 'skip'
-      processLog[processLog.length - 1].message = '该梯度内没有符合投档条件的志愿学校'
+      processLog[processLog.length - 1].message = '该梯度内没有符合投档条件的志愿学校（或学校已录满）'
       continue
     }
     
@@ -560,6 +562,17 @@ function calculateQuotaAllocationAdmission(score, juniorSchool, volunteers, scor
       const item = schoolsInGradient[j]
       const school = item.school
       const volunteerOrder = item.volunteerOrder
+      
+      if (fullyAdmittedSchools[school.id]) {
+        processLog.push({
+          step: '第' + volunteerOrder + '志愿',
+          status: 'skip',
+          message: '【跳过】' + school.name + '已在前面梯度录满，不再接受投档',
+          volunteerOrder: volunteerOrder,
+          schoolName: school.name,
+        })
+        continue
+      }
       
       processLog.push({
         step: '第' + volunteerOrder + '志愿',
@@ -671,6 +684,10 @@ function calculateQuotaAllocationAdmission(score, juniorSchool, volunteers, scor
         
         const totalCandidates = candidatesByVolunteer[1].length + candidatesByVolunteer[2].length + candidatesByVolunteer[3].length
         
+        if (admittedCount >= quota) {
+          fullyAdmittedSchools[school.id] = true
+        }
+        
         if (volunteerOrder > 1) {
           const firstVolunteerCount = candidatesByVolunteer[1].length
           if (firstVolunteerCount >= quota) {
@@ -688,6 +705,8 @@ function calculateQuotaAllocationAdmission(score, juniorSchool, volunteers, scor
         processLog[processLog.length - 1].quota = quota
         continue
       }
+      
+      fullyAdmittedSchools[school.id] = true
       
       processLog[processLog.length - 1].status = 'success'
       processLog[processLog.length - 1].message = '【录取成功】本校共' + (candidatesByVolunteer[1].length + candidatesByVolunteer[2].length + candidatesByVolunteer[3].length) + '人竞争' + quota + '个名额，您排第' + userRank + '名，成功录取！'
