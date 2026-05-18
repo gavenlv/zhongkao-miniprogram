@@ -428,6 +428,12 @@
   margin-right: 20rpx;
 }
 
+.school-control-line {
+  font-size: 22rpx;
+  color: #faad14;
+  margin-top: 4rpx;
+}
+
 .junior-item {
   padding: 24rpx;
   border-bottom: 1rpx solid #f0f0f0;
@@ -594,6 +600,22 @@
 .quota-count {
   font-size: 22rpx;
   color: #666;
+}
+
+.quota-control-line {
+  font-size: 22rpx;
+  color: #faad14;
+  margin-top: 4rpx;
+}
+
+.quota-tip {
+  margin-top: 16rpx;
+  padding: 12rpx;
+  background: #fffbe6;
+  border-radius: 8rpx;
+  font-size: 22rpx;
+  color: #ad8b00;
+  line-height: 1.5;
 }
 
 .volunteer-content {

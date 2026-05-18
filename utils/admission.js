@@ -415,7 +415,9 @@ const QUOTA_ALLOCATION_SCHOOLS = [
     minScoreSeq: 150,
     lastVolunteer: 1,
     lastScore: 710,
-    lastScoreSeq: 150
+    lastScoreSeq: 150,
+    avgScore3Years: 715,
+    quotaControlLine: 675
   },
   {
     id: 'GZ003',
@@ -425,7 +427,9 @@ const QUOTA_ALLOCATION_SCHOOLS = [
     minScoreSeq: 200,
     lastVolunteer: 1,
     lastScore: 705,
-    lastScoreSeq: 200
+    lastScoreSeq: 200,
+    avgScore3Years: 710,
+    quotaControlLine: 670
   },
   {
     id: 'GZ010',
@@ -435,7 +439,9 @@ const QUOTA_ALLOCATION_SCHOOLS = [
     minScoreSeq: 180,
     lastVolunteer: 1,
     lastScore: 680,
-    lastScoreSeq: 180
+    lastScoreSeq: 180,
+    avgScore3Years: 685,
+    quotaControlLine: 645
   },
   {
     id: 'GZ002',
@@ -445,7 +451,9 @@ const QUOTA_ALLOCATION_SCHOOLS = [
     minScoreSeq: 160,
     lastVolunteer: 1,
     lastScore: 700,
-    lastScoreSeq: 160
+    lastScoreSeq: 160,
+    avgScore3Years: 705,
+    quotaControlLine: 665
   },
   {
     id: 'GZ020',
@@ -455,7 +463,9 @@ const QUOTA_ALLOCATION_SCHOOLS = [
     minScoreSeq: 220,
     lastVolunteer: 2,
     lastScore: 660,
-    lastScoreSeq: 220
+    lastScoreSeq: 220,
+    avgScore3Years: 665,
+    quotaControlLine: 625
   }
 ]
 
@@ -504,7 +514,7 @@ function calculateQuotaAllocationAdmission(score, juniorSchool, volunteers, scor
   processLog.push({
     step: '录取规则',
     status: 'info',
-    message: '名额分配录取采用"梯度控制线上志愿优先"投档方式，在本校考生中竞争名额',
+    message: '名额分配录取：梯度优先、志愿优先、分数优先，在本校考生中竞争名额',
   })
   
   for (let gradientLevel = 1; gradientLevel <= 7; gradientLevel++) {
@@ -554,7 +564,7 @@ function calculateQuotaAllocationAdmission(score, juniorSchool, volunteers, scor
       processLog.push({
         step: '第' + volunteerOrder + '志愿',
         status: 'pending',
-        message: '正在检查【' + school.name + '】校内竞争情况...',
+        message: '正在检查【' + school.name + '】录取条件...',
         volunteerOrder: volunteerOrder,
         schoolName: school.name,
       })
@@ -562,47 +572,125 @@ function calculateQuotaAllocationAdmission(score, juniorSchool, volunteers, scor
       const quota = school.quotaPerSchool
       const schoolMinScore = school.minScore
       const schoolMinScoreSeq = school.minScoreSeq
+      const quotaControlLine = school.quotaControlLine || GRADIENT_LINES.minimum
       
-      const schoolCompetitors = competitors ? competitors.filter(function(c) {
-        return c.volunteers && c.volunteers.some(function(v) { return v.schoolId === school.id })
-      }) : []
+      if (s < quotaControlLine) {
+        processLog[processLog.length - 1].status = 'fail'
+        processLog[processLog.length - 1].message = '【落选】分数' + s + '分 < 该校名额分配最低控制线' + quotaControlLine + '分（近三年平均' + (school.avgScore3Years || '未知') + '分-40分）'
+        processLog[processLog.length - 1].quotaControlLine = quotaControlLine
+        continue
+      }
       
-      const allCandidates = schoolCompetitors.concat([{
+      const candidatesByVolunteer = {
+        1: [],
+        2: [],
+        3: []
+      }
+      
+      if (competitors) {
+        for (let k = 0; k < competitors.length; k++) {
+          const c = competitors[k]
+          if (c.volunteers) {
+            for (let v = 0; v < c.volunteers.length; v++) {
+              if (c.volunteers[v].schoolId === school.id) {
+                const volOrder = v + 1
+                if (candidatesByVolunteer[volOrder]) {
+                  candidatesByVolunteer[volOrder].push({
+                    score: c.score,
+                    scoreSeq: c.scoreSeq || 1,
+                    volunteerOrder: volOrder
+                  })
+                }
+              }
+            }
+          }
+        }
+      }
+      
+      candidatesByVolunteer[volunteerOrder].push({
         score: s,
         scoreSeq: scoreSeq,
         volunteerOrder: volunteerOrder,
         isCurrentUser: true
-      }])
-      
-      allCandidates.sort(function(a, b) {
-        if (a.score !== b.score) return b.score - a.score
-        return a.scoreSeq - b.scoreSeq
       })
       
-      const userRank = allCandidates.findIndex(function(c) { return c.isCurrentUser }) + 1
+      for (let vol = 1; vol <= 3; vol++) {
+        candidatesByVolunteer[vol].sort(function(a, b) {
+          if (a.score !== b.score) return b.score - a.score
+          return a.scoreSeq - b.scoreSeq
+        })
+      }
       
-      if (userRank > quota) {
+      let admittedCount = 0
+      let userAdmitted = false
+      let userRank = 0
+      
+      for (let vol = 1; vol <= 3; vol++) {
+        const candidates = candidatesByVolunteer[vol]
+        
+        for (let c = 0; c < candidates.length; c++) {
+          const candidate = candidates[c]
+          
+          if (admittedCount >= quota) {
+            break
+          }
+          
+          if (candidate.score < schoolMinScore) {
+            continue
+          }
+          
+          if (candidate.score === schoolMinScore && candidate.scoreSeq > schoolMinScoreSeq) {
+            continue
+          }
+          
+          admittedCount++
+          
+          if (candidate.isCurrentUser) {
+            userAdmitted = true
+            userRank = admittedCount
+          }
+        }
+        
+        if (admittedCount >= quota) {
+          break
+        }
+      }
+      
+      if (!userAdmitted) {
+        let totalAhead = 0
+        for (let vol = 1; vol < volunteerOrder; vol++) {
+          totalAhead += candidatesByVolunteer[vol].length
+        }
+        
+        const sameVolunteerCandidates = candidatesByVolunteer[volunteerOrder]
+        const userIndex = sameVolunteerCandidates.findIndex(function(c) { return c.isCurrentUser })
+        
+        if (userIndex !== -1) {
+          userRank = totalAhead + userIndex + 1
+        }
+        
+        const totalCandidates = candidatesByVolunteer[1].length + candidatesByVolunteer[2].length + candidatesByVolunteer[3].length
+        
+        if (volunteerOrder > 1) {
+          const firstVolunteerCount = candidatesByVolunteer[1].length
+          if (firstVolunteerCount >= quota) {
+            processLog[processLog.length - 1].status = 'fail'
+            processLog[processLog.length - 1].message = '【落选】该校在第一志愿已录满（第一志愿' + firstVolunteerCount + '人，名额' + quota + '个），第' + volunteerOrder + '志愿无法投档'
+            processLog[processLog.length - 1].firstVolunteerCount = firstVolunteerCount
+            processLog[processLog.length - 1].quota = quota
+            continue
+          }
+        }
+        
         processLog[processLog.length - 1].status = 'fail'
-        processLog[processLog.length - 1].message = '【落选】本校共' + allCandidates.length + '人竞争' + quota + '个名额，您排第' + userRank + '名，超出名额'
+        processLog[processLog.length - 1].message = '【落选】本校共' + totalCandidates + '人竞争' + quota + '个名额，您排第' + userRank + '名，超出名额'
         processLog[processLog.length - 1].userRank = userRank
         processLog[processLog.length - 1].quota = quota
         continue
       }
       
-      if (s < schoolMinScore) {
-        processLog[processLog.length - 1].status = 'fail'
-        processLog[processLog.length - 1].message = '【落选】分数' + s + '分 < 学校名额分配录取线' + schoolMinScore + '分'
-        continue
-      }
-      
-      if (s === schoolMinScore && scoreSeq > schoolMinScoreSeq) {
-        processLog[processLog.length - 1].status = 'fail'
-        processLog[processLog.length - 1].message = '【落选】同分(' + s + '分)但序号' + scoreSeq + '>' + schoolMinScoreSeq + '，已完成招生'
-        continue
-      }
-      
       processLog[processLog.length - 1].status = 'success'
-      processLog[processLog.length - 1].message = '【录取成功】本校共' + allCandidates.length + '人竞争' + quota + '个名额，您排第' + userRank + '名，成功录取！'
+      processLog[processLog.length - 1].message = '【录取成功】本校共' + (candidatesByVolunteer[1].length + candidatesByVolunteer[2].length + candidatesByVolunteer[3].length) + '人竞争' + quota + '个名额，您排第' + userRank + '名，成功录取！'
       
       return {
         success: true,
@@ -626,7 +714,7 @@ function calculateQuotaAllocationAdmission(score, juniorSchool, volunteers, scor
         quotaInfo: {
           quota: quota,
           userRank: userRank,
-          totalCandidates: allCandidates.length,
+          totalCandidates: candidatesByVolunteer[1].length + candidatesByVolunteer[2].length + candidatesByVolunteer[3].length,
         }
       }
     }

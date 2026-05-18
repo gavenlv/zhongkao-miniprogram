@@ -9,15 +9,19 @@
     <view class="guide-content">
       <view class="guide-item">
         <view class="guide-number">1</view>
-        <view class="guide-text">选择你的初中学校，查看该校分配到的名额</view>
+        <view class="guide-text">选择你的初中学校，查看该校分配到的名额和最低控制线</view>
       </view>
       <view class="guide-item">
         <view class="guide-number">2</view>
-        <view class="guide-text">填报志愿，只能选择有名额的学校</view>
+        <view class="guide-text">填报志愿，只能选择有名额的学校，分数需达到该校最低控制线</view>
       </view>
       <view class="guide-item">
         <view class="guide-number">3</view>
-        <view class="guide-text">设置同校竞争考生的分数，模拟校内排名</view>
+        <view class="guide-text">设置同校竞争考生的分数，模拟校内排名竞争</view>
+      </view>
+      <view class="guide-item">
+        <view class="guide-number">4</view>
+        <view class="guide-text">按梯度投档，每个梯度内志愿优先、分数优先</view>
       </view>
     </view>
   </view>
@@ -52,7 +56,13 @@
       <view class="quota-item" wx:for="{{availableQuotas}}" wx:key="schoolId">
         <view class="quota-school">{{item.schoolName}}</view>
         <view class="quota-count">名额：{{item.quota}}个</view>
+        <view class="quota-control-line" wx:if="{{item.quotaControlLine}}">
+          最低控制线：{{item.quotaControlLine}}分
+        </view>
       </view>
+    </view>
+    <view class="quota-tip">
+      💡 最低控制线 = 近三年平均分 - 40分，低于此线无法录取
     </view>
   </view>
 
@@ -180,6 +190,9 @@
             <text wx:if="{{item.hasQuota}}">名额：{{item.quota}}个</text>
             <text wx:else class="no-quota-text">未分配名额</text>
             <text>录取线：{{item.minScore}}分</text>
+          </view>
+          <view class="school-control-line" wx:if="{{item.hasQuota && item.quotaControlLine}}">
+            最低控制线：{{item.quotaControlLine}}分
           </view>
         </view>
       </scroll-view>

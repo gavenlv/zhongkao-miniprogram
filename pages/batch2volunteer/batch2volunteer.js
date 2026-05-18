@@ -98,7 +98,9 @@ Page({
         quotas.push({
           schoolId: school.id,
           schoolName: school.name,
-          quota: school.quotaPerSchool
+          quota: school.quotaPerSchool,
+          quotaControlLine: school.quotaControlLine,
+          avgScore3Years: school.avgScore3Years
         })
       }
     }
@@ -146,7 +148,8 @@ Page({
         name: s.name,
         minScore: s.minScore,
         hasQuota: quotaInfo ? true : false,
-        quota: quotaInfo ? quotaInfo.quota : 0
+        quota: quotaInfo ? quotaInfo.quota : 0,
+        quotaControlLine: s.quotaControlLine
       }
     })
     
