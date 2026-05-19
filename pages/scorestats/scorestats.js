@@ -168,6 +168,22 @@ Page({
     wx.navigateTo({
       url: '/pages/simulate2026/simulate2026'
     })
+  },
+
+  onShareAppMessage() {
+    return {
+      title: '广州中考分数段统计排名',
+      path: '/pages/scorestats/scorestats',
+      imageUrl: '/images/aba.png'
+    }
+  },
+
+  onShareTimeline() {
+    return {
+      title: '广州中考分数段统计排名',
+      query: '',
+      imageUrl: '/images/aba.png'
+    }
   }
 })
 

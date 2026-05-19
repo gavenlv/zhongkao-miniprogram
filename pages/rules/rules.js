@@ -43,5 +43,21 @@ Page({
   onNavigate(e) {
     const path = e.currentTarget.dataset.path
     wx.navigateTo({ url: path })
+  },
+
+  onShareAppMessage() {
+    return {
+      title: '广州中考规则总览',
+      path: '/pages/rules/rules',
+      imageUrl: '/images/aba.png'
+    }
+  },
+
+  onShareTimeline() {
+    return {
+      title: '广州中考规则总览',
+      query: '',
+      imageUrl: '/images/aba.png'
+    }
   }
 })

@@ -316,5 +316,21 @@ Page({
       result: null,
       recommendedSchools: []
     })
+  },
+
+  onShareAppMessage() {
+    return {
+      title: '广州中考2026第二批预测模拟',
+      path: '/pages/batch2simulate2026/batch2simulate2026',
+      imageUrl: '/images/aba.png'
+    }
+  },
+
+  onShareTimeline() {
+    return {
+      title: '广州中考2026第二批预测模拟',
+      query: '',
+      imageUrl: '/images/aba.png'
+    }
   }
 })

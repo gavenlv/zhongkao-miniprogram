@@ -314,5 +314,21 @@ Page({
       result: null,
       recommendedSchools: []
     })
+  },
+
+  onShareAppMessage() {
+    return {
+      title: '广州中考2026第三批预测模拟',
+      path: '/pages/simulate2026/simulate2026',
+      imageUrl: '/images/aba.png'
+    }
+  },
+
+  onShareTimeline() {
+    return {
+      title: '广州中考2026第三批预测模拟',
+      query: '',
+      imageUrl: '/images/aba.png'
+    }
   }
 })

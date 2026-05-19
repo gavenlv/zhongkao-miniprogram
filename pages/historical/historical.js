@@ -107,5 +107,21 @@ Page({
     wx.navigateTo({
       url: '/pages/schoolDetail/schoolDetail?name=' + encodeURIComponent(schoolName)
     })
+  },
+
+  onShareAppMessage() {
+    return {
+      title: '广州中考历年录取数据',
+      path: '/pages/historical/historical',
+      imageUrl: '/images/aba.png'
+    }
+  },
+
+  onShareTimeline() {
+    return {
+      title: '广州中考历年录取数据',
+      query: '',
+      imageUrl: '/images/aba.png'
+    }
   }
 })

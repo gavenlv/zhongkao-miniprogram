@@ -155,5 +155,21 @@ Page({
 
   hideDetail() {
     this.setData({ showDetail: false, currentCase: null })
+  },
+
+  onShareAppMessage() {
+    return {
+      title: '广州中考名额分配案例分析',
+      path: '/pages/quotacases/quotacases',
+      imageUrl: '/images/aba.png'
+    }
+  },
+
+  onShareTimeline() {
+    return {
+      title: '广州中考名额分配案例分析',
+      query: '',
+      imageUrl: '/images/aba.png'
+    }
   }
 })

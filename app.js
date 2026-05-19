@@ -9,7 +9,12 @@ App({
       fifth: 542,
       minimum: 502
     },
-    version: '1.2.1'
+    version: '1.2.1',
+    shareConfig: {
+      title: '广州中考志愿模拟填报',
+      path: '/pages/index/index',
+      imageUrl: '/images/aba.png'
+    }
   },
   
   onLaunch() {

@@ -40,5 +40,21 @@ Page({
   onNavigate(e) {
     const path = e.currentTarget.dataset.path
     wx.navigateTo({ url: path })
+  },
+
+  onShareAppMessage() {
+    return {
+      title: '广州中考历史数据分析',
+      path: '/pages/history/history',
+      imageUrl: '/images/aba.png'
+    }
+  },
+
+  onShareTimeline() {
+    return {
+      title: '广州中考历史数据分析',
+      query: '',
+      imageUrl: '/images/aba.png'
+    }
   }
 })

@@ -51,5 +51,21 @@ Page({
   onNavigate(e) {
     const path = e.currentTarget.dataset.path
     wx.navigateTo({ url: path })
+  },
+
+  onShareAppMessage() {
+    return {
+      title: '广州中考模拟填报录取',
+      path: '/pages/simulate/simulate',
+      imageUrl: '/images/aba.png'
+    }
+  },
+
+  onShareTimeline() {
+    return {
+      title: '广州中考模拟填报录取',
+      query: '',
+      imageUrl: '/images/aba.png'
+    }
   }
 })

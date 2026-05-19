@@ -341,5 +341,21 @@ Page({
       validVolunteers: [],
       result: null
     })
+  },
+
+  onShareAppMessage() {
+    return {
+      title: '广州中考2025第二批名额分配模拟',
+      path: '/pages/batch2volunteer/batch2volunteer',
+      imageUrl: '/images/aba.png'
+    }
+  },
+
+  onShareTimeline() {
+    return {
+      title: '广州中考2025第二批名额分配模拟',
+      query: '',
+      imageUrl: '/images/aba.png'
+    }
   }
 })

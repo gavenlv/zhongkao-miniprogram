@@ -103,5 +103,21 @@ Page({
         }
       }
     })
+  },
+
+  onShareAppMessage() {
+    return {
+      title: '广州中考志愿模拟填报',
+      path: '/pages/index/index',
+      imageUrl: '/images/aba.png'
+    }
+  },
+
+  onShareTimeline() {
+    return {
+      title: '广州中考志愿模拟填报',
+      query: '',
+      imageUrl: '/images/aba.png'
+    }
   }
 })

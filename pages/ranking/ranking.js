@@ -105,5 +105,21 @@ Page({
       case 'down': return '📉'
       default: return '➡️'
     }
+  },
+
+  onShareAppMessage() {
+    return {
+      title: '广州中考学校录取分数变化',
+      path: '/pages/ranking/ranking',
+      imageUrl: '/images/aba.png'
+    }
+  },
+
+  onShareTimeline() {
+    return {
+      title: '广州中考学校录取分数变化',
+      query: '',
+      imageUrl: '/images/aba.png'
+    }
   }
 })

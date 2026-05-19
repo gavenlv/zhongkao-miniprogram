@@ -66,8 +66,17 @@ Page({
   
   onShareAppMessage() {
     return {
-      title: '广州中考志愿模拟填报录取流程',
-      path: '/pages/flowchart/flowchart'
+      title: '广州中考梯度投档流程',
+      path: '/pages/flowchart/flowchart',
+      imageUrl: '/images/aba.png'
+    }
+  },
+
+  onShareTimeline() {
+    return {
+      title: '广州中考梯度投档流程',
+      query: '',
+      imageUrl: '/images/aba.png'
     }
   }
 })

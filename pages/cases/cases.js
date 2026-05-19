@@ -241,5 +241,21 @@ Page({
 
   hideDetail() {
     this.setData({ showDetail: false, currentCase: null })
+  },
+
+  onShareAppMessage() {
+    return {
+      title: '广州中考志愿案例分析',
+      path: '/pages/cases/cases',
+      imageUrl: '/images/aba.png'
+    }
+  },
+
+  onShareTimeline() {
+    return {
+      title: '广州中考志愿案例分析',
+      query: '',
+      imageUrl: '/images/aba.png'
+    }
   }
 })

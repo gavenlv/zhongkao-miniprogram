@@ -37,5 +37,21 @@ Page({
   onNavigate(e) {
     const path = e.currentTarget.dataset.path
     wx.navigateTo({ url: path })
+  },
+
+  onShareAppMessage() {
+    return {
+      title: '广州中考第二批模拟填报',
+      path: '/pages/batch2/batch2',
+      imageUrl: '/images/aba.png'
+    }
+  },
+
+  onShareTimeline() {
+    return {
+      title: '广州中考第二批模拟填报',
+      query: '',
+      imageUrl: '/images/aba.png'
+    }
   }
 })

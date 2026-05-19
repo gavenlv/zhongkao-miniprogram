@@ -169,5 +169,21 @@ Page({
       'pending': '○'
     }
     return icons[status] || '○'
+  },
+
+  onShareAppMessage() {
+    return {
+      title: '广州中考2025第三批模拟填报',
+      path: '/pages/volunteer/volunteer',
+      imageUrl: '/images/aba.png'
+    }
+  },
+
+  onShareTimeline() {
+    return {
+      title: '广州中考2025第三批模拟填报',
+      query: '',
+      imageUrl: '/images/aba.png'
+    }
   }
 })
