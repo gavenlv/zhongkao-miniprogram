@@ -4,19 +4,19 @@ const CASES = [
   {
     id: 1,
     type: 'success',
-    title: '第一梯度考生跨梯度录取案例',
-    student: { score: 710, isHukou: true, scoreSeq: 1 },
+    title: '第一梯度考生第三志愿录取案例',
+    student: { score: 713, isHukou: true, scoreSeq: 1 },
     volunteers: [
       { order: 1, schoolId: 'GZ001', schoolName: '华南师范大学附属中学（石牌校区）' },
       { order: 2, schoolId: 'GZ003', schoolName: '广东实验中学（荔湾校区）' },
-      { order: 3, schoolId: 'GZ029', schoolName: '广州市第七中学（校本部）' }
+      { order: 3, schoolId: 'GZ066', schoolName: '广州科学城中学' }
     ]
   },
   {
     id: 2,
     type: 'fail',
     title: '第一梯度考生全部落选案例',
-    student: { score: 710, isHukou: true, scoreSeq: 1 },
+    student: { score: 713, isHukou: true, scoreSeq: 1 },
     volunteers: [
       { order: 1, schoolId: 'GZ001', schoolName: '华南师范大学附属中学（石牌校区）' },
       { order: 2, schoolId: 'GZ003', schoolName: '广东实验中学（荔湾校区）' },
@@ -26,18 +26,18 @@ const CASES = [
   {
     id: 3,
     type: 'success',
-    title: '第二梯度考生成功录取案例',
+    title: '第三梯度考生第三志愿录取案例',
     student: { score: 670, isHukou: true, scoreSeq: 1 },
     volunteers: [
       { order: 1, schoolId: 'GZ029', schoolName: '广州市第七中学（校本部）' },
       { order: 2, schoolId: 'GZ035', schoolName: '广州市培正中学' },
-      { order: 3, schoolId: 'GZ036', schoolName: '广州市育才中学' }
+      { order: 3, schoolId: 'GZ062', schoolName: '广东外语外贸大学实验中学' }
     ]
   },
   {
     id: 4,
     type: 'fail',
-    title: '第二梯度考生志愿序号超限案例',
+    title: '第三梯度考生志愿序号超限案例',
     student: { score: 670, isHukou: true, scoreSeq: 1 },
     volunteers: [
       { order: 1, schoolId: 'GZ007', schoolName: '广州市执信中学（执信路校区）' },
@@ -48,41 +48,41 @@ const CASES = [
   {
     id: 5,
     type: 'success',
-    title: '第三梯度考生成功录取案例',
+    title: '第三梯度考生末位志愿截断后录取案例',
     student: { score: 661, isHukou: true, scoreSeq: 1 },
     volunteers: [
       { order: 1, schoolId: 'GZ029', schoolName: '广州市第七中学（校本部）' },
       { order: 2, schoolId: 'GZ036', schoolName: '广州市育才中学' },
-      { order: 3, schoolId: 'GZ084', schoolName: '广州市南沙第一中学' }
+      { order: 3, schoolId: 'GZ045', schoolName: '广州市海珠外国语实验中学（江海校区）' }
     ]
   },
   {
     id: 6,
     type: 'success',
-    title: '第三梯度考生跨梯度录取案例',
+    title: '第三梯度考生录取铁一越秀案例',
     student: { score: 639, isHukou: true, scoreSeq: 1 },
     volunteers: [
       { order: 1, schoolId: 'GZ029', schoolName: '广州市第七中学（校本部）' },
       { order: 2, schoolId: 'GZ035', schoolName: '广州市培正中学' },
-      { order: 3, schoolId: 'GZ030', schoolName: '广州市第七中学（桂花岗校区）' }
+      { order: 3, schoolId: 'GZ016', schoolName: '广州市铁一中学（越秀校区）' }
     ]
   },
   {
     id: 7,
     type: 'success',
     title: '同分考生按同分序号录取案例',
-    student: { score: 665, isHukou: true, scoreSeq: 100 },
+    student: { score: 661, isHukou: true, scoreSeq: 50 },
     volunteers: [
-      { order: 1, schoolId: 'GZ089', schoolName: '广州市增城区增城中学' }
+      { order: 1, schoolId: 'GZ036', schoolName: '广州市育才中学' }
     ]
   },
   {
     id: 8,
     type: 'fail',
     title: '同分考生同分序号不足落选案例',
-    student: { score: 665, isHukou: true, scoreSeq: 350 },
+    student: { score: 661, isHukou: true, scoreSeq: 100 },
     volunteers: [
-      { order: 1, schoolId: 'GZ089', schoolName: '广州市增城区增城中学' }
+      { order: 1, schoolId: 'GZ036', schoolName: '广州市育才中学' }
     ]
   },
   {
@@ -94,14 +94,14 @@ const CASES = [
       { order: 1, schoolId: 'GZ007', schoolName: '广州市执信中学（执信路校区）' },
       { order: 2, schoolId: 'GZ029', schoolName: '广州市第七中学（校本部）' },
       { order: 3, schoolId: 'GZ036', schoolName: '广州市育才中学' },
-      { order: 4, schoolId: 'GZ084', schoolName: '广州市南沙第一中学' }
+      { order: 4, schoolId: 'GZ068', schoolName: '广州市黄埔区开元学校' }
     ]
   },
   {
     id: 10,
     type: 'fail',
     title: '非户籍生录取分数线较高案例',
-    student: { score: 710, isHukou: false, scoreSeq: 1 },
+    student: { score: 713, isHukou: false, scoreSeq: 1 },
     volunteers: [
       { order: 1, schoolId: 'GZ001', schoolName: '华南师范大学附属中学（石牌校区）' },
       { order: 2, schoolId: 'GZ003', schoolName: '广东实验中学（荔湾校区）' }

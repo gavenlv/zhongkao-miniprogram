@@ -9,12 +9,12 @@
     <view class="menu-list">
       <view class="menu-item" wx:for="{{menuItems}}" wx:key="id" bindtap="onNavigate" data-path="{{item.path}}">
         <view class="item-left">
-          <view class="item-icon {{item.id === 'flowchart' ? 'icon-flow' : 'icon-case'}}"></view>
+          <view class="item-icon {{item.id === 'volunteerTable2026' ? 'icon-table' : item.id === 'volunteer2026' ? 'icon-volunteer' : item.id === 'flowchart' ? 'icon-flow' : 'icon-case'}}"></view>
         </view>
         <view class="item-content">
           <view class="item-header">
             <view class="item-title">{{item.title}}</view>
-            <view class="item-tag" wx:if="{{item.tag}}">{{item.tag}}</view>
+            <view class="item-tag {{item.tag === '新功能' ? 'tag-new' : ''}}" wx:if="{{item.tag}}">{{item.tag}}</view>
           </view>
           <view class="item-desc">{{item.desc}}</view>
         </view>
@@ -25,16 +25,88 @@
     </view>
   </view>
 
+  <view class="explain-card">
+    <view class="explain-header">
+      <view class="explain-icon">🎯</view>
+      <view class="explain-title">2026年志愿填报怎么用？</view>
+    </view>
+    <view class="explain-content">
+      <view class="explain-item">
+        <view class="explain-num">1</view>
+        <view class="explain-text">
+          <text class="highlight">输入分数</text>：填写你的预估中考总分（满分810分）
+        </view>
+      </view>
+      <view class="explain-item">
+        <view class="explain-num">2</view>
+        <view class="explain-text">
+          <text class="highlight">选择类型</text>：户籍生或非户籍生，录取分数线不同
+        </view>
+      </view>
+      <view class="explain-item">
+        <view class="explain-num">3</view>
+        <view class="explain-text">
+          <text class="highlight">填报志愿</text>：按优先顺序选择6所学校
+        </view>
+      </view>
+      <view class="explain-item">
+        <view class="explain-num">4</view>
+        <view class="explain-text">
+          <text class="highlight">模拟录取</text>：点击计算，查看录取结果
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="rule-explain-card">
+    <view class="rule-explain-header">
+      <view class="rule-explain-icon">📚</view>
+      <view class="rule-explain-title">录取规则详解</view>
+    </view>
+    
+    <view class="rule-section">
+      <view class="rule-emoji">🌊</view>
+      <view class="rule-content">
+        <view class="rule-name">梯度投档 = 排队入场</view>
+        <view class="rule-desc">想象中考录取就像游乐园排队入场，分数高的梯度先进入。第一梯度（≥712分）的考生全部处理完，才轮到第二梯度，以此类推。</view>
+      </view>
+    </view>
+    
+    <view class="rule-section">
+      <view class="rule-emoji">🎯</view>
+      <view class="rule-content">
+        <view class="rule-name">志愿优先 = 先到先得</view>
+        <view class="rule-desc">同一梯度内，学校优先录取第1志愿的考生。如果学校在第1志愿就招满了，第2、3志愿填这所学校就无效了。所以要把最想去的学校填在前面！</view>
+      </view>
+    </view>
+    
+    <view class="rule-section">
+      <view class="rule-emoji">📊</view>
+      <view class="rule-content">
+        <view class="rule-name">分数优先 = 高分优先</view>
+        <view class="rule-desc">同一志愿内，分数高的先录取。如果分数相同，就看同分序号，序号小的优先。</view>
+      </view>
+    </view>
+    
+    <view class="rule-section">
+      <view class="rule-emoji">🔄</view>
+      <view class="rule-content">
+        <view class="rule-name">跨梯度录取 = 捡漏机会</view>
+        <view class="rule-desc">如果学校在某个梯度没招满，会继续录取下一个梯度的考生。这就是"跨梯度录取"，是低分考生进入好学校的机会！</view>
+      </view>
+    </view>
+  </view>
+
   <view class="gradient-card">
     <view class="card-header">
       <view class="card-icon icon-gradient"></view>
-      <view class="card-title">2025年梯度控制线</view>
+      <view class="card-title">2026年梯度控制线</view>
     </view>
     <view class="gradient-list">
       <view class="gradient-item {{item.isLast ? 'last' : ''}}" wx:for="{{gradients}}" wx:key="order">
         <view class="gradient-header">
           <view class="gradient-name">{{item.name}}</view>
-          <view class="gradient-badge" wx:if="{{item.isLast}}">最后梯度</view>
+          <view class="gradient-badge" wx:if="{{item.isLast}}">最低控制线</view>
         </view>
         <view class="gradient-info">
           <view class="info-row">

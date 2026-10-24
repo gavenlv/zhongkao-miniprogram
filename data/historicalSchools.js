@@ -43,7 +43,14 @@ const historicalSchools = [
     ],
     "avgRank": 9436,
     "avgScore": 728,
-    "avgPercent": 8.99
+    "avgPercent": 8.99,
+    "yearlyChanges": [],
+    "recentTrend": "stable",
+    "recentRankChange": 0,
+    "recentScoreChange": 0,
+    "threeYearRankChange": 0,
+    "threeYearScoreChange": 0,
+    "threeYearTrend": "stable"
   },
   {
     "name": "广东实验中学",
@@ -89,7 +96,14 @@ const historicalSchools = [
     ],
     "avgRank": 5896,
     "avgScore": 735,
-    "avgPercent": 5.62
+    "avgPercent": 5.62,
+    "yearlyChanges": [],
+    "recentTrend": "stable",
+    "recentRankChange": 0,
+    "recentScoreChange": 0,
+    "threeYearRankChange": 0,
+    "threeYearScoreChange": 0,
+    "threeYearTrend": "stable"
   },
   {
     "name": "广东广雅中学（本部校区）",
@@ -135,7 +149,14 @@ const historicalSchools = [
     ],
     "avgRank": 5896,
     "avgScore": 731,
-    "avgPercent": 5.62
+    "avgPercent": 5.62,
+    "yearlyChanges": [],
+    "recentTrend": "stable",
+    "recentRankChange": 0,
+    "recentScoreChange": 0,
+    "threeYearRankChange": 0,
+    "threeYearScoreChange": 0,
+    "threeYearTrend": "stable"
   },
   {
     "name": "广东广雅中学（花都校区）",
@@ -204,6 +225,27 @@ const historicalSchools = [
           "lastScoreSeq": 231
         },
         "outer": null
+      },
+      "2026": {
+        "id": "GZ006",
+        "name": "广东广雅中学（花都校区）",
+        "type": "公办",
+        "scope": "全市",
+        "hukou": {
+          "minScore": 717,
+          "minScoreSeq": 318,
+          "lastVolunteer": 1,
+          "lastScore": 717,
+          "lastScoreSeq": 318
+        },
+        "nonHukou": {
+          "minScore": 718,
+          "minScoreSeq": 59,
+          "lastVolunteer": 1,
+          "lastScore": 718,
+          "lastScoreSeq": 59
+        },
+        "outer": null
       }
     },
     "rankHistory": [
@@ -227,6 +269,13 @@ const historicalSchools = [
         "rank": 12865,
         "percent": 11.09,
         "total": 116007
+      },
+      {
+        "year": "2026",
+        "score": 717,
+        "rank": 16303,
+        "percent": 12.98,
+        "total": 125579
       }
     ],
     "scoreHistory": [
@@ -241,11 +290,15 @@ const historicalSchools = [
       {
         "year": "2025",
         "score": 718
+      },
+      {
+        "year": "2026",
+        "score": 717
       }
     ],
-    "avgRank": 12163,
+    "avgRank": 13198,
     "avgScore": 717,
-    "avgPercent": 11.15,
+    "avgPercent": 11.61,
     "yearlyChanges": [
       {
         "fromYear": "2023",
@@ -262,14 +315,22 @@ const historicalSchools = [
         "scoreChange": 2,
         "percentChange": 1.6,
         "trend": "down"
+      },
+      {
+        "fromYear": "2025",
+        "toYear": "2026",
+        "rankChange": -3438,
+        "scoreChange": -1,
+        "percentChange": 1.89,
+        "trend": "down"
       }
     ],
     "recentTrend": "down",
-    "recentRankChange": -2745,
-    "recentScoreChange": 2,
-    "threeYearRankChange": 640,
-    "threeYearScoreChange": 0,
-    "threeYearTrend": "up"
+    "recentRankChange": -3438,
+    "recentScoreChange": -1,
+    "threeYearRankChange": -6183,
+    "threeYearScoreChange": 1,
+    "threeYearTrend": "down"
   },
   {
     "name": "广州市执信中学（执信路校区）",
@@ -338,6 +399,27 @@ const historicalSchools = [
           "lastScoreSeq": 251
         },
         "outer": null
+      },
+      "2026": {
+        "id": "GZ007",
+        "name": "广州市执信中学（执信路校区）",
+        "type": "公办",
+        "scope": "全市",
+        "hukou": {
+          "minScore": 732,
+          "minScoreSeq": 100,
+          "lastVolunteer": 1,
+          "lastScore": 732,
+          "lastScoreSeq": 100
+        },
+        "nonHukou": {
+          "minScore": 733,
+          "minScoreSeq": 200,
+          "lastVolunteer": 1,
+          "lastScore": 733,
+          "lastScoreSeq": 200
+        },
+        "outer": null
       }
     },
     "rankHistory": [
@@ -361,6 +443,13 @@ const historicalSchools = [
         "rank": 8737,
         "percent": 7.53,
         "total": 116007
+      },
+      {
+        "year": "2026",
+        "score": 732,
+        "rank": 7350,
+        "percent": 5.85,
+        "total": 125579
       }
     ],
     "scoreHistory": [
@@ -375,11 +464,15 @@ const historicalSchools = [
       {
         "year": "2025",
         "score": 723
+      },
+      {
+        "year": "2026",
+        "score": 732
       }
     ],
-    "avgRank": 7117,
-    "avgScore": 724,
-    "avgPercent": 6.48,
+    "avgRank": 7175,
+    "avgScore": 726,
+    "avgPercent": 6.32,
     "yearlyChanges": [
       {
         "fromYear": "2023",
@@ -396,13 +489,21 @@ const historicalSchools = [
         "scoreChange": 3,
         "percentChange": 1.23,
         "trend": "down"
+      },
+      {
+        "fromYear": "2025",
+        "toYear": "2026",
+        "rankChange": 1387,
+        "scoreChange": 9,
+        "percentChange": -1.68,
+        "trend": "up"
       }
     ],
-    "recentTrend": "down",
-    "recentRankChange": -2019,
-    "recentScoreChange": 3,
-    "threeYearRankChange": -2841,
-    "threeYearScoreChange": -7,
+    "recentTrend": "up",
+    "recentRankChange": 1387,
+    "recentScoreChange": 9,
+    "threeYearRankChange": -632,
+    "threeYearScoreChange": 12,
     "threeYearTrend": "down"
   },
   {
@@ -472,6 +573,27 @@ const historicalSchools = [
           "lastScoreSeq": 309
         },
         "outer": null
+      },
+      "2026": {
+        "id": "GZ008",
+        "name": "广州市执信中学（天河校区）",
+        "type": "公办",
+        "scope": "全市",
+        "hukou": {
+          "minScore": 731,
+          "minScoreSeq": 233,
+          "lastVolunteer": 1,
+          "lastScore": 731,
+          "lastScoreSeq": 233
+        },
+        "nonHukou": {
+          "minScore": 731,
+          "minScoreSeq": 250,
+          "lastVolunteer": 1,
+          "lastScore": 731,
+          "lastScoreSeq": 250
+        },
+        "outer": null
       }
     },
     "rankHistory": [
@@ -495,6 +617,13 @@ const historicalSchools = [
         "rank": 8737,
         "percent": 7.53,
         "total": 116007
+      },
+      {
+        "year": "2026",
+        "score": 731,
+        "rank": 7350,
+        "percent": 5.85,
+        "total": 125579
       }
     ],
     "scoreHistory": [
@@ -509,11 +638,15 @@ const historicalSchools = [
       {
         "year": "2025",
         "score": 720
+      },
+      {
+        "year": "2026",
+        "score": 731
       }
     ],
-    "avgRank": 9653,
-    "avgScore": 720,
-    "avgPercent": 8.9,
+    "avgRank": 9078,
+    "avgScore": 723,
+    "avgPercent": 8.14,
     "yearlyChanges": [
       {
         "fromYear": "2023",
@@ -530,14 +663,22 @@ const historicalSchools = [
         "scoreChange": -1,
         "percentChange": 1.23,
         "trend": "down"
+      },
+      {
+        "fromYear": "2025",
+        "toYear": "2026",
+        "rankChange": 1387,
+        "scoreChange": 11,
+        "percentChange": -1.68,
+        "trend": "up"
       }
     ],
-    "recentTrend": "down",
-    "recentRankChange": -2019,
-    "recentScoreChange": -1,
-    "threeYearRankChange": 4768,
-    "threeYearScoreChange": 1,
-    "threeYearTrend": "up"
+    "recentTrend": "up",
+    "recentRankChange": 1387,
+    "recentScoreChange": 11,
+    "threeYearRankChange": -632,
+    "threeYearScoreChange": 10,
+    "threeYearTrend": "down"
   },
   {
     "name": "广州市第二中学",
@@ -606,6 +747,27 @@ const historicalSchools = [
           "lastScoreSeq": 107
         },
         "outer": null
+      },
+      "2026": {
+        "id": "GZ009",
+        "name": "广州市第二中学",
+        "type": "公办",
+        "scope": "全市",
+        "hukou": {
+          "minScore": 737,
+          "minScoreSeq": 61,
+          "lastVolunteer": 1,
+          "lastScore": 737,
+          "lastScoreSeq": 61
+        },
+        "nonHukou": {
+          "minScore": 738,
+          "minScoreSeq": 235,
+          "lastVolunteer": 1,
+          "lastScore": 738,
+          "lastScoreSeq": 235
+        },
+        "outer": null
       }
     },
     "rankHistory": [
@@ -629,6 +791,13 @@ const historicalSchools = [
         "rank": 8737,
         "percent": 7.53,
         "total": 116007
+      },
+      {
+        "year": "2026",
+        "score": 737,
+        "rank": 7350,
+        "percent": 5.85,
+        "total": 125579
       }
     ],
     "scoreHistory": [
@@ -643,11 +812,15 @@ const historicalSchools = [
       {
         "year": "2025",
         "score": 724
+      },
+      {
+        "year": "2026",
+        "score": 737
       }
     ],
-    "avgRank": 7117,
-    "avgScore": 728,
-    "avgPercent": 6.48,
+    "avgRank": 7175,
+    "avgScore": 730,
+    "avgPercent": 6.32,
     "yearlyChanges": [
       {
         "fromYear": "2023",
@@ -664,13 +837,21 @@ const historicalSchools = [
         "scoreChange": -5,
         "percentChange": 1.23,
         "trend": "down"
+      },
+      {
+        "fromYear": "2025",
+        "toYear": "2026",
+        "rankChange": 1387,
+        "scoreChange": 13,
+        "percentChange": -1.68,
+        "trend": "up"
       }
     ],
-    "recentTrend": "down",
-    "recentRankChange": -2019,
-    "recentScoreChange": -5,
-    "threeYearRankChange": -2841,
-    "threeYearScoreChange": -6,
+    "recentTrend": "up",
+    "recentRankChange": 1387,
+    "recentScoreChange": 13,
+    "threeYearRankChange": -632,
+    "threeYearScoreChange": 8,
     "threeYearTrend": "down"
   },
   {
@@ -717,7 +898,14 @@ const historicalSchools = [
     ],
     "avgRank": 9436,
     "avgScore": 721,
-    "avgPercent": 8.99
+    "avgPercent": 8.99,
+    "yearlyChanges": [],
+    "recentTrend": "stable",
+    "recentRankChange": 0,
+    "recentScoreChange": 0,
+    "threeYearRankChange": 0,
+    "threeYearScoreChange": 0,
+    "threeYearTrend": "stable"
   },
   {
     "name": "广东华侨中学",
@@ -786,6 +974,27 @@ const historicalSchools = [
           "lastScoreSeq": 259
         },
         "outer": null
+      },
+      "2026": {
+        "id": "GZ013",
+        "name": "广东华侨中学",
+        "type": "公办",
+        "scope": "全市",
+        "hukou": {
+          "minScore": 637,
+          "minScoreSeq": 104,
+          "lastVolunteer": 1,
+          "lastScore": 637,
+          "lastScoreSeq": 104
+        },
+        "nonHukou": {
+          "minScore": 672,
+          "minScoreSeq": 541,
+          "lastVolunteer": 3,
+          "lastScore": 706,
+          "lastScoreSeq": 57
+        },
+        "outer": null
       }
     },
     "rankHistory": [
@@ -809,6 +1018,13 @@ const historicalSchools = [
         "rank": 54115,
         "percent": 46.65,
         "total": 116007
+      },
+      {
+        "year": "2026",
+        "score": 637,
+        "rank": 57562,
+        "percent": 45.84,
+        "total": 125579
       }
     ],
     "scoreHistory": [
@@ -823,11 +1039,15 @@ const historicalSchools = [
       {
         "year": "2025",
         "score": 627
+      },
+      {
+        "year": "2026",
+        "score": 637
       }
     ],
-    "avgRank": 45592,
-    "avgScore": 642,
-    "avgPercent": 41.55,
+    "avgRank": 48584,
+    "avgScore": 641,
+    "avgPercent": 42.62,
     "yearlyChanges": [
       {
         "fromYear": "2023",
@@ -844,13 +1064,21 @@ const historicalSchools = [
         "scoreChange": 2,
         "percentChange": -1.28,
         "trend": "down"
+      },
+      {
+        "fromYear": "2025",
+        "toYear": "2026",
+        "rankChange": -3447,
+        "scoreChange": 10,
+        "percentChange": -0.81,
+        "trend": "down"
       }
     ],
     "recentTrend": "down",
-    "recentRankChange": -3001,
-    "recentScoreChange": 2,
-    "threeYearRankChange": -22569,
-    "threeYearScoreChange": -48,
+    "recentRankChange": -3447,
+    "recentScoreChange": 10,
+    "threeYearRankChange": -6448,
+    "threeYearScoreChange": 12,
     "threeYearTrend": "down"
   },
   {
@@ -920,6 +1148,27 @@ const historicalSchools = [
           "lastScoreSeq": 165
         },
         "outer": null
+      },
+      "2026": {
+        "id": "GZ014",
+        "name": "广州协和学校",
+        "type": "公办",
+        "scope": "全市",
+        "hukou": {
+          "minScore": 685,
+          "minScoreSeq": 40,
+          "lastVolunteer": 1,
+          "lastScore": 685,
+          "lastScoreSeq": 40
+        },
+        "nonHukou": {
+          "minScore": 686,
+          "minScoreSeq": 507,
+          "lastVolunteer": 1,
+          "lastScore": 686,
+          "lastScoreSeq": 507
+        },
+        "outer": null
       }
     },
     "rankHistory": [
@@ -943,6 +1192,13 @@ const historicalSchools = [
         "rank": 36193,
         "percent": 31.2,
         "total": 116007
+      },
+      {
+        "year": "2026",
+        "score": 685,
+        "rank": 32027,
+        "percent": 25.5,
+        "total": 125579
       }
     ],
     "scoreHistory": [
@@ -957,11 +1213,15 @@ const historicalSchools = [
       {
         "year": "2025",
         "score": 667
+      },
+      {
+        "year": "2026",
+        "score": 685
       }
     ],
-    "avgRank": 33509,
-    "avgScore": 668,
-    "avgPercent": 30.67,
+    "avgRank": 33138,
+    "avgScore": 672,
+    "avgPercent": 29.38,
     "yearlyChanges": [
       {
         "fromYear": "2023",
@@ -978,14 +1238,22 @@ const historicalSchools = [
         "scoreChange": 5,
         "percentChange": 0.46,
         "trend": "down"
+      },
+      {
+        "fromYear": "2025",
+        "toYear": "2026",
+        "rankChange": 4166,
+        "scoreChange": 18,
+        "percentChange": -5.7,
+        "trend": "up"
       }
     ],
-    "recentTrend": "down",
-    "recentRankChange": -3406,
-    "recentScoreChange": 5,
-    "threeYearRankChange": -4647,
-    "threeYearScoreChange": -8,
-    "threeYearTrend": "down"
+    "recentTrend": "up",
+    "recentRankChange": 4166,
+    "recentScoreChange": 18,
+    "threeYearRankChange": 760,
+    "threeYearScoreChange": 23,
+    "threeYearTrend": "up"
   },
   {
     "name": "广州大学附属中学",
@@ -1054,6 +1322,27 @@ const historicalSchools = [
           "lastScoreSeq": 172
         },
         "outer": null
+      },
+      "2026": {
+        "id": "GZ015",
+        "name": "广州大学附属中学",
+        "type": "公办",
+        "scope": "全市",
+        "hukou": {
+          "minScore": 738,
+          "minScoreSeq": 46,
+          "lastVolunteer": 1,
+          "lastScore": 738,
+          "lastScoreSeq": 46
+        },
+        "nonHukou": {
+          "minScore": 738,
+          "minScoreSeq": 20,
+          "lastVolunteer": 1,
+          "lastScore": 738,
+          "lastScoreSeq": 20
+        },
+        "outer": null
       }
     },
     "rankHistory": [
@@ -1077,6 +1366,13 @@ const historicalSchools = [
         "rank": 5302,
         "percent": 4.57,
         "total": 116007
+      },
+      {
+        "year": "2026",
+        "score": 738,
+        "rank": 7350,
+        "percent": 5.85,
+        "total": 125579
       }
     ],
     "scoreHistory": [
@@ -1091,11 +1387,15 @@ const historicalSchools = [
       {
         "year": "2025",
         "score": 732
+      },
+      {
+        "year": "2026",
+        "score": 738
       }
     ],
-    "avgRank": 5972,
-    "avgScore": 731,
-    "avgPercent": 5.5,
+    "avgRank": 6317,
+    "avgScore": 733,
+    "avgPercent": 5.59,
     "yearlyChanges": [
       {
         "fromYear": "2023",
@@ -1112,14 +1412,22 @@ const historicalSchools = [
         "scoreChange": 6,
         "percentChange": -1.73,
         "trend": "up"
+      },
+      {
+        "fromYear": "2025",
+        "toYear": "2026",
+        "rankChange": -2048,
+        "scoreChange": 6,
+        "percentChange": 1.28,
+        "trend": "down"
       }
     ],
-    "recentTrend": "up",
-    "recentRankChange": 1416,
+    "recentTrend": "down",
+    "recentRankChange": -2048,
     "recentScoreChange": 6,
-    "threeYearRankChange": 594,
-    "threeYearScoreChange": -4,
-    "threeYearTrend": "up"
+    "threeYearRankChange": -632,
+    "threeYearScoreChange": 12,
+    "threeYearTrend": "down"
   },
   {
     "name": "广州市铁一中学（越秀校区）",
@@ -1188,6 +1496,27 @@ const historicalSchools = [
           "lastScoreSeq": 379
         },
         "outer": null
+      },
+      "2026": {
+        "id": "GZ016",
+        "name": "广州市铁一中学（越秀校区）",
+        "type": "公办",
+        "scope": "全市",
+        "hukou": {
+          "minScore": 638,
+          "minScoreSeq": 175,
+          "lastVolunteer": 6,
+          "lastScore": 640,
+          "lastScoreSeq": 114
+        },
+        "nonHukou": {
+          "minScore": 696,
+          "minScoreSeq": 191,
+          "lastVolunteer": 1,
+          "lastScore": 696,
+          "lastScoreSeq": 191
+        },
+        "outer": null
       }
     },
     "rankHistory": [
@@ -1211,6 +1540,13 @@ const historicalSchools = [
         "rank": 12865,
         "percent": 11.09,
         "total": 116007
+      },
+      {
+        "year": "2026",
+        "score": 638,
+        "rank": 57562,
+        "percent": 45.84,
+        "total": 125579
       }
     ],
     "scoreHistory": [
@@ -1225,11 +1561,15 @@ const historicalSchools = [
       {
         "year": "2025",
         "score": 717
+      },
+      {
+        "year": "2026",
+        "score": 638
       }
     ],
-    "avgRank": 10807,
-    "avgScore": 716,
-    "avgPercent": 9.86,
+    "avgRank": 22496,
+    "avgScore": 697,
+    "avgPercent": 18.85,
     "yearlyChanges": [
       {
         "fromYear": "2023",
@@ -1246,13 +1586,21 @@ const historicalSchools = [
         "scoreChange": 6,
         "percentChange": 1.6,
         "trend": "down"
+      },
+      {
+        "fromYear": "2025",
+        "toYear": "2026",
+        "rankChange": -44697,
+        "scoreChange": -79,
+        "percentChange": 34.75,
+        "trend": "down"
       }
     ],
     "recentTrend": "down",
-    "recentRankChange": -2745,
-    "recentScoreChange": 6,
-    "threeYearRankChange": -3429,
-    "threeYearScoreChange": -3,
+    "recentRankChange": -44697,
+    "recentScoreChange": -79,
+    "threeYearRankChange": -47442,
+    "threeYearScoreChange": -73,
     "threeYearTrend": "down"
   },
   {
@@ -1322,6 +1670,27 @@ const historicalSchools = [
           "lastScoreSeq": 67
         },
         "outer": null
+      },
+      "2026": {
+        "id": "GZ017",
+        "name": "广州市铁一中学（番禺校区）",
+        "type": "公办",
+        "scope": "全市",
+        "hukou": {
+          "minScore": 710,
+          "minScoreSeq": 454,
+          "lastVolunteer": 1,
+          "lastScore": 710,
+          "lastScoreSeq": 454
+        },
+        "nonHukou": {
+          "minScore": 710,
+          "minScoreSeq": 516,
+          "lastVolunteer": 1,
+          "lastScore": 710,
+          "lastScoreSeq": 516
+        },
+        "outer": null
       }
     },
     "rankHistory": [
@@ -1345,6 +1714,13 @@ const historicalSchools = [
         "rank": 17244,
         "percent": 14.86,
         "total": 116007
+      },
+      {
+        "year": "2026",
+        "score": 710,
+        "rank": 16303,
+        "percent": 12.98,
+        "total": 125579
       }
     ],
     "scoreHistory": [
@@ -1359,11 +1735,15 @@ const historicalSchools = [
       {
         "year": "2025",
         "score": 708
+      },
+      {
+        "year": "2026",
+        "score": 710
       }
     ],
-    "avgRank": 16574,
-    "avgScore": 705,
-    "avgPercent": 15.15,
+    "avgRank": 16506,
+    "avgScore": 706,
+    "avgPercent": 14.61,
     "yearlyChanges": [
       {
         "fromYear": "2023",
@@ -1380,14 +1760,22 @@ const historicalSchools = [
         "scoreChange": 25,
         "percentChange": -6.74,
         "trend": "up"
+      },
+      {
+        "fromYear": "2025",
+        "toYear": "2026",
+        "rankChange": 941,
+        "scoreChange": 2,
+        "percentChange": -1.88,
+        "trend": "up"
       }
     ],
     "recentTrend": "up",
-    "recentRankChange": 5797,
-    "recentScoreChange": 25,
-    "threeYearRankChange": -7808,
-    "threeYearScoreChange": -16,
-    "threeYearTrend": "down"
+    "recentRankChange": 941,
+    "recentScoreChange": 2,
+    "threeYearRankChange": 6738,
+    "threeYearScoreChange": 27,
+    "threeYearTrend": "up"
   },
   {
     "name": "广州市铁一中学（白云校区）",
@@ -1456,6 +1844,27 @@ const historicalSchools = [
           "lastScoreSeq": 422
         },
         "outer": null
+      },
+      "2026": {
+        "id": "GZ018",
+        "name": "广州市铁一中学（白云校区）",
+        "type": "公办",
+        "scope": "全市",
+        "hukou": {
+          "minScore": 712,
+          "minScoreSeq": 478,
+          "lastVolunteer": 2,
+          "lastScore": 718,
+          "lastScoreSeq": 316
+        },
+        "nonHukou": {
+          "minScore": 712,
+          "minScoreSeq": 480,
+          "lastVolunteer": 2,
+          "lastScore": 720,
+          "lastScoreSeq": 177
+        },
+        "outer": null
       }
     },
     "rankHistory": [
@@ -1479,6 +1888,13 @@ const historicalSchools = [
         "rank": 17244,
         "percent": 14.86,
         "total": 116007
+      },
+      {
+        "year": "2026",
+        "score": 712,
+        "rank": 16303,
+        "percent": 12.98,
+        "total": 125579
       }
     ],
     "scoreHistory": [
@@ -1493,11 +1909,15 @@ const historicalSchools = [
       {
         "year": "2025",
         "score": 707
+      },
+      {
+        "year": "2026",
+        "score": 712
       }
     ],
-    "avgRank": 16401,
-    "avgScore": 707,
-    "avgPercent": 15.01,
+    "avgRank": 16376,
+    "avgScore": 709,
+    "avgPercent": 14.5,
     "yearlyChanges": [
       {
         "fromYear": "2023",
@@ -1514,14 +1934,22 @@ const historicalSchools = [
         "scoreChange": 9,
         "percentChange": -2.44,
         "trend": "up"
+      },
+      {
+        "fromYear": "2025",
+        "toYear": "2026",
+        "rankChange": 941,
+        "scoreChange": 5,
+        "percentChange": -1.88,
+        "trend": "up"
       }
     ],
     "recentTrend": "up",
-    "recentRankChange": 1209,
-    "recentScoreChange": 9,
-    "threeYearRankChange": -3739,
-    "threeYearScoreChange": -10,
-    "threeYearTrend": "down"
+    "recentRankChange": 941,
+    "recentScoreChange": 5,
+    "threeYearRankChange": 2150,
+    "threeYearScoreChange": 14,
+    "threeYearTrend": "up"
   },
   {
     "name": "清华附中湾区学校",
@@ -1724,6 +2152,33 @@ const historicalSchools = [
           "lastScoreSeq": 344
         },
         "outer": null
+      },
+      "2026": {
+        "id": "GZ021",
+        "name": "广州市第一中学",
+        "type": "公办",
+        "scope": "全市",
+        "hukou": {
+          "minScore": 655,
+          "minScoreSeq": 2,
+          "lastVolunteer": 1,
+          "lastScore": 655,
+          "lastScoreSeq": 2
+        },
+        "nonHukou": {
+          "minScore": 656,
+          "minScoreSeq": 493,
+          "lastVolunteer": 1,
+          "lastScore": 656,
+          "lastScoreSeq": 493
+        },
+        "outer": {
+          "minScore": 672,
+          "minScoreSeq": 410,
+          "lastVolunteer": 4,
+          "lastScore": 701,
+          "lastScoreSeq": 365
+        }
       }
     },
     "rankHistory": [
@@ -1747,6 +2202,13 @@ const historicalSchools = [
         "rank": 54115,
         "percent": 46.65,
         "total": 116007
+      },
+      {
+        "year": "2026",
+        "score": 655,
+        "rank": 47968,
+        "percent": 38.2,
+        "total": 125579
       }
     ],
     "scoreHistory": [
@@ -1761,11 +2223,15 @@ const historicalSchools = [
       {
         "year": "2025",
         "score": 628
+      },
+      {
+        "year": "2026",
+        "score": 655
       }
     ],
-    "avgRank": 41077,
-    "avgScore": 652,
-    "avgPercent": 37.32,
+    "avgRank": 42800,
+    "avgScore": 653,
+    "avgPercent": 37.54,
     "yearlyChanges": [
       {
         "fromYear": "2023",
@@ -1782,13 +2248,21 @@ const historicalSchools = [
         "scoreChange": -24,
         "percentChange": 11.42,
         "trend": "down"
+      },
+      {
+        "fromYear": "2025",
+        "toYear": "2026",
+        "rankChange": 6147,
+        "scoreChange": 27,
+        "percentChange": -8.45,
+        "trend": "up"
       }
     ],
-    "recentTrend": "down",
-    "recentRankChange": -16544,
-    "recentScoreChange": -24,
-    "threeYearRankChange": -22569,
-    "threeYearScoreChange": -47,
+    "recentTrend": "up",
+    "recentRankChange": 6147,
+    "recentScoreChange": 27,
+    "threeYearRankChange": -10397,
+    "threeYearScoreChange": 3,
     "threeYearTrend": "down"
   },
   {
@@ -1858,6 +2332,33 @@ const historicalSchools = [
           "lastScoreSeq": 72
         },
         "outer": null
+      },
+      "2026": {
+        "id": "GZ022",
+        "name": "广州市第四中学",
+        "type": "公办",
+        "scope": "全市",
+        "hukou": {
+          "minScore": 667,
+          "minScoreSeq": 270,
+          "lastVolunteer": 1,
+          "lastScore": 667,
+          "lastScoreSeq": 270
+        },
+        "nonHukou": {
+          "minScore": 667,
+          "minScoreSeq": 161,
+          "lastVolunteer": 1,
+          "lastScore": 667,
+          "lastScoreSeq": 161
+        },
+        "outer": {
+          "minScore": 667,
+          "minScoreSeq": 201,
+          "lastVolunteer": 1,
+          "lastScore": 667,
+          "lastScoreSeq": 201
+        }
       }
     },
     "rankHistory": [
@@ -1881,6 +2382,13 @@ const historicalSchools = [
         "rank": 54115,
         "percent": 46.65,
         "total": 116007
+      },
+      {
+        "year": "2026",
+        "score": 667,
+        "rank": 42762,
+        "percent": 34.05,
+        "total": 125579
       }
     ],
     "scoreHistory": [
@@ -1895,11 +2403,15 @@ const historicalSchools = [
       {
         "year": "2025",
         "score": 627
+      },
+      {
+        "year": "2026",
+        "score": 667
       }
     ],
-    "avgRank": 46848,
-    "avgScore": 639,
-    "avgPercent": 42.82,
+    "avgRank": 45827,
+    "avgScore": 646,
+    "avgPercent": 40.63,
     "yearlyChanges": [
       {
         "fromYear": "2023",
@@ -1916,13 +2428,21 @@ const historicalSchools = [
         "scoreChange": -28,
         "percentChange": 11.42,
         "trend": "down"
+      },
+      {
+        "fromYear": "2025",
+        "toYear": "2026",
+        "rankChange": 11353,
+        "scoreChange": 40,
+        "percentChange": -12.6,
+        "trend": "up"
       }
     ],
-    "recentTrend": "down",
-    "recentRankChange": -16544,
-    "recentScoreChange": -28,
-    "threeYearRankChange": -5256,
-    "threeYearScoreChange": -9,
+    "recentTrend": "up",
+    "recentRankChange": 11353,
+    "recentScoreChange": 40,
+    "threeYearRankChange": -5191,
+    "threeYearScoreChange": 12,
     "threeYearTrend": "down"
   },
   {
@@ -1992,6 +2512,33 @@ const historicalSchools = [
           "lastScoreSeq": 29
         },
         "outer": null
+      },
+      "2026": {
+        "id": "GZ023",
+        "name": "广州市南海中学",
+        "type": "公办",
+        "scope": "全市",
+        "hukou": {
+          "minScore": 606,
+          "minScoreSeq": 215,
+          "lastVolunteer": 1,
+          "lastScore": 606,
+          "lastScoreSeq": 215
+        },
+        "nonHukou": {
+          "minScore": 607,
+          "minScoreSeq": 404,
+          "lastVolunteer": 1,
+          "lastScore": 607,
+          "lastScoreSeq": 404
+        },
+        "outer": {
+          "minScore": 611,
+          "minScoreSeq": 137,
+          "lastVolunteer": 1,
+          "lastScore": 611,
+          "lastScoreSeq": 137
+        }
       }
     },
     "rankHistory": [
@@ -2015,6 +2562,13 @@ const historicalSchools = [
         "rank": 69565,
         "percent": 59.97,
         "total": 116007
+      },
+      {
+        "year": "2026",
+        "score": 606,
+        "rank": 70581,
+        "percent": 56.2,
+        "total": 125579
       }
     ],
     "scoreHistory": [
@@ -2029,11 +2583,15 @@ const historicalSchools = [
       {
         "year": "2025",
         "score": 587
+      },
+      {
+        "year": "2026",
+        "score": 606
       }
     ],
-    "avgRank": 56513,
-    "avgScore": 615,
-    "avgPercent": 51.49,
+    "avgRank": 60030,
+    "avgScore": 613,
+    "avgPercent": 52.67,
     "yearlyChanges": [
       {
         "fromYear": "2023",
@@ -2050,13 +2608,21 @@ const historicalSchools = [
         "scoreChange": -35,
         "percentChange": 12.04,
         "trend": "down"
+      },
+      {
+        "fromYear": "2025",
+        "toYear": "2026",
+        "rankChange": -1016,
+        "scoreChange": 19,
+        "percentChange": -3.77,
+        "trend": "down"
       }
     ],
     "recentTrend": "down",
-    "recentRankChange": -18451,
-    "recentScoreChange": -35,
-    "threeYearRankChange": -20706,
-    "threeYearScoreChange": -48,
+    "recentRankChange": -1016,
+    "recentScoreChange": 19,
+    "threeYearRankChange": -19467,
+    "threeYearScoreChange": -16,
     "threeYearTrend": "down"
   },
   {
@@ -2126,6 +2692,33 @@ const historicalSchools = [
           "lastScoreSeq": 334
         },
         "outer": null
+      },
+      "2026": {
+        "id": "GZ024",
+        "name": "广州市西关外国语学校",
+        "type": "公办",
+        "scope": "全市",
+        "hukou": {
+          "minScore": 632,
+          "minScoreSeq": 393,
+          "lastVolunteer": 2,
+          "lastScore": 645,
+          "lastScoreSeq": 434
+        },
+        "nonHukou": {
+          "minScore": 632,
+          "minScoreSeq": 439,
+          "lastVolunteer": 2,
+          "lastScore": 646,
+          "lastScoreSeq": 5
+        },
+        "outer": {
+          "minScore": 632,
+          "minScoreSeq": 387,
+          "lastVolunteer": 2,
+          "lastScore": 645,
+          "lastScoreSeq": 434
+        }
       }
     },
     "rankHistory": [
@@ -2149,6 +2742,13 @@ const historicalSchools = [
         "rank": 58204,
         "percent": 50.17,
         "total": 116007
+      },
+      {
+        "year": "2026",
+        "score": 632,
+        "rank": 57562,
+        "percent": 45.84,
+        "total": 125579
       }
     ],
     "scoreHistory": [
@@ -2163,11 +2763,15 @@ const historicalSchools = [
       {
         "year": "2025",
         "score": 610
+      },
+      {
+        "year": "2026",
+        "score": 632
       }
     ],
-    "avgRank": 48211,
+    "avgRank": 50549,
     "avgScore": 632,
-    "avgPercent": 43.99,
+    "avgPercent": 44.46,
     "yearlyChanges": [
       {
         "fromYear": "2023",
@@ -2184,13 +2788,21 @@ const historicalSchools = [
         "scoreChange": -42,
         "percentChange": 14.94,
         "trend": "down"
+      },
+      {
+        "fromYear": "2025",
+        "toYear": "2026",
+        "rankChange": 642,
+        "scoreChange": 22,
+        "percentChange": -4.33,
+        "trend": "up"
       }
     ],
-    "recentTrend": "down",
-    "recentRankChange": -20633,
-    "recentScoreChange": -42,
-    "threeYearRankChange": -9345,
-    "threeYearScoreChange": -25,
+    "recentTrend": "up",
+    "recentRankChange": 642,
+    "recentScoreChange": 22,
+    "threeYearRankChange": -19991,
+    "threeYearScoreChange": -20,
     "threeYearTrend": "down"
   },
   {
@@ -2260,6 +2872,33 @@ const historicalSchools = [
           "lastScoreSeq": 207
         },
         "outer": null
+      },
+      "2026": {
+        "id": "GZ025",
+        "name": "广州市真光中学（校本部）",
+        "type": "公办",
+        "scope": "全市",
+        "hukou": {
+          "minScore": 690,
+          "minScoreSeq": 288,
+          "lastVolunteer": 1,
+          "lastScore": 690,
+          "lastScoreSeq": 288
+        },
+        "nonHukou": {
+          "minScore": 690,
+          "minScoreSeq": 291,
+          "lastVolunteer": 1,
+          "lastScore": 690,
+          "lastScoreSeq": 291
+        },
+        "outer": {
+          "minScore": 691,
+          "minScoreSeq": 447,
+          "lastVolunteer": 1,
+          "lastScore": 691,
+          "lastScoreSeq": 447
+        }
       }
     },
     "rankHistory": [
@@ -2283,6 +2922,13 @@ const historicalSchools = [
         "rank": 26724,
         "percent": 23.04,
         "total": 116007
+      },
+      {
+        "year": "2026",
+        "score": 690,
+        "rank": 26644,
+        "percent": 21.22,
+        "total": 125579
       }
     ],
     "scoreHistory": [
@@ -2297,11 +2943,15 @@ const historicalSchools = [
       {
         "year": "2025",
         "score": 689
+      },
+      {
+        "year": "2026",
+        "score": 690
       }
     ],
-    "avgRank": 30352,
-    "avgScore": 676,
-    "avgPercent": 27.95,
+    "avgRank": 29425,
+    "avgScore": 680,
+    "avgPercent": 26.27,
     "yearlyChanges": [
       {
         "fromYear": "2023",
@@ -2318,13 +2968,21 @@ const historicalSchools = [
         "scoreChange": 24,
         "percentChange": -7.7,
         "trend": "up"
+      },
+      {
+        "fromYear": "2025",
+        "toYear": "2026",
+        "rankChange": 80,
+        "scoreChange": 1,
+        "percentChange": -1.82,
+        "trend": "up"
       }
     ],
     "recentTrend": "up",
-    "recentRankChange": 6063,
-    "recentScoreChange": 24,
-    "threeYearRankChange": 4822,
-    "threeYearScoreChange": 14,
+    "recentRankChange": 80,
+    "recentScoreChange": 1,
+    "threeYearRankChange": 6143,
+    "threeYearScoreChange": 25,
     "threeYearTrend": "up"
   },
   {
@@ -2394,6 +3052,33 @@ const historicalSchools = [
           "lastScoreSeq": 251
         },
         "outer": null
+      },
+      "2026": {
+        "id": "GZ026",
+        "name": "广州市真光中学（汾水校区）",
+        "type": "公办",
+        "scope": "全市",
+        "hukou": {
+          "minScore": 592,
+          "minScoreSeq": 133,
+          "lastVolunteer": 4,
+          "lastScore": 621,
+          "lastScoreSeq": 374
+        },
+        "nonHukou": {
+          "minScore": 610,
+          "minScoreSeq": 113,
+          "lastVolunteer": 1,
+          "lastScore": 610,
+          "lastScoreSeq": 113
+        },
+        "outer": {
+          "minScore": 619,
+          "minScoreSeq": 55,
+          "lastVolunteer": 4,
+          "lastScore": 623,
+          "lastScoreSeq": 387
+        }
       }
     },
     "rankHistory": [
@@ -2417,6 +3102,13 @@ const historicalSchools = [
         "rank": 49880,
         "percent": 43,
         "total": 116007
+      },
+      {
+        "year": "2026",
+        "score": 592,
+        "rank": 74441,
+        "percent": 59.28,
+        "total": 125579
       }
     ],
     "scoreHistory": [
@@ -2431,11 +3123,15 @@ const historicalSchools = [
       {
         "year": "2025",
         "score": 631
+      },
+      {
+        "year": "2026",
+        "score": 592
       }
     ],
-    "avgRank": 49951,
-    "avgScore": 630,
-    "avgPercent": 45.84,
+    "avgRank": 56074,
+    "avgScore": 620,
+    "avgPercent": 49.2,
     "yearlyChanges": [
       {
         "fromYear": "2023",
@@ -2452,13 +3148,21 @@ const historicalSchools = [
         "scoreChange": 8,
         "percentChange": -4.93,
         "trend": "up"
+      },
+      {
+        "fromYear": "2025",
+        "toYear": "2026",
+        "rankChange": -24561,
+        "scoreChange": -39,
+        "percentChange": 16.28,
+        "trend": "down"
       }
     ],
-    "recentTrend": "up",
-    "recentRankChange": 1234,
-    "recentScoreChange": 8,
-    "threeYearRankChange": -1021,
-    "threeYearScoreChange": -4,
+    "recentTrend": "down",
+    "recentRankChange": -24561,
+    "recentScoreChange": -39,
+    "threeYearRankChange": -23327,
+    "threeYearScoreChange": -31,
     "threeYearTrend": "down"
   },
   {
@@ -2528,6 +3232,33 @@ const historicalSchools = [
           "lastScoreSeq": 112
         },
         "outer": null
+      },
+      "2026": {
+        "id": "GZ028",
+        "name": "广州市第三中学",
+        "type": "公办",
+        "scope": "全市",
+        "hukou": {
+          "minScore": 677,
+          "minScoreSeq": 460,
+          "lastVolunteer": 1,
+          "lastScore": 677,
+          "lastScoreSeq": 460
+        },
+        "nonHukou": {
+          "minScore": 678,
+          "minScoreSeq": 473,
+          "lastVolunteer": 1,
+          "lastScore": 678,
+          "lastScoreSeq": 473
+        },
+        "outer": {
+          "minScore": 677,
+          "minScoreSeq": 104,
+          "lastVolunteer": 1,
+          "lastScore": 677,
+          "lastScoreSeq": 104
+        }
       }
     },
     "rankHistory": [
@@ -2551,6 +3282,13 @@ const historicalSchools = [
         "rank": 36193,
         "percent": 31.2,
         "total": 116007
+      },
+      {
+        "year": "2026",
+        "score": 677,
+        "rank": 37486,
+        "percent": 29.85,
+        "total": 125579
       }
     ],
     "scoreHistory": [
@@ -2565,11 +3303,15 @@ const historicalSchools = [
       {
         "year": "2025",
         "score": 663
+      },
+      {
+        "year": "2026",
+        "score": 677
       }
     ],
-    "avgRank": 33509,
-    "avgScore": 667,
-    "avgPercent": 30.67,
+    "avgRank": 34503,
+    "avgScore": 669,
+    "avgPercent": 30.47,
     "yearlyChanges": [
       {
         "fromYear": "2023",
@@ -2586,13 +3328,21 @@ const historicalSchools = [
         "scoreChange": 1,
         "percentChange": 0.46,
         "trend": "down"
+      },
+      {
+        "fromYear": "2025",
+        "toYear": "2026",
+        "rankChange": -1293,
+        "scoreChange": 14,
+        "percentChange": -1.35,
+        "trend": "down"
       }
     ],
     "recentTrend": "down",
-    "recentRankChange": -3406,
-    "recentScoreChange": 1,
-    "threeYearRankChange": -4647,
-    "threeYearScoreChange": -12,
+    "recentRankChange": -1293,
+    "recentScoreChange": 14,
+    "threeYearRankChange": -4699,
+    "threeYearScoreChange": 15,
     "threeYearTrend": "down"
   },
   {
@@ -2684,7 +3434,10 @@ const historicalSchools = [
     ],
     "recentTrend": "down",
     "recentRankChange": -4948,
-    "recentScoreChange": -12
+    "recentScoreChange": -12,
+    "threeYearRankChange": -4948,
+    "threeYearScoreChange": -12,
+    "threeYearTrend": "down"
   },
   {
     "name": "广州市第十六中学（校本部）",
@@ -2753,6 +3506,33 @@ const historicalSchools = [
           "lastScoreSeq": 68
         },
         "outer": null
+      },
+      "2026": {
+        "id": "GZ031",
+        "name": "广州市第十六中学（校本部）",
+        "type": "公办",
+        "scope": "全市",
+        "hukou": {
+          "minScore": 712,
+          "minScoreSeq": 295,
+          "lastVolunteer": 3,
+          "lastScore": 714,
+          "lastScoreSeq": 376
+        },
+        "nonHukou": {
+          "minScore": 713,
+          "minScoreSeq": 283,
+          "lastVolunteer": 3,
+          "lastScore": 716,
+          "lastScoreSeq": 406
+        },
+        "outer": {
+          "minScore": 714,
+          "minScoreSeq": 249,
+          "lastVolunteer": 3,
+          "lastScore": 720,
+          "lastScoreSeq": 324
+        }
       }
     },
     "rankHistory": [
@@ -2776,6 +3556,13 @@ const historicalSchools = [
         "rank": 17244,
         "percent": 14.86,
         "total": 116007
+      },
+      {
+        "year": "2026",
+        "score": 712,
+        "rank": 16303,
+        "percent": 12.98,
+        "total": 125579
       }
     ],
     "scoreHistory": [
@@ -2790,11 +3577,15 @@ const historicalSchools = [
       {
         "year": "2025",
         "score": 707
+      },
+      {
+        "year": "2026",
+        "score": 712
       }
     ],
-    "avgRank": 19350,
-    "avgScore": 698,
-    "avgPercent": 17.82,
+    "avgRank": 18588,
+    "avgScore": 701,
+    "avgPercent": 16.61,
     "yearlyChanges": [
       {
         "fromYear": "2023",
@@ -2811,13 +3602,21 @@ const historicalSchools = [
         "scoreChange": 16,
         "percentChange": -2.44,
         "trend": "up"
+      },
+      {
+        "fromYear": "2025",
+        "toYear": "2026",
+        "rankChange": 941,
+        "scoreChange": 5,
+        "percentChange": -1.88,
+        "trend": "up"
       }
     ],
     "recentTrend": "up",
-    "recentRankChange": 1209,
-    "recentScoreChange": 16,
-    "threeYearRankChange": 5109,
-    "threeYearScoreChange": 12,
+    "recentRankChange": 941,
+    "recentScoreChange": 5,
+    "threeYearRankChange": 2150,
+    "threeYearScoreChange": 21,
     "threeYearTrend": "up"
   },
   {
@@ -2887,6 +3686,33 @@ const historicalSchools = [
           "lastScoreSeq": 136
         },
         "outer": null
+      },
+      "2026": {
+        "id": "GZ032",
+        "name": "广州市第十六中学（水荫校区）",
+        "type": "公办",
+        "scope": "全市",
+        "hukou": {
+          "minScore": 632,
+          "minScoreSeq": 52,
+          "lastVolunteer": 5,
+          "lastScore": 650,
+          "lastScoreSeq": 133
+        },
+        "nonHukou": {
+          "minScore": 642,
+          "minScoreSeq": 73,
+          "lastVolunteer": 4,
+          "lastScore": 642,
+          "lastScoreSeq": 73
+        },
+        "outer": {
+          "minScore": 636,
+          "minScoreSeq": 99,
+          "lastVolunteer": 4,
+          "lastScore": 636,
+          "lastScoreSeq": 99
+        }
       }
     },
     "rankHistory": [
@@ -2910,6 +3736,13 @@ const historicalSchools = [
         "rank": 36193,
         "percent": 31.2,
         "total": 116007
+      },
+      {
+        "year": "2026",
+        "score": 632,
+        "rank": 57562,
+        "percent": 45.84,
+        "total": 125579
       }
     ],
     "scoreHistory": [
@@ -2924,11 +3757,15 @@ const historicalSchools = [
       {
         "year": "2025",
         "score": 666
+      },
+      {
+        "year": "2026",
+        "score": 632
       }
     ],
-    "avgRank": 45389,
-    "avgScore": 641,
-    "avgPercent": 41.9,
+    "avgRank": 48432,
+    "avgScore": 639,
+    "avgPercent": 42.89,
     "yearlyChanges": [
       {
         "fromYear": "2023",
@@ -2945,14 +3782,22 @@ const historicalSchools = [
         "scoreChange": 44,
         "percentChange": -16.73,
         "trend": "up"
+      },
+      {
+        "fromYear": "2025",
+        "toYear": "2026",
+        "rankChange": -21369,
+        "scoreChange": -34,
+        "percentChange": 14.64,
+        "trend": "down"
       }
     ],
-    "recentTrend": "up",
-    "recentRankChange": 14921,
-    "recentScoreChange": 44,
-    "threeYearRankChange": 12666,
-    "threeYearScoreChange": 30,
-    "threeYearTrend": "up"
+    "recentTrend": "down",
+    "recentRankChange": -21369,
+    "recentScoreChange": -34,
+    "threeYearRankChange": -6448,
+    "threeYearScoreChange": 10,
+    "threeYearTrend": "down"
   },
   {
     "name": "广州市第十七中学",
@@ -3021,6 +3866,33 @@ const historicalSchools = [
           "lastScoreSeq": 142
         },
         "outer": null
+      },
+      "2026": {
+        "id": "GZ033",
+        "name": "广州市第十七中学",
+        "type": "公办",
+        "scope": "全市",
+        "hukou": {
+          "minScore": 632,
+          "minScoreSeq": 415,
+          "lastVolunteer": 6,
+          "lastScore": 644,
+          "lastScoreSeq": 213
+        },
+        "nonHukou": {
+          "minScore": 632,
+          "minScoreSeq": 392,
+          "lastVolunteer": 6,
+          "lastScore": 660,
+          "lastScoreSeq": 275
+        },
+        "outer": {
+          "minScore": 637,
+          "minScoreSeq": 103,
+          "lastVolunteer": 5,
+          "lastScore": 637,
+          "lastScoreSeq": 103
+        }
       }
     },
     "rankHistory": [
@@ -3044,6 +3916,13 @@ const historicalSchools = [
         "rank": 58204,
         "percent": 50.17,
         "total": 116007
+      },
+      {
+        "year": "2026",
+        "score": 632,
+        "rank": 57562,
+        "percent": 45.84,
+        "total": 125579
       }
     ],
     "scoreHistory": [
@@ -3058,11 +3937,15 @@ const historicalSchools = [
       {
         "year": "2025",
         "score": 616
+      },
+      {
+        "year": "2026",
+        "score": 632
       }
     ],
-    "avgRank": 52726,
-    "avgScore": 624,
-    "avgPercent": 48.23,
+    "avgRank": 53935,
+    "avgScore": 626,
+    "avgPercent": 47.63,
     "yearlyChanges": [
       {
         "fromYear": "2023",
@@ -3079,13 +3962,21 @@ const historicalSchools = [
         "scoreChange": -6,
         "percentChange": 2.24,
         "trend": "down"
+      },
+      {
+        "fromYear": "2025",
+        "toYear": "2026",
+        "rankChange": 642,
+        "scoreChange": 16,
+        "percentChange": -4.33,
+        "trend": "up"
       }
     ],
-    "recentTrend": "down",
-    "recentRankChange": -7090,
-    "recentScoreChange": -6,
-    "threeYearRankChange": -9345,
-    "threeYearScoreChange": -19,
+    "recentTrend": "up",
+    "recentRankChange": 642,
+    "recentScoreChange": 16,
+    "threeYearRankChange": -6448,
+    "threeYearScoreChange": 10,
     "threeYearTrend": "down"
   },
   {
@@ -3155,6 +4046,33 @@ const historicalSchools = [
           "lastScoreSeq": 81
         },
         "outer": null
+      },
+      "2026": {
+        "id": "GZ034",
+        "name": "广东实验中学越秀学校",
+        "type": "公办",
+        "scope": "全市",
+        "hukou": {
+          "minScore": 632,
+          "minScoreSeq": 197,
+          "lastVolunteer": 2,
+          "lastScore": 635,
+          "lastScoreSeq": 242
+        },
+        "nonHukou": {
+          "minScore": 632,
+          "minScoreSeq": 45,
+          "lastVolunteer": 2,
+          "lastScore": 639,
+          "lastScoreSeq": 47
+        },
+        "outer": {
+          "minScore": 633,
+          "minScoreSeq": 332,
+          "lastVolunteer": 2,
+          "lastScore": 636,
+          "lastScoreSeq": 112
+        }
       }
     },
     "rankHistory": [
@@ -3178,6 +4096,13 @@ const historicalSchools = [
         "rank": 54115,
         "percent": 46.65,
         "total": 116007
+      },
+      {
+        "year": "2026",
+        "score": 632,
+        "rank": 57562,
+        "percent": 45.84,
+        "total": 125579
       }
     ],
     "scoreHistory": [
@@ -3192,11 +4117,15 @@ const historicalSchools = [
       {
         "year": "2025",
         "score": 627
+      },
+      {
+        "year": "2026",
+        "score": 632
       }
     ],
-    "avgRank": 49929,
+    "avgRank": 51837,
     "avgScore": 631,
-    "avgPercent": 45.71,
+    "avgPercent": 45.74,
     "yearlyChanges": [
       {
         "fromYear": "2023",
@@ -3213,13 +4142,21 @@ const historicalSchools = [
         "scoreChange": -3,
         "percentChange": 2.76,
         "trend": "down"
+      },
+      {
+        "fromYear": "2025",
+        "toYear": "2026",
+        "rankChange": -3447,
+        "scoreChange": 5,
+        "percentChange": -0.81,
+        "trend": "down"
       }
     ],
     "recentTrend": "down",
-    "recentRankChange": -7302,
-    "recentScoreChange": -3,
-    "threeYearRankChange": -5256,
-    "threeYearScoreChange": -8,
+    "recentRankChange": -3447,
+    "recentScoreChange": 5,
+    "threeYearRankChange": -10749,
+    "threeYearScoreChange": 2,
     "threeYearTrend": "down"
   },
   {
@@ -3289,6 +4226,33 @@ const historicalSchools = [
           "lastScoreSeq": 19
         },
         "outer": null
+      },
+      "2026": {
+        "id": "GZ035",
+        "name": "广州市培正中学",
+        "type": "公办",
+        "scope": "全市",
+        "hukou": {
+          "minScore": 690,
+          "minScoreSeq": 78,
+          "lastVolunteer": 1,
+          "lastScore": 690,
+          "lastScoreSeq": 78
+        },
+        "nonHukou": {
+          "minScore": 691,
+          "minScoreSeq": 279,
+          "lastVolunteer": 1,
+          "lastScore": 691,
+          "lastScoreSeq": 279
+        },
+        "outer": {
+          "minScore": 690,
+          "minScoreSeq": 76,
+          "lastVolunteer": 1,
+          "lastScore": 690,
+          "lastScoreSeq": 76
+        }
       }
     },
     "rankHistory": [
@@ -3312,6 +4276,13 @@ const historicalSchools = [
         "rank": 26724,
         "percent": 23.04,
         "total": 116007
+      },
+      {
+        "year": "2026",
+        "score": 690,
+        "rank": 26644,
+        "percent": 21.22,
+        "total": 125579
       }
     ],
     "scoreHistory": [
@@ -3326,11 +4297,15 @@ const historicalSchools = [
       {
         "year": "2025",
         "score": 689
+      },
+      {
+        "year": "2026",
+        "score": 690
       }
     ],
-    "avgRank": 25667,
-    "avgScore": 686,
-    "avgPercent": 23.51,
+    "avgRank": 25911,
+    "avgScore": 687,
+    "avgPercent": 22.94,
     "yearlyChanges": [
       {
         "fromYear": "2023",
@@ -3347,14 +4322,22 @@ const historicalSchools = [
         "scoreChange": 17,
         "percentChange": -3.14,
         "trend": "up"
+      },
+      {
+        "fromYear": "2025",
+        "toYear": "2026",
+        "rankChange": 80,
+        "scoreChange": 1,
+        "percentChange": -1.82,
+        "trend": "up"
       }
     ],
     "recentTrend": "up",
-    "recentRankChange": 1200,
-    "recentScoreChange": 17,
-    "threeYearRankChange": -4371,
-    "threeYearScoreChange": -9,
-    "threeYearTrend": "down"
+    "recentRankChange": 80,
+    "recentScoreChange": 1,
+    "threeYearRankChange": 1280,
+    "threeYearScoreChange": 18,
+    "threeYearTrend": "up"
   },
   {
     "name": "广州市育才中学",
@@ -3423,6 +4406,33 @@ const historicalSchools = [
           "lastScoreSeq": 458
         },
         "outer": null
+      },
+      "2026": {
+        "id": "GZ036",
+        "name": "广州市育才中学",
+        "type": "公办",
+        "scope": "全市",
+        "hukou": {
+          "minScore": 661,
+          "minScoreSeq": 91,
+          "lastVolunteer": 1,
+          "lastScore": 661,
+          "lastScoreSeq": 91
+        },
+        "nonHukou": {
+          "minScore": 662,
+          "minScoreSeq": 353,
+          "lastVolunteer": 1,
+          "lastScore": 662,
+          "lastScoreSeq": 353
+        },
+        "outer": {
+          "minScore": 661,
+          "minScoreSeq": 71,
+          "lastVolunteer": 1,
+          "lastScore": 661,
+          "lastScoreSeq": 71
+        }
       }
     },
     "rankHistory": [
@@ -3446,6 +4456,13 @@ const historicalSchools = [
         "rank": 54115,
         "percent": 46.65,
         "total": 116007
+      },
+      {
+        "year": "2026",
+        "score": 661,
+        "rank": 42762,
+        "percent": 34.05,
+        "total": 125579
       }
     ],
     "scoreHistory": [
@@ -3460,11 +4477,15 @@ const historicalSchools = [
       {
         "year": "2025",
         "score": 628
+      },
+      {
+        "year": "2026",
+        "score": 661
       }
     ],
-    "avgRank": 39483,
-    "avgScore": 655,
-    "avgPercent": 35.82,
+    "avgRank": 40303,
+    "avgScore": 656,
+    "avgPercent": 35.38,
     "yearlyChanges": [
       {
         "fromYear": "2023",
@@ -3481,13 +4502,21 @@ const historicalSchools = [
         "scoreChange": -33,
         "percentChange": 15.91,
         "trend": "down"
+      },
+      {
+        "fromYear": "2025",
+        "toYear": "2026",
+        "rankChange": 11353,
+        "scoreChange": 33,
+        "percentChange": -12.6,
+        "trend": "up"
       }
     ],
-    "recentTrend": "down",
-    "recentRankChange": -21328,
-    "recentScoreChange": -33,
-    "threeYearRankChange": -22569,
-    "threeYearScoreChange": -47,
+    "recentTrend": "up",
+    "recentRankChange": 11353,
+    "recentScoreChange": 33,
+    "threeYearRankChange": -9975,
+    "threeYearScoreChange": 0,
     "threeYearTrend": "down"
   },
   {
@@ -3557,6 +4586,33 @@ const historicalSchools = [
           "lastScoreSeq": 113
         },
         "outer": null
+      },
+      "2026": {
+        "id": "GZ037",
+        "name": "广州市第五中学（校本部）",
+        "type": "公办",
+        "scope": "全市",
+        "hukou": {
+          "minScore": 705,
+          "minScoreSeq": 9,
+          "lastVolunteer": 1,
+          "lastScore": 705,
+          "lastScoreSeq": 9
+        },
+        "nonHukou": {
+          "minScore": 705,
+          "minScoreSeq": 123,
+          "lastVolunteer": 1,
+          "lastScore": 705,
+          "lastScoreSeq": 123
+        },
+        "outer": {
+          "minScore": 706,
+          "minScoreSeq": 477,
+          "lastVolunteer": 1,
+          "lastScore": 706,
+          "lastScoreSeq": 477
+        }
       }
     },
     "rankHistory": [
@@ -3580,6 +4636,13 @@ const historicalSchools = [
         "rank": 12865,
         "percent": 11.09,
         "total": 116007
+      },
+      {
+        "year": "2026",
+        "score": 705,
+        "rank": 21387,
+        "percent": 17.03,
+        "total": 125579
       }
     ],
     "scoreHistory": [
@@ -3594,11 +4657,15 @@ const historicalSchools = [
       {
         "year": "2025",
         "score": 711
+      },
+      {
+        "year": "2026",
+        "score": 705
       }
     ],
-    "avgRank": 13492,
-    "avgScore": 710,
-    "avgPercent": 12.4,
+    "avgRank": 15466,
+    "avgScore": 709,
+    "avgPercent": 13.56,
     "yearlyChanges": [
       {
         "fromYear": "2023",
@@ -3615,14 +4682,22 @@ const historicalSchools = [
         "scoreChange": 6,
         "percentChange": -2.14,
         "trend": "up"
+      },
+      {
+        "fromYear": "2025",
+        "toYear": "2026",
+        "rankChange": -8522,
+        "scoreChange": -6,
+        "percentChange": 5.94,
+        "trend": "down"
       }
     ],
-    "recentTrend": "up",
-    "recentRankChange": 1241,
-    "recentScoreChange": 6,
-    "threeYearRankChange": 640,
-    "threeYearScoreChange": -4,
-    "threeYearTrend": "up"
+    "recentTrend": "down",
+    "recentRankChange": -8522,
+    "recentScoreChange": -6,
+    "threeYearRankChange": -7281,
+    "threeYearScoreChange": 0,
+    "threeYearTrend": "down"
   },
   {
     "name": "广州市第五中学（金碧校区）",
@@ -3691,6 +4766,33 @@ const historicalSchools = [
           "lastScoreSeq": 296
         },
         "outer": null
+      },
+      "2026": {
+        "id": "GZ038",
+        "name": "广州市第五中学（金碧校区）",
+        "type": "公办",
+        "scope": "全市",
+        "hukou": {
+          "minScore": 637,
+          "minScoreSeq": 431,
+          "lastVolunteer": 5,
+          "lastScore": 660,
+          "lastScoreSeq": 108
+        },
+        "nonHukou": {
+          "minScore": 634,
+          "minScoreSeq": 22,
+          "lastVolunteer": 1,
+          "lastScore": 634,
+          "lastScoreSeq": 22
+        },
+        "outer": {
+          "minScore": 637,
+          "minScoreSeq": 431,
+          "lastVolunteer": 5,
+          "lastScore": 660,
+          "lastScoreSeq": 108
+        }
       }
     },
     "rankHistory": [
@@ -3714,6 +4816,13 @@ const historicalSchools = [
         "rank": 31526,
         "percent": 27.18,
         "total": 116007
+      },
+      {
+        "year": "2026",
+        "score": 637,
+        "rank": 57562,
+        "percent": 45.84,
+        "total": 125579
       }
     ],
     "scoreHistory": [
@@ -3728,11 +4837,15 @@ const historicalSchools = [
       {
         "year": "2025",
         "score": 670
+      },
+      {
+        "year": "2026",
+        "score": 637
       }
     ],
-    "avgRank": 31953,
-    "avgScore": 669,
-    "avgPercent": 29.33,
+    "avgRank": 38355,
+    "avgScore": 661,
+    "avgPercent": 33.46,
     "yearlyChanges": [
       {
         "fromYear": "2023",
@@ -3749,14 +4862,22 @@ const historicalSchools = [
         "scoreChange": 7,
         "percentChange": -3.56,
         "trend": "up"
+      },
+      {
+        "fromYear": "2025",
+        "toYear": "2026",
+        "rankChange": -26036,
+        "scoreChange": -33,
+        "percentChange": 18.66,
+        "trend": "down"
       }
     ],
-    "recentTrend": "up",
-    "recentRankChange": 1261,
-    "recentScoreChange": 7,
-    "threeYearRankChange": 20,
-    "threeYearScoreChange": -5,
-    "threeYearTrend": "up"
+    "recentTrend": "down",
+    "recentRankChange": -26036,
+    "recentScoreChange": -33,
+    "threeYearRankChange": -24775,
+    "threeYearScoreChange": -26,
+    "threeYearTrend": "down"
   },
   {
     "name": "广州市南武中学（校本部）",
@@ -3825,6 +4946,33 @@ const historicalSchools = [
           "lastScoreSeq": 188
         },
         "outer": null
+      },
+      "2026": {
+        "id": "GZ039",
+        "name": "广州市南武中学（校本部）",
+        "type": "公办",
+        "scope": "全市",
+        "hukou": {
+          "minScore": 683,
+          "minScoreSeq": 11,
+          "lastVolunteer": 1,
+          "lastScore": 683,
+          "lastScoreSeq": 11
+        },
+        "nonHukou": {
+          "minScore": 684,
+          "minScoreSeq": 376,
+          "lastVolunteer": 1,
+          "lastScore": 684,
+          "lastScoreSeq": 376
+        },
+        "outer": {
+          "minScore": 685,
+          "minScoreSeq": 22,
+          "lastVolunteer": 1,
+          "lastScore": 685,
+          "lastScoreSeq": 22
+        }
       }
     },
     "rankHistory": [
@@ -3848,6 +4996,13 @@ const historicalSchools = [
         "rank": 31526,
         "percent": 27.18,
         "total": 116007
+      },
+      {
+        "year": "2026",
+        "score": 683,
+        "rank": 32027,
+        "percent": 25.5,
+        "total": 125579
       }
     ],
     "scoreHistory": [
@@ -3862,11 +5017,15 @@ const historicalSchools = [
       {
         "year": "2025",
         "score": 673
+      },
+      {
+        "year": "2026",
+        "score": 683
       }
     ],
-    "avgRank": 33564,
-    "avgScore": 666,
-    "avgPercent": 30.79,
+    "avgRank": 33180,
+    "avgScore": 670,
+    "avgPercent": 29.47,
     "yearlyChanges": [
       {
         "fromYear": "2023",
@@ -3883,14 +5042,22 @@ const historicalSchools = [
         "scoreChange": 39,
         "percentChange": -16.71,
         "trend": "up"
+      },
+      {
+        "fromYear": "2025",
+        "toYear": "2026",
+        "rankChange": -501,
+        "scoreChange": 10,
+        "percentChange": -1.68,
+        "trend": "down"
       }
     ],
-    "recentTrend": "up",
-    "recentRankChange": 15287,
-    "recentScoreChange": 39,
-    "threeYearRankChange": -9173,
-    "threeYearScoreChange": -17,
-    "threeYearTrend": "down"
+    "recentTrend": "down",
+    "recentRankChange": -501,
+    "recentScoreChange": 10,
+    "threeYearRankChange": 14786,
+    "threeYearScoreChange": 49,
+    "threeYearTrend": "up"
   },
   {
     "name": "广州市南武中学（岭南画派纪念校区）",
@@ -3959,6 +5126,27 @@ const historicalSchools = [
           "lastScoreSeq": 321
         },
         "outer": null
+      },
+      "2026": {
+        "id": "GZ040",
+        "name": "广州市南武中学（岭南画派纪念校区）",
+        "type": "公办",
+        "scope": "老三区",
+        "hukou": {
+          "minScore": 592,
+          "minScoreSeq": 363,
+          "lastVolunteer": 2,
+          "lastScore": 625,
+          "lastScoreSeq": 238
+        },
+        "nonHukou": {
+          "minScore": 593,
+          "minScoreSeq": 280,
+          "lastVolunteer": 2,
+          "lastScore": 625,
+          "lastScoreSeq": 256
+        },
+        "outer": null
       }
     },
     "rankHistory": [
@@ -3982,6 +5170,13 @@ const historicalSchools = [
         "rank": 54115,
         "percent": 46.65,
         "total": 116007
+      },
+      {
+        "year": "2026",
+        "score": 592,
+        "rank": 74441,
+        "percent": 59.28,
+        "total": 125579
       }
     ],
     "scoreHistory": [
@@ -3996,11 +5191,15 @@ const historicalSchools = [
       {
         "year": "2025",
         "score": 627
+      },
+      {
+        "year": "2026",
+        "score": 592
       }
     ],
-    "avgRank": 50038,
-    "avgScore": 630,
-    "avgPercent": 45.79,
+    "avgRank": 56139,
+    "avgScore": 620,
+    "avgPercent": 49.16,
     "yearlyChanges": [
       {
         "fromYear": "2023",
@@ -4017,13 +5216,21 @@ const historicalSchools = [
         "scoreChange": 5,
         "percentChange": -1.28,
         "trend": "down"
+      },
+      {
+        "fromYear": "2025",
+        "toYear": "2026",
+        "rankChange": -20326,
+        "scoreChange": -35,
+        "percentChange": 12.63,
+        "trend": "down"
       }
     ],
     "recentTrend": "down",
-    "recentRankChange": -3001,
-    "recentScoreChange": 5,
-    "threeYearRankChange": -9231,
-    "threeYearScoreChange": -13,
+    "recentRankChange": -20326,
+    "recentScoreChange": -35,
+    "threeYearRankChange": -23327,
+    "threeYearScoreChange": -30,
     "threeYearTrend": "down"
   },
   {
@@ -4093,6 +5300,33 @@ const historicalSchools = [
           "lastScoreSeq": 141
         },
         "outer": null
+      },
+      "2026": {
+        "id": "GZ041",
+        "name": "广州市第九十七中学（校本部）",
+        "type": "公办",
+        "scope": "全市",
+        "hukou": {
+          "minScore": 645,
+          "minScoreSeq": 511,
+          "lastVolunteer": 1,
+          "lastScore": 645,
+          "lastScoreSeq": 511
+        },
+        "nonHukou": {
+          "minScore": 646,
+          "minScoreSeq": 260,
+          "lastVolunteer": 1,
+          "lastScore": 646,
+          "lastScoreSeq": 260
+        },
+        "outer": {
+          "minScore": 674,
+          "minScoreSeq": 319,
+          "lastVolunteer": 5,
+          "lastScore": 709,
+          "lastScoreSeq": 436
+        }
       }
     },
     "rankHistory": [
@@ -4116,6 +5350,13 @@ const historicalSchools = [
         "rank": 40846,
         "percent": 35.21,
         "total": 116007
+      },
+      {
+        "year": "2026",
+        "score": 645,
+        "rank": 52890,
+        "percent": 42.12,
+        "total": 125579
       }
     ],
     "scoreHistory": [
@@ -4130,11 +5371,15 @@ const historicalSchools = [
       {
         "year": "2025",
         "score": 659
+      },
+      {
+        "year": "2026",
+        "score": 645
       }
     ],
-    "avgRank": 41219,
-    "avgScore": 653,
-    "avgPercent": 37.83,
+    "avgRank": 44137,
+    "avgScore": 651,
+    "avgPercent": 38.9,
     "yearlyChanges": [
       {
         "fromYear": "2023",
@@ -4151,13 +5396,21 @@ const historicalSchools = [
         "scoreChange": 12,
         "percentChange": -4.39,
         "trend": "up"
+      },
+      {
+        "fromYear": "2025",
+        "toYear": "2026",
+        "rankChange": -12044,
+        "scoreChange": -14,
+        "percentChange": 6.91,
+        "trend": "down"
       }
     ],
-    "recentTrend": "up",
-    "recentRankChange": 1387,
-    "recentScoreChange": 12,
-    "threeYearRankChange": -269,
-    "threeYearScoreChange": 5,
+    "recentTrend": "down",
+    "recentRankChange": -12044,
+    "recentScoreChange": -14,
+    "threeYearRankChange": -10657,
+    "threeYearScoreChange": -2,
     "threeYearTrend": "down"
   },
   {
@@ -4227,6 +5480,33 @@ const historicalSchools = [
           "lastScoreSeq": 423
         },
         "outer": null
+      },
+      "2026": {
+        "id": "GZ043",
+        "name": "广州市第四十一中学",
+        "type": "公办",
+        "scope": "全市",
+        "hukou": {
+          "minScore": 621,
+          "minScoreSeq": 295,
+          "lastVolunteer": 1,
+          "lastScore": 621,
+          "lastScoreSeq": 295
+        },
+        "nonHukou": {
+          "minScore": 629,
+          "minScoreSeq": 385,
+          "lastVolunteer": 1,
+          "lastScore": 629,
+          "lastScoreSeq": 385
+        },
+        "outer": {
+          "minScore": 632,
+          "minScoreSeq": 402,
+          "lastVolunteer": 5,
+          "lastScore": 656,
+          "lastScoreSeq": 215
+        }
       }
     },
     "rankHistory": [
@@ -4250,6 +5530,13 @@ const historicalSchools = [
         "rank": 62181,
         "percent": 53.6,
         "total": 116007
+      },
+      {
+        "year": "2026",
+        "score": 621,
+        "rank": 62205,
+        "percent": 49.53,
+        "total": 125579
       }
     ],
     "scoreHistory": [
@@ -4264,11 +5551,15 @@ const historicalSchools = [
       {
         "year": "2025",
         "score": 609
+      },
+      {
+        "year": "2026",
+        "score": 621
       }
     ],
-    "avgRank": 52726,
+    "avgRank": 55096,
     "avgScore": 624,
-    "avgPercent": 48.11,
+    "avgPercent": 48.46,
     "yearlyChanges": [
       {
         "fromYear": "2023",
@@ -4285,13 +5576,21 @@ const historicalSchools = [
         "scoreChange": -13,
         "percentChange": 5.67,
         "trend": "down"
+      },
+      {
+        "fromYear": "2025",
+        "toYear": "2026",
+        "rankChange": -24,
+        "scoreChange": 12,
+        "percentChange": -4.07,
+        "trend": "down"
       }
     ],
     "recentTrend": "down",
-    "recentRankChange": -11067,
-    "recentScoreChange": -13,
-    "threeYearRankChange": -17297,
-    "threeYearScoreChange": -33,
+    "recentRankChange": -24,
+    "recentScoreChange": 12,
+    "threeYearRankChange": -11091,
+    "threeYearScoreChange": -1,
     "threeYearTrend": "down"
   },
   {
@@ -4383,7 +5682,10 @@ const historicalSchools = [
     ],
     "recentTrend": "down",
     "recentRankChange": -6025,
-    "recentScoreChange": -17
+    "recentScoreChange": -17,
+    "threeYearRankChange": -6025,
+    "threeYearScoreChange": -17,
+    "threeYearTrend": "down"
   },
   {
     "name": "广州中学",
@@ -4452,6 +5754,33 @@ const historicalSchools = [
           "lastScoreSeq": 511
         },
         "outer": null
+      },
+      "2026": {
+        "id": "GZ046",
+        "name": "广州中学",
+        "type": "公办",
+        "scope": "全市",
+        "hukou": {
+          "minScore": 708,
+          "minScoreSeq": 233,
+          "lastVolunteer": 1,
+          "lastScore": 708,
+          "lastScoreSeq": 233
+        },
+        "nonHukou": {
+          "minScore": 708,
+          "minScoreSeq": 159,
+          "lastVolunteer": 1,
+          "lastScore": 708,
+          "lastScoreSeq": 159
+        },
+        "outer": {
+          "minScore": 712,
+          "minScoreSeq": 365,
+          "lastVolunteer": 3,
+          "lastScore": 716,
+          "lastScoreSeq": 391
+        }
       }
     },
     "rankHistory": [
@@ -4475,6 +5804,13 @@ const historicalSchools = [
         "rank": 21899,
         "percent": 18.88,
         "total": 116007
+      },
+      {
+        "year": "2026",
+        "score": 708,
+        "rank": 21387,
+        "percent": 17.03,
+        "total": 125579
       }
     ],
     "scoreHistory": [
@@ -4489,11 +5825,15 @@ const historicalSchools = [
       {
         "year": "2025",
         "score": 693
+      },
+      {
+        "year": "2026",
+        "score": 708
       }
     ],
-    "avgRank": 19389,
-    "avgScore": 697,
-    "avgPercent": 17.72,
+    "avgRank": 19889,
+    "avgScore": 700,
+    "avgPercent": 17.55,
     "yearlyChanges": [
       {
         "fromYear": "2023",
@@ -4510,13 +5850,21 @@ const historicalSchools = [
         "scoreChange": 3,
         "percentChange": 1.58,
         "trend": "down"
+      },
+      {
+        "fromYear": "2025",
+        "toYear": "2026",
+        "rankChange": 512,
+        "scoreChange": 15,
+        "percentChange": -1.85,
+        "trend": "up"
       }
     ],
-    "recentTrend": "down",
-    "recentRankChange": -3446,
-    "recentScoreChange": 3,
-    "threeYearRankChange": -4084,
-    "threeYearScoreChange": -16,
+    "recentTrend": "up",
+    "recentRankChange": 512,
+    "recentScoreChange": 15,
+    "threeYearRankChange": -2934,
+    "threeYearScoreChange": 18,
     "threeYearTrend": "down"
   },
   {
@@ -4586,6 +5934,33 @@ const historicalSchools = [
           "lastScoreSeq": 451
         },
         "outer": null
+      },
+      "2026": {
+        "id": "GZ047",
+        "name": "广州市第七十五中学",
+        "type": "公办",
+        "scope": "全市",
+        "hukou": {
+          "minScore": 632,
+          "minScoreSeq": 424,
+          "lastVolunteer": 6,
+          "lastScore": 663,
+          "lastScoreSeq": 81
+        },
+        "nonHukou": {
+          "minScore": 633,
+          "minScoreSeq": 413,
+          "lastVolunteer": 5,
+          "lastScore": 670,
+          "lastScoreSeq": 332
+        },
+        "outer": {
+          "minScore": 632,
+          "minScoreSeq": 381,
+          "lastVolunteer": 5,
+          "lastScore": 663,
+          "lastScoreSeq": 164
+        }
       }
     },
     "rankHistory": [
@@ -4609,6 +5984,13 @@ const historicalSchools = [
         "rank": 54115,
         "percent": 46.65,
         "total": 116007
+      },
+      {
+        "year": "2026",
+        "score": 632,
+        "rank": 57562,
+        "percent": 45.84,
+        "total": 125579
       }
     ],
     "scoreHistory": [
@@ -4623,11 +6005,15 @@ const historicalSchools = [
       {
         "year": "2025",
         "score": 627
+      },
+      {
+        "year": "2026",
+        "score": 632
       }
     ],
-    "avgRank": 52772,
-    "avgScore": 625,
-    "avgPercent": 48.37,
+    "avgRank": 53969,
+    "avgScore": 627,
+    "avgPercent": 47.74,
     "yearlyChanges": [
       {
         "fromYear": "2023",
@@ -4644,13 +6030,21 @@ const historicalSchools = [
         "scoreChange": 17,
         "percentChange": -5.24,
         "trend": "up"
+      },
+      {
+        "fromYear": "2025",
+        "toYear": "2026",
+        "rankChange": -3447,
+        "scoreChange": 5,
+        "percentChange": -0.81,
+        "trend": "down"
       }
     ],
-    "recentTrend": "up",
-    "recentRankChange": 1226,
-    "recentScoreChange": 17,
-    "threeYearRankChange": -5256,
-    "threeYearScoreChange": -12,
+    "recentTrend": "down",
+    "recentRankChange": -3447,
+    "recentScoreChange": 5,
+    "threeYearRankChange": -2221,
+    "threeYearScoreChange": 22,
     "threeYearTrend": "down"
   },
   {
@@ -4854,6 +6248,33 @@ const historicalSchools = [
           "lastScoreSeq": 375
         },
         "outer": null
+      },
+      "2026": {
+        "id": "GZ049",
+        "name": "广州市第八十九中学",
+        "type": "公办",
+        "scope": "全市",
+        "hukou": {
+          "minScore": 645,
+          "minScoreSeq": 405,
+          "lastVolunteer": 1,
+          "lastScore": 645,
+          "lastScoreSeq": 405
+        },
+        "nonHukou": {
+          "minScore": 645,
+          "minScoreSeq": 510,
+          "lastVolunteer": 1,
+          "lastScore": 645,
+          "lastScoreSeq": 510
+        },
+        "outer": {
+          "minScore": 645,
+          "minScoreSeq": 317,
+          "lastVolunteer": 1,
+          "lastScore": 645,
+          "lastScoreSeq": 317
+        }
       }
     },
     "rankHistory": [
@@ -4877,6 +6298,13 @@ const historicalSchools = [
         "rank": 49880,
         "percent": 43,
         "total": 116007
+      },
+      {
+        "year": "2026",
+        "score": 645,
+        "rank": 52890,
+        "percent": 42.12,
+        "total": 125579
       }
     ],
     "scoreHistory": [
@@ -4891,11 +6319,15 @@ const historicalSchools = [
       {
         "year": "2025",
         "score": 639
+      },
+      {
+        "year": "2026",
+        "score": 645
       }
     ],
-    "avgRank": 47192,
-    "avgScore": 639,
-    "avgPercent": 43.23,
+    "avgRank": 48617,
+    "avgScore": 641,
+    "avgPercent": 42.95,
     "yearlyChanges": [
       {
         "fromYear": "2023",
@@ -4912,13 +6344,21 @@ const historicalSchools = [
         "scoreChange": 2,
         "percentChange": -0.89,
         "trend": "down"
+      },
+      {
+        "fromYear": "2025",
+        "toYear": "2026",
+        "rankChange": -3010,
+        "scoreChange": 6,
+        "percentChange": -0.88,
+        "trend": "down"
       }
     ],
     "recentTrend": "down",
-    "recentRankChange": -3067,
-    "recentScoreChange": 2,
-    "threeYearRankChange": -4996,
-    "threeYearScoreChange": -3,
+    "recentRankChange": -3010,
+    "recentScoreChange": 6,
+    "threeYearRankChange": -6077,
+    "threeYearScoreChange": 8,
     "threeYearTrend": "down"
   },
   {
@@ -4988,6 +6428,33 @@ const historicalSchools = [
           "lastScoreSeq": 445
         },
         "outer": null
+      },
+      "2026": {
+        "id": "GZ050",
+        "name": "广州市天河中学",
+        "type": "公办",
+        "scope": "全市",
+        "hukou": {
+          "minScore": 676,
+          "minScoreSeq": 173,
+          "lastVolunteer": 1,
+          "lastScore": 676,
+          "lastScoreSeq": 173
+        },
+        "nonHukou": {
+          "minScore": 676,
+          "minScoreSeq": 13,
+          "lastVolunteer": 1,
+          "lastScore": 676,
+          "lastScoreSeq": 13
+        },
+        "outer": {
+          "minScore": 680,
+          "minScoreSeq": 404,
+          "lastVolunteer": 1,
+          "lastScore": 680,
+          "lastScoreSeq": 404
+        }
       }
     },
     "rankHistory": [
@@ -5011,6 +6478,13 @@ const historicalSchools = [
         "rank": 36193,
         "percent": 31.2,
         "total": 116007
+      },
+      {
+        "year": "2026",
+        "score": 676,
+        "rank": 37486,
+        "percent": 29.85,
+        "total": 125579
       }
     ],
     "scoreHistory": [
@@ -5025,11 +6499,15 @@ const historicalSchools = [
       {
         "year": "2025",
         "score": 666
+      },
+      {
+        "year": "2026",
+        "score": 676
       }
     ],
-    "avgRank": 33509,
-    "avgScore": 668,
-    "avgPercent": 30.67,
+    "avgRank": 34503,
+    "avgScore": 670,
+    "avgPercent": 30.47,
     "yearlyChanges": [
       {
         "fromYear": "2023",
@@ -5046,13 +6524,21 @@ const historicalSchools = [
         "scoreChange": 4,
         "percentChange": 0.46,
         "trend": "down"
+      },
+      {
+        "fromYear": "2025",
+        "toYear": "2026",
+        "rankChange": -1293,
+        "scoreChange": 10,
+        "percentChange": -1.35,
+        "trend": "down"
       }
     ],
     "recentTrend": "down",
-    "recentRankChange": -3406,
-    "recentScoreChange": 4,
-    "threeYearRankChange": -4647,
-    "threeYearScoreChange": -9,
+    "recentRankChange": -1293,
+    "recentScoreChange": 10,
+    "threeYearRankChange": -4699,
+    "threeYearScoreChange": 14,
     "threeYearTrend": "down"
   },
   {
@@ -5122,6 +6608,33 @@ const historicalSchools = [
           "lastScoreSeq": 353
         },
         "outer": null
+      },
+      "2026": {
+        "id": "GZ051",
+        "name": "广州奥林匹克中学",
+        "type": "公办",
+        "scope": "全市",
+        "hukou": {
+          "minScore": 632,
+          "minScoreSeq": 274,
+          "lastVolunteer": 2,
+          "lastScore": 660,
+          "lastScoreSeq": 454
+        },
+        "nonHukou": {
+          "minScore": 632,
+          "minScoreSeq": 180,
+          "lastVolunteer": 2,
+          "lastScore": 661,
+          "lastScoreSeq": 450
+        },
+        "outer": {
+          "minScore": 632,
+          "minScoreSeq": 90,
+          "lastVolunteer": 2,
+          "lastScore": 660,
+          "lastScoreSeq": 454
+        }
       }
     },
     "rankHistory": [
@@ -5145,6 +6658,13 @@ const historicalSchools = [
         "rank": 54115,
         "percent": 46.65,
         "total": 116007
+      },
+      {
+        "year": "2026",
+        "score": 632,
+        "rank": 57562,
+        "percent": 45.84,
+        "total": 125579
       }
     ],
     "scoreHistory": [
@@ -5159,11 +6679,15 @@ const historicalSchools = [
       {
         "year": "2025",
         "score": 627
+      },
+      {
+        "year": "2026",
+        "score": 632
       }
     ],
-    "avgRank": 52640,
-    "avgScore": 625,
-    "avgPercent": 48.27,
+    "avgRank": 53871,
+    "avgScore": 627,
+    "avgPercent": 47.66,
     "yearlyChanges": [
       {
         "fromYear": "2023",
@@ -5180,13 +6704,21 @@ const historicalSchools = [
         "scoreChange": 4,
         "percentChange": -1.28,
         "trend": "down"
+      },
+      {
+        "fromYear": "2025",
+        "toYear": "2026",
+        "rankChange": -3447,
+        "scoreChange": 5,
+        "percentChange": -0.81,
+        "trend": "down"
       }
     ],
     "recentTrend": "down",
-    "recentRankChange": -3001,
-    "recentScoreChange": 4,
-    "threeYearRankChange": -1423,
-    "threeYearScoreChange": 3,
+    "recentRankChange": -3447,
+    "recentScoreChange": 5,
+    "threeYearRankChange": -6448,
+    "threeYearScoreChange": 9,
     "threeYearTrend": "down"
   },
   {
@@ -5278,7 +6810,10 @@ const historicalSchools = [
     ],
     "recentTrend": "up",
     "recentRankChange": 3709,
-    "recentScoreChange": -3
+    "recentScoreChange": -3,
+    "threeYearRankChange": 3709,
+    "threeYearScoreChange": -3,
+    "threeYearTrend": "up"
   },
   {
     "name": "广州市培英中学（白云新城校区）",
@@ -5347,6 +6882,33 @@ const historicalSchools = [
           "lastScoreSeq": 182
         },
         "outer": null
+      },
+      "2026": {
+        "id": "GZ054",
+        "name": "广州市培英中学（白云新城校区）",
+        "type": "公办",
+        "scope": "全市",
+        "hukou": {
+          "minScore": 712,
+          "minScoreSeq": 328,
+          "lastVolunteer": 2,
+          "lastScore": 725,
+          "lastScoreSeq": 371
+        },
+        "nonHukou": {
+          "minScore": 712,
+          "minScoreSeq": 497,
+          "lastVolunteer": 2,
+          "lastScore": 728,
+          "lastScoreSeq": 190
+        },
+        "outer": {
+          "minScore": 714,
+          "minScoreSeq": 233,
+          "lastVolunteer": 2,
+          "lastScore": 725,
+          "lastScoreSeq": 371
+        }
       }
     },
     "rankHistory": [
@@ -5370,6 +6932,13 @@ const historicalSchools = [
         "rank": 17244,
         "percent": 14.86,
         "total": 116007
+      },
+      {
+        "year": "2026",
+        "score": 712,
+        "rank": 16303,
+        "percent": 12.98,
+        "total": 125579
       }
     ],
     "scoreHistory": [
@@ -5384,11 +6953,15 @@ const historicalSchools = [
       {
         "year": "2025",
         "score": 707
+      },
+      {
+        "year": "2026",
+        "score": 712
       }
     ],
-    "avgRank": 20879,
-    "avgScore": 695,
-    "avgPercent": 19.26,
+    "avgRank": 19735,
+    "avgScore": 699,
+    "avgPercent": 17.69,
     "yearlyChanges": [
       {
         "fromYear": "2023",
@@ -5405,13 +6978,21 @@ const historicalSchools = [
         "scoreChange": 21,
         "percentChange": -6.74,
         "trend": "up"
+      },
+      {
+        "fromYear": "2025",
+        "toYear": "2026",
+        "rankChange": 941,
+        "scoreChange": 5,
+        "percentChange": -1.88,
+        "trend": "up"
       }
     ],
     "recentTrend": "up",
-    "recentRankChange": 5797,
-    "recentScoreChange": 21,
-    "threeYearRankChange": 5109,
-    "threeYearScoreChange": 16,
+    "recentRankChange": 941,
+    "recentScoreChange": 5,
+    "threeYearRankChange": 6738,
+    "threeYearScoreChange": 26,
     "threeYearTrend": "up"
   },
   {
@@ -5481,6 +7062,33 @@ const historicalSchools = [
           "lastScoreSeq": 422
         },
         "outer": null
+      },
+      "2026": {
+        "id": "GZ055",
+        "name": "广州市培英中学（鹤洞校区）",
+        "type": "公办",
+        "scope": "全市",
+        "hukou": {
+          "minScore": 673,
+          "minScoreSeq": 566,
+          "lastVolunteer": 2,
+          "lastScore": 692,
+          "lastScoreSeq": 259
+        },
+        "nonHukou": {
+          "minScore": 673,
+          "minScoreSeq": 371,
+          "lastVolunteer": 2,
+          "lastScore": 697,
+          "lastScoreSeq": 428
+        },
+        "outer": {
+          "minScore": 685,
+          "minScoreSeq": 64,
+          "lastVolunteer": 2,
+          "lastScore": 694,
+          "lastScoreSeq": 98
+        }
       }
     },
     "rankHistory": [
@@ -5504,6 +7112,13 @@ const historicalSchools = [
         "rank": 36193,
         "percent": 31.2,
         "total": 116007
+      },
+      {
+        "year": "2026",
+        "score": 673,
+        "rank": 37486,
+        "percent": 29.85,
+        "total": 125579
       }
     ],
     "scoreHistory": [
@@ -5518,11 +7133,15 @@ const historicalSchools = [
       {
         "year": "2025",
         "score": 667
+      },
+      {
+        "year": "2026",
+        "score": 673
       }
     ],
-    "avgRank": 42428,
-    "avgScore": 650,
-    "avgPercent": 39.13,
+    "avgRank": 41193,
+    "avgScore": 656,
+    "avgPercent": 36.81,
     "yearlyChanges": [
       {
         "fromYear": "2023",
@@ -5539,13 +7158,21 @@ const historicalSchools = [
         "scoreChange": 21,
         "percentChange": -8.4,
         "trend": "up"
+      },
+      {
+        "fromYear": "2025",
+        "toYear": "2026",
+        "rankChange": -1293,
+        "scoreChange": 6,
+        "percentChange": -1.35,
+        "trend": "down"
       }
     ],
-    "recentTrend": "up",
-    "recentRankChange": 6040,
-    "recentScoreChange": 21,
-    "threeYearRankChange": 12666,
-    "threeYearScoreChange": 30,
+    "recentTrend": "down",
+    "recentRankChange": -1293,
+    "recentScoreChange": 6,
+    "threeYearRankChange": 4747,
+    "threeYearScoreChange": 27,
     "threeYearTrend": "up"
   },
   {
@@ -5615,6 +7242,33 @@ const historicalSchools = [
           "lastScoreSeq": 78
         },
         "outer": null
+      },
+      "2026": {
+        "id": "GZ056",
+        "name": "广州市第六十五中学（江高校区）",
+        "type": "公办",
+        "scope": "全市",
+        "hukou": {
+          "minScore": 672,
+          "minScoreSeq": 474,
+          "lastVolunteer": 2,
+          "lastScore": 686,
+          "lastScoreSeq": 247
+        },
+        "nonHukou": {
+          "minScore": 687,
+          "minScoreSeq": 530,
+          "lastVolunteer": 1,
+          "lastScore": 687,
+          "lastScoreSeq": 530
+        },
+        "outer": {
+          "minScore": 696,
+          "minScoreSeq": 299,
+          "lastVolunteer": 2,
+          "lastScore": 696,
+          "lastScoreSeq": 299
+        }
       }
     },
     "rankHistory": [
@@ -5638,6 +7292,13 @@ const historicalSchools = [
         "rank": 36193,
         "percent": 31.2,
         "total": 116007
+      },
+      {
+        "year": "2026",
+        "score": 672,
+        "rank": 37486,
+        "percent": 29.85,
+        "total": 125579
       }
     ],
     "scoreHistory": [
@@ -5652,11 +7313,15 @@ const historicalSchools = [
       {
         "year": "2025",
         "score": 667
+      },
+      {
+        "year": "2026",
+        "score": 672
       }
     ],
-    "avgRank": 36629,
-    "avgScore": 661,
-    "avgPercent": 33.62,
+    "avgRank": 36843,
+    "avgScore": 664,
+    "avgPercent": 32.68,
     "yearlyChanges": [
       {
         "fromYear": "2023",
@@ -5673,14 +7338,22 @@ const historicalSchools = [
         "scoreChange": 16,
         "percentChange": -4.03,
         "trend": "up"
+      },
+      {
+        "fromYear": "2025",
+        "toYear": "2026",
+        "rankChange": -1293,
+        "scoreChange": 5,
+        "percentChange": -1.35,
+        "trend": "down"
       }
     ],
-    "recentTrend": "up",
-    "recentRankChange": 1378,
-    "recentScoreChange": 16,
-    "threeYearRankChange": -70,
-    "threeYearScoreChange": 2,
-    "threeYearTrend": "down"
+    "recentTrend": "down",
+    "recentRankChange": -1293,
+    "recentScoreChange": 5,
+    "threeYearRankChange": 85,
+    "threeYearScoreChange": 21,
+    "threeYearTrend": "up"
   },
   {
     "name": "广州市第六十五中学（同德校区）",
@@ -5749,6 +7422,33 @@ const historicalSchools = [
           "lastScoreSeq": 303
         },
         "outer": null
+      },
+      "2026": {
+        "id": "GZ057",
+        "name": "广州市第六十五中学（同德校区）",
+        "type": "公办",
+        "scope": "全市",
+        "hukou": {
+          "minScore": 632,
+          "minScoreSeq": 385,
+          "lastVolunteer": 2,
+          "lastScore": 659,
+          "lastScoreSeq": 475
+        },
+        "nonHukou": {
+          "minScore": 672,
+          "minScoreSeq": 539,
+          "lastVolunteer": 2,
+          "lastScore": 681,
+          "lastScoreSeq": 80
+        },
+        "outer": {
+          "minScore": 642,
+          "minScoreSeq": 372,
+          "lastVolunteer": 1,
+          "lastScore": 642,
+          "lastScoreSeq": 372
+        }
       }
     },
     "rankHistory": [
@@ -5772,6 +7472,13 @@ const historicalSchools = [
         "rank": 49880,
         "percent": 43,
         "total": 116007
+      },
+      {
+        "year": "2026",
+        "score": 632,
+        "rank": 57562,
+        "percent": 45.84,
+        "total": 125579
       }
     ],
     "scoreHistory": [
@@ -5786,10 +7493,14 @@ const historicalSchools = [
       {
         "year": "2025",
         "score": 631
+      },
+      {
+        "year": "2026",
+        "score": 632
       }
     ],
-    "avgRank": 49951,
-    "avgScore": 629,
+    "avgRank": 51854,
+    "avgScore": 630,
     "avgPercent": 45.84,
     "yearlyChanges": [
       {
@@ -5807,13 +7518,21 @@ const historicalSchools = [
         "scoreChange": 9,
         "percentChange": -4.93,
         "trend": "up"
+      },
+      {
+        "fromYear": "2025",
+        "toYear": "2026",
+        "rankChange": -7682,
+        "scoreChange": 1,
+        "percentChange": 2.84,
+        "trend": "down"
       }
     ],
-    "recentTrend": "up",
-    "recentRankChange": 1234,
-    "recentScoreChange": 9,
-    "threeYearRankChange": -1021,
-    "threeYearScoreChange": -4,
+    "recentTrend": "down",
+    "recentRankChange": -7682,
+    "recentScoreChange": 1,
+    "threeYearRankChange": -6448,
+    "threeYearScoreChange": 10,
     "threeYearTrend": "down"
   },
   {
@@ -5883,6 +7602,33 @@ const historicalSchools = [
           "lastScoreSeq": 245
         },
         "outer": null
+      },
+      "2026": {
+        "id": "GZ059",
+        "name": "广州大同中学",
+        "type": "公办",
+        "scope": "全市",
+        "hukou": {
+          "minScore": 635,
+          "minScoreSeq": 104,
+          "lastVolunteer": 1,
+          "lastScore": 635,
+          "lastScoreSeq": 104
+        },
+        "nonHukou": {
+          "minScore": 637,
+          "minScoreSeq": 299,
+          "lastVolunteer": 1,
+          "lastScore": 637,
+          "lastScoreSeq": 299
+        },
+        "outer": {
+          "minScore": 640,
+          "minScoreSeq": 161,
+          "lastVolunteer": 1,
+          "lastScore": 640,
+          "lastScoreSeq": 161
+        }
       }
     },
     "rankHistory": [
@@ -5906,6 +7652,13 @@ const historicalSchools = [
         "rank": 49880,
         "percent": 43,
         "total": 116007
+      },
+      {
+        "year": "2026",
+        "score": 635,
+        "rank": 57562,
+        "percent": 45.84,
+        "total": 125579
       }
     ],
     "scoreHistory": [
@@ -5920,11 +7673,15 @@ const historicalSchools = [
       {
         "year": "2025",
         "score": 635
+      },
+      {
+        "year": "2026",
+        "score": 635
       }
     ],
-    "avgRank": 48517,
+    "avgRank": 50779,
     "avgScore": 635,
-    "avgPercent": 44.49,
+    "avgPercent": 44.83,
     "yearlyChanges": [
       {
         "fromYear": "2023",
@@ -5941,13 +7698,21 @@ const historicalSchools = [
         "scoreChange": -1,
         "percentChange": -0.89,
         "trend": "down"
+      },
+      {
+        "fromYear": "2025",
+        "toYear": "2026",
+        "rankChange": -7682,
+        "scoreChange": 0,
+        "percentChange": 2.84,
+        "trend": "down"
       }
     ],
     "recentTrend": "down",
-    "recentRankChange": -3067,
-    "recentScoreChange": -1,
-    "threeYearRankChange": -1021,
-    "threeYearScoreChange": 0,
+    "recentRankChange": -7682,
+    "recentScoreChange": 0,
+    "threeYearRankChange": -10749,
+    "threeYearScoreChange": -1,
     "threeYearTrend": "down"
   },
   {
@@ -6017,6 +7782,33 @@ const historicalSchools = [
           "lastScoreSeq": 478
         },
         "outer": null
+      },
+      "2026": {
+        "id": "GZ060",
+        "name": "广州市白云中学",
+        "type": "公办",
+        "scope": "全市",
+        "hukou": {
+          "minScore": 619,
+          "minScoreSeq": 410,
+          "lastVolunteer": 1,
+          "lastScore": 619,
+          "lastScoreSeq": 410
+        },
+        "nonHukou": {
+          "minScore": 632,
+          "minScoreSeq": 275,
+          "lastVolunteer": 3,
+          "lastScore": 646,
+          "lastScoreSeq": 305
+        },
+        "outer": {
+          "minScore": 632,
+          "minScoreSeq": 281,
+          "lastVolunteer": 6,
+          "lastScore": 643,
+          "lastScoreSeq": 466
+        }
       }
     },
     "rankHistory": [
@@ -6040,6 +7832,13 @@ const historicalSchools = [
         "rank": 54115,
         "percent": 46.65,
         "total": 116007
+      },
+      {
+        "year": "2026",
+        "score": 619,
+        "rank": 66551,
+        "percent": 53,
+        "total": 125579
       }
     ],
     "scoreHistory": [
@@ -6054,11 +7853,15 @@ const historicalSchools = [
       {
         "year": "2025",
         "score": 627
+      },
+      {
+        "year": "2026",
+        "score": 619
       }
     ],
-    "avgRank": 51363,
-    "avgScore": 628,
-    "avgPercent": 47.05,
+    "avgRank": 55160,
+    "avgScore": 626,
+    "avgPercent": 48.54,
     "yearlyChanges": [
       {
         "fromYear": "2023",
@@ -6075,13 +7878,21 @@ const historicalSchools = [
         "scoreChange": 6,
         "percentChange": -1.28,
         "trend": "down"
+      },
+      {
+        "fromYear": "2025",
+        "toYear": "2026",
+        "rankChange": -12436,
+        "scoreChange": -8,
+        "percentChange": 6.35,
+        "trend": "down"
       }
     ],
     "recentTrend": "down",
-    "recentRankChange": -3001,
-    "recentScoreChange": 6,
-    "threeYearRankChange": -5256,
-    "threeYearScoreChange": -8,
+    "recentRankChange": -12436,
+    "recentScoreChange": -8,
+    "threeYearRankChange": -15437,
+    "threeYearScoreChange": -2,
     "threeYearTrend": "down"
   },
   {
@@ -6151,6 +7962,33 @@ const historicalSchools = [
           "lastScoreSeq": 83
         },
         "outer": null
+      },
+      "2026": {
+        "id": "GZ061",
+        "name": "广州彭加木纪念中学",
+        "type": "公办",
+        "scope": "全市",
+        "hukou": {
+          "minScore": 592,
+          "minScoreSeq": 374,
+          "lastVolunteer": 4,
+          "lastScore": 603,
+          "lastScoreSeq": 277
+        },
+        "nonHukou": {
+          "minScore": 599,
+          "minScoreSeq": 252,
+          "lastVolunteer": 1,
+          "lastScore": 599,
+          "lastScoreSeq": 252
+        },
+        "outer": {
+          "minScore": 592,
+          "minScoreSeq": 374,
+          "lastVolunteer": 4,
+          "lastScore": 603,
+          "lastScoreSeq": 277
+        }
       }
     },
     "rankHistory": [
@@ -6174,6 +8012,13 @@ const historicalSchools = [
         "rank": 62181,
         "percent": 53.6,
         "total": 116007
+      },
+      {
+        "year": "2026",
+        "score": 592,
+        "rank": 74441,
+        "percent": 59.28,
+        "total": 125579
       }
     ],
     "scoreHistory": [
@@ -6188,11 +8033,15 @@ const historicalSchools = [
       {
         "year": "2025",
         "score": 601
+      },
+      {
+        "year": "2026",
+        "score": 592
       }
     ],
-    "avgRank": 63963,
-    "avgScore": 595,
-    "avgPercent": 58.74,
+    "avgRank": 66583,
+    "avgScore": 594,
+    "avgPercent": 58.87,
     "yearlyChanges": [
       {
         "fromYear": "2023",
@@ -6209,14 +8058,22 @@ const historicalSchools = [
         "scoreChange": 13,
         "percentChange": -8.66,
         "trend": "up"
+      },
+      {
+        "fromYear": "2025",
+        "toYear": "2026",
+        "rankChange": -12260,
+        "scoreChange": -9,
+        "percentChange": 5.68,
+        "trend": "down"
       }
     ],
-    "recentTrend": "up",
-    "recentRankChange": 4222,
-    "recentScoreChange": 13,
-    "threeYearRankChange": 1125,
-    "threeYearScoreChange": 6,
-    "threeYearTrend": "up"
+    "recentTrend": "down",
+    "recentRankChange": -12260,
+    "recentScoreChange": -9,
+    "threeYearRankChange": -8038,
+    "threeYearScoreChange": 4,
+    "threeYearTrend": "down"
   },
   {
     "name": "广东外语外贸大学实验中学",
@@ -6285,6 +8142,33 @@ const historicalSchools = [
           "lastScoreSeq": 5
         },
         "outer": null
+      },
+      "2026": {
+        "id": "GZ062",
+        "name": "广东外语外贸大学实验中学",
+        "type": "公办",
+        "scope": "全市",
+        "hukou": {
+          "minScore": 632,
+          "minScoreSeq": 399,
+          "lastVolunteer": 3,
+          "lastScore": 644,
+          "lastScoreSeq": 449
+        },
+        "nonHukou": {
+          "minScore": 632,
+          "minScoreSeq": 155,
+          "lastVolunteer": 3,
+          "lastScore": 654,
+          "lastScoreSeq": 270
+        },
+        "outer": {
+          "minScore": 632,
+          "minScoreSeq": 343,
+          "lastVolunteer": 3,
+          "lastScore": 644,
+          "lastScoreSeq": 449
+        }
       }
     },
     "rankHistory": [
@@ -6308,6 +8192,13 @@ const historicalSchools = [
         "rank": 54115,
         "percent": 46.65,
         "total": 116007
+      },
+      {
+        "year": "2026",
+        "score": 632,
+        "rank": 57562,
+        "percent": 45.84,
+        "total": 125579
       }
     ],
     "scoreHistory": [
@@ -6322,11 +8213,15 @@ const historicalSchools = [
       {
         "year": "2025",
         "score": 627
+      },
+      {
+        "year": "2026",
+        "score": 632
       }
     ],
-    "avgRank": 51363,
-    "avgScore": 628,
-    "avgPercent": 47.05,
+    "avgRank": 52913,
+    "avgScore": 629,
+    "avgPercent": 46.75,
     "yearlyChanges": [
       {
         "fromYear": "2023",
@@ -6343,13 +8238,21 @@ const historicalSchools = [
         "scoreChange": 5,
         "percentChange": -1.28,
         "trend": "down"
+      },
+      {
+        "fromYear": "2025",
+        "toYear": "2026",
+        "rankChange": -3447,
+        "scoreChange": 5,
+        "percentChange": -0.81,
+        "trend": "down"
       }
     ],
     "recentTrend": "down",
-    "recentRankChange": -3001,
+    "recentRankChange": -3447,
     "recentScoreChange": 5,
-    "threeYearRankChange": -5256,
-    "threeYearScoreChange": -8,
+    "threeYearRankChange": -6448,
+    "threeYearScoreChange": 10,
     "threeYearTrend": "down"
   },
   {
@@ -6419,6 +8322,33 @@ const historicalSchools = [
           "lastScoreSeq": 415
         },
         "outer": null
+      },
+      "2026": {
+        "id": "GZ063",
+        "name": "广州市白云区广州空港实验中学",
+        "type": "公办",
+        "scope": "全市",
+        "hukou": {
+          "minScore": 599,
+          "minScoreSeq": 204,
+          "lastVolunteer": 1,
+          "lastScore": 599,
+          "lastScoreSeq": 204
+        },
+        "nonHukou": {
+          "minScore": 630,
+          "minScoreSeq": 368,
+          "lastVolunteer": 1,
+          "lastScore": 630,
+          "lastScoreSeq": 368
+        },
+        "outer": {
+          "minScore": 601,
+          "minScoreSeq": 394,
+          "lastVolunteer": 1,
+          "lastScore": 601,
+          "lastScoreSeq": 394
+        }
       }
     },
     "rankHistory": [
@@ -6442,6 +8372,13 @@ const historicalSchools = [
         "rank": 69565,
         "percent": 59.97,
         "total": 116007
+      },
+      {
+        "year": "2026",
+        "score": 599,
+        "rank": 74441,
+        "percent": 59.28,
+        "total": 125579
       }
     ],
     "scoreHistory": [
@@ -6456,11 +8393,15 @@ const historicalSchools = [
       {
         "year": "2025",
         "score": 587
+      },
+      {
+        "year": "2026",
+        "score": 599
       }
     ],
-    "avgRank": 62737,
-    "avgScore": 597,
-    "avgPercent": 57.4,
+    "avgRank": 65663,
+    "avgScore": 598,
+    "avgPercent": 57.87,
     "yearlyChanges": [
       {
         "fromYear": "2023",
@@ -6477,13 +8418,21 @@ const historicalSchools = [
         "scoreChange": -23,
         "percentChange": 8.08,
         "trend": "down"
+      },
+      {
+        "fromYear": "2025",
+        "toYear": "2026",
+        "rankChange": -4876,
+        "scoreChange": 12,
+        "percentChange": -0.69,
+        "trend": "down"
       }
     ],
     "recentTrend": "down",
-    "recentRankChange": -14224,
-    "recentScoreChange": -23,
-    "threeYearRankChange": -6259,
-    "threeYearScoreChange": -8,
+    "recentRankChange": -4876,
+    "recentScoreChange": 12,
+    "threeYearRankChange": -19100,
+    "threeYearScoreChange": -11,
     "threeYearTrend": "down"
   },
   {
@@ -6553,6 +8502,33 @@ const historicalSchools = [
           "lastScoreSeq": 26
         },
         "outer": null
+      },
+      "2026": {
+        "id": "GZ064",
+        "name": "广州市第八十六中学",
+        "type": "公办",
+        "scope": "全市",
+        "hukou": {
+          "minScore": 698,
+          "minScoreSeq": 67,
+          "lastVolunteer": 1,
+          "lastScore": 698,
+          "lastScoreSeq": 67
+        },
+        "nonHukou": {
+          "minScore": 700,
+          "minScoreSeq": 27,
+          "lastVolunteer": 1,
+          "lastScore": 700,
+          "lastScoreSeq": 27
+        },
+        "outer": {
+          "minScore": 701,
+          "minScoreSeq": 144,
+          "lastVolunteer": 1,
+          "lastScore": 701,
+          "lastScoreSeq": 144
+        }
       }
     },
     "rankHistory": [
@@ -6576,6 +8552,13 @@ const historicalSchools = [
         "rank": 21899,
         "percent": 18.88,
         "total": 116007
+      },
+      {
+        "year": "2026",
+        "score": 698,
+        "rank": 26644,
+        "percent": 21.22,
+        "total": 125579
       }
     ],
     "scoreHistory": [
@@ -6590,11 +8573,15 @@ const historicalSchools = [
       {
         "year": "2025",
         "score": 697
+      },
+      {
+        "year": "2026",
+        "score": 698
       }
     ],
-    "avgRank": 22449,
-    "avgScore": 692,
-    "avgPercent": 20.64,
+    "avgRank": 23498,
+    "avgScore": 693,
+    "avgPercent": 20.78,
     "yearlyChanges": [
       {
         "fromYear": "2023",
@@ -6611,14 +8598,22 @@ const historicalSchools = [
         "scoreChange": 7,
         "percentChange": 1.58,
         "trend": "down"
+      },
+      {
+        "fromYear": "2025",
+        "toYear": "2026",
+        "rankChange": -4745,
+        "scoreChange": 1,
+        "percentChange": 2.34,
+        "trend": "down"
       }
     ],
     "recentTrend": "down",
-    "recentRankChange": -3446,
-    "recentScoreChange": 7,
-    "threeYearRankChange": 5095,
-    "threeYearScoreChange": 9,
-    "threeYearTrend": "up"
+    "recentRankChange": -4745,
+    "recentScoreChange": 1,
+    "threeYearRankChange": -8191,
+    "threeYearScoreChange": 8,
+    "threeYearTrend": "down"
   },
   {
     "name": "广州市玉岩中学",
@@ -6687,6 +8682,33 @@ const historicalSchools = [
           "lastScoreSeq": 447
         },
         "outer": null
+      },
+      "2026": {
+        "id": "GZ065",
+        "name": "广州市玉岩中学",
+        "type": "公办",
+        "scope": "全市",
+        "hukou": {
+          "minScore": 712,
+          "minScoreSeq": 438,
+          "lastVolunteer": 2,
+          "lastScore": 721,
+          "lastScoreSeq": 220
+        },
+        "nonHukou": {
+          "minScore": 712,
+          "minScoreSeq": 400,
+          "lastVolunteer": 2,
+          "lastScore": 722,
+          "lastScoreSeq": 159
+        },
+        "outer": {
+          "minScore": 712,
+          "minScoreSeq": 438,
+          "lastVolunteer": 2,
+          "lastScore": 729,
+          "lastScoreSeq": 312
+        }
       }
     },
     "rankHistory": [
@@ -6710,6 +8732,13 @@ const historicalSchools = [
         "rank": 17244,
         "percent": 14.86,
         "total": 116007
+      },
+      {
+        "year": "2026",
+        "score": 712,
+        "rank": 16303,
+        "percent": 12.98,
+        "total": 125579
       }
     ],
     "scoreHistory": [
@@ -6724,11 +8753,15 @@ const historicalSchools = [
       {
         "year": "2025",
         "score": 705
+      },
+      {
+        "year": "2026",
+        "score": 712
       }
     ],
-    "avgRank": 14952,
-    "avgScore": 707,
-    "avgPercent": 13.65,
+    "avgRank": 15290,
+    "avgScore": 708,
+    "avgPercent": 13.49,
     "yearlyChanges": [
       {
         "fromYear": "2023",
@@ -6745,13 +8778,21 @@ const historicalSchools = [
         "scoreChange": 3,
         "percentChange": 1.63,
         "trend": "down"
+      },
+      {
+        "fromYear": "2025",
+        "toYear": "2026",
+        "rankChange": 941,
+        "scoreChange": 7,
+        "percentChange": -1.88,
+        "trend": "up"
       }
     ],
-    "recentTrend": "down",
-    "recentRankChange": -3138,
-    "recentScoreChange": 3,
-    "threeYearRankChange": -3739,
-    "threeYearScoreChange": -8,
+    "recentTrend": "up",
+    "recentRankChange": 941,
+    "recentScoreChange": 7,
+    "threeYearRankChange": -2197,
+    "threeYearScoreChange": 10,
     "threeYearTrend": "down"
   },
   {
@@ -6821,6 +8862,33 @@ const historicalSchools = [
           "lastScoreSeq": 443
         },
         "outer": null
+      },
+      "2026": {
+        "id": "GZ066",
+        "name": "广州科学城中学",
+        "type": "公办",
+        "scope": "全市",
+        "hukou": {
+          "minScore": 672,
+          "minScoreSeq": 389,
+          "lastVolunteer": 5,
+          "lastScore": 680,
+          "lastScoreSeq": 154
+        },
+        "nonHukou": {
+          "minScore": 672,
+          "minScoreSeq": 533,
+          "lastVolunteer": 4,
+          "lastScore": 686,
+          "lastScoreSeq": 545
+        },
+        "outer": {
+          "minScore": 673,
+          "minScoreSeq": 524,
+          "lastVolunteer": 5,
+          "lastScore": 688,
+          "lastScoreSeq": 287
+        }
       }
     },
     "rankHistory": [
@@ -6844,6 +8912,13 @@ const historicalSchools = [
         "rank": 45415,
         "percent": 39.15,
         "total": 116007
+      },
+      {
+        "year": "2026",
+        "score": 672,
+        "rank": 37486,
+        "percent": 29.85,
+        "total": 125579
       }
     ],
     "scoreHistory": [
@@ -6858,11 +8933,15 @@ const historicalSchools = [
       {
         "year": "2025",
         "score": 645
+      },
+      {
+        "year": "2026",
+        "score": 672
       }
     ],
-    "avgRank": 45502,
-    "avgScore": 643,
-    "avgPercent": 41.78,
+    "avgRank": 43498,
+    "avgScore": 651,
+    "avgPercent": 38.8,
     "yearlyChanges": [
       {
         "fromYear": "2023",
@@ -6879,13 +8958,21 @@ const historicalSchools = [
         "scoreChange": -4,
         "percentChange": -0.45,
         "trend": "down"
+      },
+      {
+        "fromYear": "2025",
+        "toYear": "2026",
+        "rankChange": 7929,
+        "scoreChange": 27,
+        "percentChange": -9.3,
+        "trend": "up"
       }
     ],
-    "recentTrend": "down",
-    "recentRankChange": -3182,
-    "recentScoreChange": -4,
-    "threeYearRankChange": 3444,
-    "threeYearScoreChange": 9,
+    "recentTrend": "up",
+    "recentRankChange": 7929,
+    "recentScoreChange": 27,
+    "threeYearRankChange": 4747,
+    "threeYearScoreChange": 23,
     "threeYearTrend": "up"
   },
   {
@@ -6955,6 +9042,33 @@ const historicalSchools = [
           "lastScoreSeq": 429
         },
         "outer": null
+      },
+      "2026": {
+        "id": "GZ067",
+        "name": "北京师范大学广州实验学校",
+        "type": "公办",
+        "scope": "全市",
+        "hukou": {
+          "minScore": 672,
+          "minScoreSeq": 423,
+          "lastVolunteer": 2,
+          "lastScore": 690,
+          "lastScoreSeq": 56
+        },
+        "nonHukou": {
+          "minScore": 672,
+          "minScoreSeq": 494,
+          "lastVolunteer": 2,
+          "lastScore": 690,
+          "lastScoreSeq": 98
+        },
+        "outer": {
+          "minScore": 672,
+          "minScoreSeq": 378,
+          "lastVolunteer": 2,
+          "lastScore": 692,
+          "lastScoreSeq": 13
+        }
       }
     },
     "rankHistory": [
@@ -6978,6 +9092,13 @@ const historicalSchools = [
         "rank": 36193,
         "percent": 31.2,
         "total": 116007
+      },
+      {
+        "year": "2026",
+        "score": 672,
+        "rank": 37486,
+        "percent": 29.85,
+        "total": 125579
       }
     ],
     "scoreHistory": [
@@ -6992,11 +9113,15 @@ const historicalSchools = [
       {
         "year": "2025",
         "score": 667
+      },
+      {
+        "year": "2026",
+        "score": 672
       }
     ],
-    "avgRank": 33509,
-    "avgScore": 668,
-    "avgPercent": 30.67,
+    "avgRank": 34503,
+    "avgScore": 669,
+    "avgPercent": 30.47,
     "yearlyChanges": [
       {
         "fromYear": "2023",
@@ -7013,13 +9138,21 @@ const historicalSchools = [
         "scoreChange": 5,
         "percentChange": 0.46,
         "trend": "down"
+      },
+      {
+        "fromYear": "2025",
+        "toYear": "2026",
+        "rankChange": -1293,
+        "scoreChange": 5,
+        "percentChange": -1.35,
+        "trend": "down"
       }
     ],
     "recentTrend": "down",
-    "recentRankChange": -3406,
+    "recentRankChange": -1293,
     "recentScoreChange": 5,
-    "threeYearRankChange": -4647,
-    "threeYearScoreChange": -8,
+    "threeYearRankChange": -4699,
+    "threeYearScoreChange": 10,
     "threeYearTrend": "down"
   },
   {
@@ -7089,6 +9222,33 @@ const historicalSchools = [
           "lastScoreSeq": 375
         },
         "outer": null
+      },
+      "2026": {
+        "id": "GZ068",
+        "name": "广州市黄埔区开元学校",
+        "type": "公办",
+        "scope": "全市",
+        "hukou": {
+          "minScore": 672,
+          "minScoreSeq": 471,
+          "lastVolunteer": 4,
+          "lastScore": 710,
+          "lastScoreSeq": 391
+        },
+        "nonHukou": {
+          "minScore": 672,
+          "minScoreSeq": 557,
+          "lastVolunteer": 4,
+          "lastScore": 711,
+          "lastScoreSeq": 438
+        },
+        "outer": {
+          "minScore": 672,
+          "minScoreSeq": 283,
+          "lastVolunteer": 4,
+          "lastScore": 710,
+          "lastScoreSeq": 49
+        }
       }
     },
     "rankHistory": [
@@ -7112,6 +9272,13 @@ const historicalSchools = [
         "rank": 40846,
         "percent": 35.21,
         "total": 116007
+      },
+      {
+        "year": "2026",
+        "score": 672,
+        "rank": 37486,
+        "percent": 29.85,
+        "total": 125579
       }
     ],
     "scoreHistory": [
@@ -7126,11 +9293,15 @@ const historicalSchools = [
       {
         "year": "2025",
         "score": 652
+      },
+      {
+        "year": "2026",
+        "score": 672
       }
     ],
-    "avgRank": 39665,
-    "avgScore": 653,
-    "avgPercent": 36.37,
+    "avgRank": 39120,
+    "avgScore": 658,
+    "avgPercent": 34.74,
     "yearlyChanges": [
       {
         "fromYear": "2023",
@@ -7147,14 +9318,22 @@ const historicalSchools = [
         "scoreChange": -2,
         "percentChange": -0.02,
         "trend": "down"
+      },
+      {
+        "fromYear": "2025",
+        "toYear": "2026",
+        "rankChange": 3360,
+        "scoreChange": 20,
+        "percentChange": -5.36,
+        "trend": "up"
       }
     ],
-    "recentTrend": "down",
-    "recentRankChange": -3275,
-    "recentScoreChange": -2,
-    "threeYearRankChange": -269,
-    "threeYearScoreChange": -1,
-    "threeYearTrend": "down"
+    "recentTrend": "up",
+    "recentRankChange": 3360,
+    "recentScoreChange": 20,
+    "threeYearRankChange": 85,
+    "threeYearScoreChange": 18,
+    "threeYearTrend": "up"
   },
   {
     "name": "广东仲元中学",
@@ -7223,6 +9402,33 @@ const historicalSchools = [
           "lastScoreSeq": 402
         },
         "outer": null
+      },
+      "2026": {
+        "id": "GZ071",
+        "name": "广东仲元中学",
+        "type": "公办",
+        "scope": "全市",
+        "hukou": {
+          "minScore": 709,
+          "minScoreSeq": 216,
+          "lastVolunteer": 1,
+          "lastScore": 709,
+          "lastScoreSeq": 216
+        },
+        "nonHukou": {
+          "minScore": 709,
+          "minScoreSeq": 100,
+          "lastVolunteer": 1,
+          "lastScore": 709,
+          "lastScoreSeq": 100
+        },
+        "outer": {
+          "minScore": 713,
+          "minScoreSeq": 256,
+          "lastVolunteer": 3,
+          "lastScore": 713,
+          "lastScoreSeq": 136
+        }
       }
     },
     "rankHistory": [
@@ -7246,6 +9452,13 @@ const historicalSchools = [
         "rank": 17244,
         "percent": 14.86,
         "total": 116007
+      },
+      {
+        "year": "2026",
+        "score": 709,
+        "rank": 21387,
+        "percent": 17.03,
+        "total": 125579
       }
     ],
     "scoreHistory": [
@@ -7260,11 +9473,15 @@ const historicalSchools = [
       {
         "year": "2025",
         "score": 702
+      },
+      {
+        "year": "2026",
+        "score": 709
       }
     ],
-    "avgRank": 16401,
-    "avgScore": 703,
-    "avgPercent": 15.01,
+    "avgRank": 17647,
+    "avgScore": 705,
+    "avgPercent": 15.52,
     "yearlyChanges": [
       {
         "fromYear": "2023",
@@ -7281,13 +9498,21 @@ const historicalSchools = [
         "scoreChange": 7,
         "percentChange": -2.44,
         "trend": "up"
+      },
+      {
+        "fromYear": "2025",
+        "toYear": "2026",
+        "rankChange": -4143,
+        "scoreChange": 7,
+        "percentChange": 2.17,
+        "trend": "down"
       }
     ],
-    "recentTrend": "up",
-    "recentRankChange": 1209,
+    "recentTrend": "down",
+    "recentRankChange": -4143,
     "recentScoreChange": 7,
-    "threeYearRankChange": -3739,
-    "threeYearScoreChange": -11,
+    "threeYearRankChange": -2934,
+    "threeYearScoreChange": 14,
     "threeYearTrend": "down"
   },
   {
@@ -7357,6 +9582,33 @@ const historicalSchools = [
           "lastScoreSeq": 399
         },
         "outer": null
+      },
+      "2026": {
+        "id": "GZ072",
+        "name": "广东番禺中学",
+        "type": "公办",
+        "scope": "全市",
+        "hukou": {
+          "minScore": 672,
+          "minScoreSeq": 513,
+          "lastVolunteer": 2,
+          "lastScore": 709,
+          "lastScoreSeq": 383
+        },
+        "nonHukou": {
+          "minScore": 679,
+          "minScoreSeq": 272,
+          "lastVolunteer": 1,
+          "lastScore": 679,
+          "lastScoreSeq": 272
+        },
+        "outer": {
+          "minScore": 673,
+          "minScoreSeq": 272,
+          "lastVolunteer": 1,
+          "lastScore": 673,
+          "lastScoreSeq": 272
+        }
       }
     },
     "rankHistory": [
@@ -7380,6 +9632,13 @@ const historicalSchools = [
         "rank": 36193,
         "percent": 31.2,
         "total": 116007
+      },
+      {
+        "year": "2026",
+        "score": 672,
+        "rank": 37486,
+        "percent": 29.85,
+        "total": 125579
       }
     ],
     "scoreHistory": [
@@ -7394,11 +9653,15 @@ const historicalSchools = [
       {
         "year": "2025",
         "score": 667
+      },
+      {
+        "year": "2026",
+        "score": 672
       }
     ],
-    "avgRank": 33586,
-    "avgScore": 669,
-    "avgPercent": 30.72,
+    "avgRank": 34561,
+    "avgScore": 670,
+    "avgPercent": 30.5,
     "yearlyChanges": [
       {
         "fromYear": "2023",
@@ -7415,14 +9678,22 @@ const historicalSchools = [
         "scoreChange": 9,
         "percentChange": -4.03,
         "trend": "up"
+      },
+      {
+        "fromYear": "2025",
+        "toYear": "2026",
+        "rankChange": -1293,
+        "scoreChange": 5,
+        "percentChange": -1.35,
+        "trend": "down"
       }
     ],
-    "recentTrend": "up",
-    "recentRankChange": 1378,
-    "recentScoreChange": 9,
-    "threeYearRankChange": -9199,
-    "threeYearScoreChange": -16,
-    "threeYearTrend": "down"
+    "recentTrend": "down",
+    "recentRankChange": -1293,
+    "recentScoreChange": 5,
+    "threeYearRankChange": 85,
+    "threeYearScoreChange": 14,
+    "threeYearTrend": "up"
   },
   {
     "name": "广州市番禺区实验中学",
@@ -7491,6 +9762,33 @@ const historicalSchools = [
           "lastScoreSeq": 97
         },
         "outer": null
+      },
+      "2026": {
+        "id": "GZ073",
+        "name": "广州市番禺区实验中学",
+        "type": "公办",
+        "scope": "全市",
+        "hukou": {
+          "minScore": 633,
+          "minScoreSeq": 449,
+          "lastVolunteer": 2,
+          "lastScore": 664,
+          "lastScoreSeq": 118
+        },
+        "nonHukou": {
+          "minScore": 649,
+          "minScoreSeq": 377,
+          "lastVolunteer": 1,
+          "lastScore": 649,
+          "lastScoreSeq": 377
+        },
+        "outer": {
+          "minScore": 638,
+          "minScoreSeq": 403,
+          "lastVolunteer": 1,
+          "lastScore": 638,
+          "lastScoreSeq": 403
+        }
       }
     },
     "rankHistory": [
@@ -7514,6 +9812,13 @@ const historicalSchools = [
         "rank": 54115,
         "percent": 46.65,
         "total": 116007
+      },
+      {
+        "year": "2026",
+        "score": 633,
+        "rank": 57562,
+        "percent": 45.84,
+        "total": 125579
       }
     ],
     "scoreHistory": [
@@ -7528,11 +9833,15 @@ const historicalSchools = [
       {
         "year": "2025",
         "score": 627
+      },
+      {
+        "year": "2026",
+        "score": 633
       }
     ],
-    "avgRank": 48602,
+    "avgRank": 50842,
     "avgScore": 633,
-    "avgPercent": 44.42,
+    "avgPercent": 44.78,
     "yearlyChanges": [
       {
         "fromYear": "2023",
@@ -7549,13 +9858,21 @@ const historicalSchools = [
         "scoreChange": 5,
         "percentChange": -1.28,
         "trend": "down"
+      },
+      {
+        "fromYear": "2025",
+        "toYear": "2026",
+        "rankChange": -3447,
+        "scoreChange": 6,
+        "percentChange": -0.81,
+        "trend": "down"
       }
     ],
     "recentTrend": "down",
-    "recentRankChange": -3001,
-    "recentScoreChange": 5,
-    "threeYearRankChange": -13538,
-    "threeYearScoreChange": -24,
+    "recentRankChange": -3447,
+    "recentScoreChange": 6,
+    "threeYearRankChange": -6448,
+    "threeYearScoreChange": 11,
     "threeYearTrend": "down"
   },
   {
@@ -7625,6 +9942,33 @@ const historicalSchools = [
           "lastScoreSeq": 221
         },
         "outer": null
+      },
+      "2026": {
+        "id": "GZ074",
+        "name": "广州市番禺区象贤中学",
+        "type": "公办",
+        "scope": "全市",
+        "hukou": {
+          "minScore": 666,
+          "minScoreSeq": 372,
+          "lastVolunteer": 1,
+          "lastScore": 666,
+          "lastScoreSeq": 372
+        },
+        "nonHukou": {
+          "minScore": 666,
+          "minScoreSeq": 459,
+          "lastVolunteer": 1,
+          "lastScore": 666,
+          "lastScoreSeq": 459
+        },
+        "outer": {
+          "minScore": 667,
+          "minScoreSeq": 235,
+          "lastVolunteer": 1,
+          "lastScore": 667,
+          "lastScoreSeq": 235
+        }
       }
     },
     "rankHistory": [
@@ -7648,6 +9992,13 @@ const historicalSchools = [
         "rank": 40846,
         "percent": 35.21,
         "total": 116007
+      },
+      {
+        "year": "2026",
+        "score": 666,
+        "rank": 42762,
+        "percent": 34.05,
+        "total": 125579
       }
     ],
     "scoreHistory": [
@@ -7662,11 +10013,15 @@ const historicalSchools = [
       {
         "year": "2025",
         "score": 651
+      },
+      {
+        "year": "2026",
+        "score": 666
       }
     ],
-    "avgRank": 39735,
-    "avgScore": 653,
-    "avgPercent": 36.39,
+    "avgRank": 40492,
+    "avgScore": 657,
+    "avgPercent": 35.81,
     "yearlyChanges": [
       {
         "fromYear": "2023",
@@ -7683,14 +10038,22 @@ const historicalSchools = [
         "scoreChange": 17,
         "percentChange": -8.68,
         "trend": "up"
+      },
+      {
+        "fromYear": "2025",
+        "toYear": "2026",
+        "rankChange": -1916,
+        "scoreChange": 15,
+        "percentChange": -1.16,
+        "trend": "down"
       }
     ],
-    "recentTrend": "up",
-    "recentRankChange": 5967,
-    "recentScoreChange": 17,
-    "threeYearRankChange": -9300,
-    "threeYearScoreChange": -24,
-    "threeYearTrend": "down"
+    "recentTrend": "down",
+    "recentRankChange": -1916,
+    "recentScoreChange": 15,
+    "threeYearRankChange": 4051,
+    "threeYearScoreChange": 32,
+    "threeYearTrend": "up"
   },
   {
     "name": "广州市番禺区洛溪新城中学",
@@ -7759,6 +10122,33 @@ const historicalSchools = [
           "lastScoreSeq": 432
         },
         "outer": null
+      },
+      "2026": {
+        "id": "GZ075",
+        "name": "广州市番禺区洛溪新城中学",
+        "type": "公办",
+        "scope": "全市",
+        "hukou": {
+          "minScore": 592,
+          "minScoreSeq": 365,
+          "lastVolunteer": 3,
+          "lastScore": 606,
+          "lastScoreSeq": 265
+        },
+        "nonHukou": {
+          "minScore": 596,
+          "minScoreSeq": 155,
+          "lastVolunteer": 1,
+          "lastScore": 596,
+          "lastScoreSeq": 155
+        },
+        "outer": {
+          "minScore": 592,
+          "minScoreSeq": 197,
+          "lastVolunteer": 3,
+          "lastScore": 606,
+          "lastScoreSeq": 265
+        }
       }
     },
     "rankHistory": [
@@ -7782,6 +10172,13 @@ const historicalSchools = [
         "rank": 69565,
         "percent": 59.97,
         "total": 116007
+      },
+      {
+        "year": "2026",
+        "score": 592,
+        "rank": 74441,
+        "percent": 59.28,
+        "total": 125579
       }
     ],
     "scoreHistory": [
@@ -7796,11 +10193,15 @@ const historicalSchools = [
       {
         "year": "2025",
         "score": 587
+      },
+      {
+        "year": "2026",
+        "score": 592
       }
     ],
-    "avgRank": 66425,
-    "avgScore": 589,
-    "avgPercent": 60.86,
+    "avgRank": 68429,
+    "avgScore": 590,
+    "avgPercent": 60.47,
     "yearlyChanges": [
       {
         "fromYear": "2023",
@@ -7817,13 +10218,21 @@ const historicalSchools = [
         "scoreChange": 5,
         "percentChange": -2.29,
         "trend": "down"
+      },
+      {
+        "fromYear": "2025",
+        "toYear": "2026",
+        "rankChange": -4876,
+        "scoreChange": 5,
+        "percentChange": -0.69,
+        "trend": "down"
       }
     ],
     "recentTrend": "down",
-    "recentRankChange": -3162,
+    "recentRankChange": -4876,
     "recentScoreChange": 5,
-    "threeYearRankChange": -6259,
-    "threeYearScoreChange": -11,
+    "threeYearRankChange": -8038,
+    "threeYearScoreChange": 10,
     "threeYearTrend": "down"
   },
   {
@@ -7893,6 +10302,33 @@ const historicalSchools = [
           "lastScoreSeq": 294
         },
         "outer": null
+      },
+      "2026": {
+        "id": "GZ076",
+        "name": "广州市禺山高级中学",
+        "type": "公办",
+        "scope": "全市",
+        "hukou": {
+          "minScore": 632,
+          "minScoreSeq": 321,
+          "lastVolunteer": 3,
+          "lastScore": 647,
+          "lastScoreSeq": 148
+        },
+        "nonHukou": {
+          "minScore": 635,
+          "minScoreSeq": 24,
+          "lastVolunteer": 1,
+          "lastScore": 635,
+          "lastScoreSeq": 24
+        },
+        "outer": {
+          "minScore": 633,
+          "minScoreSeq": 368,
+          "lastVolunteer": 3,
+          "lastScore": 668,
+          "lastScoreSeq": 258
+        }
       }
     },
     "rankHistory": [
@@ -7916,6 +10352,13 @@ const historicalSchools = [
         "rank": 54115,
         "percent": 46.65,
         "total": 116007
+      },
+      {
+        "year": "2026",
+        "score": 632,
+        "rank": 57562,
+        "percent": 45.84,
+        "total": 125579
       }
     ],
     "scoreHistory": [
@@ -7930,11 +10373,15 @@ const historicalSchools = [
       {
         "year": "2025",
         "score": 621
+      },
+      {
+        "year": "2026",
+        "score": 632
       }
     ],
-    "avgRank": 51363,
-    "avgScore": 626,
-    "avgPercent": 47.05,
+    "avgRank": 52913,
+    "avgScore": 628,
+    "avgPercent": 46.75,
     "yearlyChanges": [
       {
         "fromYear": "2023",
@@ -7951,13 +10398,21 @@ const historicalSchools = [
         "scoreChange": -1,
         "percentChange": -1.28,
         "trend": "down"
+      },
+      {
+        "fromYear": "2025",
+        "toYear": "2026",
+        "rankChange": -3447,
+        "scoreChange": 11,
+        "percentChange": -0.81,
+        "trend": "down"
       }
     ],
     "recentTrend": "down",
-    "recentRankChange": -3001,
-    "recentScoreChange": -1,
-    "threeYearRankChange": -5256,
-    "threeYearScoreChange": -14,
+    "recentRankChange": -3447,
+    "recentScoreChange": 11,
+    "threeYearRankChange": -6448,
+    "threeYearScoreChange": 10,
     "threeYearTrend": "down"
   },
   {
@@ -8027,6 +10482,33 @@ const historicalSchools = [
           "lastScoreSeq": 115
         },
         "outer": null
+      },
+      "2026": {
+        "id": "GZ077",
+        "name": "广州市番禺区大龙中学",
+        "type": "公办",
+        "scope": "全市",
+        "hukou": {
+          "minScore": 593,
+          "minScoreSeq": 82,
+          "lastVolunteer": 1,
+          "lastScore": 593,
+          "lastScoreSeq": 82
+        },
+        "nonHukou": {
+          "minScore": 631,
+          "minScoreSeq": 281,
+          "lastVolunteer": 1,
+          "lastScore": 631,
+          "lastScoreSeq": 281
+        },
+        "outer": {
+          "minScore": 594,
+          "minScoreSeq": 401,
+          "lastVolunteer": 1,
+          "lastScore": 594,
+          "lastScoreSeq": 401
+        }
       }
     },
     "rankHistory": [
@@ -8050,6 +10532,13 @@ const historicalSchools = [
         "rank": 69565,
         "percent": 59.97,
         "total": 116007
+      },
+      {
+        "year": "2026",
+        "score": 593,
+        "rank": 74441,
+        "percent": 59.28,
+        "total": 125579
       }
     ],
     "scoreHistory": [
@@ -8064,11 +10553,15 @@ const historicalSchools = [
       {
         "year": "2025",
         "score": 587
+      },
+      {
+        "year": "2026",
+        "score": 593
       }
     ],
-    "avgRank": 62887,
-    "avgScore": 599,
-    "avgPercent": 57.49,
+    "avgRank": 65775,
+    "avgScore": 597,
+    "avgPercent": 57.93,
     "yearlyChanges": [
       {
         "fromYear": "2023",
@@ -8085,13 +10578,21 @@ const historicalSchools = [
         "scoreChange": 5,
         "percentChange": -2.29,
         "trend": "down"
+      },
+      {
+        "fromYear": "2025",
+        "toYear": "2026",
+        "rankChange": -4876,
+        "scoreChange": 6,
+        "percentChange": -0.69,
+        "trend": "down"
       }
     ],
     "recentTrend": "down",
-    "recentRankChange": -3162,
-    "recentScoreChange": 5,
-    "threeYearRankChange": -16873,
-    "threeYearScoreChange": -40,
+    "recentRankChange": -4876,
+    "recentScoreChange": 6,
+    "threeYearRankChange": -8038,
+    "threeYearScoreChange": 11,
     "threeYearTrend": "down"
   },
   {
@@ -8161,6 +10662,33 @@ const historicalSchools = [
           "lastScoreSeq": 359
         },
         "outer": null
+      },
+      "2026": {
+        "id": "GZ078",
+        "name": "广东第二师范学院番禺附属中学",
+        "type": "公办",
+        "scope": "全市",
+        "hukou": {
+          "minScore": 596,
+          "minScoreSeq": 21,
+          "lastVolunteer": 1,
+          "lastScore": 596,
+          "lastScoreSeq": 21
+        },
+        "nonHukou": {
+          "minScore": 628,
+          "minScoreSeq": 155,
+          "lastVolunteer": 1,
+          "lastScore": 628,
+          "lastScoreSeq": 155
+        },
+        "outer": {
+          "minScore": 597,
+          "minScoreSeq": 176,
+          "lastVolunteer": 1,
+          "lastScore": 597,
+          "lastScoreSeq": 176
+        }
       }
     },
     "rankHistory": [
@@ -8184,6 +10712,13 @@ const historicalSchools = [
         "rank": 69565,
         "percent": 59.97,
         "total": 116007
+      },
+      {
+        "year": "2026",
+        "score": 596,
+        "rank": 74441,
+        "percent": 59.28,
+        "total": 125579
       }
     ],
     "scoreHistory": [
@@ -8198,11 +10733,15 @@ const historicalSchools = [
       {
         "year": "2025",
         "score": 587
+      },
+      {
+        "year": "2026",
+        "score": 596
       }
     ],
-    "avgRank": 56513,
-    "avgScore": 615,
-    "avgPercent": 51.49,
+    "avgRank": 60995,
+    "avgScore": 610,
+    "avgPercent": 53.44,
     "yearlyChanges": [
       {
         "fromYear": "2023",
@@ -8219,13 +10758,21 @@ const historicalSchools = [
         "scoreChange": -36,
         "percentChange": 12.04,
         "trend": "down"
+      },
+      {
+        "fromYear": "2025",
+        "toYear": "2026",
+        "rankChange": -4876,
+        "scoreChange": 9,
+        "percentChange": -0.69,
+        "trend": "down"
       }
     ],
     "recentTrend": "down",
-    "recentRankChange": -18451,
-    "recentScoreChange": -36,
-    "threeYearRankChange": -20706,
-    "threeYearScoreChange": -48,
+    "recentRankChange": -4876,
+    "recentScoreChange": 9,
+    "threeYearRankChange": -23327,
+    "threeYearScoreChange": -27,
     "threeYearTrend": "down"
   },
   {
@@ -8295,6 +10842,33 @@ const historicalSchools = [
           "lastScoreSeq": 353
         },
         "outer": null
+      },
+      "2026": {
+        "id": "GZ079",
+        "name": "广州市花都区秀全中学",
+        "type": "公办",
+        "scope": "全市",
+        "hukou": {
+          "minScore": 672,
+          "minScoreSeq": 19,
+          "lastVolunteer": 1,
+          "lastScore": 672,
+          "lastScoreSeq": 19
+        },
+        "nonHukou": {
+          "minScore": 672,
+          "minScoreSeq": 24,
+          "lastVolunteer": 1,
+          "lastScore": 672,
+          "lastScoreSeq": 24
+        },
+        "outer": {
+          "minScore": 673,
+          "minScoreSeq": 423,
+          "lastVolunteer": 1,
+          "lastScore": 673,
+          "lastScoreSeq": 423
+        }
       }
     },
     "rankHistory": [
@@ -8318,6 +10892,13 @@ const historicalSchools = [
         "rank": 36193,
         "percent": 31.2,
         "total": 116007
+      },
+      {
+        "year": "2026",
+        "score": 672,
+        "rank": 37486,
+        "percent": 29.85,
+        "total": 125579
       }
     ],
     "scoreHistory": [
@@ -8332,11 +10913,15 @@ const historicalSchools = [
       {
         "year": "2025",
         "score": 668
+      },
+      {
+        "year": "2026",
+        "score": 672
       }
     ],
-    "avgRank": 31888,
+    "avgRank": 33287,
     "avgScore": 673,
-    "avgPercent": 29.15,
+    "avgPercent": 29.33,
     "yearlyChanges": [
       {
         "fromYear": "2023",
@@ -8353,13 +10938,21 @@ const historicalSchools = [
         "scoreChange": -9,
         "percentChange": 5.02,
         "trend": "down"
+      },
+      {
+        "fromYear": "2025",
+        "toYear": "2026",
+        "rankChange": -1293,
+        "scoreChange": 4,
+        "percentChange": -1.35,
+        "trend": "down"
       }
     ],
     "recentTrend": "down",
-    "recentRankChange": -8269,
-    "recentScoreChange": -9,
-    "threeYearRankChange": -4647,
-    "threeYearScoreChange": -7,
+    "recentRankChange": -1293,
+    "recentScoreChange": 4,
+    "threeYearRankChange": -9562,
+    "threeYearScoreChange": -5,
     "threeYearTrend": "down"
   },
   {
@@ -8429,6 +11022,33 @@ const historicalSchools = [
           "lastScoreSeq": 512
         },
         "outer": null
+      },
+      "2026": {
+        "id": "GZ080",
+        "name": "广州市花都区邝维煜纪念中学（校本部）",
+        "type": "公办",
+        "scope": "全市",
+        "hukou": {
+          "minScore": 640,
+          "minScoreSeq": 545,
+          "lastVolunteer": 1,
+          "lastScore": 640,
+          "lastScoreSeq": 545
+        },
+        "nonHukou": {
+          "minScore": 661,
+          "minScoreSeq": 367,
+          "lastVolunteer": 1,
+          "lastScore": 661,
+          "lastScoreSeq": 367
+        },
+        "outer": {
+          "minScore": 702,
+          "minScoreSeq": 78,
+          "lastVolunteer": 4,
+          "lastScore": 702,
+          "lastScoreSeq": 78
+        }
       }
     },
     "rankHistory": [
@@ -8452,6 +11072,13 @@ const historicalSchools = [
         "rank": 45415,
         "percent": 39.15,
         "total": 116007
+      },
+      {
+        "year": "2026",
+        "score": 640,
+        "rank": 52890,
+        "percent": 42.12,
+        "total": 125579
       }
     ],
     "scoreHistory": [
@@ -8466,11 +11093,15 @@ const historicalSchools = [
       {
         "year": "2025",
         "score": 646
+      },
+      {
+        "year": "2026",
+        "score": 640
       }
     ],
-    "avgRank": 44177,
-    "avgScore": 645,
-    "avgPercent": 40.51,
+    "avgRank": 46356,
+    "avgScore": 644,
+    "avgPercent": 40.92,
     "yearlyChanges": [
       {
         "fromYear": "2023",
@@ -8487,13 +11118,21 @@ const historicalSchools = [
         "scoreChange": 3,
         "percentChange": -0.45,
         "trend": "down"
+      },
+      {
+        "fromYear": "2025",
+        "toYear": "2026",
+        "rankChange": -7475,
+        "scoreChange": -6,
+        "percentChange": 2.97,
+        "trend": "down"
       }
     ],
     "recentTrend": "down",
-    "recentRankChange": -3182,
-    "recentScoreChange": 3,
-    "threeYearRankChange": -531,
-    "threeYearScoreChange": -1,
+    "recentRankChange": -7475,
+    "recentScoreChange": -6,
+    "threeYearRankChange": -10657,
+    "threeYearScoreChange": -3,
     "threeYearTrend": "down"
   },
   {
@@ -8563,6 +11202,33 @@ const historicalSchools = [
           "lastScoreSeq": 73
         },
         "outer": null
+      },
+      "2026": {
+        "id": "GZ081",
+        "name": "广州市花都区邝维煜纪念中学（雅正校区）",
+        "type": "公办",
+        "scope": "全市",
+        "hukou": {
+          "minScore": 632,
+          "minScoreSeq": 378,
+          "lastVolunteer": 5,
+          "lastScore": 656,
+          "lastScoreSeq": 424
+        },
+        "nonHukou": {
+          "minScore": 632,
+          "minScoreSeq": 447,
+          "lastVolunteer": 6,
+          "lastScore": 653,
+          "lastScoreSeq": 434
+        },
+        "outer": {
+          "minScore": 643,
+          "minScoreSeq": 128,
+          "lastVolunteer": 2,
+          "lastScore": 646,
+          "lastScoreSeq": 68
+        }
       }
     },
     "rankHistory": [
@@ -8586,6 +11252,13 @@ const historicalSchools = [
         "rank": 54115,
         "percent": 46.65,
         "total": 116007
+      },
+      {
+        "year": "2026",
+        "score": 632,
+        "rank": 57562,
+        "percent": 45.84,
+        "total": 125579
       }
     ],
     "scoreHistory": [
@@ -8600,11 +11273,15 @@ const historicalSchools = [
       {
         "year": "2025",
         "score": 627
+      },
+      {
+        "year": "2026",
+        "score": 632
       }
     ],
-    "avgRank": 51363,
-    "avgScore": 628,
-    "avgPercent": 47.05,
+    "avgRank": 52913,
+    "avgScore": 629,
+    "avgPercent": 46.75,
     "yearlyChanges": [
       {
         "fromYear": "2023",
@@ -8621,13 +11298,21 @@ const historicalSchools = [
         "scoreChange": 5,
         "percentChange": -1.28,
         "trend": "down"
+      },
+      {
+        "fromYear": "2025",
+        "toYear": "2026",
+        "rankChange": -3447,
+        "scoreChange": 5,
+        "percentChange": -0.81,
+        "trend": "down"
       }
     ],
     "recentTrend": "down",
-    "recentRankChange": -3001,
+    "recentRankChange": -3447,
     "recentScoreChange": 5,
-    "threeYearRankChange": -5256,
-    "threeYearScoreChange": -8,
+    "threeYearRankChange": -6448,
+    "threeYearScoreChange": 10,
     "threeYearTrend": "down"
   },
   {
@@ -8697,6 +11382,33 @@ const historicalSchools = [
           "lastScoreSeq": 142
         },
         "outer": null
+      },
+      "2026": {
+        "id": "GZ082",
+        "name": "广州市花都区新华中学",
+        "type": "公办",
+        "scope": "全市",
+        "hukou": {
+          "minScore": 592,
+          "minScoreSeq": 354,
+          "lastVolunteer": 3,
+          "lastScore": 627,
+          "lastScoreSeq": 467
+        },
+        "nonHukou": {
+          "minScore": 656,
+          "minScoreSeq": 368,
+          "lastVolunteer": 1,
+          "lastScore": 656,
+          "lastScoreSeq": 368
+        },
+        "outer": {
+          "minScore": 597,
+          "minScoreSeq": 251,
+          "lastVolunteer": 1,
+          "lastScore": 597,
+          "lastScoreSeq": 251
+        }
       }
     },
     "rankHistory": [
@@ -8720,6 +11432,13 @@ const historicalSchools = [
         "rank": 62181,
         "percent": 53.6,
         "total": 116007
+      },
+      {
+        "year": "2026",
+        "score": 592,
+        "rank": 74441,
+        "percent": 59.28,
+        "total": 125579
       }
     ],
     "scoreHistory": [
@@ -8734,11 +11453,15 @@ const historicalSchools = [
       {
         "year": "2025",
         "score": 600
+      },
+      {
+        "year": "2026",
+        "score": 592
       }
     ],
-    "avgRank": 60276,
-    "avgScore": 602,
-    "avgPercent": 55.28,
+    "avgRank": 63817,
+    "avgScore": 600,
+    "avgPercent": 56.28,
     "yearlyChanges": [
       {
         "fromYear": "2023",
@@ -8755,14 +11478,22 @@ const historicalSchools = [
         "scoreChange": -11,
         "percentChange": 1.71,
         "trend": "down"
+      },
+      {
+        "fromYear": "2025",
+        "toYear": "2026",
+        "rankChange": -12260,
+        "scoreChange": -8,
+        "percentChange": 5.68,
+        "trend": "down"
       }
     ],
     "recentTrend": "down",
-    "recentRankChange": -6840,
-    "recentScoreChange": -11,
-    "threeYearRankChange": 1125,
-    "threeYearScoreChange": 5,
-    "threeYearTrend": "up"
+    "recentRankChange": -12260,
+    "recentScoreChange": -8,
+    "threeYearRankChange": -19100,
+    "threeYearScoreChange": -19,
+    "threeYearTrend": "down"
   },
   {
     "name": "广州市花都区圆玄中学",
@@ -8831,6 +11562,33 @@ const historicalSchools = [
           "lastScoreSeq": 294
         },
         "outer": null
+      },
+      "2026": {
+        "id": "GZ083",
+        "name": "广州市花都区圆玄中学",
+        "type": "公办",
+        "scope": "全市",
+        "hukou": {
+          "minScore": 590,
+          "minScoreSeq": 135,
+          "lastVolunteer": 1,
+          "lastScore": 590,
+          "lastScoreSeq": 135
+        },
+        "nonHukou": {
+          "minScore": 632,
+          "minScoreSeq": 324,
+          "lastVolunteer": 2,
+          "lastScore": 643,
+          "lastScoreSeq": 323
+        },
+        "outer": {
+          "minScore": 592,
+          "minScoreSeq": 349,
+          "lastVolunteer": 6,
+          "lastScore": 592,
+          "lastScoreSeq": 349
+        }
       }
     },
     "rankHistory": [
@@ -8854,6 +11612,13 @@ const historicalSchools = [
         "rank": 69565,
         "percent": 59.97,
         "total": 116007
+      },
+      {
+        "year": "2026",
+        "score": 590,
+        "rank": 74441,
+        "percent": 59.28,
+        "total": 125579
       }
     ],
     "scoreHistory": [
@@ -8868,11 +11633,15 @@ const historicalSchools = [
       {
         "year": "2025",
         "score": 587
+      },
+      {
+        "year": "2026",
+        "score": 590
       }
     ],
-    "avgRank": 66425,
-    "avgScore": 588,
-    "avgPercent": 60.86,
+    "avgRank": 68429,
+    "avgScore": 589,
+    "avgPercent": 60.47,
     "yearlyChanges": [
       {
         "fromYear": "2023",
@@ -8889,13 +11658,21 @@ const historicalSchools = [
         "scoreChange": 5,
         "percentChange": -2.29,
         "trend": "down"
+      },
+      {
+        "fromYear": "2025",
+        "toYear": "2026",
+        "rankChange": -4876,
+        "scoreChange": 3,
+        "percentChange": -0.69,
+        "trend": "down"
       }
     ],
     "recentTrend": "down",
-    "recentRankChange": -3162,
-    "recentScoreChange": 5,
-    "threeYearRankChange": -6259,
-    "threeYearScoreChange": -8,
+    "recentRankChange": -4876,
+    "recentScoreChange": 3,
+    "threeYearRankChange": -8038,
+    "threeYearScoreChange": 8,
     "threeYearTrend": "down"
   },
   {
@@ -8965,6 +11742,33 @@ const historicalSchools = [
           "lastScoreSeq": 283
         },
         "outer": null
+      },
+      "2026": {
+        "id": "GZ084",
+        "name": "广州市南沙第一中学",
+        "type": "公办",
+        "scope": "全市",
+        "hukou": {
+          "minScore": 632,
+          "minScoreSeq": 431,
+          "lastVolunteer": 2,
+          "lastScore": 651,
+          "lastScoreSeq": 75
+        },
+        "nonHukou": {
+          "minScore": 638,
+          "minScoreSeq": 198,
+          "lastVolunteer": 1,
+          "lastScore": 638,
+          "lastScoreSeq": 198
+        },
+        "outer": {
+          "minScore": 637,
+          "minScoreSeq": 340,
+          "lastVolunteer": 2,
+          "lastScore": 651,
+          "lastScoreSeq": 75
+        }
       }
     },
     "rankHistory": [
@@ -8988,6 +11792,13 @@ const historicalSchools = [
         "rank": 54115,
         "percent": 46.65,
         "total": 116007
+      },
+      {
+        "year": "2026",
+        "score": 632,
+        "rank": 57562,
+        "percent": 45.84,
+        "total": 125579
       }
     ],
     "scoreHistory": [
@@ -9002,11 +11813,15 @@ const historicalSchools = [
       {
         "year": "2025",
         "score": 627
+      },
+      {
+        "year": "2026",
+        "score": 632
       }
     ],
-    "avgRank": 51363,
-    "avgScore": 628,
-    "avgPercent": 47.05,
+    "avgRank": 52913,
+    "avgScore": 629,
+    "avgPercent": 46.75,
     "yearlyChanges": [
       {
         "fromYear": "2023",
@@ -9023,13 +11838,21 @@ const historicalSchools = [
         "scoreChange": 5,
         "percentChange": -1.28,
         "trend": "down"
+      },
+      {
+        "fromYear": "2025",
+        "toYear": "2026",
+        "rankChange": -3447,
+        "scoreChange": 5,
+        "percentChange": -0.81,
+        "trend": "down"
       }
     ],
     "recentTrend": "down",
-    "recentRankChange": -3001,
+    "recentRankChange": -3447,
     "recentScoreChange": 5,
-    "threeYearRankChange": -5256,
-    "threeYearScoreChange": -8,
+    "threeYearRankChange": -6448,
+    "threeYearScoreChange": 10,
     "threeYearTrend": "down"
   },
   {
@@ -9099,6 +11922,33 @@ const historicalSchools = [
           "lastScoreSeq": 282
         },
         "outer": null
+      },
+      "2026": {
+        "id": "GZ085",
+        "name": "广州市南沙东涌中学",
+        "type": "公办",
+        "scope": "全市",
+        "hukou": {
+          "minScore": 608,
+          "minScoreSeq": 290,
+          "lastVolunteer": 1,
+          "lastScore": 608,
+          "lastScoreSeq": 290
+        },
+        "nonHukou": {
+          "minScore": 632,
+          "minScoreSeq": 329,
+          "lastVolunteer": 3,
+          "lastScore": 654,
+          "lastScoreSeq": 164
+        },
+        "outer": {
+          "minScore": 636,
+          "minScoreSeq": 253,
+          "lastVolunteer": 5,
+          "lastScore": 652,
+          "lastScoreSeq": 89
+        }
       }
     },
     "rankHistory": [
@@ -9122,6 +11972,13 @@ const historicalSchools = [
         "rank": 65900,
         "percent": 56.81,
         "total": 116007
+      },
+      {
+        "year": "2026",
+        "score": 608,
+        "rank": 70581,
+        "percent": 56.2,
+        "total": 125579
       }
     ],
     "scoreHistory": [
@@ -9136,11 +11993,15 @@ const historicalSchools = [
       {
         "year": "2025",
         "score": 599
+      },
+      {
+        "year": "2026",
+        "score": 608
       }
     ],
-    "avgRank": 61516,
-    "avgScore": 602,
-    "avgPercent": 56.35,
+    "avgRank": 63782,
+    "avgScore": 604,
+    "avgPercent": 56.31,
     "yearlyChanges": [
       {
         "fromYear": "2023",
@@ -9157,13 +12018,21 @@ const historicalSchools = [
         "scoreChange": -13,
         "percentChange": 4.92,
         "trend": "down"
+      },
+      {
+        "fromYear": "2025",
+        "toYear": "2026",
+        "rankChange": -4681,
+        "scoreChange": 9,
+        "percentChange": -0.61,
+        "trend": "down"
       }
     ],
     "recentTrend": "down",
-    "recentRankChange": -10559,
-    "recentScoreChange": -13,
-    "threeYearRankChange": -2594,
-    "threeYearScoreChange": 4,
+    "recentRankChange": -4681,
+    "recentScoreChange": 9,
+    "threeYearRankChange": -15240,
+    "threeYearScoreChange": -4,
     "threeYearTrend": "down"
   },
   {
@@ -9233,6 +12102,33 @@ const historicalSchools = [
           "lastScoreSeq": 376
         },
         "outer": null
+      },
+      "2026": {
+        "id": "GZ086",
+        "name": "华南师范大学附属南沙中学",
+        "type": "公办",
+        "scope": "全市",
+        "hukou": {
+          "minScore": 672,
+          "minScoreSeq": 551,
+          "lastVolunteer": 5,
+          "lastScore": 702,
+          "lastScoreSeq": 258
+        },
+        "nonHukou": {
+          "minScore": 672,
+          "minScoreSeq": 441,
+          "lastVolunteer": 5,
+          "lastScore": 711,
+          "lastScoreSeq": 444
+        },
+        "outer": {
+          "minScore": 672,
+          "minScoreSeq": 551,
+          "lastVolunteer": 5,
+          "lastScore": 702,
+          "lastScoreSeq": 258
+        }
       }
     },
     "rankHistory": [
@@ -9256,6 +12152,13 @@ const historicalSchools = [
         "rank": 40846,
         "percent": 35.21,
         "total": 116007
+      },
+      {
+        "year": "2026",
+        "score": 672,
+        "rank": 37486,
+        "percent": 29.85,
+        "total": 125579
       }
     ],
     "scoreHistory": [
@@ -9270,11 +12173,15 @@ const historicalSchools = [
       {
         "year": "2025",
         "score": 651
+      },
+      {
+        "year": "2026",
+        "score": 672
       }
     ],
-    "avgRank": 46784,
-    "avgScore": 634,
-    "avgPercent": 43.11,
+    "avgRank": 44459,
+    "avgScore": 644,
+    "avgPercent": 39.8,
     "yearlyChanges": [
       {
         "fromYear": "2023",
@@ -9291,13 +12198,21 @@ const historicalSchools = [
         "scoreChange": 20,
         "percentChange": -8.68,
         "trend": "up"
+      },
+      {
+        "fromYear": "2025",
+        "toYear": "2026",
+        "rankChange": 3360,
+        "scoreChange": 21,
+        "percentChange": -5.36,
+        "trend": "up"
       }
     ],
     "recentTrend": "up",
-    "recentRankChange": 5967,
-    "recentScoreChange": 20,
-    "threeYearRankChange": 11846,
-    "threeYearScoreChange": 30,
+    "recentRankChange": 3360,
+    "recentScoreChange": 21,
+    "threeYearRankChange": 9327,
+    "threeYearScoreChange": 41,
     "threeYearTrend": "up"
   },
   {
@@ -9367,6 +12282,33 @@ const historicalSchools = [
           "lastScoreSeq": 210
         },
         "outer": null
+      },
+      "2026": {
+        "id": "GZ087",
+        "name": "广州市第二中学南沙天元学校",
+        "type": "公办",
+        "scope": "全市",
+        "hukou": {
+          "minScore": 672,
+          "minScoreSeq": 512,
+          "lastVolunteer": 2,
+          "lastScore": 705,
+          "lastScoreSeq": 41
+        },
+        "nonHukou": {
+          "minScore": 672,
+          "minScoreSeq": 273,
+          "lastVolunteer": 2,
+          "lastScore": 708,
+          "lastScoreSeq": 385
+        },
+        "outer": {
+          "minScore": 672,
+          "minScoreSeq": 345,
+          "lastVolunteer": 2,
+          "lastScore": 707,
+          "lastScoreSeq": 362
+        }
       }
     },
     "rankHistory": [
@@ -9390,6 +12332,13 @@ const historicalSchools = [
         "rank": 36193,
         "percent": 31.2,
         "total": 116007
+      },
+      {
+        "year": "2026",
+        "score": 672,
+        "rank": 37486,
+        "percent": 29.85,
+        "total": 125579
       }
     ],
     "scoreHistory": [
@@ -9404,11 +12353,15 @@ const historicalSchools = [
       {
         "year": "2025",
         "score": 663
+      },
+      {
+        "year": "2026",
+        "score": 672
       }
     ],
-    "avgRank": 36629,
-    "avgScore": 658,
-    "avgPercent": 33.62,
+    "avgRank": 36843,
+    "avgScore": 661,
+    "avgPercent": 32.68,
     "yearlyChanges": [
       {
         "fromYear": "2023",
@@ -9425,14 +12378,22 @@ const historicalSchools = [
         "scoreChange": 13,
         "percentChange": -4.03,
         "trend": "up"
+      },
+      {
+        "fromYear": "2025",
+        "toYear": "2026",
+        "rankChange": -1293,
+        "scoreChange": 9,
+        "percentChange": -1.35,
+        "trend": "down"
       }
     ],
-    "recentTrend": "up",
-    "recentRankChange": 1378,
-    "recentScoreChange": 13,
-    "threeYearRankChange": -70,
-    "threeYearScoreChange": 3,
-    "threeYearTrend": "down"
+    "recentTrend": "down",
+    "recentRankChange": -1293,
+    "recentScoreChange": 9,
+    "threeYearRankChange": 85,
+    "threeYearScoreChange": 22,
+    "threeYearTrend": "up"
   },
   {
     "name": "广州大学附属中学南沙实验学校",
@@ -9501,6 +12462,33 @@ const historicalSchools = [
           "lastScoreSeq": 212
         },
         "outer": null
+      },
+      "2026": {
+        "id": "GZ088",
+        "name": "广州大学附属中学南沙实验学校",
+        "type": "公办",
+        "scope": "全市",
+        "hukou": {
+          "minScore": 697,
+          "minScoreSeq": 447,
+          "lastVolunteer": 1,
+          "lastScore": 697,
+          "lastScoreSeq": 447
+        },
+        "nonHukou": {
+          "minScore": 698,
+          "minScoreSeq": 555,
+          "lastVolunteer": 1,
+          "lastScore": 698,
+          "lastScoreSeq": 555
+        },
+        "outer": {
+          "minScore": 697,
+          "minScoreSeq": 447,
+          "lastVolunteer": 1,
+          "lastScore": 697,
+          "lastScoreSeq": 447
+        }
       }
     },
     "rankHistory": [
@@ -9524,6 +12512,13 @@ const historicalSchools = [
         "rank": 26724,
         "percent": 23.04,
         "total": 116007
+      },
+      {
+        "year": "2026",
+        "score": 697,
+        "rank": 26644,
+        "percent": 21.22,
+        "total": 125579
       }
     ],
     "scoreHistory": [
@@ -9538,11 +12533,15 @@ const historicalSchools = [
       {
         "year": "2025",
         "score": 682
+      },
+      {
+        "year": "2026",
+        "score": 697
       }
     ],
-    "avgRank": 31878,
-    "avgScore": 668,
-    "avgPercent": 29.4,
+    "avgRank": 30570,
+    "avgScore": 676,
+    "avgPercent": 27.36,
     "yearlyChanges": [
       {
         "fromYear": "2023",
@@ -9559,13 +12558,21 @@ const historicalSchools = [
         "scoreChange": 20,
         "percentChange": -7.7,
         "trend": "up"
+      },
+      {
+        "fromYear": "2025",
+        "toYear": "2026",
+        "rankChange": 80,
+        "scoreChange": 15,
+        "percentChange": -1.82,
+        "trend": "up"
       }
     ],
     "recentTrend": "up",
-    "recentRankChange": 6063,
-    "recentScoreChange": 20,
-    "threeYearRankChange": 9399,
-    "threeYearScoreChange": 21,
+    "recentRankChange": 80,
+    "recentScoreChange": 15,
+    "threeYearRankChange": 6143,
+    "threeYearScoreChange": 35,
     "threeYearTrend": "up"
   },
   {
@@ -9635,6 +12642,33 @@ const historicalSchools = [
           "lastScoreSeq": 198
         },
         "outer": null
+      },
+      "2026": {
+        "id": "GZ089",
+        "name": "广州市增城区增城中学",
+        "type": "公办",
+        "scope": "全市",
+        "hukou": {
+          "minScore": 672,
+          "minScoreSeq": 526,
+          "lastVolunteer": 3,
+          "lastScore": 691,
+          "lastScoreSeq": 238
+        },
+        "nonHukou": {
+          "minScore": 672,
+          "minScoreSeq": 69,
+          "lastVolunteer": 3,
+          "lastScore": 700,
+          "lastScoreSeq": 303
+        },
+        "outer": {
+          "minScore": 673,
+          "minScoreSeq": 505,
+          "lastVolunteer": 3,
+          "lastScore": 692,
+          "lastScoreSeq": 461
+        }
       }
     },
     "rankHistory": [
@@ -9658,6 +12692,13 @@ const historicalSchools = [
         "rank": 36193,
         "percent": 31.2,
         "total": 116007
+      },
+      {
+        "year": "2026",
+        "score": 672,
+        "rank": 37486,
+        "percent": 29.85,
+        "total": 125579
       }
     ],
     "scoreHistory": [
@@ -9672,11 +12713,15 @@ const historicalSchools = [
       {
         "year": "2025",
         "score": 665
+      },
+      {
+        "year": "2026",
+        "score": 672
       }
     ],
-    "avgRank": 41103,
-    "avgScore": 651,
-    "avgPercent": 37.86,
+    "avgRank": 40199,
+    "avgScore": 657,
+    "avgPercent": 35.86,
     "yearlyChanges": [
       {
         "fromYear": "2023",
@@ -9693,13 +12738,21 @@ const historicalSchools = [
         "scoreChange": 18,
         "percentChange": -8.4,
         "trend": "up"
+      },
+      {
+        "fromYear": "2025",
+        "toYear": "2026",
+        "rankChange": -1293,
+        "scoreChange": 7,
+        "percentChange": -1.35,
+        "trend": "down"
       }
     ],
-    "recentTrend": "up",
-    "recentRankChange": 6040,
-    "recentScoreChange": 18,
-    "threeYearRankChange": 8691,
-    "threeYearScoreChange": 23,
+    "recentTrend": "down",
+    "recentRankChange": -1293,
+    "recentScoreChange": 7,
+    "threeYearRankChange": 4747,
+    "threeYearScoreChange": 25,
     "threeYearTrend": "up"
   },
   {
@@ -9769,6 +12822,33 @@ const historicalSchools = [
           "lastScoreSeq": 118
         },
         "outer": null
+      },
+      "2026": {
+        "id": "GZ090",
+        "name": "广州市增城区郑中钧中学",
+        "type": "公办",
+        "scope": "全市",
+        "hukou": {
+          "minScore": 636,
+          "minScoreSeq": 329,
+          "lastVolunteer": 1,
+          "lastScore": 636,
+          "lastScoreSeq": 329
+        },
+        "nonHukou": {
+          "minScore": 651,
+          "minScoreSeq": 493,
+          "lastVolunteer": 1,
+          "lastScore": 651,
+          "lastScoreSeq": 493
+        },
+        "outer": {
+          "minScore": 643,
+          "minScoreSeq": 196,
+          "lastVolunteer": 1,
+          "lastScore": 643,
+          "lastScoreSeq": 196
+        }
       }
     },
     "rankHistory": [
@@ -9792,6 +12872,13 @@ const historicalSchools = [
         "rank": 54115,
         "percent": 46.65,
         "total": 116007
+      },
+      {
+        "year": "2026",
+        "score": 636,
+        "rank": 57562,
+        "percent": 45.84,
+        "total": 125579
       }
     ],
     "scoreHistory": [
@@ -9806,11 +12893,15 @@ const historicalSchools = [
       {
         "year": "2025",
         "score": 627
+      },
+      {
+        "year": "2026",
+        "score": 636
       }
     ],
-    "avgRank": 54078,
-    "avgScore": 621,
-    "avgPercent": 49.6,
+    "avgRank": 54949,
+    "avgScore": 625,
+    "avgPercent": 48.66,
     "yearlyChanges": [
       {
         "fromYear": "2023",
@@ -9827,14 +12918,22 @@ const historicalSchools = [
         "scoreChange": 26,
         "percentChange": -8.91,
         "trend": "up"
+      },
+      {
+        "fromYear": "2025",
+        "toYear": "2026",
+        "rankChange": -3447,
+        "scoreChange": 9,
+        "percentChange": -0.81,
+        "trend": "down"
       }
     ],
-    "recentTrend": "up",
-    "recentRankChange": 5144,
-    "recentScoreChange": 26,
-    "threeYearRankChange": -5256,
-    "threeYearScoreChange": -7,
-    "threeYearTrend": "down"
+    "recentTrend": "down",
+    "recentRankChange": -3447,
+    "recentScoreChange": 9,
+    "threeYearRankChange": 1697,
+    "threeYearScoreChange": 35,
+    "threeYearTrend": "up"
   },
   {
     "name": "广州市增城区第一中学",
@@ -9903,6 +13002,33 @@ const historicalSchools = [
           "lastScoreSeq": 258
         },
         "outer": null
+      },
+      "2026": {
+        "id": "GZ091",
+        "name": "广州市增城区第一中学",
+        "type": "公办",
+        "scope": "全市",
+        "hukou": {
+          "minScore": 632,
+          "minScoreSeq": 418,
+          "lastVolunteer": 3,
+          "lastScore": 652,
+          "lastScoreSeq": 192
+        },
+        "nonHukou": {
+          "minScore": 632,
+          "minScoreSeq": 382,
+          "lastVolunteer": 3,
+          "lastScore": 667,
+          "lastScoreSeq": 57
+        },
+        "outer": {
+          "minScore": 632,
+          "minScoreSeq": 418,
+          "lastVolunteer": 3,
+          "lastScore": 654,
+          "lastScoreSeq": 528
+        }
       }
     },
     "rankHistory": [
@@ -9926,6 +13052,13 @@ const historicalSchools = [
         "rank": 62181,
         "percent": 53.6,
         "total": 116007
+      },
+      {
+        "year": "2026",
+        "score": 632,
+        "rank": 57562,
+        "percent": 45.84,
+        "total": 125579
       }
     ],
     "scoreHistory": [
@@ -9940,11 +13073,15 @@ const historicalSchools = [
       {
         "year": "2025",
         "score": 608
+      },
+      {
+        "year": "2026",
+        "score": 632
       }
     ],
-    "avgRank": 56766,
-    "avgScore": 614,
-    "avgPercent": 51.91,
+    "avgRank": 56965,
+    "avgScore": 619,
+    "avgPercent": 50.4,
     "yearlyChanges": [
       {
         "fromYear": "2023",
@@ -9961,14 +13098,22 @@ const historicalSchools = [
         "scoreChange": 8,
         "percentChange": -1.96,
         "trend": "down"
+      },
+      {
+        "fromYear": "2025",
+        "toYear": "2026",
+        "rankChange": 4619,
+        "scoreChange": 24,
+        "percentChange": -7.76,
+        "trend": "up"
       }
     ],
-    "recentTrend": "down",
-    "recentRankChange": -2922,
-    "recentScoreChange": 8,
-    "threeYearRankChange": -13322,
-    "threeYearScoreChange": -27,
-    "threeYearTrend": "down"
+    "recentTrend": "up",
+    "recentRankChange": 4619,
+    "recentScoreChange": 24,
+    "threeYearRankChange": 1697,
+    "threeYearScoreChange": 32,
+    "threeYearTrend": "up"
   },
   {
     "name": "广州市增城区高级中学",
@@ -10037,6 +13182,33 @@ const historicalSchools = [
           "lastScoreSeq": 343
         },
         "outer": null
+      },
+      "2026": {
+        "id": "GZ092",
+        "name": "广州市增城区高级中学",
+        "type": "公办",
+        "scope": "全市",
+        "hukou": {
+          "minScore": 592,
+          "minScoreSeq": 210,
+          "lastVolunteer": 2,
+          "lastScore": 617,
+          "lastScoreSeq": 62
+        },
+        "nonHukou": {
+          "minScore": 592,
+          "minScoreSeq": 140,
+          "lastVolunteer": 2,
+          "lastScore": 622,
+          "lastScoreSeq": 124
+        },
+        "outer": {
+          "minScore": 593,
+          "minScoreSeq": 196,
+          "lastVolunteer": 2,
+          "lastScore": 622,
+          "lastScoreSeq": 245
+        }
       }
     },
     "rankHistory": [
@@ -10060,6 +13232,13 @@ const historicalSchools = [
         "rank": 69565,
         "percent": 59.97,
         "total": 116007
+      },
+      {
+        "year": "2026",
+        "score": 592,
+        "rank": 74441,
+        "percent": 59.28,
+        "total": 125579
       }
     ],
     "scoreHistory": [
@@ -10074,11 +13253,15 @@ const historicalSchools = [
       {
         "year": "2025",
         "score": 587
+      },
+      {
+        "year": "2026",
+        "score": 592
       }
     ],
-    "avgRank": 66425,
-    "avgScore": 588,
-    "avgPercent": 60.86,
+    "avgRank": 68429,
+    "avgScore": 589,
+    "avgPercent": 60.47,
     "yearlyChanges": [
       {
         "fromYear": "2023",
@@ -10095,13 +13278,21 @@ const historicalSchools = [
         "scoreChange": 5,
         "percentChange": -2.29,
         "trend": "down"
+      },
+      {
+        "fromYear": "2025",
+        "toYear": "2026",
+        "rankChange": -4876,
+        "scoreChange": 5,
+        "percentChange": -0.69,
+        "trend": "down"
       }
     ],
     "recentTrend": "down",
-    "recentRankChange": -3162,
+    "recentRankChange": -4876,
     "recentScoreChange": 5,
-    "threeYearRankChange": -6259,
-    "threeYearScoreChange": -8,
+    "threeYearRankChange": -8038,
+    "threeYearScoreChange": 10,
     "threeYearTrend": "down"
   },
   {
@@ -10171,6 +13362,33 @@ const historicalSchools = [
           "lastScoreSeq": 21
         },
         "outer": null
+      },
+      "2026": {
+        "id": "GZ093",
+        "name": "广州市增城区新塘中学",
+        "type": "公办",
+        "scope": "全市",
+        "hukou": {
+          "minScore": 632,
+          "minScoreSeq": 428,
+          "lastVolunteer": 4,
+          "lastScore": 633,
+          "lastScoreSeq": 410
+        },
+        "nonHukou": {
+          "minScore": 632,
+          "minScoreSeq": 327,
+          "lastVolunteer": 4,
+          "lastScore": 639,
+          "lastScoreSeq": 37
+        },
+        "outer": {
+          "minScore": 632,
+          "minScoreSeq": 407,
+          "lastVolunteer": 4,
+          "lastScore": 633,
+          "lastScoreSeq": 410
+        }
       }
     },
     "rankHistory": [
@@ -10194,6 +13412,13 @@ const historicalSchools = [
         "rank": 54115,
         "percent": 46.65,
         "total": 116007
+      },
+      {
+        "year": "2026",
+        "score": 632,
+        "rank": 57562,
+        "percent": 45.84,
+        "total": 125579
       }
     ],
     "scoreHistory": [
@@ -10208,11 +13433,15 @@ const historicalSchools = [
       {
         "year": "2025",
         "score": 624
+      },
+      {
+        "year": "2026",
+        "score": 632
       }
     ],
-    "avgRank": 57587,
-    "avgScore": 611,
-    "avgPercent": 52.96,
+    "avgRank": 57581,
+    "avgScore": 616,
+    "avgPercent": 51.18,
     "yearlyChanges": [
       {
         "fromYear": "2023",
@@ -10229,14 +13458,22 @@ const historicalSchools = [
         "scoreChange": 10,
         "percentChange": -5.24,
         "trend": "up"
+      },
+      {
+        "fromYear": "2025",
+        "toYear": "2026",
+        "rankChange": -3447,
+        "scoreChange": 8,
+        "percentChange": -0.81,
+        "trend": "down"
       }
     ],
-    "recentTrend": "up",
-    "recentRankChange": 1226,
-    "recentScoreChange": 10,
-    "threeYearRankChange": 9191,
-    "threeYearScoreChange": 29,
-    "threeYearTrend": "up"
+    "recentTrend": "down",
+    "recentRankChange": -3447,
+    "recentScoreChange": 8,
+    "threeYearRankChange": -2221,
+    "threeYearScoreChange": 18,
+    "threeYearTrend": "down"
   },
   {
     "name": "广州市增城区荔城中学",
@@ -10305,6 +13542,33 @@ const historicalSchools = [
           "lastScoreSeq": 202
         },
         "outer": null
+      },
+      "2026": {
+        "id": "GZ094",
+        "name": "广州市增城区荔城中学",
+        "type": "公办",
+        "scope": "全市",
+        "hukou": {
+          "minScore": 592,
+          "minScoreSeq": 246,
+          "lastVolunteer": 2,
+          "lastScore": 592,
+          "lastScoreSeq": 246
+        },
+        "nonHukou": {
+          "minScore": 595,
+          "minScoreSeq": 63,
+          "lastVolunteer": 1,
+          "lastScore": 595,
+          "lastScoreSeq": 63
+        },
+        "outer": {
+          "minScore": 593,
+          "minScoreSeq": 206,
+          "lastVolunteer": 2,
+          "lastScore": 594,
+          "lastScoreSeq": 405
+        }
       }
     },
     "rankHistory": [
@@ -10328,6 +13592,13 @@ const historicalSchools = [
         "rank": 69565,
         "percent": 59.97,
         "total": 116007
+      },
+      {
+        "year": "2026",
+        "score": 592,
+        "rank": 74441,
+        "percent": 59.28,
+        "total": 125579
       }
     ],
     "scoreHistory": [
@@ -10342,11 +13613,15 @@ const historicalSchools = [
       {
         "year": "2025",
         "score": 587
+      },
+      {
+        "year": "2026",
+        "score": 592
       }
     ],
-    "avgRank": 66425,
-    "avgScore": 588,
-    "avgPercent": 60.86,
+    "avgRank": 68429,
+    "avgScore": 589,
+    "avgPercent": 60.47,
     "yearlyChanges": [
       {
         "fromYear": "2023",
@@ -10363,19 +13638,27 @@ const historicalSchools = [
         "scoreChange": 5,
         "percentChange": -2.29,
         "trend": "down"
+      },
+      {
+        "fromYear": "2025",
+        "toYear": "2026",
+        "rankChange": -4876,
+        "scoreChange": 5,
+        "percentChange": -0.69,
+        "trend": "down"
       }
     ],
     "recentTrend": "down",
-    "recentRankChange": -3162,
+    "recentRankChange": -4876,
     "recentScoreChange": 5,
-    "threeYearRankChange": -6259,
-    "threeYearScoreChange": -8,
+    "threeYearRankChange": -8038,
+    "threeYearScoreChange": 10,
     "threeYearTrend": "down"
   },
   {
     "name": "广州市增城区应元学校",
     "type": "公办",
-    "scope": "增城区",
+    "scope": "全市",
     "years": {
       "2023": {
         "id": "82",
@@ -10439,6 +13722,33 @@ const historicalSchools = [
           "lastScoreSeq": 287
         },
         "outer": null
+      },
+      "2026": {
+        "id": "GZ095",
+        "name": "广州市增城区应元学校",
+        "type": "公办",
+        "scope": "全市",
+        "hukou": {
+          "minScore": 663,
+          "minScoreSeq": 66,
+          "lastVolunteer": 1,
+          "lastScore": 663,
+          "lastScoreSeq": 66
+        },
+        "nonHukou": {
+          "minScore": 667,
+          "minScoreSeq": 311,
+          "lastVolunteer": 1,
+          "lastScore": 667,
+          "lastScoreSeq": 311
+        },
+        "outer": {
+          "minScore": 663,
+          "minScoreSeq": 66,
+          "lastVolunteer": 1,
+          "lastScore": 663,
+          "lastScoreSeq": 66
+        }
       }
     },
     "rankHistory": [
@@ -10462,6 +13772,13 @@ const historicalSchools = [
         "rank": 54115,
         "percent": 46.65,
         "total": 116007
+      },
+      {
+        "year": "2026",
+        "score": 663,
+        "rank": 42762,
+        "percent": 34.05,
+        "total": 125579
       }
     ],
     "scoreHistory": [
@@ -10476,11 +13793,15 @@ const historicalSchools = [
       {
         "year": "2025",
         "score": 627
+      },
+      {
+        "year": "2026",
+        "score": 663
       }
     ],
-    "avgRank": 50038,
-    "avgScore": 633,
-    "avgPercent": 45.79,
+    "avgRank": 48219,
+    "avgScore": 640,
+    "avgPercent": 42.86,
     "yearlyChanges": [
       {
         "fromYear": "2023",
@@ -10497,19 +13818,27 @@ const historicalSchools = [
         "scoreChange": 3,
         "percentChange": -1.28,
         "trend": "down"
+      },
+      {
+        "fromYear": "2025",
+        "toYear": "2026",
+        "rankChange": 11353,
+        "scoreChange": 36,
+        "percentChange": -12.6,
+        "trend": "up"
       }
     ],
-    "recentTrend": "down",
-    "recentRankChange": -3001,
-    "recentScoreChange": 3,
-    "threeYearRankChange": -9231,
-    "threeYearScoreChange": -20,
-    "threeYearTrend": "down"
+    "recentTrend": "up",
+    "recentRankChange": 11353,
+    "recentScoreChange": 36,
+    "threeYearRankChange": 8352,
+    "threeYearScoreChange": 39,
+    "threeYearTrend": "up"
   },
   {
     "name": "广大附中增城实验中学",
     "type": "公办",
-    "scope": "增城区",
+    "scope": "全市",
     "years": {
       "2023": {
         "id": "83",
@@ -10573,6 +13902,33 @@ const historicalSchools = [
           "lastScoreSeq": 23
         },
         "outer": null
+      },
+      "2026": {
+        "id": "GZ096",
+        "name": "广大附中增城实验中学",
+        "type": "公办",
+        "scope": "全市",
+        "hukou": {
+          "minScore": 672,
+          "minScoreSeq": 305,
+          "lastVolunteer": 3,
+          "lastScore": 694,
+          "lastScoreSeq": 289
+        },
+        "nonHukou": {
+          "minScore": 672,
+          "minScoreSeq": 146,
+          "lastVolunteer": 3,
+          "lastScore": 701,
+          "lastScoreSeq": 168
+        },
+        "outer": {
+          "minScore": 674,
+          "minScoreSeq": 121,
+          "lastVolunteer": 3,
+          "lastScore": 698,
+          "lastScoreSeq": 199
+        }
       }
     },
     "rankHistory": [
@@ -10596,6 +13952,13 @@ const historicalSchools = [
         "rank": 36193,
         "percent": 31.2,
         "total": 116007
+      },
+      {
+        "year": "2026",
+        "score": 672,
+        "rank": 37486,
+        "percent": 29.85,
+        "total": 125579
       }
     ],
     "scoreHistory": [
@@ -10610,11 +13973,15 @@ const historicalSchools = [
       {
         "year": "2025",
         "score": 660
+      },
+      {
+        "year": "2026",
+        "score": 672
       }
     ],
-    "avgRank": 43706,
-    "avgScore": 644,
-    "avgPercent": 40.34,
+    "avgRank": 42151,
+    "avgScore": 651,
+    "avgPercent": 37.72,
     "yearlyChanges": [
       {
         "fromYear": "2023",
@@ -10631,13 +13998,21 @@ const historicalSchools = [
         "scoreChange": 15,
         "percentChange": -8.4,
         "trend": "up"
+      },
+      {
+        "fromYear": "2025",
+        "toYear": "2026",
+        "rankChange": -1293,
+        "scoreChange": 12,
+        "percentChange": -1.35,
+        "trend": "down"
       }
     ],
-    "recentTrend": "up",
-    "recentRankChange": 6040,
-    "recentScoreChange": 15,
-    "threeYearRankChange": 16499,
-    "threeYearScoreChange": 33,
+    "recentTrend": "down",
+    "recentRankChange": -1293,
+    "recentScoreChange": 12,
+    "threeYearRankChange": 4747,
+    "threeYearScoreChange": 27,
     "threeYearTrend": "up"
   },
   {
@@ -10707,6 +14082,33 @@ const historicalSchools = [
           "lastScoreSeq": 130
         },
         "outer": null
+      },
+      "2026": {
+        "id": "GZ097",
+        "name": "广州市从化区从化中学",
+        "type": "公办",
+        "scope": "全市",
+        "hukou": {
+          "minScore": 604,
+          "minScoreSeq": 59,
+          "lastVolunteer": 1,
+          "lastScore": 604,
+          "lastScoreSeq": 59
+        },
+        "nonHukou": {
+          "minScore": 617,
+          "minScoreSeq": 302,
+          "lastVolunteer": 1,
+          "lastScore": 617,
+          "lastScoreSeq": 302
+        },
+        "outer": {
+          "minScore": 604,
+          "minScoreSeq": 59,
+          "lastVolunteer": 1,
+          "lastScore": 604,
+          "lastScoreSeq": 59
+        }
       }
     },
     "rankHistory": [
@@ -10730,6 +14132,13 @@ const historicalSchools = [
         "rank": 62181,
         "percent": 53.6,
         "total": 116007
+      },
+      {
+        "year": "2026",
+        "score": 604,
+        "rank": 70581,
+        "percent": 56.2,
+        "total": 125579
       }
     ],
     "scoreHistory": [
@@ -10744,11 +14153,15 @@ const historicalSchools = [
       {
         "year": "2025",
         "score": 609
+      },
+      {
+        "year": "2026",
+        "score": 604
       }
     ],
-    "avgRank": 59277,
-    "avgScore": 609,
-    "avgPercent": 54.29,
+    "avgRank": 62103,
+    "avgScore": 608,
+    "avgPercent": 54.77,
     "yearlyChanges": [
       {
         "fromYear": "2023",
@@ -10765,13 +14178,21 @@ const historicalSchools = [
         "scoreChange": 12,
         "percentChange": -5.43,
         "trend": "up"
+      },
+      {
+        "fromYear": "2025",
+        "toYear": "2026",
+        "rankChange": -8400,
+        "scoreChange": -5,
+        "percentChange": 2.6,
+        "trend": "down"
       }
     ],
-    "recentTrend": "up",
-    "recentRankChange": 776,
-    "recentScoreChange": 12,
-    "threeYearRankChange": -9489,
-    "threeYearScoreChange": -12,
+    "recentTrend": "down",
+    "recentRankChange": -8400,
+    "recentScoreChange": -5,
+    "threeYearRankChange": -7624,
+    "threeYearScoreChange": 7,
     "threeYearTrend": "down"
   },
   {
@@ -10841,6 +14262,33 @@ const historicalSchools = [
           "lastScoreSeq": 405
         },
         "outer": null
+      },
+      "2026": {
+        "id": "GZ098",
+        "name": "广州市从化区第五中学",
+        "type": "公办",
+        "scope": "全市",
+        "hukou": {
+          "minScore": 564,
+          "minScoreSeq": 315,
+          "lastVolunteer": 1,
+          "lastScore": 564,
+          "lastScoreSeq": 315
+        },
+        "nonHukou": {
+          "minScore": 563,
+          "minScoreSeq": 161,
+          "lastVolunteer": 1,
+          "lastScore": 563,
+          "lastScoreSeq": 161
+        },
+        "outer": {
+          "minScore": 565,
+          "minScoreSeq": 219,
+          "lastVolunteer": 1,
+          "lastScore": 565,
+          "lastScoreSeq": 219
+        }
       }
     },
     "rankHistory": [
@@ -10864,6 +14312,13 @@ const historicalSchools = [
         "rank": 76560,
         "percent": 66,
         "total": 116007
+      },
+      {
+        "year": "2026",
+        "score": 564,
+        "rank": 84988,
+        "percent": 67.68,
+        "total": 125579
       }
     ],
     "scoreHistory": [
@@ -10878,11 +14333,15 @@ const historicalSchools = [
       {
         "year": "2025",
         "score": 569
+      },
+      {
+        "year": "2026",
+        "score": 564
       }
     ],
-    "avgRank": 72906,
-    "avgScore": 570,
-    "avgPercent": 66.83,
+    "avgRank": 75927,
+    "avgScore": 569,
+    "avgPercent": 67.04,
     "yearlyChanges": [
       {
         "fromYear": "2023",
@@ -10899,13 +14358,21 @@ const historicalSchools = [
         "scoreChange": -13,
         "percentChange": 3.74,
         "trend": "down"
+      },
+      {
+        "fromYear": "2025",
+        "toYear": "2026",
+        "rankChange": -8428,
+        "scoreChange": -5,
+        "percentChange": 1.68,
+        "trend": "down"
       }
     ],
     "recentTrend": "down",
-    "recentRankChange": -10157,
-    "recentScoreChange": -13,
-    "threeYearRankChange": -804,
-    "threeYearScoreChange": 10,
+    "recentRankChange": -8428,
+    "recentScoreChange": -5,
+    "threeYearRankChange": -18585,
+    "threeYearScoreChange": -18,
     "threeYearTrend": "down"
   },
   {
@@ -10975,6 +14442,33 @@ const historicalSchools = [
           "lastScoreSeq": 158
         },
         "outer": null
+      },
+      "2026": {
+        "id": "GZ099",
+        "name": "广州市从化区流溪中学",
+        "type": "公办",
+        "scope": "全市",
+        "hukou": {
+          "minScore": 592,
+          "minScoreSeq": 307,
+          "lastVolunteer": 3,
+          "lastScore": 630,
+          "lastScoreSeq": 263
+        },
+        "nonHukou": {
+          "minScore": 592,
+          "minScoreSeq": 325,
+          "lastVolunteer": 2,
+          "lastScore": 592,
+          "lastScoreSeq": 325
+        },
+        "outer": {
+          "minScore": 592,
+          "minScoreSeq": 307,
+          "lastVolunteer": 3,
+          "lastScore": 630,
+          "lastScoreSeq": 43
+        }
       }
     },
     "rankHistory": [
@@ -10998,6 +14492,13 @@ const historicalSchools = [
         "rank": 69565,
         "percent": 59.97,
         "total": 116007
+      },
+      {
+        "year": "2026",
+        "score": 592,
+        "rank": 74441,
+        "percent": 59.28,
+        "total": 125579
       }
     ],
     "scoreHistory": [
@@ -11012,11 +14513,15 @@ const historicalSchools = [
       {
         "year": "2025",
         "score": 587
+      },
+      {
+        "year": "2026",
+        "score": 592
       }
     ],
-    "avgRank": 64043,
-    "avgScore": 597,
-    "avgPercent": 58.63,
+    "avgRank": 66643,
+    "avgScore": 596,
+    "avgPercent": 58.79,
     "yearlyChanges": [
       {
         "fromYear": "2023",
@@ -11033,13 +14538,21 @@ const historicalSchools = [
         "scoreChange": -22,
         "percentChange": 4.41,
         "trend": "down"
+      },
+      {
+        "fromYear": "2025",
+        "toYear": "2026",
+        "rankChange": -4876,
+        "scoreChange": 5,
+        "percentChange": -0.69,
+        "trend": "down"
       }
     ],
     "recentTrend": "down",
-    "recentRankChange": -10306,
-    "recentScoreChange": -22,
-    "threeYearRankChange": -6259,
-    "threeYearScoreChange": -8,
+    "recentRankChange": -4876,
+    "recentScoreChange": 5,
+    "threeYearRankChange": -15182,
+    "threeYearScoreChange": -17,
     "threeYearTrend": "down"
   },
   {
@@ -11207,6 +14720,21 @@ const historicalSchools = [
         },
         "nonHukou": null,
         "outer": null
+      },
+      "2026": {
+        "id": "GZM030",
+        "name": "广州天省实验学校",
+        "type": "民办",
+        "scope": "全市",
+        "hukou": {
+          "minScore": 664,
+          "minScoreSeq": 154,
+          "lastVolunteer": 1,
+          "lastScore": 664,
+          "lastScoreSeq": 154
+        },
+        "nonHukou": null,
+        "outer": null
       }
     },
     "rankHistory": [
@@ -11230,6 +14758,13 @@ const historicalSchools = [
         "rank": 45415,
         "percent": 39.15,
         "total": 116007
+      },
+      {
+        "year": "2026",
+        "score": 664,
+        "rank": 42762,
+        "percent": 34.05,
+        "total": 125579
       }
     ],
     "scoreHistory": [
@@ -11244,11 +14779,15 @@ const historicalSchools = [
       {
         "year": "2025",
         "score": 648
+      },
+      {
+        "year": "2026",
+        "score": 664
       }
     ],
-    "avgRank": 41174,
-    "avgScore": 651,
-    "avgPercent": 37.6,
+    "avgRank": 41571,
+    "avgScore": 654,
+    "avgPercent": 36.72,
     "yearlyChanges": [
       {
         "fromYear": "2023",
@@ -11265,14 +14804,22 @@ const historicalSchools = [
         "scoreChange": 26,
         "percentChange": -8.78,
         "trend": "up"
+      },
+      {
+        "fromYear": "2025",
+        "toYear": "2026",
+        "rankChange": 2653,
+        "scoreChange": 16,
+        "percentChange": -5.1,
+        "trend": "up"
       }
     ],
     "recentTrend": "up",
-    "recentRankChange": 5699,
-    "recentScoreChange": 26,
-    "threeYearRankChange": -18421,
-    "threeYearScoreChange": -34,
-    "threeYearTrend": "down"
+    "recentRankChange": 2653,
+    "recentScoreChange": 16,
+    "threeYearRankChange": 8352,
+    "threeYearScoreChange": 42,
+    "threeYearTrend": "up"
   },
   {
     "name": "广州市华美英语实验学校（普通高中）",
@@ -11323,6 +14870,21 @@ const historicalSchools = [
         },
         "nonHukou": null,
         "outer": null
+      },
+      "2026": {
+        "id": "GZM031",
+        "name": "广州市华美英语实验学校（普通高中）",
+        "type": "民办",
+        "scope": "全市",
+        "hukou": {
+          "minScore": 412,
+          "minScoreSeq": 48,
+          "lastVolunteer": 6,
+          "lastScore": 424,
+          "lastScoreSeq": 228
+        },
+        "nonHukou": null,
+        "outer": null
       }
     },
     "rankHistory": [
@@ -11346,6 +14908,13 @@ const historicalSchools = [
         "rank": 98826,
         "percent": 85.19,
         "total": 116007
+      },
+      {
+        "year": "2026",
+        "score": 412,
+        "rank": 123565,
+        "percent": 98.4,
+        "total": 125579
       }
     ],
     "scoreHistory": [
@@ -11360,11 +14929,15 @@ const historicalSchools = [
       {
         "year": "2025",
         "score": 487
+      },
+      {
+        "year": "2026",
+        "score": 412
       }
     ],
-    "avgRank": 88409,
-    "avgScore": 511,
-    "avgPercent": 80.81,
+    "avgRank": 97198,
+    "avgScore": 487,
+    "avgPercent": 85.21,
     "yearlyChanges": [
       {
         "fromYear": "2023",
@@ -11381,13 +14954,21 @@ const historicalSchools = [
         "scoreChange": -15,
         "percentChange": 2.59,
         "trend": "down"
+      },
+      {
+        "fromYear": "2025",
+        "toYear": "2026",
+        "rankChange": -24739,
+        "scoreChange": -75,
+        "percentChange": 13.21,
+        "trend": "down"
       }
     ],
     "recentTrend": "down",
-    "recentRankChange": -10736,
-    "recentScoreChange": -15,
-    "threeYearRankChange": -20515,
-    "threeYearScoreChange": -58,
+    "recentRankChange": -24739,
+    "recentScoreChange": -75,
+    "threeYearRankChange": -35475,
+    "threeYearScoreChange": -90,
     "threeYearTrend": "down"
   },
   {
@@ -11467,7 +15048,10 @@ const historicalSchools = [
     ],
     "recentTrend": "down",
     "recentRankChange": -9779,
-    "recentScoreChange": -43
+    "recentScoreChange": -43,
+    "threeYearRankChange": -9779,
+    "threeYearScoreChange": -43,
+    "threeYearTrend": "down"
   },
   {
     "name": "广州市华美英语实验学校（港澳台）",
@@ -11634,6 +15218,21 @@ const historicalSchools = [
         },
         "nonHukou": null,
         "outer": null
+      },
+      "2026": {
+        "id": "GZM007",
+        "name": "广州市华美英语实验学校（公费班）",
+        "type": "民办",
+        "scope": "全市",
+        "hukou": {
+          "minScore": 658,
+          "minScoreSeq": 466,
+          "lastVolunteer": 1,
+          "lastScore": 658,
+          "lastScoreSeq": 466
+        },
+        "nonHukou": null,
+        "outer": null
       }
     },
     "rankHistory": [
@@ -11657,6 +15256,13 @@ const historicalSchools = [
         "rank": 49880,
         "percent": 43,
         "total": 116007
+      },
+      {
+        "year": "2026",
+        "score": 658,
+        "rank": 47968,
+        "percent": 38.2,
+        "total": 125579
       }
     ],
     "scoreHistory": [
@@ -11671,11 +15277,15 @@ const historicalSchools = [
       {
         "year": "2025",
         "score": 634
+      },
+      {
+        "year": "2026",
+        "score": 658
       }
     ],
-    "avgRank": 44230,
-    "avgScore": 644,
-    "avgPercent": 40.43,
+    "avgRank": 45165,
+    "avgScore": 648,
+    "avgPercent": 39.87,
     "yearlyChanges": [
       {
         "fromYear": "2023",
@@ -11692,13 +15302,21 @@ const historicalSchools = [
         "scoreChange": -15,
         "percentChange": 3.4,
         "trend": "down"
+      },
+      {
+        "fromYear": "2025",
+        "toYear": "2026",
+        "rankChange": 1912,
+        "scoreChange": 24,
+        "percentChange": -4.8,
+        "trend": "up"
       }
     ],
-    "recentTrend": "down",
-    "recentRankChange": -7647,
-    "recentScoreChange": -15,
-    "threeYearRankChange": -9303,
-    "threeYearScoreChange": -16,
+    "recentTrend": "up",
+    "recentRankChange": 1912,
+    "recentScoreChange": 24,
+    "threeYearRankChange": -5735,
+    "threeYearScoreChange": 9,
     "threeYearTrend": "down"
   },
   {
@@ -11750,6 +15368,21 @@ const historicalSchools = [
         },
         "nonHukou": null,
         "outer": null
+      },
+      "2026": {
+        "id": "GZM033",
+        "name": "广州市庆丰实验学校",
+        "type": "民办",
+        "scope": "全市",
+        "hukou": {
+          "minScore": 459,
+          "minScoreSeq": 164,
+          "lastVolunteer": 1,
+          "lastScore": 459,
+          "lastScoreSeq": 164
+        },
+        "nonHukou": null,
+        "outer": null
       }
     },
     "rankHistory": [
@@ -11773,6 +15406,13 @@ const historicalSchools = [
         "rank": 82758,
         "percent": 71.34,
         "total": 116007
+      },
+      {
+        "year": "2026",
+        "score": 459,
+        "rank": 114928,
+        "percent": 91.52,
+        "total": 125579
       }
     ],
     "scoreHistory": [
@@ -11787,11 +15427,15 @@ const historicalSchools = [
       {
         "year": "2025",
         "score": 548
+      },
+      {
+        "year": "2026",
+        "score": 459
       }
     ],
-    "avgRank": 67284,
-    "avgScore": 584,
-    "avgPercent": 61.28,
+    "avgRank": 79195,
+    "avgScore": 553,
+    "avgPercent": 68.84,
     "yearlyChanges": [
       {
         "fromYear": "2023",
@@ -11808,13 +15452,21 @@ const historicalSchools = [
         "scoreChange": -34,
         "percentChange": 9.08,
         "trend": "down"
+      },
+      {
+        "fromYear": "2025",
+        "toYear": "2026",
+        "rankChange": -32170,
+        "scoreChange": -89,
+        "percentChange": 20.18,
+        "trend": "down"
       }
     ],
     "recentTrend": "down",
-    "recentRankChange": -16355,
-    "recentScoreChange": -34,
-    "threeYearRankChange": -30066,
-    "threeYearScoreChange": -74,
+    "recentRankChange": -32170,
+    "recentScoreChange": -89,
+    "threeYearRankChange": -48525,
+    "threeYearScoreChange": -123,
     "threeYearTrend": "down"
   },
   {
@@ -11866,6 +15518,21 @@ const historicalSchools = [
         },
         "nonHukou": null,
         "outer": null
+      },
+      "2026": {
+        "id": "GZM034",
+        "name": "广州市实验外语学校",
+        "type": "民办",
+        "scope": "全市",
+        "hukou": {
+          "minScore": 592,
+          "minScoreSeq": 323,
+          "lastVolunteer": 2,
+          "lastScore": 593,
+          "lastScoreSeq": 329
+        },
+        "nonHukou": null,
+        "outer": null
       }
     },
     "rankHistory": [
@@ -11889,6 +15556,13 @@ const historicalSchools = [
         "rank": 62181,
         "percent": 53.6,
         "total": 116007
+      },
+      {
+        "year": "2026",
+        "score": 592,
+        "rank": 74441,
+        "percent": 59.28,
+        "total": 125579
       }
     ],
     "scoreHistory": [
@@ -11903,11 +15577,15 @@ const historicalSchools = [
       {
         "year": "2025",
         "score": 609
+      },
+      {
+        "year": "2026",
+        "score": 592
       }
     ],
-    "avgRank": 51291,
-    "avgScore": 628,
-    "avgPercent": 46.74,
+    "avgRank": 57078,
+    "avgScore": 619,
+    "avgPercent": 49.87,
     "yearlyChanges": [
       {
         "fromYear": "2023",
@@ -11924,13 +15602,21 @@ const historicalSchools = [
         "scoreChange": -13,
         "percentChange": 5.67,
         "trend": "down"
+      },
+      {
+        "fromYear": "2025",
+        "toYear": "2026",
+        "rankChange": -12260,
+        "scoreChange": -17,
+        "percentChange": 5.68,
+        "trend": "down"
       }
     ],
     "recentTrend": "down",
-    "recentRankChange": -11067,
-    "recentScoreChange": -13,
-    "threeYearRankChange": -21604,
-    "threeYearScoreChange": -43,
+    "recentRankChange": -12260,
+    "recentScoreChange": -17,
+    "threeYearRankChange": -23327,
+    "threeYearScoreChange": -30,
     "threeYearTrend": "down"
   },
   {
@@ -11982,6 +15668,21 @@ const historicalSchools = [
         },
         "nonHukou": null,
         "outer": null
+      },
+      "2026": {
+        "id": "GZM035",
+        "name": "广州市黄广中学",
+        "type": "民办",
+        "scope": "全市",
+        "hukou": {
+          "minScore": 694,
+          "minScoreSeq": 174,
+          "lastVolunteer": 1,
+          "lastScore": 694,
+          "lastScoreSeq": 174
+        },
+        "nonHukou": null,
+        "outer": null
       }
     },
     "rankHistory": [
@@ -12005,6 +15706,13 @@ const historicalSchools = [
         "rank": 36193,
         "percent": 31.2,
         "total": 116007
+      },
+      {
+        "year": "2026",
+        "score": 694,
+        "rank": 26644,
+        "percent": 21.22,
+        "total": 125579
       }
     ],
     "scoreHistory": [
@@ -12019,11 +15727,15 @@ const historicalSchools = [
       {
         "year": "2025",
         "score": 667
+      },
+      {
+        "year": "2026",
+        "score": 694
       }
     ],
-    "avgRank": 30260,
-    "avgScore": 677,
-    "avgPercent": 27.62,
+    "avgRank": 29356,
+    "avgScore": 681,
+    "avgPercent": 26.02,
     "yearlyChanges": [
       {
         "fromYear": "2023",
@@ -12040,13 +15752,21 @@ const historicalSchools = [
         "scoreChange": -21,
         "percentChange": 9.6,
         "trend": "down"
+      },
+      {
+        "fromYear": "2025",
+        "toYear": "2026",
+        "rankChange": 9549,
+        "scoreChange": 27,
+        "percentChange": -9.98,
+        "trend": "up"
       }
     ],
-    "recentTrend": "down",
-    "recentRankChange": -13152,
-    "recentScoreChange": -21,
-    "threeYearRankChange": -4647,
-    "threeYearScoreChange": -9,
+    "recentTrend": "up",
+    "recentRankChange": 9549,
+    "recentScoreChange": 27,
+    "threeYearRankChange": -3603,
+    "threeYearScoreChange": 6,
     "threeYearTrend": "down"
   },
   {
@@ -12098,6 +15818,21 @@ const historicalSchools = [
         },
         "nonHukou": null,
         "outer": null
+      },
+      "2026": {
+        "id": "GZM025",
+        "name": "广州理工实验学校（公费班）",
+        "type": "民办",
+        "scope": "全市",
+        "hukou": {
+          "minScore": 685,
+          "minScoreSeq": 454,
+          "lastVolunteer": 1,
+          "lastScore": 685,
+          "lastScoreSeq": 454
+        },
+        "nonHukou": null,
+        "outer": null
       }
     },
     "rankHistory": [
@@ -12121,6 +15856,13 @@ const historicalSchools = [
         "rank": 31526,
         "percent": 27.18,
         "total": 116007
+      },
+      {
+        "year": "2026",
+        "score": 685,
+        "rank": 32027,
+        "percent": 25.5,
+        "total": 125579
       }
     ],
     "scoreHistory": [
@@ -12135,11 +15877,15 @@ const historicalSchools = [
       {
         "year": "2025",
         "score": 679
+      },
+      {
+        "year": "2026",
+        "score": 685
       }
     ],
-    "avgRank": 27187,
-    "avgScore": 680,
-    "avgPercent": 24.84,
+    "avgRank": 28397,
+    "avgScore": 682,
+    "avgPercent": 25,
     "yearlyChanges": [
       {
         "fromYear": "2023",
@@ -12156,13 +15902,21 @@ const historicalSchools = [
         "scoreChange": -2,
         "percentChange": 5.58,
         "trend": "down"
+      },
+      {
+        "fromYear": "2025",
+        "toYear": "2026",
+        "rankChange": -501,
+        "scoreChange": 6,
+        "percentChange": -1.68,
+        "trend": "down"
       }
     ],
     "recentTrend": "down",
-    "recentRankChange": -8485,
-    "recentScoreChange": -2,
-    "threeYearRankChange": -4532,
-    "threeYearScoreChange": -2,
+    "recentRankChange": -501,
+    "recentScoreChange": 6,
+    "threeYearRankChange": -8986,
+    "threeYearScoreChange": 4,
     "threeYearTrend": "down"
   },
   {
@@ -12203,7 +15957,14 @@ const historicalSchools = [
     ],
     "avgRank": 56442,
     "avgScore": 611,
-    "avgPercent": 53.8
+    "avgPercent": 53.8,
+    "yearlyChanges": [],
+    "recentTrend": "stable",
+    "recentRankChange": 0,
+    "recentScoreChange": 0,
+    "threeYearRankChange": 0,
+    "threeYearScoreChange": 0,
+    "threeYearTrend": "stable"
   },
   {
     "name": "广东实验中学（中外合作办学项目）（中英课程艺术设计班）",
@@ -12243,7 +16004,14 @@ const historicalSchools = [
     ],
     "avgRank": 69860,
     "avgScore": 573,
-    "avgPercent": 66.59
+    "avgPercent": 66.59,
+    "yearlyChanges": [],
+    "recentTrend": "stable",
+    "recentRankChange": 0,
+    "recentScoreChange": 0,
+    "threeYearRankChange": 0,
+    "threeYearScoreChange": 0,
+    "threeYearTrend": "stable"
   },
   {
     "name": "广东实验中学（中外合作办学项目）（中英A-Level课程班）",
@@ -12283,7 +16051,14 @@ const historicalSchools = [
     ],
     "avgRank": 69860,
     "avgScore": 575,
-    "avgPercent": 66.59
+    "avgPercent": 66.59,
+    "yearlyChanges": [],
+    "recentTrend": "stable",
+    "recentRankChange": 0,
+    "recentScoreChange": 0,
+    "threeYearRankChange": 0,
+    "threeYearScoreChange": 0,
+    "threeYearTrend": "stable"
   },
   {
     "name": "广东广雅中学（本部校区）（中外合作办学项目）",
@@ -12323,7 +16098,14 @@ const historicalSchools = [
     ],
     "avgRank": 63306,
     "avgScore": 596,
-    "avgPercent": 60.35
+    "avgPercent": 60.35,
+    "yearlyChanges": [],
+    "recentTrend": "stable",
+    "recentRankChange": 0,
+    "recentScoreChange": 0,
+    "threeYearRankChange": 0,
+    "threeYearScoreChange": 0,
+    "threeYearTrend": "stable"
   },
   {
     "name": "广州市执信中学（二沙岛校区）（中外合作办学项目）",
@@ -12363,7 +16145,14 @@ const historicalSchools = [
     ],
     "avgRank": 78311,
     "avgScore": 545,
-    "avgPercent": 74.65
+    "avgPercent": 74.65,
+    "yearlyChanges": [],
+    "recentTrend": "stable",
+    "recentRankChange": 0,
+    "recentScoreChange": 0,
+    "threeYearRankChange": 0,
+    "threeYearScoreChange": 0,
+    "threeYearTrend": "stable"
   },
   {
     "name": "广州市第六中学（中外合作办学项目）",
@@ -12403,7 +16192,14 @@ const historicalSchools = [
     ],
     "avgRank": 72889,
     "avgScore": 561,
-    "avgPercent": 69.48
+    "avgPercent": 69.48,
+    "yearlyChanges": [],
+    "recentTrend": "stable",
+    "recentRankChange": 0,
+    "recentScoreChange": 0,
+    "threeYearRankChange": 0,
+    "threeYearScoreChange": 0,
+    "threeYearTrend": "stable"
   },
   {
     "name": "广州外国语学校（中外合作办学项目）（AP课程）",
@@ -12454,6 +16250,21 @@ const historicalSchools = [
         },
         "nonHukou": null,
         "outer": null
+      },
+      "2026": {
+        "id": "GZM045",
+        "name": "广州外国语学校（中外合作办学项目）（AP课程）",
+        "type": "中外合作",
+        "scope": "全市",
+        "hukou": {
+          "minScore": 636,
+          "minScoreSeq": 206,
+          "lastVolunteer": 2,
+          "lastScore": 667,
+          "lastScoreSeq": 409
+        },
+        "nonHukou": null,
+        "outer": null
       }
     },
     "rankHistory": [
@@ -12477,6 +16288,13 @@ const historicalSchools = [
         "rank": 36193,
         "percent": 31.2,
         "total": 116007
+      },
+      {
+        "year": "2026",
+        "score": 636,
+        "rank": 57562,
+        "percent": 45.84,
+        "total": 125579
       }
     ],
     "scoreHistory": [
@@ -12491,11 +16309,15 @@ const historicalSchools = [
       {
         "year": "2025",
         "score": 668
+      },
+      {
+        "year": "2026",
+        "score": 636
       }
     ],
-    "avgRank": 30444,
-    "avgScore": 675,
-    "avgPercent": 27.75,
+    "avgRank": 37224,
+    "avgScore": 665,
+    "avgPercent": 32.27,
     "yearlyChanges": [
       {
         "fromYear": "2023",
@@ -12512,13 +16334,21 @@ const historicalSchools = [
         "scoreChange": 5,
         "percentChange": 0.46,
         "trend": "down"
+      },
+      {
+        "fromYear": "2025",
+        "toYear": "2026",
+        "rankChange": -21369,
+        "scoreChange": -32,
+        "percentChange": 14.64,
+        "trend": "down"
       }
     ],
     "recentTrend": "down",
-    "recentRankChange": -3406,
-    "recentScoreChange": 5,
-    "threeYearRankChange": -13840,
-    "threeYearScoreChange": -25,
+    "recentRankChange": -21369,
+    "recentScoreChange": -32,
+    "threeYearRankChange": -24775,
+    "threeYearScoreChange": -27,
     "threeYearTrend": "down"
   },
   {
@@ -12570,6 +16400,21 @@ const historicalSchools = [
         },
         "nonHukou": null,
         "outer": null
+      },
+      "2026": {
+        "id": "GZM046",
+        "name": "广州外国语学校（中外合作办学项目）（A-Level课程）",
+        "type": "中外合作",
+        "scope": "全市",
+        "hukou": {
+          "minScore": 672,
+          "minScoreSeq": 71,
+          "lastVolunteer": 2,
+          "lastScore": 704,
+          "lastScoreSeq": 16
+        },
+        "nonHukou": null,
+        "outer": null
       }
     },
     "rankHistory": [
@@ -12593,6 +16438,13 @@ const historicalSchools = [
         "rank": 49880,
         "percent": 43,
         "total": 116007
+      },
+      {
+        "year": "2026",
+        "score": 672,
+        "rank": 37486,
+        "percent": 29.85,
+        "total": 125579
       }
     ],
     "scoreHistory": [
@@ -12607,11 +16459,15 @@ const historicalSchools = [
       {
         "year": "2025",
         "score": 636
+      },
+      {
+        "year": "2026",
+        "score": 672
       }
     ],
-    "avgRank": 36348,
-    "avgScore": 662,
-    "avgPercent": 33.01,
+    "avgRank": 36633,
+    "avgScore": 665,
+    "avgPercent": 32.22,
     "yearlyChanges": [
       {
         "fromYear": "2023",
@@ -12628,13 +16484,21 @@ const historicalSchools = [
         "scoreChange": -48,
         "percentChange": 21.4,
         "trend": "down"
+      },
+      {
+        "fromYear": "2025",
+        "toYear": "2026",
+        "rankChange": 12394,
+        "scoreChange": 36,
+        "percentChange": -13.15,
+        "trend": "up"
       }
     ],
-    "recentTrend": "down",
-    "recentRankChange": -26839,
-    "recentScoreChange": -48,
-    "threeYearRankChange": -13757,
-    "threeYearScoreChange": -31,
+    "recentTrend": "up",
+    "recentRankChange": 12394,
+    "recentScoreChange": 36,
+    "threeYearRankChange": -14445,
+    "threeYearScoreChange": -12,
     "threeYearTrend": "down"
   },
   {
@@ -12686,6 +16550,21 @@ const historicalSchools = [
         },
         "nonHukou": null,
         "outer": null
+      },
+      "2026": {
+        "id": "GZM047",
+        "name": "广州外国语学校（中外合作办学项目）（IB-DP课程）",
+        "type": "中外合作",
+        "scope": "全市",
+        "hukou": {
+          "minScore": 502,
+          "minScoreSeq": 10,
+          "lastVolunteer": 2,
+          "lastScore": 502,
+          "lastScoreSeq": 10
+        },
+        "nonHukou": null,
+        "outer": null
       }
     },
     "rankHistory": [
@@ -12709,6 +16588,13 @@ const historicalSchools = [
         "rank": 82758,
         "percent": 71.34,
         "total": 116007
+      },
+      {
+        "year": "2026",
+        "score": 502,
+        "rank": 102700,
+        "percent": 81.78,
+        "total": 125579
       }
     ],
     "scoreHistory": [
@@ -12723,11 +16609,15 @@ const historicalSchools = [
       {
         "year": "2025",
         "score": 542
+      },
+      {
+        "year": "2026",
+        "score": 502
       }
     ],
-    "avgRank": 83053,
-    "avgScore": 531,
-    "avgPercent": 76.2,
+    "avgRank": 87965,
+    "avgScore": 524,
+    "avgPercent": 77.59,
     "yearlyChanges": [
       {
         "fromYear": "2023",
@@ -12744,13 +16634,21 @@ const historicalSchools = [
         "scoreChange": 37,
         "percentChange": -11.26,
         "trend": "up"
+      },
+      {
+        "fromYear": "2025",
+        "toYear": "2026",
+        "rankChange": -19942,
+        "scoreChange": -40,
+        "percentChange": 10.44,
+        "trend": "down"
       }
     ],
-    "recentTrend": "up",
-    "recentRankChange": 5332,
-    "recentScoreChange": 37,
-    "threeYearRankChange": -4447,
-    "threeYearScoreChange": -4,
+    "recentTrend": "down",
+    "recentRankChange": -19942,
+    "recentScoreChange": -40,
+    "threeYearRankChange": -14610,
+    "threeYearScoreChange": -3,
     "threeYearTrend": "down"
   },
   {
@@ -12802,6 +16700,21 @@ const historicalSchools = [
         },
         "nonHukou": null,
         "outer": null
+      },
+      "2026": {
+        "id": "GZM049",
+        "name": "广州天省实验学校（中外合作办学项目）",
+        "type": "中外合作",
+        "scope": "全市",
+        "hukou": {
+          "minScore": 458,
+          "minScoreSeq": 10,
+          "lastVolunteer": 1,
+          "lastScore": 458,
+          "lastScoreSeq": 10
+        },
+        "nonHukou": null,
+        "outer": null
       }
     },
     "rankHistory": [
@@ -12825,6 +16738,13 @@ const historicalSchools = [
         "rank": 91344,
         "percent": 78.74,
         "total": 116007
+      },
+      {
+        "year": "2026",
+        "score": 458,
+        "rank": 114928,
+        "percent": 91.52,
+        "total": 125579
       }
     ],
     "scoreHistory": [
@@ -12839,11 +16759,15 @@ const historicalSchools = [
       {
         "year": "2025",
         "score": 515
+      },
+      {
+        "year": "2026",
+        "score": 458
       }
     ],
-    "avgRank": 85172,
-    "avgScore": 525,
-    "avgPercent": 77.97,
+    "avgRank": 92611,
+    "avgScore": 508,
+    "avgPercent": 81.36,
     "yearlyChanges": [
       {
         "fromYear": "2023",
@@ -12860,13 +16784,21 @@ const historicalSchools = [
         "scoreChange": 1,
         "percentChange": -1.77,
         "trend": "down"
+      },
+      {
+        "fromYear": "2025",
+        "toYear": "2026",
+        "rankChange": -23584,
+        "scoreChange": -57,
+        "percentChange": 12.78,
+        "trend": "down"
       }
     ],
     "recentTrend": "down",
-    "recentRankChange": -5483,
-    "recentScoreChange": 1,
-    "threeYearRankChange": -13033,
-    "threeYearScoreChange": -30,
+    "recentRankChange": -23584,
+    "recentScoreChange": -57,
+    "threeYearRankChange": -29067,
+    "threeYearScoreChange": -56,
     "threeYearTrend": "down"
   },
   {
@@ -12907,7 +16839,14 @@ const historicalSchools = [
     ],
     "avgRank": 78311,
     "avgScore": 548,
-    "avgPercent": 74.65
+    "avgPercent": 74.65,
+    "yearlyChanges": [],
+    "recentTrend": "stable",
+    "recentRankChange": 0,
+    "recentScoreChange": 0,
+    "threeYearRankChange": 0,
+    "threeYearScoreChange": 0,
+    "threeYearTrend": "stable"
   },
   {
     "name": "华南师范大学附属中学（石牌校区）",
@@ -12955,6 +16894,27 @@ const historicalSchools = [
           "lastScoreSeq": 14
         },
         "outer": null
+      },
+      "2026": {
+        "id": "GZ001",
+        "name": "华南师范大学附属中学（石牌校区）",
+        "type": "公办",
+        "scope": "全市",
+        "hukou": {
+          "minScore": 739,
+          "minScoreSeq": 83,
+          "lastVolunteer": 1,
+          "lastScore": 739,
+          "lastScoreSeq": 83
+        },
+        "nonHukou": {
+          "minScore": 741,
+          "minScoreSeq": 188,
+          "lastVolunteer": 1,
+          "lastScore": 741,
+          "lastScoreSeq": 188
+        },
+        "outer": null
       }
     },
     "rankHistory": [
@@ -12971,6 +16931,13 @@ const historicalSchools = [
         "rank": 2644,
         "percent": 2.28,
         "total": 116007
+      },
+      {
+        "year": "2026",
+        "score": 739,
+        "rank": 7350,
+        "percent": 5.85,
+        "total": 125579
       }
     ],
     "scoreHistory": [
@@ -12981,11 +16948,15 @@ const historicalSchools = [
       {
         "year": "2025",
         "score": 740
+      },
+      {
+        "year": "2026",
+        "score": 739
       }
     ],
-    "avgRank": 6382,
-    "avgScore": 730,
-    "avgPercent": 5.88,
+    "avgRank": 6705,
+    "avgScore": 733,
+    "avgPercent": 5.87,
     "yearlyChanges": [
       {
         "fromYear": "2024",
@@ -12994,11 +16965,22 @@ const historicalSchools = [
         "scoreChange": 21,
         "percentChange": -7.21,
         "trend": "up"
+      },
+      {
+        "fromYear": "2025",
+        "toYear": "2026",
+        "rankChange": -4706,
+        "scoreChange": -1,
+        "percentChange": 3.57,
+        "trend": "down"
       }
     ],
-    "recentTrend": "up",
-    "recentRankChange": 7476,
-    "recentScoreChange": 21
+    "recentTrend": "down",
+    "recentRankChange": -4706,
+    "recentScoreChange": -1,
+    "threeYearRankChange": 2770,
+    "threeYearScoreChange": 20,
+    "threeYearTrend": "up"
   },
   {
     "name": "华南师范大学附属中学（知识城校区）",
@@ -13046,6 +17028,27 @@ const historicalSchools = [
           "lastScoreSeq": 271
         },
         "outer": null
+      },
+      "2026": {
+        "id": "GZ002",
+        "name": "华南师范大学附属中学（知识城校区）",
+        "type": "公办",
+        "scope": "全市",
+        "hukou": {
+          "minScore": 735,
+          "minScoreSeq": 302,
+          "lastVolunteer": 1,
+          "lastScore": 735,
+          "lastScoreSeq": 302
+        },
+        "nonHukou": {
+          "minScore": 735,
+          "minScoreSeq": 325,
+          "lastVolunteer": 1,
+          "lastScore": 735,
+          "lastScoreSeq": 325
+        },
+        "outer": null
       }
     },
     "rankHistory": [
@@ -13062,6 +17065,13 @@ const historicalSchools = [
         "rank": 8737,
         "percent": 7.53,
         "total": 116007
+      },
+      {
+        "year": "2026",
+        "score": 735,
+        "rank": 7350,
+        "percent": 5.85,
+        "total": 125579
       }
     ],
     "scoreHistory": [
@@ -13072,11 +17082,15 @@ const historicalSchools = [
       {
         "year": "2025",
         "score": 727
+      },
+      {
+        "year": "2026",
+        "score": 735
       }
     ],
-    "avgRank": 13595,
-    "avgScore": 710,
-    "avgPercent": 12.42,
+    "avgRank": 11513,
+    "avgScore": 718,
+    "avgPercent": 10.23,
     "yearlyChanges": [
       {
         "fromYear": "2024",
@@ -13085,11 +17099,22 @@ const historicalSchools = [
         "scoreChange": 34,
         "percentChange": -9.77,
         "trend": "up"
+      },
+      {
+        "fromYear": "2025",
+        "toYear": "2026",
+        "rankChange": 1387,
+        "scoreChange": 8,
+        "percentChange": -1.68,
+        "trend": "up"
       }
     ],
     "recentTrend": "up",
-    "recentRankChange": 9716,
-    "recentScoreChange": 34
+    "recentRankChange": 1387,
+    "recentScoreChange": 8,
+    "threeYearRankChange": 11103,
+    "threeYearScoreChange": 42,
+    "threeYearTrend": "up"
   },
   {
     "name": "广东实验中学（荔湾校区）",
@@ -13137,6 +17162,27 @@ const historicalSchools = [
           "lastScoreSeq": 106
         },
         "outer": null
+      },
+      "2026": {
+        "id": "GZ003",
+        "name": "广东实验中学（荔湾校区）",
+        "type": "公办",
+        "scope": "全市",
+        "hukou": {
+          "minScore": 740,
+          "minScoreSeq": 39,
+          "lastVolunteer": 1,
+          "lastScore": 740,
+          "lastScoreSeq": 39
+        },
+        "nonHukou": {
+          "minScore": 740,
+          "minScoreSeq": 43,
+          "lastVolunteer": 1,
+          "lastScore": 740,
+          "lastScoreSeq": 43
+        },
+        "outer": null
       }
     },
     "rankHistory": [
@@ -13153,6 +17199,13 @@ const historicalSchools = [
         "rank": 8737,
         "percent": 7.53,
         "total": 116007
+      },
+      {
+        "year": "2026",
+        "score": 740,
+        "rank": 4080,
+        "percent": 3.25,
+        "total": 125579
       }
     ],
     "scoreHistory": [
@@ -13163,11 +17216,15 @@ const historicalSchools = [
       {
         "year": "2025",
         "score": 727
+      },
+      {
+        "year": "2026",
+        "score": 740
       }
     ],
-    "avgRank": 11422,
-    "avgScore": 716,
-    "avgPercent": 10.38,
+    "avgRank": 8974,
+    "avgScore": 724,
+    "avgPercent": 8,
     "yearlyChanges": [
       {
         "fromYear": "2024",
@@ -13176,11 +17233,22 @@ const historicalSchools = [
         "scoreChange": 22,
         "percentChange": -5.7,
         "trend": "up"
+      },
+      {
+        "fromYear": "2025",
+        "toYear": "2026",
+        "rankChange": 4657,
+        "scoreChange": 13,
+        "percentChange": -4.28,
+        "trend": "up"
       }
     ],
     "recentTrend": "up",
-    "recentRankChange": 5369,
-    "recentScoreChange": 22
+    "recentRankChange": 4657,
+    "recentScoreChange": 13,
+    "threeYearRankChange": 10026,
+    "threeYearScoreChange": 35,
+    "threeYearTrend": "up"
   },
   {
     "name": "广东实验中学（白云校区）",
@@ -13228,6 +17296,27 @@ const historicalSchools = [
           "lastScoreSeq": 295
         },
         "outer": null
+      },
+      "2026": {
+        "id": "GZ004",
+        "name": "广东实验中学（白云校区）",
+        "type": "公办",
+        "scope": "全市",
+        "hukou": {
+          "minScore": 720,
+          "minScoreSeq": 58,
+          "lastVolunteer": 1,
+          "lastScore": 720,
+          "lastScoreSeq": 58
+        },
+        "nonHukou": {
+          "minScore": 721,
+          "minScoreSeq": 206,
+          "lastVolunteer": 1,
+          "lastScore": 721,
+          "lastScoreSeq": 206
+        },
+        "outer": null
       }
     },
     "rankHistory": [
@@ -13244,6 +17333,13 @@ const historicalSchools = [
         "rank": 8737,
         "percent": 7.53,
         "total": 116007
+      },
+      {
+        "year": "2026",
+        "score": 720,
+        "rank": 11582,
+        "percent": 9.22,
+        "total": 125579
       }
     ],
     "scoreHistory": [
@@ -13254,11 +17350,15 @@ const historicalSchools = [
       {
         "year": "2025",
         "score": 729
+      },
+      {
+        "year": "2026",
+        "score": 720
       }
     ],
-    "avgRank": 9429,
-    "avgScore": 722,
-    "avgPercent": 8.51,
+    "avgRank": 10146,
+    "avgScore": 721,
+    "avgPercent": 8.75,
     "yearlyChanges": [
       {
         "fromYear": "2024",
@@ -13267,11 +17367,22 @@ const historicalSchools = [
         "scoreChange": 14,
         "percentChange": -1.96,
         "trend": "up"
+      },
+      {
+        "fromYear": "2025",
+        "toYear": "2026",
+        "rankChange": -2845,
+        "scoreChange": -9,
+        "percentChange": 1.69,
+        "trend": "down"
       }
     ],
-    "recentTrend": "up",
-    "recentRankChange": 1383,
-    "recentScoreChange": 14
+    "recentTrend": "down",
+    "recentRankChange": -2845,
+    "recentScoreChange": -9,
+    "threeYearRankChange": -1462,
+    "threeYearScoreChange": 5,
+    "threeYearTrend": "down"
   },
   {
     "name": "广东广雅中学（荔湾校区）",
@@ -13319,6 +17430,27 @@ const historicalSchools = [
           "lastScoreSeq": 385
         },
         "outer": null
+      },
+      "2026": {
+        "id": "GZ005",
+        "name": "广东广雅中学（荔湾校区）",
+        "type": "公办",
+        "scope": "全市",
+        "hukou": {
+          "minScore": 733,
+          "minScoreSeq": 78,
+          "lastVolunteer": 1,
+          "lastScore": 733,
+          "lastScoreSeq": 78
+        },
+        "nonHukou": {
+          "minScore": 733,
+          "minScoreSeq": 16,
+          "lastVolunteer": 1,
+          "lastScore": 733,
+          "lastScoreSeq": 16
+        },
+        "outer": null
       }
     },
     "rankHistory": [
@@ -13335,6 +17467,13 @@ const historicalSchools = [
         "rank": 12865,
         "percent": 11.09,
         "total": 116007
+      },
+      {
+        "year": "2026",
+        "score": 733,
+        "rank": 7350,
+        "percent": 5.85,
+        "total": 125579
       }
     ],
     "scoreHistory": [
@@ -13345,11 +17484,15 @@ const historicalSchools = [
       {
         "year": "2025",
         "score": 719
+      },
+      {
+        "year": "2026",
+        "score": 733
       }
     ],
-    "avgRank": 15659,
-    "avgScore": 709,
-    "avgPercent": 14.2,
+    "avgRank": 12889,
+    "avgScore": 717,
+    "avgPercent": 11.41,
     "yearlyChanges": [
       {
         "fromYear": "2024",
@@ -13358,11 +17501,22 @@ const historicalSchools = [
         "scoreChange": 21,
         "percentChange": -6.21,
         "trend": "up"
+      },
+      {
+        "fromYear": "2025",
+        "toYear": "2026",
+        "rankChange": 5515,
+        "scoreChange": 14,
+        "percentChange": -5.24,
+        "trend": "up"
       }
     ],
     "recentTrend": "up",
-    "recentRankChange": 5588,
-    "recentScoreChange": 21
+    "recentRankChange": 5515,
+    "recentScoreChange": 14,
+    "threeYearRankChange": 11103,
+    "threeYearScoreChange": 35,
+    "threeYearTrend": "up"
   },
   {
     "name": "广州市第六中学（海珠校区）",
@@ -13410,6 +17564,27 @@ const historicalSchools = [
           "lastScoreSeq": 289
         },
         "outer": null
+      },
+      "2026": {
+        "id": "GZ010",
+        "name": "广州市第六中学（海珠校区）",
+        "type": "公办",
+        "scope": "全市",
+        "hukou": {
+          "minScore": 726,
+          "minScoreSeq": 238,
+          "lastVolunteer": 1,
+          "lastScore": 726,
+          "lastScoreSeq": 238
+        },
+        "nonHukou": {
+          "minScore": 727,
+          "minScoreSeq": 416,
+          "lastVolunteer": 1,
+          "lastScore": 727,
+          "lastScoreSeq": 416
+        },
+        "outer": null
       }
     },
     "rankHistory": [
@@ -13426,6 +17601,13 @@ const historicalSchools = [
         "rank": 12865,
         "percent": 11.09,
         "total": 116007
+      },
+      {
+        "year": "2026",
+        "score": 726,
+        "rank": 11582,
+        "percent": 9.22,
+        "total": 125579
       }
     ],
     "scoreHistory": [
@@ -13436,11 +17618,15 @@ const historicalSchools = [
       {
         "year": "2025",
         "score": 712
+      },
+      {
+        "year": "2026",
+        "score": 726
       }
     ],
-    "avgRank": 11493,
-    "avgScore": 714,
-    "avgPercent": 10.29,
+    "avgRank": 11522,
+    "avgScore": 718,
+    "avgPercent": 9.93,
     "yearlyChanges": [
       {
         "fromYear": "2024",
@@ -13449,11 +17635,22 @@ const historicalSchools = [
         "scoreChange": -4,
         "percentChange": 1.6,
         "trend": "down"
+      },
+      {
+        "fromYear": "2025",
+        "toYear": "2026",
+        "rankChange": 1283,
+        "scoreChange": 14,
+        "percentChange": -1.87,
+        "trend": "up"
       }
     ],
-    "recentTrend": "down",
-    "recentRankChange": -2745,
-    "recentScoreChange": -4
+    "recentTrend": "up",
+    "recentRankChange": 1283,
+    "recentScoreChange": 14,
+    "threeYearRankChange": -1462,
+    "threeYearScoreChange": 10,
+    "threeYearTrend": "down"
   },
   {
     "name": "广州市第六中学（从化校区）",
@@ -13501,6 +17698,27 @@ const historicalSchools = [
           "lastScoreSeq": 220
         },
         "outer": null
+      },
+      "2026": {
+        "id": "GZ011",
+        "name": "广州市第六中学（从化校区）",
+        "type": "公办",
+        "scope": "全市",
+        "hukou": {
+          "minScore": 674,
+          "minScoreSeq": 444,
+          "lastVolunteer": 1,
+          "lastScore": 674,
+          "lastScoreSeq": 444
+        },
+        "nonHukou": {
+          "minScore": 680,
+          "minScoreSeq": 166,
+          "lastVolunteer": 1,
+          "lastScore": 680,
+          "lastScoreSeq": 166
+        },
+        "outer": null
       }
     },
     "rankHistory": [
@@ -13517,6 +17735,13 @@ const historicalSchools = [
         "rank": 31526,
         "percent": 27.18,
         "total": 116007
+      },
+      {
+        "year": "2026",
+        "score": 674,
+        "rank": 37486,
+        "percent": 29.85,
+        "total": 125579
       }
     ],
     "scoreHistory": [
@@ -13527,11 +17752,15 @@ const historicalSchools = [
       {
         "year": "2025",
         "score": 677
+      },
+      {
+        "year": "2026",
+        "score": 674
       }
     ],
-    "avgRank": 32157,
-    "avgScore": 670,
-    "avgPercent": 28.96,
+    "avgRank": 33933,
+    "avgScore": 671,
+    "avgPercent": 29.26,
     "yearlyChanges": [
       {
         "fromYear": "2024",
@@ -13540,11 +17769,22 @@ const historicalSchools = [
         "scoreChange": 15,
         "percentChange": -3.56,
         "trend": "up"
+      },
+      {
+        "fromYear": "2025",
+        "toYear": "2026",
+        "rankChange": -5960,
+        "scoreChange": -3,
+        "percentChange": 2.67,
+        "trend": "down"
       }
     ],
-    "recentTrend": "up",
-    "recentRankChange": 1261,
-    "recentScoreChange": 15
+    "recentTrend": "down",
+    "recentRankChange": -5960,
+    "recentScoreChange": -3,
+    "threeYearRankChange": -4699,
+    "threeYearScoreChange": 12,
+    "threeYearTrend": "down"
   },
   {
     "name": "广州实验中学",
@@ -13592,6 +17832,33 @@ const historicalSchools = [
           "lastScoreSeq": 166
         },
         "outer": null
+      },
+      "2026": {
+        "id": "GZ069",
+        "name": "广州实验中学",
+        "type": "公办",
+        "scope": "全市",
+        "hukou": {
+          "minScore": 682,
+          "minScoreSeq": 295,
+          "lastVolunteer": 1,
+          "lastScore": 682,
+          "lastScoreSeq": 295
+        },
+        "nonHukou": {
+          "minScore": 682,
+          "minScoreSeq": 543,
+          "lastVolunteer": 1,
+          "lastScore": 682,
+          "lastScoreSeq": 543
+        },
+        "outer": {
+          "minScore": 684,
+          "minScoreSeq": 70,
+          "lastVolunteer": 1,
+          "lastScore": 684,
+          "lastScoreSeq": 70
+        }
       }
     },
     "rankHistory": [
@@ -13608,6 +17875,13 @@ const historicalSchools = [
         "rank": 31526,
         "percent": 27.18,
         "total": 116007
+      },
+      {
+        "year": "2026",
+        "score": 682,
+        "rank": 32027,
+        "percent": 25.5,
+        "total": 125579
       }
     ],
     "scoreHistory": [
@@ -13618,11 +17892,15 @@ const historicalSchools = [
       {
         "year": "2025",
         "score": 672
+      },
+      {
+        "year": "2026",
+        "score": 682
       }
     ],
-    "avgRank": 32157,
-    "avgScore": 666,
-    "avgPercent": 28.96,
+    "avgRank": 32113,
+    "avgScore": 671,
+    "avgPercent": 27.81,
     "yearlyChanges": [
       {
         "fromYear": "2024",
@@ -13631,11 +17909,22 @@ const historicalSchools = [
         "scoreChange": 12,
         "percentChange": -3.56,
         "trend": "up"
+      },
+      {
+        "fromYear": "2025",
+        "toYear": "2026",
+        "rankChange": -501,
+        "scoreChange": 10,
+        "percentChange": -1.68,
+        "trend": "down"
       }
     ],
-    "recentTrend": "up",
-    "recentRankChange": 1261,
-    "recentScoreChange": 12
+    "recentTrend": "down",
+    "recentRankChange": -501,
+    "recentScoreChange": 10,
+    "threeYearRankChange": 760,
+    "threeYearScoreChange": 22,
+    "threeYearTrend": "up"
   },
   {
     "name": "广州市黄埔区苏元学校",
@@ -13683,6 +17972,33 @@ const historicalSchools = [
           "lastScoreSeq": 309
         },
         "outer": null
+      },
+      "2026": {
+        "id": "GZ070",
+        "name": "广州市黄埔区苏元学校",
+        "type": "公办",
+        "scope": "全市",
+        "hukou": {
+          "minScore": 672,
+          "minScoreSeq": 448,
+          "lastVolunteer": 2,
+          "lastScore": 711,
+          "lastScoreSeq": 90
+        },
+        "nonHukou": {
+          "minScore": 672,
+          "minScoreSeq": 285,
+          "lastVolunteer": 1,
+          "lastScore": 672,
+          "lastScoreSeq": 285
+        },
+        "outer": {
+          "minScore": 672,
+          "minScoreSeq": 124,
+          "lastVolunteer": 2,
+          "lastScore": 711,
+          "lastScoreSeq": 90
+        }
       }
     },
     "rankHistory": [
@@ -13699,6 +18015,13 @@ const historicalSchools = [
         "rank": 36193,
         "percent": 31.2,
         "total": 116007
+      },
+      {
+        "year": "2026",
+        "score": 672,
+        "rank": 37486,
+        "percent": 29.85,
+        "total": 125579
       }
     ],
     "scoreHistory": [
@@ -13709,11 +18032,15 @@ const historicalSchools = [
       {
         "year": "2025",
         "score": 667
+      },
+      {
+        "year": "2026",
+        "score": 672
       }
     ],
-    "avgRank": 41503,
-    "avgScore": 649,
-    "avgPercent": 37.55,
+    "avgRank": 40164,
+    "avgScore": 657,
+    "avgPercent": 34.98,
     "yearlyChanges": [
       {
         "fromYear": "2024",
@@ -13722,11 +18049,22 @@ const historicalSchools = [
         "scoreChange": 36,
         "percentChange": -12.69,
         "trend": "up"
+      },
+      {
+        "fromYear": "2025",
+        "toYear": "2026",
+        "rankChange": -1293,
+        "scoreChange": 5,
+        "percentChange": -1.35,
+        "trend": "down"
       }
     ],
-    "recentTrend": "up",
-    "recentRankChange": 10620,
-    "recentScoreChange": 36
+    "recentTrend": "down",
+    "recentRankChange": -1293,
+    "recentScoreChange": 5,
+    "threeYearRankChange": 9327,
+    "threeYearScoreChange": 41,
+    "threeYearTrend": "up"
   },
   {
     "name": "广州市爱莎文华高中有限公司（公费班）",
@@ -13762,6 +18100,21 @@ const historicalSchools = [
         },
         "nonHukou": null,
         "outer": null
+      },
+      "2026": {
+        "id": "GZM001",
+        "name": "广州市爱莎文华高中有限公司（公费班）",
+        "type": "民办",
+        "scope": "全市",
+        "hukou": {
+          "minScore": 718,
+          "minScoreSeq": 54,
+          "lastVolunteer": 1,
+          "lastScore": 718,
+          "lastScoreSeq": 54
+        },
+        "nonHukou": null,
+        "outer": null
       }
     },
     "rankHistory": [
@@ -13778,6 +18131,13 @@ const historicalSchools = [
         "rank": 21899,
         "percent": 18.88,
         "total": 116007
+      },
+      {
+        "year": "2026",
+        "score": 718,
+        "rank": 16303,
+        "percent": 12.98,
+        "total": 125579
       }
     ],
     "scoreHistory": [
@@ -13788,11 +18148,15 @@ const historicalSchools = [
       {
         "year": "2025",
         "score": 697
+      },
+      {
+        "year": "2026",
+        "score": 718
       }
     ],
-    "avgRank": 24912,
-    "avgScore": 687,
-    "avgPercent": 22.53,
+    "avgRank": 22042,
+    "avgScore": 697,
+    "avgPercent": 19.35,
     "yearlyChanges": [
       {
         "fromYear": "2024",
@@ -13801,11 +18165,22 @@ const historicalSchools = [
         "scoreChange": 20,
         "percentChange": -7.3,
         "trend": "up"
+      },
+      {
+        "fromYear": "2025",
+        "toYear": "2026",
+        "rankChange": 5596,
+        "scoreChange": 21,
+        "percentChange": -5.9,
+        "trend": "up"
       }
     ],
     "recentTrend": "up",
-    "recentRankChange": 6025,
-    "recentScoreChange": 20
+    "recentRankChange": 5596,
+    "recentScoreChange": 21,
+    "threeYearRankChange": 11621,
+    "threeYearScoreChange": 41,
+    "threeYearTrend": "up"
   },
   {
     "name": "广州市培才高级中学（公费班）",
@@ -13841,6 +18216,21 @@ const historicalSchools = [
         },
         "nonHukou": null,
         "outer": null
+      },
+      "2026": {
+        "id": "GZM004",
+        "name": "广州市培才高级中学（公费班）",
+        "type": "民办",
+        "scope": "全市",
+        "hukou": {
+          "minScore": 635,
+          "minScoreSeq": 94,
+          "lastVolunteer": 1,
+          "lastScore": 635,
+          "lastScoreSeq": 94
+        },
+        "nonHukou": null,
+        "outer": null
       }
     },
     "rankHistory": [
@@ -13857,6 +18247,13 @@ const historicalSchools = [
         "rank": 54115,
         "percent": 46.65,
         "total": 116007
+      },
+      {
+        "year": "2026",
+        "score": 635,
+        "rank": 57562,
+        "percent": 45.84,
+        "total": 125579
       }
     ],
     "scoreHistory": [
@@ -13867,11 +18264,15 @@ const historicalSchools = [
       {
         "year": "2025",
         "score": 628
+      },
+      {
+        "year": "2026",
+        "score": 635
       }
     ],
-    "avgRank": 52615,
-    "avgScore": 626,
-    "avgPercent": 47.29,
+    "avgRank": 54264,
+    "avgScore": 629,
+    "avgPercent": 46.81,
     "yearlyChanges": [
       {
         "fromYear": "2024",
@@ -13880,11 +18281,22 @@ const historicalSchools = [
         "scoreChange": 5,
         "percentChange": -1.28,
         "trend": "down"
+      },
+      {
+        "fromYear": "2025",
+        "toYear": "2026",
+        "rankChange": -3447,
+        "scoreChange": 7,
+        "percentChange": -0.81,
+        "trend": "down"
       }
     ],
     "recentTrend": "down",
-    "recentRankChange": -3001,
-    "recentScoreChange": 5
+    "recentRankChange": -3447,
+    "recentScoreChange": 7,
+    "threeYearRankChange": -6448,
+    "threeYearScoreChange": 12,
+    "threeYearTrend": "down"
   },
   {
     "name": "广州市海华高级中学（公费班）",
@@ -13920,6 +18332,21 @@ const historicalSchools = [
         },
         "nonHukou": null,
         "outer": null
+      },
+      "2026": {
+        "id": "GZM005",
+        "name": "广州市海华高级中学（公费班）",
+        "type": "民办",
+        "scope": "全市",
+        "hukou": {
+          "minScore": 669,
+          "minScoreSeq": 227,
+          "lastVolunteer": 1,
+          "lastScore": 669,
+          "lastScoreSeq": 227
+        },
+        "nonHukou": null,
+        "outer": null
       }
     },
     "rankHistory": [
@@ -13936,6 +18363,13 @@ const historicalSchools = [
         "rank": 36193,
         "percent": 31.2,
         "total": 116007
+      },
+      {
+        "year": "2026",
+        "score": 669,
+        "rank": 42762,
+        "percent": 34.05,
+        "total": 125579
       }
     ],
     "scoreHistory": [
@@ -13946,11 +18380,15 @@ const historicalSchools = [
       {
         "year": "2025",
         "score": 667
+      },
+      {
+        "year": "2026",
+        "score": 669
       }
     ],
-    "avgRank": 34490,
-    "avgScore": 665,
-    "avgPercent": 30.97,
+    "avgRank": 37247,
+    "avgScore": 666,
+    "avgPercent": 32,
     "yearlyChanges": [
       {
         "fromYear": "2024",
@@ -13959,11 +18397,22 @@ const historicalSchools = [
         "scoreChange": 4,
         "percentChange": 0.46,
         "trend": "down"
+      },
+      {
+        "fromYear": "2025",
+        "toYear": "2026",
+        "rankChange": -6569,
+        "scoreChange": 2,
+        "percentChange": 2.85,
+        "trend": "down"
       }
     ],
     "recentTrend": "down",
-    "recentRankChange": -3406,
-    "recentScoreChange": 4
+    "recentRankChange": -6569,
+    "recentScoreChange": 2,
+    "threeYearRankChange": -9975,
+    "threeYearScoreChange": 6,
+    "threeYearTrend": "down"
   },
   {
     "name": "广州思源学校（公费班）",
@@ -13999,6 +18448,21 @@ const historicalSchools = [
         },
         "nonHukou": null,
         "outer": null
+      },
+      "2026": {
+        "id": "GZM008",
+        "name": "广州思源学校（公费班）",
+        "type": "民办",
+        "scope": "全市",
+        "hukou": {
+          "minScore": 592,
+          "minScoreSeq": 230,
+          "lastVolunteer": 3,
+          "lastScore": 631,
+          "lastScoreSeq": 377
+        },
+        "nonHukou": null,
+        "outer": null
       }
     },
     "rankHistory": [
@@ -14015,6 +18479,13 @@ const historicalSchools = [
         "rank": 54115,
         "percent": 46.65,
         "total": 116007
+      },
+      {
+        "year": "2026",
+        "score": 592,
+        "rank": 74441,
+        "percent": 59.28,
+        "total": 125579
       }
     ],
     "scoreHistory": [
@@ -14025,11 +18496,15 @@ const historicalSchools = [
       {
         "year": "2025",
         "score": 627
+      },
+      {
+        "year": "2026",
+        "score": 592
       }
     ],
-    "avgRank": 60259,
-    "avgScore": 605,
-    "avgPercent": 54.45,
+    "avgRank": 64986,
+    "avgScore": 601,
+    "avgPercent": 56.06,
     "yearlyChanges": [
       {
         "fromYear": "2024",
@@ -14038,11 +18513,22 @@ const historicalSchools = [
         "scoreChange": 44,
         "percentChange": -15.61,
         "trend": "up"
+      },
+      {
+        "fromYear": "2025",
+        "toYear": "2026",
+        "rankChange": -20326,
+        "scoreChange": -35,
+        "percentChange": 12.63,
+        "trend": "down"
       }
     ],
-    "recentTrend": "up",
-    "recentRankChange": 12288,
-    "recentScoreChange": 44
+    "recentTrend": "down",
+    "recentRankChange": -20326,
+    "recentScoreChange": -35,
+    "threeYearRankChange": -8038,
+    "threeYearScoreChange": 9,
+    "threeYearTrend": "down"
   },
   {
     "name": "广州市庆丰实验学校（公费班）",
@@ -14078,6 +18564,21 @@ const historicalSchools = [
         },
         "nonHukou": null,
         "outer": null
+      },
+      "2026": {
+        "id": "GZM009",
+        "name": "广州市庆丰实验学校（公费班）",
+        "type": "民办",
+        "scope": "全市",
+        "hukou": {
+          "minScore": 643,
+          "minScoreSeq": 374,
+          "lastVolunteer": 3,
+          "lastScore": 643,
+          "lastScoreSeq": 374
+        },
+        "nonHukou": null,
+        "outer": null
       }
     },
     "rankHistory": [
@@ -14094,6 +18595,13 @@ const historicalSchools = [
         "rank": 36193,
         "percent": 31.2,
         "total": 116007
+      },
+      {
+        "year": "2026",
+        "score": 643,
+        "rank": 52890,
+        "percent": 42.12,
+        "total": 125579
       }
     ],
     "scoreHistory": [
@@ -14104,11 +18612,15 @@ const historicalSchools = [
       {
         "year": "2025",
         "score": 667
+      },
+      {
+        "year": "2026",
+        "score": 643
       }
     ],
-    "avgRank": 43654,
-    "avgScore": 645,
-    "avgPercent": 39.56,
+    "avgRank": 46732,
+    "avgScore": 644,
+    "avgPercent": 40.42,
     "yearlyChanges": [
       {
         "fromYear": "2024",
@@ -14117,11 +18629,22 @@ const historicalSchools = [
         "scoreChange": 45,
         "percentChange": -16.73,
         "trend": "up"
+      },
+      {
+        "fromYear": "2025",
+        "toYear": "2026",
+        "rankChange": -16697,
+        "scoreChange": -24,
+        "percentChange": 10.92,
+        "trend": "down"
       }
     ],
-    "recentTrend": "up",
-    "recentRankChange": 14921,
-    "recentScoreChange": 45
+    "recentTrend": "down",
+    "recentRankChange": -16697,
+    "recentScoreChange": -24,
+    "threeYearRankChange": -1776,
+    "threeYearScoreChange": 21,
+    "threeYearTrend": "down"
   },
   {
     "name": "广州市源雅学校（公费班）",
@@ -14157,6 +18680,21 @@ const historicalSchools = [
         },
         "nonHukou": null,
         "outer": null
+      },
+      "2026": {
+        "id": "GZM010",
+        "name": "广州市源雅学校（公费班）",
+        "type": "民办",
+        "scope": "全市",
+        "hukou": {
+          "minScore": 713,
+          "minScoreSeq": 34,
+          "lastVolunteer": 1,
+          "lastScore": 713,
+          "lastScoreSeq": 34
+        },
+        "nonHukou": null,
+        "outer": null
       }
     },
     "rankHistory": [
@@ -14173,6 +18711,13 @@ const historicalSchools = [
         "rank": 26724,
         "percent": 23.04,
         "total": 116007
+      },
+      {
+        "year": "2026",
+        "score": 713,
+        "rank": 16303,
+        "percent": 12.98,
+        "total": 125579
       }
     ],
     "scoreHistory": [
@@ -14183,11 +18728,15 @@ const historicalSchools = [
       {
         "year": "2025",
         "score": 683
+      },
+      {
+        "year": "2026",
+        "score": 713
       }
     ],
-    "avgRank": 27324,
-    "avgScore": 681,
-    "avgPercent": 24.61,
+    "avgRank": 23650,
+    "avgScore": 692,
+    "avgPercent": 20.73,
     "yearlyChanges": [
       {
         "fromYear": "2024",
@@ -14196,11 +18745,22 @@ const historicalSchools = [
         "scoreChange": 4,
         "percentChange": -3.14,
         "trend": "up"
+      },
+      {
+        "fromYear": "2025",
+        "toYear": "2026",
+        "rankChange": 10421,
+        "scoreChange": 30,
+        "percentChange": -10.06,
+        "trend": "up"
       }
     ],
     "recentTrend": "up",
-    "recentRankChange": 1200,
-    "recentScoreChange": 4
+    "recentRankChange": 10421,
+    "recentScoreChange": 30,
+    "threeYearRankChange": 11621,
+    "threeYearScoreChange": 34,
+    "threeYearTrend": "up"
   },
   {
     "name": "广州市珠江高级中学（公费班）",
@@ -14236,6 +18796,21 @@ const historicalSchools = [
         },
         "nonHukou": null,
         "outer": null
+      },
+      "2026": {
+        "id": "GZM011",
+        "name": "广州市珠江高级中学（公费班）",
+        "type": "民办",
+        "scope": "全市",
+        "hukou": {
+          "minScore": 662,
+          "minScoreSeq": 160,
+          "lastVolunteer": 1,
+          "lastScore": 662,
+          "lastScoreSeq": 160
+        },
+        "nonHukou": null,
+        "outer": null
       }
     },
     "rankHistory": [
@@ -14252,6 +18827,13 @@ const historicalSchools = [
         "rank": 45415,
         "percent": 39.15,
         "total": 116007
+      },
+      {
+        "year": "2026",
+        "score": 662,
+        "rank": 42762,
+        "percent": 34.05,
+        "total": 125579
       }
     ],
     "scoreHistory": [
@@ -14262,11 +18844,15 @@ const historicalSchools = [
       {
         "year": "2025",
         "score": 648
+      },
+      {
+        "year": "2026",
+        "score": 662
       }
     ],
-    "avgRank": 46114,
-    "avgScore": 640,
-    "avgPercent": 41.52,
+    "avgRank": 44997,
+    "avgScore": 647,
+    "avgPercent": 39.03,
     "yearlyChanges": [
       {
         "fromYear": "2024",
@@ -14275,11 +18861,22 @@ const historicalSchools = [
         "scoreChange": 17,
         "percentChange": -4.74,
         "trend": "up"
+      },
+      {
+        "fromYear": "2025",
+        "toYear": "2026",
+        "rankChange": 2653,
+        "scoreChange": 14,
+        "percentChange": -5.1,
+        "trend": "up"
       }
     ],
     "recentTrend": "up",
-    "recentRankChange": 1398,
-    "recentScoreChange": 17
+    "recentRankChange": 2653,
+    "recentScoreChange": 14,
+    "threeYearRankChange": 4051,
+    "threeYearScoreChange": 31,
+    "threeYearTrend": "up"
   },
   {
     "name": "广州南方学院番禺附属中学（公费班）",
@@ -14315,6 +18912,21 @@ const historicalSchools = [
         },
         "nonHukou": null,
         "outer": null
+      },
+      "2026": {
+        "id": "GZM015",
+        "name": "广州南方学院番禺附属中学（公费班）",
+        "type": "民办",
+        "scope": "全市",
+        "hukou": {
+          "minScore": 640,
+          "minScoreSeq": 415,
+          "lastVolunteer": 1,
+          "lastScore": 640,
+          "lastScoreSeq": 415
+        },
+        "nonHukou": null,
+        "outer": null
       }
     },
     "rankHistory": [
@@ -14331,6 +18943,13 @@ const historicalSchools = [
         "rank": 49880,
         "percent": 43,
         "total": 116007
+      },
+      {
+        "year": "2026",
+        "score": 640,
+        "rank": 52890,
+        "percent": 42.12,
+        "total": 125579
       }
     ],
     "scoreHistory": [
@@ -14341,11 +18960,15 @@ const historicalSchools = [
       {
         "year": "2025",
         "score": 637
+      },
+      {
+        "year": "2026",
+        "score": 640
       }
     ],
-    "avgRank": 56419,
-    "avgScore": 616,
-    "avgPercent": 51.02,
+    "avgRank": 55242,
+    "avgScore": 624,
+    "avgPercent": 48.05,
     "yearlyChanges": [
       {
         "fromYear": "2024",
@@ -14354,11 +18977,22 @@ const historicalSchools = [
         "scoreChange": 42,
         "percentChange": -16.03,
         "trend": "up"
+      },
+      {
+        "fromYear": "2025",
+        "toYear": "2026",
+        "rankChange": -3010,
+        "scoreChange": 3,
+        "percentChange": -0.88,
+        "trend": "down"
       }
     ],
-    "recentTrend": "up",
-    "recentRankChange": 13077,
-    "recentScoreChange": 42
+    "recentTrend": "down",
+    "recentRankChange": -3010,
+    "recentScoreChange": 3,
+    "threeYearRankChange": 10067,
+    "threeYearScoreChange": 45,
+    "threeYearTrend": "up"
   },
   {
     "name": "广州市华万高中有限公司（公费班）",
@@ -14394,6 +19028,21 @@ const historicalSchools = [
         },
         "nonHukou": null,
         "outer": null
+      },
+      "2026": {
+        "id": "GZM018",
+        "name": "广州市华万高中有限公司（公费班）",
+        "type": "民办",
+        "scope": "全市",
+        "hukou": {
+          "minScore": 699,
+          "minScoreSeq": 370,
+          "lastVolunteer": 1,
+          "lastScore": 699,
+          "lastScoreSeq": 370
+        },
+        "nonHukou": null,
+        "outer": null
       }
     },
     "rankHistory": [
@@ -14410,6 +19059,13 @@ const historicalSchools = [
         "rank": 31526,
         "percent": 27.18,
         "total": 116007
+      },
+      {
+        "year": "2026",
+        "score": 699,
+        "rank": 26644,
+        "percent": 21.22,
+        "total": 125579
       }
     ],
     "scoreHistory": [
@@ -14420,11 +19076,15 @@ const historicalSchools = [
       {
         "year": "2025",
         "score": 679
+      },
+      {
+        "year": "2026",
+        "score": 699
       }
     ],
-    "avgRank": 32157,
-    "avgScore": 674,
-    "avgPercent": 28.96,
+    "avgRank": 30319,
+    "avgScore": 682,
+    "avgPercent": 26.38,
     "yearlyChanges": [
       {
         "fromYear": "2024",
@@ -14433,11 +19093,22 @@ const historicalSchools = [
         "scoreChange": 11,
         "percentChange": -3.56,
         "trend": "up"
+      },
+      {
+        "fromYear": "2025",
+        "toYear": "2026",
+        "rankChange": 4882,
+        "scoreChange": 20,
+        "percentChange": -5.96,
+        "trend": "up"
       }
     ],
     "recentTrend": "up",
-    "recentRankChange": 1261,
-    "recentScoreChange": 11
+    "recentRankChange": 4882,
+    "recentScoreChange": 20,
+    "threeYearRankChange": 6143,
+    "threeYearScoreChange": 31,
+    "threeYearTrend": "up"
   },
   {
     "name": "广州市南外实验学校（公费班）",
@@ -14473,6 +19144,21 @@ const historicalSchools = [
         },
         "nonHukou": null,
         "outer": null
+      },
+      "2026": {
+        "id": "GZM020",
+        "name": "广州市南外实验学校（公费班）",
+        "type": "民办",
+        "scope": "全市",
+        "hukou": {
+          "minScore": 671,
+          "minScoreSeq": 276,
+          "lastVolunteer": 1,
+          "lastScore": 671,
+          "lastScoreSeq": 276
+        },
+        "nonHukou": null,
+        "outer": null
       }
     },
     "rankHistory": [
@@ -14489,6 +19175,13 @@ const historicalSchools = [
         "rank": 40846,
         "percent": 35.21,
         "total": 116007
+      },
+      {
+        "year": "2026",
+        "score": 671,
+        "rank": 37486,
+        "percent": 29.85,
+        "total": 125579
       }
     ],
     "scoreHistory": [
@@ -14499,11 +19192,15 @@ const historicalSchools = [
       {
         "year": "2025",
         "score": 657
+      },
+      {
+        "year": "2026",
+        "score": 671
       }
     ],
-    "avgRank": 36817,
-    "avgScore": 660,
-    "avgPercent": 32.98,
+    "avgRank": 37040,
+    "avgScore": 663,
+    "avgPercent": 31.93,
     "yearlyChanges": [
       {
         "fromYear": "2024",
@@ -14512,11 +19209,22 @@ const historicalSchools = [
         "scoreChange": -5,
         "percentChange": 4.47,
         "trend": "down"
+      },
+      {
+        "fromYear": "2025",
+        "toYear": "2026",
+        "rankChange": 3360,
+        "scoreChange": 14,
+        "percentChange": -5.36,
+        "trend": "up"
       }
     ],
-    "recentTrend": "down",
-    "recentRankChange": -8059,
-    "recentScoreChange": -5
+    "recentTrend": "up",
+    "recentRankChange": 3360,
+    "recentScoreChange": 14,
+    "threeYearRankChange": -4699,
+    "threeYearScoreChange": 9,
+    "threeYearTrend": "down"
   },
   {
     "name": "广州市黄广附属学校（公费班）",
@@ -14552,6 +19260,21 @@ const historicalSchools = [
         },
         "nonHukou": null,
         "outer": null
+      },
+      "2026": {
+        "id": "GZM024",
+        "name": "广州市黄广附属学校（公费班）",
+        "type": "民办",
+        "scope": "全市",
+        "hukou": {
+          "minScore": 723,
+          "minScoreSeq": 176,
+          "lastVolunteer": 1,
+          "lastScore": 723,
+          "lastScoreSeq": 176
+        },
+        "nonHukou": null,
+        "outer": null
       }
     },
     "rankHistory": [
@@ -14568,6 +19291,13 @@ const historicalSchools = [
         "rank": 5302,
         "percent": 4.57,
         "total": 116007
+      },
+      {
+        "year": "2026",
+        "score": 723,
+        "rank": 11582,
+        "percent": 9.22,
+        "total": 125579
       }
     ],
     "scoreHistory": [
@@ -14578,11 +19308,15 @@ const historicalSchools = [
       {
         "year": "2025",
         "score": 737
+      },
+      {
+        "year": "2026",
+        "score": 723
       }
     ],
-    "avgRank": 9704,
+    "avgRank": 10330,
     "avgScore": 722,
-    "avgPercent": 8.9,
+    "avgPercent": 9.01,
     "yearlyChanges": [
       {
         "fromYear": "2024",
@@ -14591,11 +19325,22 @@ const historicalSchools = [
         "scoreChange": 31,
         "percentChange": -8.66,
         "trend": "up"
+      },
+      {
+        "fromYear": "2025",
+        "toYear": "2026",
+        "rankChange": -6280,
+        "scoreChange": -14,
+        "percentChange": 4.65,
+        "trend": "down"
       }
     ],
-    "recentTrend": "up",
-    "recentRankChange": 8804,
-    "recentScoreChange": 31
+    "recentTrend": "down",
+    "recentRankChange": -6280,
+    "recentScoreChange": -14,
+    "threeYearRankChange": 2524,
+    "threeYearScoreChange": 17,
+    "threeYearTrend": "up"
   },
   {
     "name": "广州市华商外语实验高级中学有限公司（公费班）",
@@ -14631,6 +19376,21 @@ const historicalSchools = [
         },
         "nonHukou": null,
         "outer": null
+      },
+      "2026": {
+        "id": "GZM026",
+        "name": "广州市华商外语实验高级中学有限公司（公费班）",
+        "type": "民办",
+        "scope": "全市",
+        "hukou": {
+          "minScore": 672,
+          "minScoreSeq": 405,
+          "lastVolunteer": 2,
+          "lastScore": 696,
+          "lastScoreSeq": 59
+        },
+        "nonHukou": null,
+        "outer": null
       }
     },
     "rankHistory": [
@@ -14647,6 +19407,13 @@ const historicalSchools = [
         "rank": 36193,
         "percent": 31.2,
         "total": 116007
+      },
+      {
+        "year": "2026",
+        "score": 672,
+        "rank": 37486,
+        "percent": 29.85,
+        "total": 125579
       }
     ],
     "scoreHistory": [
@@ -14657,11 +19424,15 @@ const historicalSchools = [
       {
         "year": "2025",
         "score": 669
+      },
+      {
+        "year": "2026",
+        "score": 672
       }
     ],
-    "avgRank": 36882,
-    "avgScore": 661,
-    "avgPercent": 33.21,
+    "avgRank": 37083,
+    "avgScore": 665,
+    "avgPercent": 32.09,
     "yearlyChanges": [
       {
         "fromYear": "2024",
@@ -14670,11 +19441,22 @@ const historicalSchools = [
         "scoreChange": 16,
         "percentChange": -4.03,
         "trend": "up"
+      },
+      {
+        "fromYear": "2025",
+        "toYear": "2026",
+        "rankChange": -1293,
+        "scoreChange": 3,
+        "percentChange": -1.35,
+        "trend": "down"
       }
     ],
-    "recentTrend": "up",
-    "recentRankChange": 1378,
-    "recentScoreChange": 16
+    "recentTrend": "down",
+    "recentRankChange": -1293,
+    "recentScoreChange": 3,
+    "threeYearRankChange": 85,
+    "threeYearScoreChange": 19,
+    "threeYearTrend": "up"
   },
   {
     "name": "广州龙涛外国语学校（原南洋英文学校）（公费班）",
@@ -14714,7 +19496,14 @@ const historicalSchools = [
     ],
     "avgRank": 51114,
     "avgScore": 622,
-    "avgPercent": 47.93
+    "avgPercent": 47.93,
+    "yearlyChanges": [],
+    "recentTrend": "stable",
+    "recentRankChange": 0,
+    "recentScoreChange": 0,
+    "threeYearRankChange": 0,
+    "threeYearScoreChange": 0,
+    "threeYearTrend": "stable"
   },
   {
     "name": "广东实验中学（荔湾校区）（中外合作办学项目）（中美AP课程班）",
@@ -14750,6 +19539,21 @@ const historicalSchools = [
         },
         "nonHukou": null,
         "outer": null
+      },
+      "2026": {
+        "id": "GZM036",
+        "name": "广东实验中学（荔湾校区）（中外合作办学项目）（中美AP课程班）",
+        "type": "中外合作",
+        "scope": "全市",
+        "hukou": {
+          "minScore": 555,
+          "minScoreSeq": 154,
+          "lastVolunteer": 1,
+          "lastScore": 555,
+          "lastScoreSeq": 154
+        },
+        "nonHukou": null,
+        "outer": null
       }
     },
     "rankHistory": [
@@ -14766,6 +19570,13 @@ const historicalSchools = [
         "rank": 54115,
         "percent": 46.65,
         "total": 116007
+      },
+      {
+        "year": "2026",
+        "score": 555,
+        "rank": 88234,
+        "percent": 70.26,
+        "total": 125579
       }
     ],
     "scoreHistory": [
@@ -14776,11 +19587,15 @@ const historicalSchools = [
       {
         "year": "2025",
         "score": 624
+      },
+      {
+        "year": "2026",
+        "score": 555
       }
     ],
-    "avgRank": 56687,
-    "avgScore": 614,
-    "avgPercent": 51.11,
+    "avgRank": 67203,
+    "avgScore": 594,
+    "avgPercent": 57.49,
     "yearlyChanges": [
       {
         "fromYear": "2024",
@@ -14789,11 +19604,22 @@ const historicalSchools = [
         "scoreChange": 20,
         "percentChange": -8.91,
         "trend": "up"
+      },
+      {
+        "fromYear": "2025",
+        "toYear": "2026",
+        "rankChange": -34119,
+        "scoreChange": -69,
+        "percentChange": 23.61,
+        "trend": "down"
       }
     ],
-    "recentTrend": "up",
-    "recentRankChange": 5144,
-    "recentScoreChange": 20
+    "recentTrend": "down",
+    "recentRankChange": -34119,
+    "recentScoreChange": -69,
+    "threeYearRankChange": -28975,
+    "threeYearScoreChange": -49,
+    "threeYearTrend": "down"
   },
   {
     "name": "广东实验中学（白云校区）（中外合作办学项目）（中英A-Level课程班）",
@@ -14829,6 +19655,21 @@ const historicalSchools = [
         },
         "nonHukou": null,
         "outer": null
+      },
+      "2026": {
+        "id": "GZM037",
+        "name": "广东实验中学（白云校区）（中外合作办学项目）（中英A-Level课程班）",
+        "type": "中外合作",
+        "scope": "全市",
+        "hukou": {
+          "minScore": 466,
+          "minScoreSeq": 15,
+          "lastVolunteer": 3,
+          "lastScore": 484,
+          "lastScoreSeq": 35
+        },
+        "nonHukou": null,
+        "outer": null
       }
     },
     "rankHistory": [
@@ -14845,6 +19686,13 @@ const historicalSchools = [
         "rank": 91344,
         "percent": 78.74,
         "total": 116007
+      },
+      {
+        "year": "2026",
+        "score": 466,
+        "rank": 112612,
+        "percent": 89.67,
+        "total": 125579
       }
     ],
     "scoreHistory": [
@@ -14855,11 +19703,15 @@ const historicalSchools = [
       {
         "year": "2025",
         "score": 510
+      },
+      {
+        "year": "2026",
+        "score": 466
       }
     ],
-    "avgRank": 89717,
-    "avgScore": 508,
-    "avgPercent": 80.67,
+    "avgRank": 97349,
+    "avgScore": 494,
+    "avgPercent": 83.67,
     "yearlyChanges": [
       {
         "fromYear": "2024",
@@ -14868,11 +19720,22 @@ const historicalSchools = [
         "scoreChange": 4,
         "percentChange": -3.86,
         "trend": "down"
+      },
+      {
+        "fromYear": "2025",
+        "toYear": "2026",
+        "rankChange": -21268,
+        "scoreChange": -44,
+        "percentChange": 10.93,
+        "trend": "down"
       }
     ],
     "recentTrend": "down",
-    "recentRankChange": -3254,
-    "recentScoreChange": 4
+    "recentRankChange": -21268,
+    "recentScoreChange": -44,
+    "threeYearRankChange": -24522,
+    "threeYearScoreChange": -40,
+    "threeYearTrend": "down"
   },
   {
     "name": "广东实验中学（白云校区）（中外合作办学项目）（中英课程艺术设计班）",
@@ -14908,6 +19771,21 @@ const historicalSchools = [
         },
         "nonHukou": null,
         "outer": null
+      },
+      "2026": {
+        "id": "GZM038",
+        "name": "广东实验中学（白云校区）（中外合作办学项目）（中英课程艺术设计班）",
+        "type": "中外合作",
+        "scope": "全市",
+        "hukou": {
+          "minScore": 415,
+          "minScoreSeq": 47,
+          "lastVolunteer": 1,
+          "lastScore": 415,
+          "lastScoreSeq": 47
+        },
+        "nonHukou": null,
+        "outer": null
       }
     },
     "rankHistory": [
@@ -14924,6 +19802,13 @@ const historicalSchools = [
         "rank": 96412,
         "percent": 83.11,
         "total": 116007
+      },
+      {
+        "year": "2026",
+        "score": 415,
+        "rank": 123565,
+        "percent": 98.4,
+        "total": 125579
       }
     ],
     "scoreHistory": [
@@ -14934,11 +19819,15 @@ const historicalSchools = [
       {
         "year": "2025",
         "score": 490
+      },
+      {
+        "year": "2026",
+        "score": 415
       }
     ],
-    "avgRank": 92251,
-    "avgScore": 496,
-    "avgPercent": 82.85,
+    "avgRank": 102689,
+    "avgScore": 469,
+    "avgPercent": 88.04,
     "yearlyChanges": [
       {
         "fromYear": "2024",
@@ -14947,11 +19836,22 @@ const historicalSchools = [
         "scoreChange": -12,
         "percentChange": 0.51,
         "trend": "down"
+      },
+      {
+        "fromYear": "2025",
+        "toYear": "2026",
+        "rankChange": -27153,
+        "scoreChange": -75,
+        "percentChange": 15.29,
+        "trend": "down"
       }
     ],
     "recentTrend": "down",
-    "recentRankChange": -8322,
-    "recentScoreChange": -12
+    "recentRankChange": -27153,
+    "recentScoreChange": -75,
+    "threeYearRankChange": -35475,
+    "threeYearScoreChange": -87,
+    "threeYearTrend": "down"
   },
   {
     "name": "广东广雅中学（荔湾校区）（中外合作办学项目）",
@@ -14972,6 +19872,21 @@ const historicalSchools = [
         },
         "nonHukou": null,
         "outer": null
+      },
+      "2026": {
+        "id": "GZM070",
+        "name": "广东广雅中学（荔湾校区）（中外合作办学项目）",
+        "type": "中外合作",
+        "scope": "全市",
+        "hukou": {
+          "minScore": 439,
+          "minScoreSeq": 9,
+          "lastVolunteer": 5,
+          "lastScore": 439,
+          "lastScoreSeq": 9
+        },
+        "nonHukou": null,
+        "outer": null
       }
     },
     "rankHistory": [
@@ -14981,17 +19896,44 @@ const historicalSchools = [
         "rank": 66403,
         "percent": 62.26,
         "total": 106652
+      },
+      {
+        "year": "2026",
+        "score": 439,
+        "rank": 119363,
+        "percent": 95.05,
+        "total": 125579
       }
     ],
     "scoreHistory": [
       {
         "year": "2024",
         "score": 587
+      },
+      {
+        "year": "2026",
+        "score": 439
       }
     ],
-    "avgRank": 66403,
-    "avgScore": 587,
-    "avgPercent": 62.26
+    "avgRank": 92883,
+    "avgScore": 513,
+    "avgPercent": 78.66,
+    "yearlyChanges": [
+      {
+        "fromYear": "2024",
+        "toYear": "2026",
+        "rankChange": -52960,
+        "scoreChange": -148,
+        "percentChange": 32.79,
+        "trend": "down"
+      }
+    ],
+    "recentTrend": "down",
+    "recentRankChange": -52960,
+    "recentScoreChange": -148,
+    "threeYearRankChange": -52960,
+    "threeYearScoreChange": -148,
+    "threeYearTrend": "down"
   },
   {
     "name": "广州市执信中学（二沙岛校区）（中外合作办学项目）（AP课程）",
@@ -15027,6 +19969,21 @@ const historicalSchools = [
         },
         "nonHukou": null,
         "outer": null
+      },
+      "2026": {
+        "id": "GZM041",
+        "name": "广州市执信中学（二沙岛校区）（中外合作办学项目）（AP课程）",
+        "type": "中外合作",
+        "scope": "全市",
+        "hukou": {
+          "minScore": 471,
+          "minScoreSeq": 6,
+          "lastVolunteer": 1,
+          "lastScore": 471,
+          "lastScoreSeq": 6
+        },
+        "nonHukou": null,
+        "outer": null
       }
     },
     "rankHistory": [
@@ -15043,6 +20000,13 @@ const historicalSchools = [
         "rank": 93938,
         "percent": 80.98,
         "total": 116007
+      },
+      {
+        "year": "2026",
+        "score": 471,
+        "rank": 110180,
+        "percent": 87.74,
+        "total": 125579
       }
     ],
     "scoreHistory": [
@@ -15053,11 +20017,15 @@ const historicalSchools = [
       {
         "year": "2025",
         "score": 506
+      },
+      {
+        "year": "2026",
+        "score": 471
       }
     ],
-    "avgRank": 87469,
-    "avgScore": 521,
-    "avgPercent": 78.47,
+    "avgRank": 95039,
+    "avgScore": 504,
+    "avgPercent": 81.56,
     "yearlyChanges": [
       {
         "fromYear": "2024",
@@ -15066,11 +20034,22 @@ const historicalSchools = [
         "scoreChange": -29,
         "percentChange": 5.03,
         "trend": "down"
+      },
+      {
+        "fromYear": "2025",
+        "toYear": "2026",
+        "rankChange": -16242,
+        "scoreChange": -35,
+        "percentChange": 6.76,
+        "trend": "down"
       }
     ],
     "recentTrend": "down",
-    "recentRankChange": -12938,
-    "recentScoreChange": -29
+    "recentRankChange": -16242,
+    "recentScoreChange": -35,
+    "threeYearRankChange": -29180,
+    "threeYearScoreChange": -64,
+    "threeYearTrend": "down"
   },
   {
     "name": "广州市执信中学（二沙岛校区）（中外合作办学项目）（A-Level课程）",
@@ -15106,6 +20085,21 @@ const historicalSchools = [
         },
         "nonHukou": null,
         "outer": null
+      },
+      "2026": {
+        "id": "GZM042",
+        "name": "广州市执信中学（二沙岛校区）（中外合作办学项目）（A-Level课程）",
+        "type": "中外合作",
+        "scope": "全市",
+        "hukou": {
+          "minScore": 459,
+          "minScoreSeq": 8,
+          "lastVolunteer": 5,
+          "lastScore": 476,
+          "lastScoreSeq": 23
+        },
+        "nonHukou": null,
+        "outer": null
       }
     },
     "rankHistory": [
@@ -15122,6 +20116,13 @@ const historicalSchools = [
         "rank": 85771,
         "percent": 73.94,
         "total": 116007
+      },
+      {
+        "year": "2026",
+        "score": 459,
+        "rank": 114928,
+        "percent": 91.52,
+        "total": 125579
       }
     ],
     "scoreHistory": [
@@ -15132,11 +20133,15 @@ const historicalSchools = [
       {
         "year": "2025",
         "score": 533
+      },
+      {
+        "year": "2026",
+        "score": 459
       }
     ],
-    "avgRank": 86931,
-    "avgScore": 518,
-    "avgPercent": 78.27,
+    "avgRank": 96263,
+    "avgScore": 498,
+    "avgPercent": 82.69,
     "yearlyChanges": [
       {
         "fromYear": "2024",
@@ -15145,11 +20150,22 @@ const historicalSchools = [
         "scoreChange": 31,
         "percentChange": -8.66,
         "trend": "up"
+      },
+      {
+        "fromYear": "2025",
+        "toYear": "2026",
+        "rankChange": -29157,
+        "scoreChange": -74,
+        "percentChange": 17.58,
+        "trend": "down"
       }
     ],
-    "recentTrend": "up",
-    "recentRankChange": 2319,
-    "recentScoreChange": 31
+    "recentTrend": "down",
+    "recentRankChange": -29157,
+    "recentScoreChange": -74,
+    "threeYearRankChange": -26838,
+    "threeYearScoreChange": -43,
+    "threeYearTrend": "down"
   },
   {
     "name": "广州市第六中学（海珠校区）（中外合作办学项目）",
@@ -15228,7 +20244,10 @@ const historicalSchools = [
     ],
     "recentTrend": "down",
     "recentRankChange": -12965,
-    "recentScoreChange": -23
+    "recentScoreChange": -23,
+    "threeYearRankChange": -12965,
+    "threeYearScoreChange": -23,
+    "threeYearTrend": "down"
   },
   {
     "name": "广东华侨中学（中外合作办学项目）",
@@ -15264,6 +20283,21 @@ const historicalSchools = [
         },
         "nonHukou": null,
         "outer": null
+      },
+      "2026": {
+        "id": "GZM044",
+        "name": "广东华侨中学（中外合作办学项目）",
+        "type": "中外合作",
+        "scope": "全市",
+        "hukou": {
+          "minScore": 417,
+          "minScoreSeq": 10,
+          "lastVolunteer": 1,
+          "lastScore": 417,
+          "lastScoreSeq": 10
+        },
+        "nonHukou": null,
+        "outer": null
       }
     },
     "rankHistory": [
@@ -15280,6 +20314,13 @@ const historicalSchools = [
         "rank": 93938,
         "percent": 80.98,
         "total": 116007
+      },
+      {
+        "year": "2026",
+        "score": 417,
+        "rank": 123565,
+        "percent": 98.4,
+        "total": 125579
       }
     ],
     "scoreHistory": [
@@ -15290,11 +20331,15 @@ const historicalSchools = [
       {
         "year": "2025",
         "score": 508
+      },
+      {
+        "year": "2026",
+        "score": 417
       }
     ],
-    "avgRank": 91014,
-    "avgScore": 506,
-    "avgPercent": 81.79,
+    "avgRank": 101864,
+    "avgScore": 476,
+    "avgPercent": 87.33,
     "yearlyChanges": [
       {
         "fromYear": "2024",
@@ -15303,11 +20348,22 @@ const historicalSchools = [
         "scoreChange": 5,
         "percentChange": -1.62,
         "trend": "down"
+      },
+      {
+        "fromYear": "2025",
+        "toYear": "2026",
+        "rankChange": -29627,
+        "scoreChange": -91,
+        "percentChange": 17.42,
+        "trend": "down"
       }
     ],
     "recentTrend": "down",
-    "recentRankChange": -5848,
-    "recentScoreChange": 5
+    "recentRankChange": -29627,
+    "recentScoreChange": -91,
+    "threeYearRankChange": -35475,
+    "threeYearScoreChange": -86,
+    "threeYearTrend": "down"
   },
   {
     "name": "广东实验中学越秀学校（中外合作办学项目）",
@@ -15386,7 +20442,10 @@ const historicalSchools = [
     ],
     "recentTrend": "down",
     "recentRankChange": -12965,
-    "recentScoreChange": -26
+    "recentScoreChange": -26,
+    "threeYearRankChange": -12965,
+    "threeYearScoreChange": -26,
+    "threeYearTrend": "down"
   },
   {
     "name": "广州市培英中学（鹤洞校区）（中外合作办学项目）",
@@ -15422,6 +20481,21 @@ const historicalSchools = [
         },
         "nonHukou": null,
         "outer": null
+      },
+      "2026": {
+        "id": "GZM051",
+        "name": "广州市培英中学（鹤洞校区）（中外合作办学项目）",
+        "type": "中外合作",
+        "scope": "全市",
+        "hukou": {
+          "minScore": 424,
+          "minScoreSeq": 22,
+          "lastVolunteer": 1,
+          "lastScore": 424,
+          "lastScoreSeq": 22
+        },
+        "nonHukou": null,
+        "outer": null
       }
     },
     "rankHistory": [
@@ -15438,6 +20512,13 @@ const historicalSchools = [
         "rank": 98826,
         "percent": 85.19,
         "total": 116007
+      },
+      {
+        "year": "2026",
+        "score": 424,
+        "rank": 121489,
+        "percent": 96.74,
+        "total": 125579
       }
     ],
     "scoreHistory": [
@@ -15448,11 +20529,15 @@ const historicalSchools = [
       {
         "year": "2025",
         "score": 488
+      },
+      {
+        "year": "2026",
+        "score": 424
       }
     ],
-    "avgRank": 93458,
-    "avgScore": 496,
-    "avgPercent": 83.89,
+    "avgRank": 102802,
+    "avgScore": 472,
+    "avgPercent": 88.18,
     "yearlyChanges": [
       {
         "fromYear": "2024",
@@ -15461,11 +20546,22 @@ const historicalSchools = [
         "scoreChange": -15,
         "percentChange": 2.59,
         "trend": "down"
+      },
+      {
+        "fromYear": "2025",
+        "toYear": "2026",
+        "rankChange": -22663,
+        "scoreChange": -64,
+        "percentChange": 11.55,
+        "trend": "down"
       }
     ],
     "recentTrend": "down",
-    "recentRankChange": -10736,
-    "recentScoreChange": -15
+    "recentRankChange": -22663,
+    "recentScoreChange": -64,
+    "threeYearRankChange": -33399,
+    "threeYearScoreChange": -79,
+    "threeYearTrend": "down"
   },
   {
     "name": "广州市实验外语学校（中外合作办学项目）",
@@ -15544,7 +20640,10 @@ const historicalSchools = [
     ],
     "recentTrend": "down",
     "recentRankChange": -8322,
-    "recentScoreChange": -5
+    "recentScoreChange": -5,
+    "threeYearRankChange": -8322,
+    "threeYearScoreChange": -5,
+    "threeYearTrend": "down"
   },
   {
     "name": "广州市黄广中学（中外合作办学项目）",
@@ -15580,6 +20679,21 @@ const historicalSchools = [
         },
         "nonHukou": null,
         "outer": null
+      },
+      "2026": {
+        "id": "GZM053",
+        "name": "广州市黄广中学（中外合作办学项目）",
+        "type": "中外合作",
+        "scope": "全市",
+        "hukou": {
+          "minScore": 497,
+          "minScoreSeq": 19,
+          "lastVolunteer": 1,
+          "lastScore": 497,
+          "lastScoreSeq": 19
+        },
+        "nonHukou": null,
+        "outer": null
       }
     },
     "rankHistory": [
@@ -15596,6 +20710,13 @@ const historicalSchools = [
         "rank": 88595,
         "percent": 76.37,
         "total": 116007
+      },
+      {
+        "year": "2026",
+        "score": 497,
+        "rank": 105305,
+        "percent": 83.86,
+        "total": 125579
       }
     ],
     "scoreHistory": [
@@ -15606,11 +20727,15 @@ const historicalSchools = [
       {
         "year": "2025",
         "score": 521
+      },
+      {
+        "year": "2026",
+        "score": 497
       }
     ],
-    "avgRank": 84798,
-    "avgScore": 530,
-    "avgPercent": 76.16,
+    "avgRank": 91633,
+    "avgScore": 519,
+    "avgPercent": 78.73,
     "yearlyChanges": [
       {
         "fromYear": "2024",
@@ -15619,11 +20744,22 @@ const historicalSchools = [
         "scoreChange": -18,
         "percentChange": 0.42,
         "trend": "down"
+      },
+      {
+        "fromYear": "2025",
+        "toYear": "2026",
+        "rankChange": -16710,
+        "scoreChange": -24,
+        "percentChange": 7.49,
+        "trend": "down"
       }
     ],
     "recentTrend": "down",
-    "recentRankChange": -7595,
-    "recentScoreChange": -18
+    "recentRankChange": -16710,
+    "recentScoreChange": -24,
+    "threeYearRankChange": -24305,
+    "threeYearScoreChange": -42,
+    "threeYearTrend": "down"
   },
   {
     "name": "广州市第六中学（花都校区）",
@@ -15650,6 +20786,27 @@ const historicalSchools = [
           "lastScoreSeq": 300
         },
         "outer": null
+      },
+      "2026": {
+        "id": "GZ012",
+        "name": "广州市第六中学（花都校区）",
+        "type": "公办",
+        "scope": "全市",
+        "hukou": {
+          "minScore": 698,
+          "minScoreSeq": 483,
+          "lastVolunteer": 1,
+          "lastScore": 698,
+          "lastScoreSeq": 483
+        },
+        "nonHukou": {
+          "minScore": 698,
+          "minScoreSeq": 364,
+          "lastVolunteer": 1,
+          "lastScore": 698,
+          "lastScoreSeq": 364
+        },
+        "outer": null
       }
     },
     "rankHistory": [
@@ -15659,17 +20816,44 @@ const historicalSchools = [
         "rank": 36193,
         "percent": 31.2,
         "total": 116007
+      },
+      {
+        "year": "2026",
+        "score": 698,
+        "rank": 26644,
+        "percent": 21.22,
+        "total": 125579
       }
     ],
     "scoreHistory": [
       {
         "year": "2025",
         "score": 667
+      },
+      {
+        "year": "2026",
+        "score": 698
       }
     ],
-    "avgRank": 36193,
-    "avgScore": 667,
-    "avgPercent": 31.2
+    "avgRank": 31419,
+    "avgScore": 683,
+    "avgPercent": 26.21,
+    "yearlyChanges": [
+      {
+        "fromYear": "2025",
+        "toYear": "2026",
+        "rankChange": 9549,
+        "scoreChange": 31,
+        "percentChange": -9.98,
+        "trend": "up"
+      }
+    ],
+    "recentTrend": "up",
+    "recentRankChange": 9549,
+    "recentScoreChange": 31,
+    "threeYearRankChange": 9549,
+    "threeYearScoreChange": 31,
+    "threeYearTrend": "up"
   },
   {
     "name": "广州外国语学校",
@@ -15696,6 +20880,27 @@ const historicalSchools = [
           "lastScoreSeq": 21
         },
         "outer": null
+      },
+      "2026": {
+        "id": "GZ019",
+        "name": "广州外国语学校",
+        "type": "公办",
+        "scope": "全市",
+        "hukou": {
+          "minScore": 712,
+          "minScoreSeq": 484,
+          "lastVolunteer": 2,
+          "lastScore": 726,
+          "lastScoreSeq": 232
+        },
+        "nonHukou": {
+          "minScore": 713,
+          "minScoreSeq": 428,
+          "lastVolunteer": 2,
+          "lastScore": 726,
+          "lastScoreSeq": 131
+        },
+        "outer": null
       }
     },
     "rankHistory": [
@@ -15705,17 +20910,44 @@ const historicalSchools = [
         "rank": 17244,
         "percent": 14.86,
         "total": 116007
+      },
+      {
+        "year": "2026",
+        "score": 712,
+        "rank": 16303,
+        "percent": 12.98,
+        "total": 125579
       }
     ],
     "scoreHistory": [
       {
         "year": "2025",
         "score": 700
+      },
+      {
+        "year": "2026",
+        "score": 712
       }
     ],
-    "avgRank": 17244,
-    "avgScore": 700,
-    "avgPercent": 14.86
+    "avgRank": 16774,
+    "avgScore": 706,
+    "avgPercent": 13.92,
+    "yearlyChanges": [
+      {
+        "fromYear": "2025",
+        "toYear": "2026",
+        "rankChange": 941,
+        "scoreChange": 12,
+        "percentChange": -1.88,
+        "trend": "up"
+      }
+    ],
+    "recentTrend": "up",
+    "recentRankChange": 941,
+    "recentScoreChange": 12,
+    "threeYearRankChange": 941,
+    "threeYearScoreChange": 12,
+    "threeYearTrend": "up"
   },
   {
     "name": "广州市真光中学（广钢校区）",
@@ -15742,6 +20974,33 @@ const historicalSchools = [
           "lastScoreSeq": 194
         },
         "outer": null
+      },
+      "2026": {
+        "id": "GZ027",
+        "name": "广州市真光中学（广钢校区）",
+        "type": "公办",
+        "scope": "全市",
+        "hukou": {
+          "minScore": 672,
+          "minScoreSeq": 497,
+          "lastVolunteer": 2,
+          "lastScore": 688,
+          "lastScoreSeq": 232
+        },
+        "nonHukou": {
+          "minScore": 672,
+          "minScoreSeq": 115,
+          "lastVolunteer": 2,
+          "lastScore": 689,
+          "lastScoreSeq": 487
+        },
+        "outer": {
+          "minScore": 672,
+          "minScoreSeq": 258,
+          "lastVolunteer": 2,
+          "lastScore": 689,
+          "lastScoreSeq": 157
+        }
       }
     },
     "rankHistory": [
@@ -15751,17 +21010,44 @@ const historicalSchools = [
         "rank": 36193,
         "percent": 31.2,
         "total": 116007
+      },
+      {
+        "year": "2026",
+        "score": 672,
+        "rank": 37486,
+        "percent": 29.85,
+        "total": 125579
       }
     ],
     "scoreHistory": [
       {
         "year": "2025",
         "score": 667
+      },
+      {
+        "year": "2026",
+        "score": 672
       }
     ],
-    "avgRank": 36193,
-    "avgScore": 667,
-    "avgPercent": 31.2
+    "avgRank": 36840,
+    "avgScore": 670,
+    "avgPercent": 30.53,
+    "yearlyChanges": [
+      {
+        "fromYear": "2025",
+        "toYear": "2026",
+        "rankChange": -1293,
+        "scoreChange": 5,
+        "percentChange": -1.35,
+        "trend": "down"
+      }
+    ],
+    "recentTrend": "down",
+    "recentRankChange": -1293,
+    "recentScoreChange": 5,
+    "threeYearRankChange": -1293,
+    "threeYearScoreChange": 5,
+    "threeYearTrend": "down"
   },
   {
     "name": "广州市第七中学（校本部）",
@@ -15788,6 +21074,33 @@ const historicalSchools = [
           "lastScoreSeq": 105
         },
         "outer": null
+      },
+      "2026": {
+        "id": "GZ029",
+        "name": "广州市第七中学（校本部）",
+        "type": "公办",
+        "scope": "全市",
+        "hukou": {
+          "minScore": 712,
+          "minScoreSeq": 377,
+          "lastVolunteer": 2,
+          "lastScore": 724,
+          "lastScoreSeq": 376
+        },
+        "nonHukou": {
+          "minScore": 713,
+          "minScoreSeq": 145,
+          "lastVolunteer": 2,
+          "lastScore": 727,
+          "lastScoreSeq": 133
+        },
+        "outer": {
+          "minScore": 714,
+          "minScoreSeq": 417,
+          "lastVolunteer": 2,
+          "lastScore": 724,
+          "lastScoreSeq": 263
+        }
       }
     },
     "rankHistory": [
@@ -15797,17 +21110,44 @@ const historicalSchools = [
         "rank": 36193,
         "percent": 31.2,
         "total": 116007
+      },
+      {
+        "year": "2026",
+        "score": 712,
+        "rank": 16303,
+        "percent": 12.98,
+        "total": 125579
       }
     ],
     "scoreHistory": [
       {
         "year": "2025",
         "score": 668
+      },
+      {
+        "year": "2026",
+        "score": 712
       }
     ],
-    "avgRank": 36193,
-    "avgScore": 668,
-    "avgPercent": 31.2
+    "avgRank": 26248,
+    "avgScore": 690,
+    "avgPercent": 22.09,
+    "yearlyChanges": [
+      {
+        "fromYear": "2025",
+        "toYear": "2026",
+        "rankChange": 19890,
+        "scoreChange": 44,
+        "percentChange": -18.22,
+        "trend": "up"
+      }
+    ],
+    "recentTrend": "up",
+    "recentRankChange": 19890,
+    "recentScoreChange": 44,
+    "threeYearRankChange": 19890,
+    "threeYearScoreChange": 44,
+    "threeYearTrend": "up"
   },
   {
     "name": "广州市第七中学（桂花校区）",
@@ -15853,7 +21193,14 @@ const historicalSchools = [
     ],
     "avgRank": 54115,
     "avgScore": 629,
-    "avgPercent": 46.65
+    "avgPercent": 46.65,
+    "yearlyChanges": [],
+    "recentTrend": "stable",
+    "recentRankChange": 0,
+    "recentScoreChange": 0,
+    "threeYearRankChange": 0,
+    "threeYearScoreChange": 0,
+    "threeYearTrend": "stable"
   },
   {
     "name": "广州市第九十七中学（江南新苑校区）",
@@ -15880,6 +21227,33 @@ const historicalSchools = [
           "lastScoreSeq": 398
         },
         "outer": null
+      },
+      "2026": {
+        "id": "GZ042",
+        "name": "广州市第九十七中学（江南新苑校区）",
+        "type": "公办",
+        "scope": "全市",
+        "hukou": {
+          "minScore": 615,
+          "minScoreSeq": 391,
+          "lastVolunteer": 1,
+          "lastScore": 615,
+          "lastScoreSeq": 391
+        },
+        "nonHukou": {
+          "minScore": 637,
+          "minScoreSeq": 235,
+          "lastVolunteer": 1,
+          "lastScore": 637,
+          "lastScoreSeq": 235
+        },
+        "outer": {
+          "minScore": 617,
+          "minScoreSeq": 281,
+          "lastVolunteer": 1,
+          "lastScore": 617,
+          "lastScoreSeq": 281
+        }
       }
     },
     "rankHistory": [
@@ -15889,17 +21263,44 @@ const historicalSchools = [
         "rank": 69565,
         "percent": 59.97,
         "total": 116007
+      },
+      {
+        "year": "2026",
+        "score": 615,
+        "rank": 66551,
+        "percent": 53,
+        "total": 125579
       }
     ],
     "scoreHistory": [
       {
         "year": "2025",
         "score": 589
+      },
+      {
+        "year": "2026",
+        "score": 615
       }
     ],
-    "avgRank": 69565,
-    "avgScore": 589,
-    "avgPercent": 59.97
+    "avgRank": 68058,
+    "avgScore": 602,
+    "avgPercent": 56.49,
+    "yearlyChanges": [
+      {
+        "fromYear": "2025",
+        "toYear": "2026",
+        "rankChange": 3014,
+        "scoreChange": 26,
+        "percentChange": -6.97,
+        "trend": "up"
+      }
+    ],
+    "recentTrend": "up",
+    "recentRankChange": 3014,
+    "recentScoreChange": 26,
+    "threeYearRankChange": 3014,
+    "threeYearScoreChange": 26,
+    "threeYearTrend": "up"
   },
   {
     "name": "广州市海珠外国语实验中学（校本部）",
@@ -15926,6 +21327,33 @@ const historicalSchools = [
           "lastScoreSeq": 305
         },
         "outer": null
+      },
+      "2026": {
+        "id": "GZ044",
+        "name": "广州市海珠外国语实验中学（校本部）",
+        "type": "公办",
+        "scope": "全市",
+        "hukou": {
+          "minScore": 672,
+          "minScoreSeq": 520,
+          "lastVolunteer": 3,
+          "lastScore": 706,
+          "lastScoreSeq": 73
+        },
+        "nonHukou": {
+          "minScore": 672,
+          "minScoreSeq": 193,
+          "lastVolunteer": 3,
+          "lastScore": 708,
+          "lastScoreSeq": 123
+        },
+        "outer": {
+          "minScore": 676,
+          "minScoreSeq": 84,
+          "lastVolunteer": 3,
+          "lastScore": 710,
+          "lastScoreSeq": 407
+        }
       }
     },
     "rankHistory": [
@@ -15935,17 +21363,44 @@ const historicalSchools = [
         "rank": 36193,
         "percent": 31.2,
         "total": 116007
+      },
+      {
+        "year": "2026",
+        "score": 672,
+        "rank": 37486,
+        "percent": 29.85,
+        "total": 125579
       }
     ],
     "scoreHistory": [
       {
         "year": "2025",
         "score": 667
+      },
+      {
+        "year": "2026",
+        "score": 672
       }
     ],
-    "avgRank": 36193,
-    "avgScore": 667,
-    "avgPercent": 31.2
+    "avgRank": 36840,
+    "avgScore": 670,
+    "avgPercent": 30.53,
+    "yearlyChanges": [
+      {
+        "fromYear": "2025",
+        "toYear": "2026",
+        "rankChange": -1293,
+        "scoreChange": 5,
+        "percentChange": -1.35,
+        "trend": "down"
+      }
+    ],
+    "recentTrend": "down",
+    "recentRankChange": -1293,
+    "recentScoreChange": 5,
+    "threeYearRankChange": -1293,
+    "threeYearScoreChange": 5,
+    "threeYearTrend": "down"
   },
   {
     "name": "广州市海珠外国语实验中学（江海校区）",
@@ -15972,6 +21427,33 @@ const historicalSchools = [
           "lastScoreSeq": 452
         },
         "outer": null
+      },
+      "2026": {
+        "id": "GZ045",
+        "name": "广州市海珠外国语实验中学（江海校区）",
+        "type": "公办",
+        "scope": "全市",
+        "hukou": {
+          "minScore": 593,
+          "minScoreSeq": 57,
+          "lastVolunteer": 3,
+          "lastScore": 622,
+          "lastScoreSeq": 430
+        },
+        "nonHukou": {
+          "minScore": 632,
+          "minScoreSeq": 215,
+          "lastVolunteer": 2,
+          "lastScore": 649,
+          "lastScoreSeq": 340
+        },
+        "outer": {
+          "minScore": 609,
+          "minScoreSeq": 105,
+          "lastVolunteer": 3,
+          "lastScore": 622,
+          "lastScoreSeq": 430
+        }
       }
     },
     "rankHistory": [
@@ -15981,17 +21463,44 @@ const historicalSchools = [
         "rank": 54115,
         "percent": 46.65,
         "total": 116007
+      },
+      {
+        "year": "2026",
+        "score": 593,
+        "rank": 74441,
+        "percent": 59.28,
+        "total": 125579
       }
     ],
     "scoreHistory": [
       {
         "year": "2025",
         "score": 626
+      },
+      {
+        "year": "2026",
+        "score": 593
       }
     ],
-    "avgRank": 54115,
-    "avgScore": 626,
-    "avgPercent": 46.65
+    "avgRank": 64278,
+    "avgScore": 610,
+    "avgPercent": 52.97,
+    "yearlyChanges": [
+      {
+        "fromYear": "2025",
+        "toYear": "2026",
+        "rankChange": -20326,
+        "scoreChange": -33,
+        "percentChange": 12.63,
+        "trend": "down"
+      }
+    ],
+    "recentTrend": "down",
+    "recentRankChange": -20326,
+    "recentScoreChange": -33,
+    "threeYearRankChange": -20326,
+    "threeYearScoreChange": -33,
+    "threeYearTrend": "down"
   },
   {
     "name": "广州市天河外国语学校（珠江新城校区）",
@@ -16018,6 +21527,33 @@ const historicalSchools = [
           "lastScoreSeq": 295
         },
         "outer": null
+      },
+      "2026": {
+        "id": "GZ052",
+        "name": "广州市天河外国语学校（珠江新城校区）",
+        "type": "公办",
+        "scope": "全市",
+        "hukou": {
+          "minScore": 708,
+          "minScoreSeq": 512,
+          "lastVolunteer": 1,
+          "lastScore": 708,
+          "lastScoreSeq": 512
+        },
+        "nonHukou": {
+          "minScore": 732,
+          "minScoreSeq": 132,
+          "lastVolunteer": 2,
+          "lastScore": 732,
+          "lastScoreSeq": 132
+        },
+        "outer": {
+          "minScore": 712,
+          "minScoreSeq": 266,
+          "lastVolunteer": 3,
+          "lastScore": 719,
+          "lastScoreSeq": 189
+        }
       }
     },
     "rankHistory": [
@@ -16027,17 +21563,44 @@ const historicalSchools = [
         "rank": 12865,
         "percent": 11.09,
         "total": 116007
+      },
+      {
+        "year": "2026",
+        "score": 708,
+        "rank": 21387,
+        "percent": 17.03,
+        "total": 125579
       }
     ],
     "scoreHistory": [
       {
         "year": "2025",
         "score": 714
+      },
+      {
+        "year": "2026",
+        "score": 708
       }
     ],
-    "avgRank": 12865,
-    "avgScore": 714,
-    "avgPercent": 11.09
+    "avgRank": 17126,
+    "avgScore": 711,
+    "avgPercent": 14.06,
+    "yearlyChanges": [
+      {
+        "fromYear": "2025",
+        "toYear": "2026",
+        "rankChange": -8522,
+        "scoreChange": -6,
+        "percentChange": 5.94,
+        "trend": "down"
+      }
+    ],
+    "recentTrend": "down",
+    "recentRankChange": -8522,
+    "recentScoreChange": -6,
+    "threeYearRankChange": -8522,
+    "threeYearScoreChange": -6,
+    "threeYearTrend": "down"
   },
   {
     "name": "广州市天河外国语学校（智慧城校区）",
@@ -16064,6 +21627,33 @@ const historicalSchools = [
           "lastScoreSeq": 265
         },
         "outer": null
+      },
+      "2026": {
+        "id": "GZ053",
+        "name": "广州市天河外国语学校（智慧城校区）",
+        "type": "公办",
+        "scope": "全市",
+        "hukou": {
+          "minScore": 712,
+          "minScoreSeq": 369,
+          "lastVolunteer": 2,
+          "lastScore": 714,
+          "lastScoreSeq": 62
+        },
+        "nonHukou": {
+          "minScore": 713,
+          "minScoreSeq": 188,
+          "lastVolunteer": 2,
+          "lastScore": 717,
+          "lastScoreSeq": 150
+        },
+        "outer": {
+          "minScore": 712,
+          "minScoreSeq": 332,
+          "lastVolunteer": 2,
+          "lastScore": 716,
+          "lastScoreSeq": 312
+        }
       }
     },
     "rankHistory": [
@@ -16073,17 +21663,44 @@ const historicalSchools = [
         "rank": 17244,
         "percent": 14.86,
         "total": 116007
+      },
+      {
+        "year": "2026",
+        "score": 712,
+        "rank": 16303,
+        "percent": 12.98,
+        "total": 125579
       }
     ],
     "scoreHistory": [
       {
         "year": "2025",
         "score": 707
+      },
+      {
+        "year": "2026",
+        "score": 712
       }
     ],
-    "avgRank": 17244,
-    "avgScore": 707,
-    "avgPercent": 14.86
+    "avgRank": 16774,
+    "avgScore": 710,
+    "avgPercent": 13.92,
+    "yearlyChanges": [
+      {
+        "fromYear": "2025",
+        "toYear": "2026",
+        "rankChange": 941,
+        "scoreChange": 5,
+        "percentChange": -1.88,
+        "trend": "up"
+      }
+    ],
+    "recentTrend": "up",
+    "recentRankChange": 941,
+    "recentScoreChange": 5,
+    "threeYearRankChange": 941,
+    "threeYearScoreChange": 5,
+    "threeYearTrend": "up"
   },
   {
     "name": "广州市第六十五中学（江府校区）",
@@ -16110,6 +21727,33 @@ const historicalSchools = [
           "lastScoreSeq": 70
         },
         "outer": null
+      },
+      "2026": {
+        "id": "GZ058",
+        "name": "广州市第六十五中学（江府校区）",
+        "type": "公办",
+        "scope": "全市",
+        "hukou": {
+          "minScore": 646,
+          "minScoreSeq": 272,
+          "lastVolunteer": 1,
+          "lastScore": 646,
+          "lastScoreSeq": 272
+        },
+        "nonHukou": {
+          "minScore": 668,
+          "minScoreSeq": 539,
+          "lastVolunteer": 1,
+          "lastScore": 668,
+          "lastScoreSeq": 539
+        },
+        "outer": {
+          "minScore": 653,
+          "minScoreSeq": 526,
+          "lastVolunteer": 1,
+          "lastScore": 653,
+          "lastScoreSeq": 526
+        }
       }
     },
     "rankHistory": [
@@ -16119,17 +21763,44 @@ const historicalSchools = [
         "rank": 54115,
         "percent": 46.65,
         "total": 116007
+      },
+      {
+        "year": "2026",
+        "score": 646,
+        "rank": 52890,
+        "percent": 42.12,
+        "total": 125579
       }
     ],
     "scoreHistory": [
       {
         "year": "2025",
         "score": 627
+      },
+      {
+        "year": "2026",
+        "score": 646
       }
     ],
-    "avgRank": 54115,
-    "avgScore": 627,
-    "avgPercent": 46.65
+    "avgRank": 53503,
+    "avgScore": 637,
+    "avgPercent": 44.39,
+    "yearlyChanges": [
+      {
+        "fromYear": "2025",
+        "toYear": "2026",
+        "rankChange": 1225,
+        "scoreChange": 19,
+        "percentChange": -4.53,
+        "trend": "up"
+      }
+    ],
+    "recentTrend": "up",
+    "recentRankChange": 1225,
+    "recentScoreChange": 19,
+    "threeYearRankChange": 1225,
+    "threeYearScoreChange": 19,
+    "threeYearTrend": "up"
   },
   {
     "name": "广州市海珠中学（公费班）",
@@ -16150,6 +21821,21 @@ const historicalSchools = [
         },
         "nonHukou": null,
         "outer": null
+      },
+      "2026": {
+        "id": "GZM003",
+        "name": "广州市海珠中学（公费班）",
+        "type": "民办",
+        "scope": "全市",
+        "hukou": {
+          "minScore": 625,
+          "minScoreSeq": 240,
+          "lastVolunteer": 1,
+          "lastScore": 625,
+          "lastScoreSeq": 240
+        },
+        "nonHukou": null,
+        "outer": null
       }
     },
     "rankHistory": [
@@ -16159,17 +21845,44 @@ const historicalSchools = [
         "rank": 69565,
         "percent": 59.97,
         "total": 116007
+      },
+      {
+        "year": "2026",
+        "score": 625,
+        "rank": 62205,
+        "percent": 49.53,
+        "total": 125579
       }
     ],
     "scoreHistory": [
       {
         "year": "2025",
         "score": 589
+      },
+      {
+        "year": "2026",
+        "score": 625
       }
     ],
-    "avgRank": 69565,
-    "avgScore": 589,
-    "avgPercent": 59.97
+    "avgRank": 65885,
+    "avgScore": 607,
+    "avgPercent": 54.75,
+    "yearlyChanges": [
+      {
+        "fromYear": "2025",
+        "toYear": "2026",
+        "rankChange": 7360,
+        "scoreChange": 36,
+        "percentChange": -10.44,
+        "trend": "up"
+      }
+    ],
+    "recentTrend": "up",
+    "recentRankChange": 7360,
+    "recentScoreChange": 36,
+    "threeYearRankChange": 7360,
+    "threeYearScoreChange": 36,
+    "threeYearTrend": "up"
   },
   {
     "name": "广州天省实验学校（公费班）",
@@ -16190,6 +21903,21 @@ const historicalSchools = [
         },
         "nonHukou": null,
         "outer": null
+      },
+      "2026": {
+        "id": "GZM006",
+        "name": "广州天省实验学校（公费班）",
+        "type": "民办",
+        "scope": "全市",
+        "hukou": {
+          "minScore": 716,
+          "minScoreSeq": 509,
+          "lastVolunteer": 3,
+          "lastScore": 718,
+          "lastScoreSeq": 453
+        },
+        "nonHukou": null,
+        "outer": null
       }
     },
     "rankHistory": [
@@ -16199,17 +21927,44 @@ const historicalSchools = [
         "rank": 21899,
         "percent": 18.88,
         "total": 116007
+      },
+      {
+        "year": "2026",
+        "score": 716,
+        "rank": 16303,
+        "percent": 12.98,
+        "total": 125579
       }
     ],
     "scoreHistory": [
       {
         "year": "2025",
         "score": 699
+      },
+      {
+        "year": "2026",
+        "score": 716
       }
     ],
-    "avgRank": 21899,
-    "avgScore": 699,
-    "avgPercent": 18.88
+    "avgRank": 19101,
+    "avgScore": 708,
+    "avgPercent": 15.93,
+    "yearlyChanges": [
+      {
+        "fromYear": "2025",
+        "toYear": "2026",
+        "rankChange": 5596,
+        "scoreChange": 17,
+        "percentChange": -5.9,
+        "trend": "up"
+      }
+    ],
+    "recentTrend": "up",
+    "recentRankChange": 5596,
+    "recentScoreChange": 17,
+    "threeYearRankChange": 5596,
+    "threeYearScoreChange": 17,
+    "threeYearTrend": "up"
   },
   {
     "name": "广州市华文高级中学（公费班）",
@@ -16230,6 +21985,21 @@ const historicalSchools = [
         },
         "nonHukou": null,
         "outer": null
+      },
+      "2026": {
+        "id": "GZM012",
+        "name": "广州市华文高级中学（公费班）",
+        "type": "民办",
+        "scope": "全市",
+        "hukou": {
+          "minScore": 672,
+          "minScoreSeq": 396,
+          "lastVolunteer": 2,
+          "lastScore": 698,
+          "lastScoreSeq": 294
+        },
+        "nonHukou": null,
+        "outer": null
       }
     },
     "rankHistory": [
@@ -16239,17 +22009,44 @@ const historicalSchools = [
         "rank": 36193,
         "percent": 31.2,
         "total": 116007
+      },
+      {
+        "year": "2026",
+        "score": 672,
+        "rank": 37486,
+        "percent": 29.85,
+        "total": 125579
       }
     ],
     "scoreHistory": [
       {
         "year": "2025",
         "score": 667
+      },
+      {
+        "year": "2026",
+        "score": 672
       }
     ],
-    "avgRank": 36193,
-    "avgScore": 667,
-    "avgPercent": 31.2
+    "avgRank": 36840,
+    "avgScore": 670,
+    "avgPercent": 30.53,
+    "yearlyChanges": [
+      {
+        "fromYear": "2025",
+        "toYear": "2026",
+        "rankChange": -1293,
+        "scoreChange": 5,
+        "percentChange": -1.35,
+        "trend": "down"
+      }
+    ],
+    "recentTrend": "down",
+    "recentRankChange": -1293,
+    "recentScoreChange": 5,
+    "threeYearRankChange": -1293,
+    "threeYearScoreChange": 5,
+    "threeYearTrend": "down"
   },
   {
     "name": "广州市明珠高级中学有限公司（公费班）",
@@ -16270,6 +22067,21 @@ const historicalSchools = [
         },
         "nonHukou": null,
         "outer": null
+      },
+      "2026": {
+        "id": "GZM013",
+        "name": "广州市明珠高级中学有限公司（公费班）",
+        "type": "民办",
+        "scope": "全市",
+        "hukou": {
+          "minScore": 644,
+          "minScoreSeq": 29,
+          "lastVolunteer": 1,
+          "lastScore": 644,
+          "lastScoreSeq": 29
+        },
+        "nonHukou": null,
+        "outer": null
       }
     },
     "rankHistory": [
@@ -16279,17 +22091,44 @@ const historicalSchools = [
         "rank": 36193,
         "percent": 31.2,
         "total": 116007
+      },
+      {
+        "year": "2026",
+        "score": 644,
+        "rank": 52890,
+        "percent": 42.12,
+        "total": 125579
       }
     ],
     "scoreHistory": [
       {
         "year": "2025",
         "score": 661
+      },
+      {
+        "year": "2026",
+        "score": 644
       }
     ],
-    "avgRank": 36193,
-    "avgScore": 661,
-    "avgPercent": 31.2
+    "avgRank": 44542,
+    "avgScore": 653,
+    "avgPercent": 36.66,
+    "yearlyChanges": [
+      {
+        "fromYear": "2025",
+        "toYear": "2026",
+        "rankChange": -16697,
+        "scoreChange": -17,
+        "percentChange": 10.92,
+        "trend": "down"
+      }
+    ],
+    "recentTrend": "down",
+    "recentRankChange": -16697,
+    "recentScoreChange": -17,
+    "threeYearRankChange": -16697,
+    "threeYearScoreChange": -17,
+    "threeYearTrend": "down"
   },
   {
     "name": "广州市天健学校（公费班）",
@@ -16310,6 +22149,21 @@ const historicalSchools = [
         },
         "nonHukou": null,
         "outer": null
+      },
+      "2026": {
+        "id": "GZM014",
+        "name": "广州市天健学校（公费班）",
+        "type": "民办",
+        "scope": "全市",
+        "hukou": {
+          "minScore": 632,
+          "minScoreSeq": 136,
+          "lastVolunteer": 3,
+          "lastScore": 667,
+          "lastScoreSeq": 122
+        },
+        "nonHukou": null,
+        "outer": null
       }
     },
     "rankHistory": [
@@ -16319,17 +22173,44 @@ const historicalSchools = [
         "rank": 31526,
         "percent": 27.18,
         "total": 116007
+      },
+      {
+        "year": "2026",
+        "score": 632,
+        "rank": 57562,
+        "percent": 45.84,
+        "total": 125579
       }
     ],
     "scoreHistory": [
       {
         "year": "2025",
         "score": 670
+      },
+      {
+        "year": "2026",
+        "score": 632
       }
     ],
-    "avgRank": 31526,
-    "avgScore": 670,
-    "avgPercent": 27.18
+    "avgRank": 44544,
+    "avgScore": 651,
+    "avgPercent": 36.51,
+    "yearlyChanges": [
+      {
+        "fromYear": "2025",
+        "toYear": "2026",
+        "rankChange": -26036,
+        "scoreChange": -38,
+        "percentChange": 18.66,
+        "trend": "down"
+      }
+    ],
+    "recentTrend": "down",
+    "recentRankChange": -26036,
+    "recentScoreChange": -38,
+    "threeYearRankChange": -26036,
+    "threeYearScoreChange": -38,
+    "threeYearTrend": "down"
   },
   {
     "name": "广州市衡美高级中学有限公司（公费班）",
@@ -16350,6 +22231,21 @@ const historicalSchools = [
         },
         "nonHukou": null,
         "outer": null
+      },
+      "2026": {
+        "id": "GZM016",
+        "name": "广州市衡美高级中学有限公司（公费班）",
+        "type": "民办",
+        "scope": "全市",
+        "hukou": {
+          "minScore": 607,
+          "minScoreSeq": 368,
+          "lastVolunteer": 1,
+          "lastScore": 607,
+          "lastScoreSeq": 368
+        },
+        "nonHukou": null,
+        "outer": null
       }
     },
     "rankHistory": [
@@ -16359,17 +22255,44 @@ const historicalSchools = [
         "rank": 65900,
         "percent": 56.81,
         "total": 116007
+      },
+      {
+        "year": "2026",
+        "score": 607,
+        "rank": 70581,
+        "percent": 56.2,
+        "total": 125579
       }
     ],
     "scoreHistory": [
       {
         "year": "2025",
         "score": 590
+      },
+      {
+        "year": "2026",
+        "score": 607
       }
     ],
-    "avgRank": 65900,
-    "avgScore": 590,
-    "avgPercent": 56.81
+    "avgRank": 68241,
+    "avgScore": 599,
+    "avgPercent": 56.51,
+    "yearlyChanges": [
+      {
+        "fromYear": "2025",
+        "toYear": "2026",
+        "rankChange": -4681,
+        "scoreChange": 17,
+        "percentChange": -0.61,
+        "trend": "down"
+      }
+    ],
+    "recentTrend": "down",
+    "recentRankChange": -4681,
+    "recentScoreChange": 17,
+    "threeYearRankChange": -4681,
+    "threeYearScoreChange": 17,
+    "threeYearTrend": "down"
   },
   {
     "name": "广州市星执学校（公费班）",
@@ -16390,6 +22313,21 @@ const historicalSchools = [
         },
         "nonHukou": null,
         "outer": null
+      },
+      "2026": {
+        "id": "GZM017",
+        "name": "广州市星执学校（公费班）",
+        "type": "民办",
+        "scope": "全市",
+        "hukou": {
+          "minScore": 673,
+          "minScoreSeq": 245,
+          "lastVolunteer": 2,
+          "lastScore": 705,
+          "lastScoreSeq": 152
+        },
+        "nonHukou": null,
+        "outer": null
       }
     },
     "rankHistory": [
@@ -16399,17 +22337,44 @@ const historicalSchools = [
         "rank": 31526,
         "percent": 27.18,
         "total": 116007
+      },
+      {
+        "year": "2026",
+        "score": 673,
+        "rank": 37486,
+        "percent": 29.85,
+        "total": 125579
       }
     ],
     "scoreHistory": [
       {
         "year": "2025",
         "score": 670
+      },
+      {
+        "year": "2026",
+        "score": 673
       }
     ],
-    "avgRank": 31526,
-    "avgScore": 670,
-    "avgPercent": 27.18
+    "avgRank": 34506,
+    "avgScore": 672,
+    "avgPercent": 28.52,
+    "yearlyChanges": [
+      {
+        "fromYear": "2025",
+        "toYear": "2026",
+        "rankChange": -5960,
+        "scoreChange": 3,
+        "percentChange": 2.67,
+        "trend": "down"
+      }
+    ],
+    "recentTrend": "down",
+    "recentRankChange": -5960,
+    "recentScoreChange": 3,
+    "threeYearRankChange": -5960,
+    "threeYearScoreChange": 3,
+    "threeYearTrend": "down"
   },
   {
     "name": "广州市北培高级中学有限公司（公费班）",
@@ -16449,7 +22414,14 @@ const historicalSchools = [
     ],
     "avgRank": 58204,
     "avgScore": 611,
-    "avgPercent": 50.17
+    "avgPercent": 50.17,
+    "yearlyChanges": [],
+    "recentTrend": "stable",
+    "recentRankChange": 0,
+    "recentScoreChange": 0,
+    "threeYearRankChange": 0,
+    "threeYearScoreChange": 0,
+    "threeYearTrend": "stable"
   },
   {
     "name": "广州市央美现代高级中学有限公司（公费班）",
@@ -16489,7 +22461,14 @@ const historicalSchools = [
     ],
     "avgRank": 65900,
     "avgScore": 591,
-    "avgPercent": 56.81
+    "avgPercent": 56.81,
+    "yearlyChanges": [],
+    "recentTrend": "stable",
+    "recentRankChange": 0,
+    "recentScoreChange": 0,
+    "threeYearRankChange": 0,
+    "threeYearScoreChange": 0,
+    "threeYearTrend": "stable"
   },
   {
     "name": "广州市明贤实验高级中学有限公司（公费班）",
@@ -16510,6 +22489,21 @@ const historicalSchools = [
         },
         "nonHukou": null,
         "outer": null
+      },
+      "2026": {
+        "id": "GZM022",
+        "name": "广州市明贤实验高级中学有限公司（公费班）",
+        "type": "民办",
+        "scope": "全市",
+        "hukou": {
+          "minScore": 632,
+          "minScoreSeq": 390,
+          "lastVolunteer": 3,
+          "lastScore": 634,
+          "lastScoreSeq": 186
+        },
+        "nonHukou": null,
+        "outer": null
       }
     },
     "rankHistory": [
@@ -16519,17 +22513,44 @@ const historicalSchools = [
         "rank": 54115,
         "percent": 46.65,
         "total": 116007
+      },
+      {
+        "year": "2026",
+        "score": 632,
+        "rank": 57562,
+        "percent": 45.84,
+        "total": 125579
       }
     ],
     "scoreHistory": [
       {
         "year": "2025",
         "score": 627
+      },
+      {
+        "year": "2026",
+        "score": 632
       }
     ],
-    "avgRank": 54115,
-    "avgScore": 627,
-    "avgPercent": 46.65
+    "avgRank": 55839,
+    "avgScore": 630,
+    "avgPercent": 46.25,
+    "yearlyChanges": [
+      {
+        "fromYear": "2025",
+        "toYear": "2026",
+        "rankChange": -3447,
+        "scoreChange": 5,
+        "percentChange": -0.81,
+        "trend": "down"
+      }
+    ],
+    "recentTrend": "down",
+    "recentRankChange": -3447,
+    "recentScoreChange": 5,
+    "threeYearRankChange": -3447,
+    "threeYearScoreChange": 5,
+    "threeYearTrend": "down"
   },
   {
     "name": "广州市香江中学（公费班）",
@@ -16550,6 +22571,21 @@ const historicalSchools = [
         },
         "nonHukou": null,
         "outer": null
+      },
+      "2026": {
+        "id": "GZM023",
+        "name": "广州市香江中学（公费班）",
+        "type": "民办",
+        "scope": "全市",
+        "hukou": {
+          "minScore": 633,
+          "minScoreSeq": 208,
+          "lastVolunteer": 2,
+          "lastScore": 660,
+          "lastScoreSeq": 82
+        },
+        "nonHukou": null,
+        "outer": null
       }
     },
     "rankHistory": [
@@ -16559,17 +22595,44 @@ const historicalSchools = [
         "rank": 54115,
         "percent": 46.65,
         "total": 116007
+      },
+      {
+        "year": "2026",
+        "score": 633,
+        "rank": 57562,
+        "percent": 45.84,
+        "total": 125579
       }
     ],
     "scoreHistory": [
       {
         "year": "2025",
         "score": 629
+      },
+      {
+        "year": "2026",
+        "score": 633
       }
     ],
-    "avgRank": 54115,
-    "avgScore": 629,
-    "avgPercent": 46.65
+    "avgRank": 55839,
+    "avgScore": 631,
+    "avgPercent": 46.25,
+    "yearlyChanges": [
+      {
+        "fromYear": "2025",
+        "toYear": "2026",
+        "rankChange": -3447,
+        "scoreChange": 4,
+        "percentChange": -0.81,
+        "trend": "down"
+      }
+    ],
+    "recentTrend": "down",
+    "recentRankChange": -3447,
+    "recentScoreChange": 4,
+    "threeYearRankChange": -3447,
+    "threeYearScoreChange": 4,
+    "threeYearTrend": "down"
   },
   {
     "name": "广州市华汇高级中学有限公司（公费班）",
@@ -16590,6 +22653,21 @@ const historicalSchools = [
         },
         "nonHukou": null,
         "outer": null
+      },
+      "2026": {
+        "id": "GZM027",
+        "name": "广州市华汇高级中学有限公司（公费班）",
+        "type": "民办",
+        "scope": "全市",
+        "hukou": {
+          "minScore": 626,
+          "minScoreSeq": 112,
+          "lastVolunteer": 1,
+          "lastScore": 626,
+          "lastScoreSeq": 112
+        },
+        "nonHukou": null,
+        "outer": null
       }
     },
     "rankHistory": [
@@ -16599,17 +22677,44 @@ const historicalSchools = [
         "rank": 54115,
         "percent": 46.65,
         "total": 116007
+      },
+      {
+        "year": "2026",
+        "score": 626,
+        "rank": 62205,
+        "percent": 49.53,
+        "total": 125579
       }
     ],
     "scoreHistory": [
       {
         "year": "2025",
         "score": 627
+      },
+      {
+        "year": "2026",
+        "score": 626
       }
     ],
-    "avgRank": 54115,
+    "avgRank": 58160,
     "avgScore": 627,
-    "avgPercent": 46.65
+    "avgPercent": 48.09,
+    "yearlyChanges": [
+      {
+        "fromYear": "2025",
+        "toYear": "2026",
+        "rankChange": -8090,
+        "scoreChange": -1,
+        "percentChange": 2.88,
+        "trend": "down"
+      }
+    ],
+    "recentTrend": "down",
+    "recentRankChange": -8090,
+    "recentScoreChange": -1,
+    "threeYearRankChange": -8090,
+    "threeYearScoreChange": -1,
+    "threeYearTrend": "down"
   },
   {
     "name": "广州龙涛外国语学校（公费班）",
@@ -16630,6 +22735,21 @@ const historicalSchools = [
         },
         "nonHukou": null,
         "outer": null
+      },
+      "2026": {
+        "id": "GZM028",
+        "name": "广州龙涛外国语学校（公费班）",
+        "type": "民办",
+        "scope": "全市",
+        "hukou": {
+          "minScore": 634,
+          "minScoreSeq": 419,
+          "lastVolunteer": 2,
+          "lastScore": 651,
+          "lastScoreSeq": 339
+        },
+        "nonHukou": null,
+        "outer": null
       }
     },
     "rankHistory": [
@@ -16639,17 +22759,44 @@ const historicalSchools = [
         "rank": 36193,
         "percent": 31.2,
         "total": 116007
+      },
+      {
+        "year": "2026",
+        "score": 634,
+        "rank": 57562,
+        "percent": 45.84,
+        "total": 125579
       }
     ],
     "scoreHistory": [
       {
         "year": "2025",
         "score": 667
+      },
+      {
+        "year": "2026",
+        "score": 634
       }
     ],
-    "avgRank": 36193,
-    "avgScore": 667,
-    "avgPercent": 31.2
+    "avgRank": 46878,
+    "avgScore": 651,
+    "avgPercent": 38.52,
+    "yearlyChanges": [
+      {
+        "fromYear": "2025",
+        "toYear": "2026",
+        "rankChange": -21369,
+        "scoreChange": -33,
+        "percentChange": 14.64,
+        "trend": "down"
+      }
+    ],
+    "recentTrend": "down",
+    "recentRankChange": -21369,
+    "recentScoreChange": -33,
+    "threeYearRankChange": -21369,
+    "threeYearScoreChange": -33,
+    "threeYearTrend": "down"
   },
   {
     "name": "广州英豪学校（公费班）",
@@ -16670,6 +22817,21 @@ const historicalSchools = [
         },
         "nonHukou": null,
         "outer": null
+      },
+      "2026": {
+        "id": "GZM029",
+        "name": "广州英豪学校（公费班）",
+        "type": "民办",
+        "scope": "全市",
+        "hukou": {
+          "minScore": 600,
+          "minScoreSeq": 341,
+          "lastVolunteer": 2,
+          "lastScore": 630,
+          "lastScoreSeq": 167
+        },
+        "nonHukou": null,
+        "outer": null
       }
     },
     "rankHistory": [
@@ -16679,17 +22841,44 @@ const historicalSchools = [
         "rank": 49880,
         "percent": 43,
         "total": 116007
+      },
+      {
+        "year": "2026",
+        "score": 600,
+        "rank": 70581,
+        "percent": 56.2,
+        "total": 125579
       }
     ],
     "scoreHistory": [
       {
         "year": "2025",
         "score": 636
+      },
+      {
+        "year": "2026",
+        "score": 600
       }
     ],
-    "avgRank": 49880,
-    "avgScore": 636,
-    "avgPercent": 43
+    "avgRank": 60231,
+    "avgScore": 618,
+    "avgPercent": 49.6,
+    "yearlyChanges": [
+      {
+        "fromYear": "2025",
+        "toYear": "2026",
+        "rankChange": -20701,
+        "scoreChange": -36,
+        "percentChange": 13.2,
+        "trend": "down"
+      }
+    ],
+    "recentTrend": "down",
+    "recentRankChange": -20701,
+    "recentScoreChange": -36,
+    "threeYearRankChange": -20701,
+    "threeYearScoreChange": -36,
+    "threeYearTrend": "down"
   },
   {
     "name": "广东广雅中学（荔湾校区）（中外合作办学项目）（AP课程）",
@@ -16729,7 +22918,14 @@ const historicalSchools = [
     ],
     "avgRank": 96412,
     "avgScore": 497,
-    "avgPercent": 83.11
+    "avgPercent": 83.11,
+    "yearlyChanges": [],
+    "recentTrend": "stable",
+    "recentRankChange": 0,
+    "recentScoreChange": 0,
+    "threeYearRankChange": 0,
+    "threeYearScoreChange": 0,
+    "threeYearTrend": "stable"
   },
   {
     "name": "广东广雅中学（荔湾校区）（中外合作办学项目）（A-Level课程）",
@@ -16769,7 +22965,14 @@ const historicalSchools = [
     ],
     "avgRank": 91344,
     "avgScore": 517,
-    "avgPercent": 78.74
+    "avgPercent": 78.74,
+    "yearlyChanges": [],
+    "recentTrend": "stable",
+    "recentRankChange": 0,
+    "recentScoreChange": 0,
+    "threeYearRankChange": 0,
+    "threeYearScoreChange": 0,
+    "threeYearTrend": "stable"
   },
   {
     "name": "广州市华美英语实验学校（中外合作办学项目）",
@@ -16790,6 +22993,21 @@ const historicalSchools = [
         },
         "nonHukou": null,
         "outer": null
+      },
+      "2026": {
+        "id": "GZM050",
+        "name": "广州市华美英语实验学校（中外合作办学项目）",
+        "type": "中外合作",
+        "scope": "全市",
+        "hukou": {
+          "minScore": 412,
+          "minScoreSeq": 13,
+          "lastVolunteer": 1,
+          "lastScore": 412,
+          "lastScoreSeq": 13
+        },
+        "nonHukou": null,
+        "outer": null
       }
     },
     "rankHistory": [
@@ -16799,18 +23017,1445 @@ const historicalSchools = [
         "rank": 96412,
         "percent": 83.11,
         "total": 116007
+      },
+      {
+        "year": "2026",
+        "score": 412,
+        "rank": 123565,
+        "percent": 98.4,
+        "total": 125579
       }
     ],
     "scoreHistory": [
       {
         "year": "2025",
         "score": 493
+      },
+      {
+        "year": "2026",
+        "score": 412
       }
     ],
-    "avgRank": 96412,
-    "avgScore": 493,
-    "avgPercent": 83.11
+    "avgRank": 109989,
+    "avgScore": 453,
+    "avgPercent": 90.76,
+    "yearlyChanges": [
+      {
+        "fromYear": "2025",
+        "toYear": "2026",
+        "rankChange": -27153,
+        "scoreChange": -81,
+        "percentChange": 15.29,
+        "trend": "down"
+      }
+    ],
+    "recentTrend": "down",
+    "recentRankChange": -27153,
+    "recentScoreChange": -81,
+    "threeYearRankChange": -27153,
+    "threeYearScoreChange": -81,
+    "threeYearTrend": "down"
+  },
+  {
+    "name": "清华附中湾区学校（智谷校区）",
+    "type": "公办",
+    "scope": "全市",
+    "years": {
+      "2026": {
+        "id": "GZ100",
+        "name": "清华附中湾区学校（智谷校区）",
+        "type": "公办",
+        "scope": "全市",
+        "hukou": {
+          "minScore": 712,
+          "minScoreSeq": 476,
+          "lastVolunteer": 3,
+          "lastScore": 723,
+          "lastScoreSeq": 163
+        },
+        "nonHukou": {
+          "minScore": 714,
+          "minScoreSeq": 240,
+          "lastVolunteer": 2,
+          "lastScore": 714,
+          "lastScoreSeq": 186
+        },
+        "outer": null
+      }
+    },
+    "rankHistory": [
+      {
+        "year": "2026",
+        "score": 712,
+        "rank": 16303,
+        "percent": 12.98,
+        "total": 125579
+      }
+    ],
+    "scoreHistory": [
+      {
+        "year": "2026",
+        "score": 712
+      }
+    ],
+    "avgRank": 16303,
+    "avgScore": 712,
+    "avgPercent": 12.98,
+    "yearlyChanges": [],
+    "recentTrend": "stable",
+    "recentRankChange": 0,
+    "recentScoreChange": 0,
+    "threeYearRankChange": 0,
+    "threeYearScoreChange": 0,
+    "threeYearTrend": "stable"
+  },
+  {
+    "name": "清华附中湾区学校（智慧城校区）",
+    "type": "公办",
+    "scope": "全市",
+    "years": {
+      "2026": {
+        "id": "GZ101",
+        "name": "清华附中湾区学校（智慧城校区）",
+        "type": "公办",
+        "scope": "全市",
+        "hukou": {
+          "minScore": 710,
+          "minScoreSeq": 173,
+          "lastVolunteer": 1,
+          "lastScore": 710,
+          "lastScoreSeq": 173
+        },
+        "nonHukou": {
+          "minScore": 712,
+          "minScoreSeq": 473,
+          "lastVolunteer": 4,
+          "lastScore": 719,
+          "lastScoreSeq": 455
+        },
+        "outer": null
+      }
+    },
+    "rankHistory": [
+      {
+        "year": "2026",
+        "score": 710,
+        "rank": 16303,
+        "percent": 12.98,
+        "total": 125579
+      }
+    ],
+    "scoreHistory": [
+      {
+        "year": "2026",
+        "score": 710
+      }
+    ],
+    "avgRank": 16303,
+    "avgScore": 710,
+    "avgPercent": 12.98,
+    "yearlyChanges": [],
+    "recentTrend": "stable",
+    "recentRankChange": 0,
+    "recentScoreChange": 0,
+    "threeYearRankChange": 0,
+    "threeYearScoreChange": 0,
+    "threeYearTrend": "stable"
+  },
+  {
+    "name": "广州市第七中学（麓湖校区）",
+    "type": "公办",
+    "scope": "全市",
+    "years": {
+      "2026": {
+        "id": "GZ102",
+        "name": "广州市第七中学（麓湖校区）",
+        "type": "公办",
+        "scope": "全市",
+        "hukou": {
+          "minScore": 666,
+          "minScoreSeq": 15,
+          "lastVolunteer": 1,
+          "lastScore": 666,
+          "lastScoreSeq": 15
+        },
+        "nonHukou": {
+          "minScore": 668,
+          "minScoreSeq": 504,
+          "lastVolunteer": 1,
+          "lastScore": 668,
+          "lastScoreSeq": 504
+        },
+        "outer": {
+          "minScore": 672,
+          "minScoreSeq": 214,
+          "lastVolunteer": 3,
+          "lastScore": 673,
+          "lastScoreSeq": 318
+        }
+      }
+    },
+    "rankHistory": [
+      {
+        "year": "2026",
+        "score": 666,
+        "rank": 42762,
+        "percent": 34.05,
+        "total": 125579
+      }
+    ],
+    "scoreHistory": [
+      {
+        "year": "2026",
+        "score": 666
+      }
+    ],
+    "avgRank": 42762,
+    "avgScore": 666,
+    "avgPercent": 34.05,
+    "yearlyChanges": [],
+    "recentTrend": "stable",
+    "recentRankChange": 0,
+    "recentScoreChange": 0,
+    "threeYearRankChange": 0,
+    "threeYearScoreChange": 0,
+    "threeYearTrend": "stable"
+  },
+  {
+    "name": "广州市第一一三中学（金融城校区）",
+    "type": "公办",
+    "scope": "全市",
+    "years": {
+      "2026": {
+        "id": "GZ103",
+        "name": "广州市第一一三中学（金融城校区）",
+        "type": "公办",
+        "scope": "全市",
+        "hukou": {
+          "minScore": 672,
+          "minScoreSeq": 454,
+          "lastVolunteer": 2,
+          "lastScore": 673,
+          "lastScoreSeq": 351
+        },
+        "nonHukou": {
+          "minScore": 673,
+          "minScoreSeq": 90,
+          "lastVolunteer": 2,
+          "lastScore": 680,
+          "lastScoreSeq": 436
+        },
+        "outer": {
+          "minScore": 673,
+          "minScoreSeq": 351,
+          "lastVolunteer": 2,
+          "lastScore": 673,
+          "lastScoreSeq": 351
+        }
+      }
+    },
+    "rankHistory": [
+      {
+        "year": "2026",
+        "score": 672,
+        "rank": 37486,
+        "percent": 29.85,
+        "total": 125579
+      }
+    ],
+    "scoreHistory": [
+      {
+        "year": "2026",
+        "score": 672
+      }
+    ],
+    "avgRank": 37486,
+    "avgScore": 672,
+    "avgPercent": 29.85,
+    "yearlyChanges": [],
+    "recentTrend": "stable",
+    "recentRankChange": 0,
+    "recentScoreChange": 0,
+    "threeYearRankChange": 0,
+    "threeYearScoreChange": 0,
+    "threeYearTrend": "stable"
+  },
+  {
+    "name": "广州市第一一三中学（元岗校区）",
+    "type": "公办",
+    "scope": "全市",
+    "years": {
+      "2026": {
+        "id": "GZ104",
+        "name": "广州市第一一三中学（元岗校区）",
+        "type": "公办",
+        "scope": "全市",
+        "hukou": {
+          "minScore": 633,
+          "minScoreSeq": 435,
+          "lastVolunteer": 2,
+          "lastScore": 664,
+          "lastScoreSeq": 439
+        },
+        "nonHukou": {
+          "minScore": 637,
+          "minScoreSeq": 436,
+          "lastVolunteer": 2,
+          "lastScore": 666,
+          "lastScoreSeq": 233
+        },
+        "outer": {
+          "minScore": 654,
+          "minScoreSeq": 225,
+          "lastVolunteer": 2,
+          "lastScore": 665,
+          "lastScoreSeq": 278
+        }
+      }
+    },
+    "rankHistory": [
+      {
+        "year": "2026",
+        "score": 633,
+        "rank": 57562,
+        "percent": 45.84,
+        "total": 125579
+      }
+    ],
+    "scoreHistory": [
+      {
+        "year": "2026",
+        "score": 633
+      }
+    ],
+    "avgRank": 57562,
+    "avgScore": 633,
+    "avgPercent": 45.84,
+    "yearlyChanges": [],
+    "recentTrend": "stable",
+    "recentRankChange": 0,
+    "recentScoreChange": 0,
+    "threeYearRankChange": 0,
+    "threeYearScoreChange": 0,
+    "threeYearTrend": "stable"
+  },
+  {
+    "name": "广州市白云区颜乐天纪念中学",
+    "type": "公办",
+    "scope": "全市",
+    "years": {
+      "2026": {
+        "id": "GZ105",
+        "name": "广州市白云区颜乐天纪念中学",
+        "type": "公办",
+        "scope": "全市",
+        "hukou": {
+          "minScore": 578,
+          "minScoreSeq": 300,
+          "lastVolunteer": 1,
+          "lastScore": 578,
+          "lastScoreSeq": 300
+        },
+        "nonHukou": {
+          "minScore": 617,
+          "minScoreSeq": 53,
+          "lastVolunteer": 1,
+          "lastScore": 617,
+          "lastScoreSeq": 53
+        },
+        "outer": {
+          "minScore": 592,
+          "minScoreSeq": 311,
+          "lastVolunteer": 4,
+          "lastScore": 631,
+          "lastScoreSeq": 226
+        }
+      }
+    },
+    "rankHistory": [
+      {
+        "year": "2026",
+        "score": 578,
+        "rank": 81657,
+        "percent": 65.02,
+        "total": 125579
+      }
+    ],
+    "scoreHistory": [
+      {
+        "year": "2026",
+        "score": 578
+      }
+    ],
+    "avgRank": 81657,
+    "avgScore": 578,
+    "avgPercent": 65.02,
+    "yearlyChanges": [],
+    "recentTrend": "stable",
+    "recentRankChange": 0,
+    "recentScoreChange": 0,
+    "threeYearRankChange": 0,
+    "threeYearScoreChange": 0,
+    "threeYearTrend": "stable"
+  },
+  {
+    "name": "广州市白云区培英实验学校（同和校区）",
+    "type": "公办",
+    "scope": "全市",
+    "years": {
+      "2026": {
+        "id": "GZ106",
+        "name": "广州市白云区培英实验学校（同和校区）",
+        "type": "公办",
+        "scope": "全市",
+        "hukou": {
+          "minScore": 592,
+          "minScoreSeq": 345,
+          "lastVolunteer": 2,
+          "lastScore": 593,
+          "lastScoreSeq": 222
+        },
+        "nonHukou": {
+          "minScore": 634,
+          "minScoreSeq": 343,
+          "lastVolunteer": 2,
+          "lastScore": 634,
+          "lastScoreSeq": 343
+        },
+        "outer": {
+          "minScore": 594,
+          "minScoreSeq": 91,
+          "lastVolunteer": 2,
+          "lastScore": 594,
+          "lastScoreSeq": 91
+        }
+      }
+    },
+    "rankHistory": [
+      {
+        "year": "2026",
+        "score": 592,
+        "rank": 74441,
+        "percent": 59.28,
+        "total": 125579
+      }
+    ],
+    "scoreHistory": [
+      {
+        "year": "2026",
+        "score": 592
+      }
+    ],
+    "avgRank": 74441,
+    "avgScore": 592,
+    "avgPercent": 59.28,
+    "yearlyChanges": [],
+    "recentTrend": "stable",
+    "recentRankChange": 0,
+    "recentScoreChange": 0,
+    "threeYearRankChange": 0,
+    "threeYearScoreChange": 0,
+    "threeYearTrend": "stable"
+  },
+  {
+    "name": "广东实验中学花都学校",
+    "type": "公办",
+    "scope": "全市",
+    "years": {
+      "2026": {
+        "id": "GZ107",
+        "name": "广东实验中学花都学校",
+        "type": "公办",
+        "scope": "全市",
+        "hukou": {
+          "minScore": 632,
+          "minScoreSeq": 285,
+          "lastVolunteer": 3,
+          "lastScore": 666,
+          "lastScoreSeq": 451
+        },
+        "nonHukou": {
+          "minScore": 636,
+          "minScoreSeq": 337,
+          "lastVolunteer": 2,
+          "lastScore": 649,
+          "lastScoreSeq": 168
+        },
+        "outer": {
+          "minScore": 643,
+          "minScoreSeq": 227,
+          "lastVolunteer": 2,
+          "lastScore": 645,
+          "lastScoreSeq": 479
+        }
+      }
+    },
+    "rankHistory": [
+      {
+        "year": "2026",
+        "score": 632,
+        "rank": 57562,
+        "percent": 45.84,
+        "total": 125579
+      }
+    ],
+    "scoreHistory": [
+      {
+        "year": "2026",
+        "score": 632
+      }
+    ],
+    "avgRank": 57562,
+    "avgScore": 632,
+    "avgPercent": 45.84,
+    "yearlyChanges": [],
+    "recentTrend": "stable",
+    "recentRankChange": 0,
+    "recentScoreChange": 0,
+    "threeYearRankChange": 0,
+    "threeYearScoreChange": 0,
+    "threeYearTrend": "stable"
+  },
+  {
+    "name": "广州市为明学校（盛景校区）（公费班）",
+    "type": "民办",
+    "scope": "全市",
+    "years": {
+      "2026": {
+        "id": "GZM054",
+        "name": "广州市为明学校（盛景校区）（公费班）",
+        "type": "民办",
+        "scope": "全市",
+        "hukou": {
+          "minScore": 633,
+          "minScoreSeq": 26,
+          "lastVolunteer": 2,
+          "lastScore": 634,
+          "lastScoreSeq": 103
+        },
+        "nonHukou": null,
+        "outer": null
+      }
+    },
+    "rankHistory": [
+      {
+        "year": "2026",
+        "score": 633,
+        "rank": 57562,
+        "percent": 45.84,
+        "total": 125579
+      }
+    ],
+    "scoreHistory": [
+      {
+        "year": "2026",
+        "score": 633
+      }
+    ],
+    "avgRank": 57562,
+    "avgScore": 633,
+    "avgPercent": 45.84,
+    "yearlyChanges": [],
+    "recentTrend": "stable",
+    "recentRankChange": 0,
+    "recentScoreChange": 0,
+    "threeYearRankChange": 0,
+    "threeYearScoreChange": 0,
+    "threeYearTrend": "stable"
+  },
+  {
+    "name": "广州市为明学校（光大校区）（公费班）",
+    "type": "民办",
+    "scope": "全市",
+    "years": {
+      "2026": {
+        "id": "GZM055",
+        "name": "广州市为明学校（光大校区）（公费班）",
+        "type": "民办",
+        "scope": "全市",
+        "hukou": {
+          "minScore": 651,
+          "minScoreSeq": 290,
+          "lastVolunteer": 1,
+          "lastScore": 651,
+          "lastScoreSeq": 290
+        },
+        "nonHukou": null,
+        "outer": null
+      }
+    },
+    "rankHistory": [
+      {
+        "year": "2026",
+        "score": 651,
+        "rank": 47968,
+        "percent": 38.2,
+        "total": 125579
+      }
+    ],
+    "scoreHistory": [
+      {
+        "year": "2026",
+        "score": 651
+      }
+    ],
+    "avgRank": 47968,
+    "avgScore": 651,
+    "avgPercent": 38.2,
+    "yearlyChanges": [],
+    "recentTrend": "stable",
+    "recentRankChange": 0,
+    "recentScoreChange": 0,
+    "threeYearRankChange": 0,
+    "threeYearScoreChange": 0,
+    "threeYearTrend": "stable"
+  },
+  {
+    "name": "广州市华美英语实验学校（港澳台班）",
+    "type": "民办",
+    "scope": "全市",
+    "years": {
+      "2026": {
+        "id": "GZM056",
+        "name": "广州市华美英语实验学校（港澳台班）",
+        "type": "民办",
+        "scope": "全市",
+        "hukou": {
+          "minScore": 422,
+          "minScoreSeq": 88,
+          "lastVolunteer": 3,
+          "lastScore": 436,
+          "lastScoreSeq": 130
+        },
+        "nonHukou": null,
+        "outer": null
+      }
+    },
+    "rankHistory": [
+      {
+        "year": "2026",
+        "score": 422,
+        "rank": 121489,
+        "percent": 96.74,
+        "total": 125579
+      }
+    ],
+    "scoreHistory": [
+      {
+        "year": "2026",
+        "score": 422
+      }
+    ],
+    "avgRank": 121489,
+    "avgScore": 422,
+    "avgPercent": 96.74,
+    "yearlyChanges": [],
+    "recentTrend": "stable",
+    "recentRankChange": 0,
+    "recentScoreChange": 0,
+    "threeYearRankChange": 0,
+    "threeYearScoreChange": 0,
+    "threeYearTrend": "stable"
+  },
+  {
+    "name": "广州市亚加达外国语高级中学（公费班）",
+    "type": "民办",
+    "scope": "全市",
+    "years": {
+      "2026": {
+        "id": "GZM057",
+        "name": "广州市亚加达外国语高级中学（公费班）",
+        "type": "民办",
+        "scope": "全市",
+        "hukou": {
+          "minScore": 592,
+          "minScoreSeq": 181,
+          "lastVolunteer": 3,
+          "lastScore": 592,
+          "lastScoreSeq": 181
+        },
+        "nonHukou": null,
+        "outer": null
+      }
+    },
+    "rankHistory": [
+      {
+        "year": "2026",
+        "score": 592,
+        "rank": 74441,
+        "percent": 59.28,
+        "total": 125579
+      }
+    ],
+    "scoreHistory": [
+      {
+        "year": "2026",
+        "score": 592
+      }
+    ],
+    "avgRank": 74441,
+    "avgScore": 592,
+    "avgPercent": 59.28,
+    "yearlyChanges": [],
+    "recentTrend": "stable",
+    "recentRankChange": 0,
+    "recentScoreChange": 0,
+    "threeYearRankChange": 0,
+    "threeYearScoreChange": 0,
+    "threeYearTrend": "stable"
+  },
+  {
+    "name": "广州市龙外实验学校（公费班）",
+    "type": "民办",
+    "scope": "全市",
+    "years": {
+      "2026": {
+        "id": "GZM058",
+        "name": "广州市龙外实验学校（公费班）",
+        "type": "民办",
+        "scope": "全市",
+        "hukou": {
+          "minScore": 672,
+          "minScoreSeq": 561,
+          "lastVolunteer": 2,
+          "lastScore": 708,
+          "lastScoreSeq": 158
+        },
+        "nonHukou": null,
+        "outer": null
+      }
+    },
+    "rankHistory": [
+      {
+        "year": "2026",
+        "score": 672,
+        "rank": 37486,
+        "percent": 29.85,
+        "total": 125579
+      }
+    ],
+    "scoreHistory": [
+      {
+        "year": "2026",
+        "score": 672
+      }
+    ],
+    "avgRank": 37486,
+    "avgScore": 672,
+    "avgPercent": 29.85,
+    "yearlyChanges": [],
+    "recentTrend": "stable",
+    "recentRankChange": 0,
+    "recentScoreChange": 0,
+    "threeYearRankChange": 0,
+    "threeYearScoreChange": 0,
+    "threeYearTrend": "stable"
+  },
+  {
+    "name": "广州市新侨学校（公费班）",
+    "type": "民办",
+    "scope": "全市",
+    "years": {
+      "2026": {
+        "id": "GZM059",
+        "name": "广州市新侨学校（公费班）",
+        "type": "民办",
+        "scope": "全市",
+        "hukou": {
+          "minScore": 724,
+          "minScoreSeq": 222,
+          "lastVolunteer": 1,
+          "lastScore": 724,
+          "lastScoreSeq": 222
+        },
+        "nonHukou": null,
+        "outer": null
+      }
+    },
+    "rankHistory": [
+      {
+        "year": "2026",
+        "score": 724,
+        "rank": 11582,
+        "percent": 9.22,
+        "total": 125579
+      }
+    ],
+    "scoreHistory": [
+      {
+        "year": "2026",
+        "score": 724
+      }
+    ],
+    "avgRank": 11582,
+    "avgScore": 724,
+    "avgPercent": 9.22,
+    "yearlyChanges": [],
+    "recentTrend": "stable",
+    "recentRankChange": 0,
+    "recentScoreChange": 0,
+    "threeYearRankChange": 0,
+    "threeYearScoreChange": 0,
+    "threeYearTrend": "stable"
+  },
+  {
+    "name": "广州市耀华学校（公费班）",
+    "type": "民办",
+    "scope": "全市",
+    "years": {
+      "2026": {
+        "id": "GZM060",
+        "name": "广州市耀华学校（公费班）",
+        "type": "民办",
+        "scope": "全市",
+        "hukou": {
+          "minScore": 669,
+          "minScoreSeq": 436,
+          "lastVolunteer": 1,
+          "lastScore": 669,
+          "lastScoreSeq": 436
+        },
+        "nonHukou": null,
+        "outer": null
+      }
+    },
+    "rankHistory": [
+      {
+        "year": "2026",
+        "score": 669,
+        "rank": 42762,
+        "percent": 34.05,
+        "total": 125579
+      }
+    ],
+    "scoreHistory": [
+      {
+        "year": "2026",
+        "score": 669
+      }
+    ],
+    "avgRank": 42762,
+    "avgScore": 669,
+    "avgPercent": 34.05,
+    "yearlyChanges": [],
+    "recentTrend": "stable",
+    "recentRankChange": 0,
+    "recentScoreChange": 0,
+    "threeYearRankChange": 0,
+    "threeYearScoreChange": 0,
+    "threeYearTrend": "stable"
+  },
+  {
+    "name": "广州市华德高级中学有限公司（公费班）",
+    "type": "民办",
+    "scope": "全市",
+    "years": {
+      "2026": {
+        "id": "GZM061",
+        "name": "广州市华德高级中学有限公司（公费班）",
+        "type": "民办",
+        "scope": "全市",
+        "hukou": {
+          "minScore": 632,
+          "minScoreSeq": 217,
+          "lastVolunteer": 2,
+          "lastScore": 661,
+          "lastScoreSeq": 81
+        },
+        "nonHukou": null,
+        "outer": null
+      }
+    },
+    "rankHistory": [
+      {
+        "year": "2026",
+        "score": 632,
+        "rank": 57562,
+        "percent": 45.84,
+        "total": 125579
+      }
+    ],
+    "scoreHistory": [
+      {
+        "year": "2026",
+        "score": 632
+      }
+    ],
+    "avgRank": 57562,
+    "avgScore": 632,
+    "avgPercent": 45.84,
+    "yearlyChanges": [],
+    "recentTrend": "stable",
+    "recentRankChange": 0,
+    "recentScoreChange": 0,
+    "threeYearRankChange": 0,
+    "threeYearScoreChange": 0,
+    "threeYearTrend": "stable"
+  },
+  {
+    "name": "广州市黄广中学（公费班）",
+    "type": "民办",
+    "scope": "全市",
+    "years": {
+      "2026": {
+        "id": "GZM062",
+        "name": "广州市黄广中学（公费班）",
+        "type": "民办",
+        "scope": "全市",
+        "hukou": {
+          "minScore": 749,
+          "minScoreSeq": 16,
+          "lastVolunteer": 1,
+          "lastScore": 749,
+          "lastScoreSeq": 16
+        },
+        "nonHukou": null,
+        "outer": null
+      }
+    },
+    "rankHistory": [
+      {
+        "year": "2026",
+        "score": 749,
+        "rank": 4080,
+        "percent": 3.25,
+        "total": 125579
+      }
+    ],
+    "scoreHistory": [
+      {
+        "year": "2026",
+        "score": 749
+      }
+    ],
+    "avgRank": 4080,
+    "avgScore": 749,
+    "avgPercent": 3.25,
+    "yearlyChanges": [],
+    "recentTrend": "stable",
+    "recentRankChange": 0,
+    "recentScoreChange": 0,
+    "threeYearRankChange": 0,
+    "threeYearScoreChange": 0,
+    "threeYearTrend": "stable"
+  },
+  {
+    "name": "广州市朝晖高级中学有限公司（原北培）（公费班）",
+    "type": "民办",
+    "scope": "全市",
+    "years": {
+      "2026": {
+        "id": "GZM063",
+        "name": "广州市朝晖高级中学有限公司（原北培）（公费班）",
+        "type": "民办",
+        "scope": "全市",
+        "hukou": {
+          "minScore": 592,
+          "minScoreSeq": 294,
+          "lastVolunteer": 2,
+          "lastScore": 625,
+          "lastScoreSeq": 340
+        },
+        "nonHukou": null,
+        "outer": null
+      }
+    },
+    "rankHistory": [
+      {
+        "year": "2026",
+        "score": 592,
+        "rank": 74441,
+        "percent": 59.28,
+        "total": 125579
+      }
+    ],
+    "scoreHistory": [
+      {
+        "year": "2026",
+        "score": 592
+      }
+    ],
+    "avgRank": 74441,
+    "avgScore": 592,
+    "avgPercent": 59.28,
+    "yearlyChanges": [],
+    "recentTrend": "stable",
+    "recentRankChange": 0,
+    "recentScoreChange": 0,
+    "threeYearRankChange": 0,
+    "threeYearScoreChange": 0,
+    "threeYearTrend": "stable"
+  },
+  {
+    "name": "广州市南郡高级中学有限公司（原央美现代高级中学）（公费班）",
+    "type": "民办",
+    "scope": "全市",
+    "years": {
+      "2026": {
+        "id": "GZM064",
+        "name": "广州市南郡高级中学有限公司（原央美现代高级中学）（公费班）",
+        "type": "民办",
+        "scope": "全市",
+        "hukou": {
+          "minScore": 614,
+          "minScoreSeq": 245,
+          "lastVolunteer": 1,
+          "lastScore": 614,
+          "lastScoreSeq": 245
+        },
+        "nonHukou": null,
+        "outer": null
+      }
+    },
+    "rankHistory": [
+      {
+        "year": "2026",
+        "score": 614,
+        "rank": 66551,
+        "percent": 53,
+        "total": 125579
+      }
+    ],
+    "scoreHistory": [
+      {
+        "year": "2026",
+        "score": 614
+      }
+    ],
+    "avgRank": 66551,
+    "avgScore": 614,
+    "avgPercent": 53,
+    "yearlyChanges": [],
+    "recentTrend": "stable",
+    "recentRankChange": 0,
+    "recentScoreChange": 0,
+    "threeYearRankChange": 0,
+    "threeYearScoreChange": 0,
+    "threeYearTrend": "stable"
+  },
+  {
+    "name": "广州市新亚高级中学（公费班）",
+    "type": "民办",
+    "scope": "全市",
+    "years": {
+      "2026": {
+        "id": "GZM065",
+        "name": "广州市新亚高级中学（公费班）",
+        "type": "民办",
+        "scope": "全市",
+        "hukou": {
+          "minScore": 673,
+          "minScoreSeq": 578,
+          "lastVolunteer": 4,
+          "lastScore": 702,
+          "lastScoreSeq": 308
+        },
+        "nonHukou": null,
+        "outer": null
+      }
+    },
+    "rankHistory": [
+      {
+        "year": "2026",
+        "score": 673,
+        "rank": 37486,
+        "percent": 29.85,
+        "total": 125579
+      }
+    ],
+    "scoreHistory": [
+      {
+        "year": "2026",
+        "score": 673
+      }
+    ],
+    "avgRank": 37486,
+    "avgScore": 673,
+    "avgPercent": 29.85,
+    "yearlyChanges": [],
+    "recentTrend": "stable",
+    "recentRankChange": 0,
+    "recentScoreChange": 0,
+    "threeYearRankChange": 0,
+    "threeYearScoreChange": 0,
+    "threeYearTrend": "stable"
+  },
+  {
+    "name": "广州市维港青藤中学（公费班）",
+    "type": "民办",
+    "scope": "全市",
+    "years": {
+      "2026": {
+        "id": "GZM066",
+        "name": "广州市维港青藤中学（公费班）",
+        "type": "民办",
+        "scope": "全市",
+        "hukou": {
+          "minScore": 601,
+          "minScoreSeq": 377,
+          "lastVolunteer": 2,
+          "lastScore": 624,
+          "lastScoreSeq": 289
+        },
+        "nonHukou": null,
+        "outer": null
+      }
+    },
+    "rankHistory": [
+      {
+        "year": "2026",
+        "score": 601,
+        "rank": 70581,
+        "percent": 56.2,
+        "total": 125579
+      }
+    ],
+    "scoreHistory": [
+      {
+        "year": "2026",
+        "score": 601
+      }
+    ],
+    "avgRank": 70581,
+    "avgScore": 601,
+    "avgPercent": 56.2,
+    "yearlyChanges": [],
+    "recentTrend": "stable",
+    "recentRankChange": 0,
+    "recentScoreChange": 0,
+    "threeYearRankChange": 0,
+    "threeYearScoreChange": 0,
+    "threeYearTrend": "stable"
+  },
+  {
+    "name": "广州市东江外语实验学校（公费班）",
+    "type": "民办",
+    "scope": "全市",
+    "years": {
+      "2026": {
+        "id": "GZM067",
+        "name": "广州市东江外语实验学校（公费班）",
+        "type": "民办",
+        "scope": "全市",
+        "hukou": {
+          "minScore": 710,
+          "minScoreSeq": 34,
+          "lastVolunteer": 1,
+          "lastScore": 710,
+          "lastScoreSeq": 34
+        },
+        "nonHukou": null,
+        "outer": null
+      }
+    },
+    "rankHistory": [
+      {
+        "year": "2026",
+        "score": 710,
+        "rank": 16303,
+        "percent": 12.98,
+        "total": 125579
+      }
+    ],
+    "scoreHistory": [
+      {
+        "year": "2026",
+        "score": 710
+      }
+    ],
+    "avgRank": 16303,
+    "avgScore": 710,
+    "avgPercent": 12.98,
+    "yearlyChanges": [],
+    "recentTrend": "stable",
+    "recentRankChange": 0,
+    "recentScoreChange": 0,
+    "threeYearRankChange": 0,
+    "threeYearScoreChange": 0,
+    "threeYearTrend": "stable"
+  },
+  {
+    "name": "广州美术学院附中广艺中等职业技术学校有限公司（综合高中）（（绘画）公费班）",
+    "type": "民办",
+    "scope": "全市",
+    "years": {
+      "2026": {
+        "id": "GZM068",
+        "name": "广州美术学院附中广艺中等职业技术学校有限公司（综合高中）（（绘画）公费班）",
+        "type": "民办",
+        "scope": "全市",
+        "hukou": {
+          "minScore": 530,
+          "minScoreSeq": 16,
+          "lastVolunteer": 1,
+          "lastScore": 530,
+          "lastScoreSeq": 16
+        },
+        "nonHukou": null,
+        "outer": null
+      }
+    },
+    "rankHistory": [
+      {
+        "year": "2026",
+        "score": 530,
+        "rank": 94460,
+        "percent": 75.22,
+        "total": 125579
+      }
+    ],
+    "scoreHistory": [
+      {
+        "year": "2026",
+        "score": 530
+      }
+    ],
+    "avgRank": 94460,
+    "avgScore": 530,
+    "avgPercent": 75.22,
+    "yearlyChanges": [],
+    "recentTrend": "stable",
+    "recentRankChange": 0,
+    "recentScoreChange": 0,
+    "threeYearRankChange": 0,
+    "threeYearScoreChange": 0,
+    "threeYearTrend": "stable"
+  },
+  {
+    "name": "广州市侨光财经职业技术学校（综合高中）（（计算机网络技术）公费班）",
+    "type": "民办",
+    "scope": "全市",
+    "years": {
+      "2026": {
+        "id": "GZM069",
+        "name": "广州市侨光财经职业技术学校（综合高中）（（计算机网络技术）公费班）",
+        "type": "民办",
+        "scope": "全市",
+        "hukou": {
+          "minScore": 555,
+          "minScoreSeq": 231,
+          "lastVolunteer": 2,
+          "lastScore": 567,
+          "lastScoreSeq": 55
+        },
+        "nonHukou": null,
+        "outer": null
+      }
+    },
+    "rankHistory": [
+      {
+        "year": "2026",
+        "score": 555,
+        "rank": 88234,
+        "percent": 70.26,
+        "total": 125579
+      }
+    ],
+    "scoreHistory": [
+      {
+        "year": "2026",
+        "score": 555
+      }
+    ],
+    "avgRank": 88234,
+    "avgScore": 555,
+    "avgPercent": 70.26,
+    "yearlyChanges": [],
+    "recentTrend": "stable",
+    "recentRankChange": 0,
+    "recentScoreChange": 0,
+    "threeYearRankChange": 0,
+    "threeYearScoreChange": 0,
+    "threeYearTrend": "stable"
+  },
+  {
+    "name": "广州市西关外国语学校（中外合作办学项目）",
+    "type": "中外合作",
+    "scope": "全市",
+    "years": {
+      "2026": {
+        "id": "GZM071",
+        "name": "广州市西关外国语学校（中外合作办学项目）",
+        "type": "中外合作",
+        "scope": "全市",
+        "hukou": {
+          "minScore": 412,
+          "minScoreSeq": 11,
+          "lastVolunteer": 1,
+          "lastScore": 412,
+          "lastScoreSeq": 11
+        },
+        "nonHukou": null,
+        "outer": null
+      }
+    },
+    "rankHistory": [
+      {
+        "year": "2026",
+        "score": 412,
+        "rank": 123565,
+        "percent": 98.4,
+        "total": 125579
+      }
+    ],
+    "scoreHistory": [
+      {
+        "year": "2026",
+        "score": 412
+      }
+    ],
+    "avgRank": 123565,
+    "avgScore": 412,
+    "avgPercent": 98.4,
+    "yearlyChanges": [],
+    "recentTrend": "stable",
+    "recentRankChange": 0,
+    "recentScoreChange": 0,
+    "threeYearRankChange": 0,
+    "threeYearScoreChange": 0,
+    "threeYearTrend": "stable"
+  },
+  {
+    "name": "广州市实验外语学校（中外合作办学项目）（日语）",
+    "type": "中外合作",
+    "scope": "全市",
+    "years": {
+      "2026": {
+        "id": "GZM072",
+        "name": "广州市实验外语学校（中外合作办学项目）（日语）",
+        "type": "中外合作",
+        "scope": "全市",
+        "hukou": {
+          "minScore": 467,
+          "minScoreSeq": 14,
+          "lastVolunteer": 1,
+          "lastScore": 467,
+          "lastScoreSeq": 14
+        },
+        "nonHukou": null,
+        "outer": null
+      }
+    },
+    "rankHistory": [
+      {
+        "year": "2026",
+        "score": 467,
+        "rank": 112612,
+        "percent": 89.67,
+        "total": 125579
+      }
+    ],
+    "scoreHistory": [
+      {
+        "year": "2026",
+        "score": 467
+      }
+    ],
+    "avgRank": 112612,
+    "avgScore": 467,
+    "avgPercent": 89.67,
+    "yearlyChanges": [],
+    "recentTrend": "stable",
+    "recentRankChange": 0,
+    "recentScoreChange": 0,
+    "threeYearRankChange": 0,
+    "threeYearScoreChange": 0,
+    "threeYearTrend": "stable"
+  },
+  {
+    "name": "广州市实验外语学校（中外合作办学项目）（英语）",
+    "type": "中外合作",
+    "scope": "全市",
+    "years": {
+      "2026": {
+        "id": "GZM073",
+        "name": "广州市实验外语学校（中外合作办学项目）（英语）",
+        "type": "中外合作",
+        "scope": "全市",
+        "hukou": {
+          "minScore": 469,
+          "minScoreSeq": 14,
+          "lastVolunteer": 1,
+          "lastScore": 469,
+          "lastScoreSeq": 14
+        },
+        "nonHukou": null,
+        "outer": null
+      }
+    },
+    "rankHistory": [
+      {
+        "year": "2026",
+        "score": 469,
+        "rank": 112612,
+        "percent": 89.67,
+        "total": 125579
+      }
+    ],
+    "scoreHistory": [
+      {
+        "year": "2026",
+        "score": 469
+      }
+    ],
+    "avgRank": 112612,
+    "avgScore": 469,
+    "avgPercent": 89.67,
+    "yearlyChanges": [],
+    "recentTrend": "stable",
+    "recentRankChange": 0,
+    "recentScoreChange": 0,
+    "threeYearRankChange": 0,
+    "threeYearScoreChange": 0,
+    "threeYearTrend": "stable"
+  },
+  {
+    "name": "广州市番禺区象贤中学（中外合作办学项目）",
+    "type": "中外合作",
+    "scope": "全市",
+    "years": {
+      "2026": {
+        "id": "GZM074",
+        "name": "广州市番禺区象贤中学（中外合作办学项目）",
+        "type": "中外合作",
+        "scope": "全市",
+        "hukou": {
+          "minScore": 551,
+          "minScoreSeq": 46,
+          "lastVolunteer": 1,
+          "lastScore": 551,
+          "lastScoreSeq": 46
+        },
+        "nonHukou": null,
+        "outer": null
+      }
+    },
+    "rankHistory": [
+      {
+        "year": "2026",
+        "score": 551,
+        "rank": 88234,
+        "percent": 70.26,
+        "total": 125579
+      }
+    ],
+    "scoreHistory": [
+      {
+        "year": "2026",
+        "score": 551
+      }
+    ],
+    "avgRank": 88234,
+    "avgScore": 551,
+    "avgPercent": 70.26,
+    "yearlyChanges": [],
+    "recentTrend": "stable",
+    "recentRankChange": 0,
+    "recentScoreChange": 0,
+    "threeYearRankChange": 0,
+    "threeYearScoreChange": 0,
+    "threeYearTrend": "stable"
   }
-]
+];
 
-module.exports = { historicalSchools }
+module.exports = { historicalSchools };

@@ -2,14 +2,16 @@ App({
   globalData: {
     userInfo: null,
     gradientLines: {
-      first: 707,
-      second: 662,
-      third: 622,
-      fourth: 582,
-      fifth: 542,
-      minimum: 502
+      first: 712,
+      second: 672,
+      third: 632,
+      fourth: 592,
+      fifth: 552,
+      sixth: 512,
+      minimum: 492,
+      privateMinimum: 412
     },
-    version: '1.2.1',
+    version: '2.0.0',
     shareConfig: {
       title: '广州中考志愿模拟填报',
       path: '/pages/index/index',

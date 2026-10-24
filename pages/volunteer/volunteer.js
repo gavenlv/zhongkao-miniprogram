@@ -173,7 +173,7 @@ Page({
 
   onShareAppMessage() {
     return {
-      title: '广州中考2025第三批模拟填报',
+      title: '广州中考2026第三批模拟填报',
       path: '/pages/volunteer/volunteer',
       imageUrl: '/images/aba.png'
     }
@@ -181,7 +181,7 @@ Page({
 
   onShareTimeline() {
     return {
-      title: '广州中考2025第三批模拟填报',
+      title: '广州中考2026第三批模拟填报',
       query: '',
       imageUrl: '/images/aba.png'
     }

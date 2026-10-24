@@ -1,17 +1,17 @@
-const admission = require('./utils/admission.js')
+﻿const admission = require('./utils/admission.js')
 
-const { schools2025Full } = require('./data/schools.js')
+const { schools2026Full } = require('./data/schools.js')
 
 console.log('=== 查找符合条件的学校 ===\n')
 
-const secondGradientLine = 667
+const secondGradientLine = 672
 
-const schoolsWithHighLastScore = schools2025Full.filter(s => {
+const schoolsWithHighLastScore = schools2026Full.filter(s => {
   if (!s.hukou) return false
   return s.hukou.lastScore >= secondGradientLine && s.hukou.lastVolunteer <= 2
 })
 
-console.log('末位分数 >= 第二梯度控制线(667分)且末位志愿序号 <= 2的学校：\n')
+console.log('末位分数 >= 第二梯度控制线(672分)且末位志愿序号 <= 2的学校：\n')
 schoolsWithHighLastScore.forEach(s => {
   console.log(`${s.name}`)
   console.log(`  最低分数: ${s.hukou.minScore}分`)
@@ -20,12 +20,12 @@ schoolsWithHighLastScore.forEach(s => {
   console.log('')
 })
 
-const schoolsWithLowLastScore = schools2025Full.filter(s => {
+const schoolsWithLowLastScore = schools2026Full.filter(s => {
   if (!s.hukou) return false
-  return s.hukou.lastScore < secondGradientLine && s.hukou.lastScore >= 627
+  return s.hukou.lastScore < secondGradientLine && s.hukou.lastScore >= 632
 })
 
-console.log('\n末位分数在第三梯度(627-666分)的学校：\n')
+console.log('\n末位分数在第三梯度(632-671分)的学校：\n')
 schoolsWithLowLastScore.slice(0, 10).forEach(s => {
   console.log(`${s.name}`)
   console.log(`  最低分数: ${s.hukou.minScore}分`)
@@ -33,3 +33,4 @@ schoolsWithLowLastScore.slice(0, 10).forEach(s => {
   console.log(`  末位志愿: 第${s.hukou.lastVolunteer}志愿`)
   console.log('')
 })
+

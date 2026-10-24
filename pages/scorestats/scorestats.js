@@ -1,6 +1,7 @@
 const { scoreDistribution } = require('../../data/scoreDistribution.js')
 
 const YEAR_LABELS = {
+  '2026': '2026年中考',
   '2026_adaptive': '2026届适应性测试',
   '2025': '2025年中考',
   '2024': '2024年中考',
@@ -8,6 +9,7 @@ const YEAR_LABELS = {
 }
 
 const TOTAL_STUDENTS = {
+  '2026': 151500,
   '2026_adaptive': 151000,
   '2025': 139600,
   '2024': 106652,
@@ -80,9 +82,10 @@ function calculatePreciseRank(score, distribution) {
 
 Page({
   data: {
-    currentTab: '2025',
-    currentYearLabel: '2025年中考',
+    currentTab: '2026',
+    currentYearLabel: '2026年中考',
     tabs: [
+      { key: '2026', label: '2026年中考' },
       { key: '2026_adaptive', label: '2026适应性测试' },
       { key: '2025', label: '2025年中考' },
       { key: '2024', label: '2024年中考' },
@@ -96,7 +99,7 @@ Page({
   },
 
   onLoad() {
-    this.loadDistribution('2025')
+    this.loadDistribution('2026')
   },
 
   onTabChange(e) {
@@ -166,7 +169,7 @@ Page({
 
   goToEstimate() {
     wx.navigateTo({
-      url: '/pages/simulate2026/simulate2026'
+      url: '/pages/volunteer2026/volunteer2026'
     })
   },
 

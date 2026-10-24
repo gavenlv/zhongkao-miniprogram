@@ -4,36 +4,28 @@ Page({
   data: {
     menuItems: [
       {
-        id: 'batch2',
-        title: '2025第二批模拟填报',
-        subtitle: '名额分配招生',
-        desc: '公办示范性/省一级普高名额分配，3个志愿，校内竞争',
-        tag: '户籍生',
-        path: '/pages/batch2volunteer/batch2volunteer'
+        id: 'batch3-2026',
+        title: '2026第三批模拟填报',
+        subtitle: '2026年实际录取数据',
+        desc: '基于2026年第三批次实际录取分数，梯度投档，6个志愿',
+        tag: '最新',
+        path: '/pages/volunteer2026/volunteer2026'
       },
       {
-        id: 'batch3',
-        title: '2025第三批模拟填报',
-        subtitle: '示范性普高剩余计划',
-        desc: '2025年实际数据，梯度投档录取，6个志愿',
-        tag: '推荐',
-        path: '/pages/volunteer/volunteer'
+        id: 'volunteer-table-2026',
+        title: '2026年中考志愿表',
+        subtitle: '各批次志愿设置',
+        desc: '查看2026年各批次志愿设置、填报说明和投档录取规定',
+        tag: '新功能',
+        path: '/pages/volunteerTable2026/volunteerTable2026'
       },
       {
         id: 'batch2-2026',
-        title: '第二批2026年预测',
+        title: '2026第二批模拟填报',
         subtitle: '名额分配招生',
-        desc: '根据适应性测试成绩预测中考分数并模拟填报',
-        tag: '预测',
+        desc: '名额分配计划，3个志愿，校内竞争',
+        tag: '名额分配',
         path: '/pages/batch2simulate2026/batch2simulate2026'
-      },
-      {
-        id: 'batch3-2026',
-        title: '第三批2026年预测',
-        subtitle: '示范性普高剩余计划',
-        desc: '根据适应性测试成绩预测中考分数并模拟填报',
-        tag: '预测',
-        path: '/pages/simulate2026/simulate2026'
       }
     ]
   },

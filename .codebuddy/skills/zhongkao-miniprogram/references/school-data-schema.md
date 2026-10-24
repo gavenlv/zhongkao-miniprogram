@@ -1,7 +1,7 @@
 # 学校数据结构定义
 
 ## 主数据源
-`data/schools.js` - 导出变量名：`schools2025Full`
+`data/schools.js` - 导出变量名：`schools2026Full`（2026年第三批次录取数据）
 
 ## 学校对象结构
 
@@ -100,7 +100,7 @@
 
 所有数据文件使用 CommonJS 模块导出：
 ```javascript
-module.exports = { schools2025Full }
+module.exports = { schools2026Full }
 // 或
 module.exports = { scoreDistribution }
 ```

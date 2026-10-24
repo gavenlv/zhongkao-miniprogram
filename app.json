@@ -5,6 +5,8 @@
     "pages/simulate/simulate",
     "pages/history/history",
     "pages/volunteer/volunteer",
+    "pages/volunteer2026/volunteer2026",
+    "pages/volunteerTable2026/volunteerTable2026",
     "pages/simulate2026/simulate2026",
     "pages/batch2volunteer/batch2volunteer",
     "pages/batch2simulate2026/batch2simulate2026",

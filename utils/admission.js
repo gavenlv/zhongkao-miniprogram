@@ -1,85 +1,96 @@
-const { schools2025Full } = require('../data/schools.js')
+const { schools2026Full } = require('../data/schools.js')
 
+// 2026年广州市高中阶段学校招生录取控制分数线（2026-07-18公布）
 const GRADIENT_LINES = {
-  first: 707,
-  second: 667,
-  third: 627,
-  fourth: 587,
-  fifth: 547,
-  sixth: 507,
-  minimum: 487,
+  first: 712,
+  second: 672,
+  third: 632,
+  fourth: 592,
+  fifth: 552,
+  sixth: 512,
+  minimum: 492,
+  privateMinimum: 412,
+  lowered: 452,
 }
 
 const GRADIENT_INFO = {
   1: {
     name: '第一梯度',
-    controlLine: 707,
-    scoreRange: '≥707分',
+    controlLine: 712,
+    scoreRange: '≥712分',
     description: '高分优先投档梯度',
     order: 1,
     isLast: false
   },
   2: {
     name: '第二梯度',
-    controlLine: 667,
-    scoreRange: '667-706分',
+    controlLine: 672,
+    scoreRange: '672-711分',
     description: '第二优先投档梯度',
     order: 2,
     isLast: false
   },
   3: {
     name: '第三梯度',
-    controlLine: 627,
-    scoreRange: '627-666分',
+    controlLine: 632,
+    scoreRange: '632-671分',
     description: '第三优先投档梯度',
     order: 3,
     isLast: false
   },
   4: {
     name: '第四梯度',
-    controlLine: 587,
-    scoreRange: '587-626分',
+    controlLine: 592,
+    scoreRange: '592-631分',
     description: '第四优先投档梯度',
     order: 4,
     isLast: false
   },
   5: {
     name: '第五梯度',
-    controlLine: 547,
-    scoreRange: '547-586分',
+    controlLine: 552,
+    scoreRange: '552-591分',
     description: '第五优先投档梯度',
     order: 5,
     isLast: false
   },
   6: {
     name: '第六梯度',
-    controlLine: 507,
-    scoreRange: '507-546分',
+    controlLine: 512,
+    scoreRange: '512-551分',
     description: '最后一个投档梯度',
     order: 6,
     isLast: false
   },
   7: {
-    name: '普高最低控制线',
-    controlLine: 487,
-    scoreRange: '487-506分',
-    description: '普高最低控制线，可参与普高录取',
+    name: '公办普高最低控制线',
+    controlLine: 492,
+    scoreRange: '492-511分',
+    description: '达到公办普高最低控制线，可参与公办普高录取',
     order: 7,
     isLast: true
   },
   8: {
-    name: '未达普高线',
-    controlLine: 0,
-    scoreRange: '<487分',
-    description: '未达到普通高中最低控制线，无法参与普高录取',
+    name: '民办普高最低控制线',
+    controlLine: 412,
+    scoreRange: '412-491分',
+    description: '达到民办普高最低控制线，可参与民办普高录取',
     order: 8,
+    isLast: true
+  },
+  9: {
+    name: '未达民办普高线',
+    controlLine: 0,
+    scoreRange: '<412分',
+    description: '未达到民办普通高中最低控制线，无法参与普通高中录取',
+    order: 9,
     isLast: false
   }
 }
 
 function getGradientLevel(score) {
   const s = parseInt(score)
-  if (isNaN(s)) return 8
+  if (isNaN(s)) return 9
   if (s >= GRADIENT_LINES.first) return 1
   if (s >= GRADIENT_LINES.second) return 2
   if (s >= GRADIENT_LINES.third) return 3
@@ -87,7 +98,8 @@ function getGradientLevel(score) {
   if (s >= GRADIENT_LINES.fifth) return 5
   if (s >= GRADIENT_LINES.sixth) return 6
   if (s >= GRADIENT_LINES.minimum) return 7
-  return 8
+  if (s >= GRADIENT_LINES.privateMinimum) return 8
+  return 9
 }
 
 function getGradientControlLine(level) {
@@ -110,7 +122,7 @@ function getGradientInfo(level) {
 }
 
 function getAllGradients() {
-  return Object.values(GRADIENT_INFO).filter(g => g.order <= 6)
+  return Object.values(GRADIENT_INFO).filter(g => g.order <= 8)
 }
 
 function getSchoolAdmissionGradient(minScore) {
@@ -120,8 +132,9 @@ function getSchoolAdmissionGradient(minScore) {
   if (minScore >= GRADIENT_LINES.fourth) return '第四梯度'
   if (minScore >= GRADIENT_LINES.fifth) return '第五梯度'
   if (minScore >= GRADIENT_LINES.sixth) return '第六梯度'
-  if (minScore >= GRADIENT_LINES.minimum) return '普高最低线'
-  return '普高最低线以下'
+  if (minScore >= GRADIENT_LINES.minimum) return '公办普高最低线'
+  if (minScore >= GRADIENT_LINES.privateMinimum) return '民办普高最低线'
+  return '民办普高线以下'
 }
 
 function calculateAdmission(studentScore, isHukou, volunteers, scoreSeq) {
@@ -135,17 +148,17 @@ function calculateAdmission(studentScore, isHukou, volunteers, scoreSeq) {
   const studentGradientLevel = getGradientLevel(score)
   const studentGradientLine = getGradientControlLine(studentGradientLevel)
   
-  if (studentGradientLevel === 7) {
+  if (studentGradientLevel === 9) {
     return { 
       success: true, 
       admitted: false,
-      error: '分数未达到普高最低控制线(487分)，无法被普通高中录取',
+      error: '分数未达到民办普高最低控制线(412分)，无法被普通高中录取',
       score: score,
       gradientLevel: studentGradientLevel,
       processLog: [{
         step: '梯度判定',
         status: 'failed',
-        message: '分数' + score + '分未达到普高最低控制线' + GRADIENT_LINES.minimum + '分，无法参与普通高中投档录取',
+        message: '分数' + score + '分未达到民办普高最低控制线' + GRADIENT_LINES.privateMinimum + '分，无法参与普通高中投档录取',
       }],
     }
   }
@@ -159,7 +172,7 @@ function calculateAdmission(studentScore, isHukou, volunteers, scoreSeq) {
   
   for (let i = 0; i < validVolunteers.length; i++) {
     const volunteer = validVolunteers[i]
-    const school = schools2025Full.find(function(s) { return s.id === volunteer.schoolId })
+    const school = schools2026Full.find(function(s) { return s.id === volunteer.schoolId })
     const volunteerOrder = i + 1
     
     if (!school) {
@@ -392,18 +405,18 @@ function calculateAdmission(studentScore, isHukou, volunteers, scoreSeq) {
 
 function searchSchools(keyword) {
   if (!keyword) {
-    return schools2025Full.slice(0, 50)
+    return schools2026Full.slice(0, 50)
   }
   
   keyword = keyword.toLowerCase()
-  return schools2025Full.filter(function(school) {
+  return schools2026Full.filter(function(school) {
     return school.name.toLowerCase().indexOf(keyword) !== -1 || 
            school.id.toLowerCase().indexOf(keyword) !== -1
   }).slice(0, 50)
 }
 
 function getSchoolById(schoolId) {
-  return schools2025Full.find(function(s) { return s.id === schoolId })
+  return schools2026Full.find(function(s) { return s.id === schoolId })
 }
 
 const QUOTA_ALLOCATION_SCHOOLS = [
@@ -483,17 +496,17 @@ function calculateQuotaAllocationAdmission(score, juniorSchool, volunteers, scor
   
   const studentGradientLevel = getGradientLevel(s)
   
-  if (studentGradientLevel === 8) {
+  if (studentGradientLevel >= 8) {
     return { 
       success: true, 
       admitted: false,
-      error: '分数未达到普高最低控制线(' + GRADIENT_LINES.minimum + '分)，无法被普通高中录取',
+      error: '分数未达到公办普高最低控制线(' + GRADIENT_LINES.minimum + '分)，无法被普通高中录取',
       score: s,
       gradientLevel: studentGradientLevel,
       processLog: [{
         step: '梯度判定',
         status: 'failed',
-        message: '分数' + s + '分未达到普高最低控制线' + GRADIENT_LINES.minimum + '分，无法参与普通高中投档录取',
+        message: '分数' + s + '分未达到公办普高最低控制线' + GRADIENT_LINES.minimum + '分，无法参与普通高中投档录取',
       }],
     }
   }
@@ -769,7 +782,7 @@ module.exports = {
   calculateAdmission: calculateAdmission,
   searchSchools: searchSchools,
   getSchoolById: getSchoolById,
-  schools2025Full: schools2025Full,
+  schools2026Full: schools2026Full,
   getQuotaAllocationSchools: getQuotaAllocationSchools,
   calculateQuotaAllocationAdmission: calculateQuotaAllocationAdmission,
 }

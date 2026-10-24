@@ -1,6 +1,6 @@
 <view class="container">
   <view class="header-banner">
-    <text class="banner-text">📌 模拟录取基于2025年广州市中考录取数据</text>
+    <text class="banner-text">📌 模拟录取基于2026年广州市中考录取数据</text>
   </view>
   
   <view class="section">
@@ -45,8 +45,8 @@
           <text class="result-value">{{estimatedRank.adaptive}}名</text>
         </view>
         <view class="result-item">
-          <text class="result-label">预估2025中考排名</text>
-          <text class="result-value highlight">{{estimatedRank.estimated2025}}名</text>
+          <text class="result-label">预估2026中考排名</text>
+          <text class="result-value highlight">{{estimatedRank.estimated2026}}名</text>
         </view>
         <view class="result-item">
           <text class="result-label">预估中考分数</text>
@@ -75,7 +75,7 @@
 
   <view class="section" wx:if="{{recommendedSchools.length > 0}}">
     <view class="section-title">🎯 推荐学校</view>
-    <view class="section-desc">基于预估分数{{estimatedScore}}分推荐（2025年录取数据）</view>
+    <view class="section-desc">基于预估分数{{estimatedScore}}分推荐（2026年录取数据）</view>
     
     <view class="recommend-list">
       <view class="recommend-item {{item.level}}" wx:for="{{recommendedSchools}}" wx:key="id" bindtap="useRecommend" data-school="{{item}}">
@@ -86,7 +86,7 @@
           </text>
         </view>
         <view class="recommend-info">
-          <text>2025年录取线: {{item.score2025}}分</text>
+          <text>2026年录取线: {{item.score2026}}分</text>
           <text>差距: {{item.diff > 0 ? '+' : ''}}{{item.diff}}分</text>
         </view>
       </view>
@@ -176,7 +176,7 @@
       <scroll-view scroll-y class="picker-list">
         <view class="picker-item" wx:for="{{schoolList}}" wx:key="id" bindtap="selectSchool" data-school="{{item}}">
           <text class="picker-name">{{item.name}}</text>
-          <text class="picker-score">2025年: {{item.hukou.minScore}}分</text>
+          <text class="picker-score">2026年: {{item.hukou.minScore}}分</text>
         </view>
       </scroll-view>
     </view>

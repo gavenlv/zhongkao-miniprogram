@@ -17,10 +17,9 @@ Page({
         title: '模拟填报录取',
         desc: '输入分数和志愿，模拟录取结果',
         subMenus: [
-          { title: '2025第二批模拟填报', path: '/pages/batch2volunteer/batch2volunteer' },
-          { title: '2025第三批模拟填报', path: '/pages/volunteer/volunteer' },
-          { title: '第二批2026年预测', path: '/pages/batch2simulate2026/batch2simulate2026' },
-          { title: '第三批2026年预测', path: '/pages/simulate2026/simulate2026' }
+          { title: '2026第三批模拟填报', path: '/pages/volunteer2026/volunteer2026' },
+          { title: '2026年中考志愿表', path: '/pages/volunteerTable2026/volunteerTable2026' },
+          { title: '2026第二批模拟填报', path: '/pages/batch2simulate2026/batch2simulate2026' }
         ]
       },
       {

@@ -545,6 +545,188 @@ const scoreDistribution = {
       "percent": 83.05
     }
   ],
+  "2026": [
+    {
+      "score": 750,
+      "count": 1815,
+      "percent": 1.2
+    },
+    {
+      "score": 740,
+      "count": 4080,
+      "percent": 2.69
+    },
+    {
+      "score": 730,
+      "count": 7350,
+      "percent": 4.85
+    },
+    {
+      "score": 720,
+      "count": 11582,
+      "percent": 7.65
+    },
+    {
+      "score": 710,
+      "count": 16303,
+      "percent": 10.76
+    },
+    {
+      "score": 700,
+      "count": 21387,
+      "percent": 14.12
+    },
+    {
+      "score": 690,
+      "count": 26644,
+      "percent": 17.59
+    },
+    {
+      "score": 680,
+      "count": 32027,
+      "percent": 21.14
+    },
+    {
+      "score": 670,
+      "count": 37486,
+      "percent": 24.75
+    },
+    {
+      "score": 660,
+      "count": 42762,
+      "percent": 28.23
+    },
+    {
+      "score": 650,
+      "count": 47968,
+      "percent": 31.67
+    },
+    {
+      "score": 640,
+      "count": 52890,
+      "percent": 34.92
+    },
+    {
+      "score": 630,
+      "count": 57562,
+      "percent": 38
+    },
+    {
+      "score": 620,
+      "count": 62205,
+      "percent": 41.07
+    },
+    {
+      "score": 610,
+      "count": 66551,
+      "percent": 43.94
+    },
+    {
+      "score": 600,
+      "count": 70581,
+      "percent": 46.6
+    },
+    {
+      "score": 590,
+      "count": 74441,
+      "percent": 49.15
+    },
+    {
+      "score": 580,
+      "count": 78128,
+      "percent": 51.58
+    },
+    {
+      "score": 570,
+      "count": 81657,
+      "percent": 53.91
+    },
+    {
+      "score": 560,
+      "count": 84988,
+      "percent": 56.11
+    },
+    {
+      "score": 550,
+      "count": 88234,
+      "percent": 58.25
+    },
+    {
+      "score": 540,
+      "count": 91361,
+      "percent": 60.32
+    },
+    {
+      "score": 530,
+      "count": 94460,
+      "percent": 62.36
+    },
+    {
+      "score": 520,
+      "count": 97305,
+      "percent": 64.24
+    },
+    {
+      "score": 510,
+      "count": 100091,
+      "percent": 66.08
+    },
+    {
+      "score": 500,
+      "count": 102700,
+      "percent": 67.8
+    },
+    {
+      "score": 490,
+      "count": 105305,
+      "percent": 69.52
+    },
+    {
+      "score": 480,
+      "count": 107789,
+      "percent": 71.16
+    },
+    {
+      "score": 470,
+      "count": 110180,
+      "percent": 72.74
+    },
+    {
+      "score": 460,
+      "count": 112612,
+      "percent": 74.35
+    },
+    {
+      "score": 450,
+      "count": 114928,
+      "percent": 75.87
+    },
+    {
+      "score": 440,
+      "count": 117204,
+      "percent": 77.38
+    },
+    {
+      "score": 430,
+      "count": 119363,
+      "percent": 78.8
+    },
+    {
+      "score": 420,
+      "count": 121489,
+      "percent": 80.21
+    },
+    {
+      "score": 410,
+      "count": 123565,
+      "percent": 81.58
+    },
+    {
+      "score": 400,
+      "count": 125579,
+      "percent": 82.91
+    }
+  ],
   "2026_adaptive": [
     {
       "score": 630,
@@ -902,6 +1084,6 @@ const scoreDistribution = {
       "percent": 82.95
     }
   ]
-}
+};
 
-module.exports = { scoreDistribution }
+module.exports = { scoreDistribution };

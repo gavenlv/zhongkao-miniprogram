@@ -33,15 +33,15 @@
     <view class="data-info">
       <view class="info-row">
         <view class="info-item">
+          <view class="info-num">2026</view>
+          <view class="info-label">年数据</view>
+        </view>
+        <view class="info-item">
           <view class="info-num">2025</view>
           <view class="info-label">年数据</view>
         </view>
         <view class="info-item">
           <view class="info-num">2024</view>
-          <view class="info-label">年数据</view>
-        </view>
-        <view class="info-item">
-          <view class="info-num">2023</view>
           <view class="info-label">年数据</view>
         </view>
       </view>

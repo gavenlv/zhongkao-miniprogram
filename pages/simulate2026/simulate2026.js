@@ -1,7 +1,7 @@
 const { scoreDistribution } = require('../../data/scoreDistribution.js')
 const admission = require('../../utils/admission.js')
 
-const TOTAL_STUDENTS_2025 = 139600
+const TOTAL_STUDENTS_2026 = 151500
 
 function calculatePreciseRank(score, distribution) {
   if (!distribution || distribution.length === 0) {
@@ -149,24 +149,24 @@ Page({
       return
     }
 
-    const dist2026 = scoreDistribution['2026_adaptive']
-    const dist2025 = scoreDistribution['2025']
+    const dist2026Adaptive = scoreDistribution['2026_adaptive']
+    const dist2026 = scoreDistribution['2026']
 
-    const result2026 = calculatePreciseRank(score, dist2026)
+    const result2026 = calculatePreciseRank(score, dist2026Adaptive)
     if (!result2026) {
       wx.showToast({ title: '无法计算排名', icon: 'none' })
       return
     }
 
-    const percent2026 = result2026.rank / dist2026[dist2026.length - 1].count
-    const estimatedRank2025 = Math.round(percent2026 * TOTAL_STUDENTS_2025)
-    const estimatedScore = estimateScoreFromRank(estimatedRank2025, dist2025)
+    const percent2026 = result2026.rank / dist2026Adaptive[dist2026Adaptive.length - 1].count
+    const estimatedRank2026 = Math.round(percent2026 * TOTAL_STUDENTS_2026)
+    const estimatedScore = estimateScoreFromRank(estimatedRank2026, dist2026)
 
     this.setData({
       estimatedRank: {
         adaptive: result2026.rank,
         adaptivePercent: result2026.percent,
-        estimated2025: estimatedRank2025,
+        estimated2026: estimatedRank2026,
         percent: (percent2026 * 100).toFixed(2),
         isExact: result2026.isExact,
         interpolation: result2026.interpolation
@@ -180,16 +180,16 @@ Page({
   recommendSchools(estimatedScore) {
     if (!estimatedScore) return
 
-    const schools = admission.schools2025Full
+    const schools = admission.schools2026Full
       .filter(s => s.hukou)
       .map(s => {
-        const score2025 = s.hukou?.minScore || 0
-        const diff = estimatedScore - score2025
+        const score2026 = s.hukou?.minScore || 0
+        const diff = estimatedScore - score2026
         return {
           id: s.id,
           name: s.name,
           type: s.type,
-          score2025: score2025,
+          score2026: score2026,
           diff: diff,
           level: this.getSchoolLevel(diff)
         }

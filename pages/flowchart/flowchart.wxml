@@ -1,6 +1,6 @@
 <view class="container">
   <view class="header-banner">
-    <text class="banner-text">📌 2025年广州市中考投档录取流程</text>
+    <text class="banner-text">📌 2026年广州市中考投档录取流程</text>
   </view>
   
   <view class="tabs">
@@ -88,14 +88,14 @@
     </view>
     
     <view class="card">
-      <view class="card-title">2025年梯度控制线</view>
+      <view class="card-title">2026年梯度控制线</view>
       <view class="gradient-list">
         <view class="gradient-item" wx:for="{{gradientList}}" wx:key="level">
           <view class="gradient-label">{{item.label}}</view>
           <view class="gradient-score">{{item.range}}</view>
         </view>
       </view>
-      <view class="data-note">数据来源：2025年广州市中考录取分数线</view>
+      <view class="data-note">数据来源：2026年广州市中考录取控制分数线</view>
     </view>
   </view>
   

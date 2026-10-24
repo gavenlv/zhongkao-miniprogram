@@ -69,7 +69,7 @@
     </view>
 
     <view class="estimate-btn" wx:if="{{currentTab === '2026_adaptive'}}" bindtap="goToEstimate">
-      <text>📊 2026年中考排名估算</text>
+      <text>📊 2026年志愿模拟填报</text>
     </view>
 
     <view class="table-title-bar">

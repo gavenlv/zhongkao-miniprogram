@@ -5,8 +5,8 @@ Page({
     schools: [],
     filteredSchools: [],
     searchKeyword: '',
-    selectedYear: '2025',
-    years: ['2023', '2024', '2025'],
+    selectedYear: '2026',
+    years: ['2023', '2024', '2025', '2026'],
     studentType: 'hukou',
     sortField: 'minScore',
     sortOrder: 'desc'

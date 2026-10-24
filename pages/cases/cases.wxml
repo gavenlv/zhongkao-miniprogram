@@ -1,7 +1,7 @@
 <view class="container">
   <view class="header">
     <view class="header-title">录取案例分析</view>
-    <view class="header-desc">基于2025年实际录取数据的典型案例详解</view>
+    <view class="header-desc">基于2026年实际录取数据的典型案例详解</view>
   </view>
 
   <view class="type-tabs">

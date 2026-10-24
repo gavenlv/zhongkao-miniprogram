@@ -1,0 +1,139 @@
+<view class="container">
+  <view class="header">
+    <view class="header-title">2026年广州市中考志愿表</view>
+    <view class="header-desc">各批次志愿设置及投档录取规定</view>
+  </view>
+
+  <view class="timeline-card">
+    <view class="timeline-title">📅 志愿填报时间安排</view>
+    <view class="timeline-list">
+      <view class="timeline-item" wx:for="{{timeline}}" wx:key="date">
+        <view class="timeline-dot"></view>
+        <view class="timeline-content">
+          <view class="timeline-date">{{item.date}}</view>
+          <view class="timeline-event">{{item.event}}</view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="gradient-card">
+    <view class="gradient-title">📊 2026年梯度控制线</view>
+    <view class="gradient-grid">
+      <view class="gradient-item" wx:for="{{gradientLines}}" wx:key="name" style="border-left-color: {{item.color}};">
+        <view class="gradient-name">{{item.name}}</view>
+        <view class="gradient-score">{{item.score}}</view>
+      </view>
+    </view>
+  </view>
+
+  <view class="rule-card">
+    <view class="rule-title">🎯 投档录取规则</view>
+    <view class="rule-content">
+      <view class="rule-item">
+        <view class="rule-icon">🌊</view>
+        <view class="rule-text">
+          <text class="rule-highlight">梯度投档</text>：先用梯度投档控制线将考生按成绩分成若干档，按梯度从高到低依次投档
+        </view>
+      </view>
+      <view class="rule-item">
+        <view class="rule-icon">🎯</view>
+        <view class="rule-text">
+          <text class="rule-highlight">志愿优先</text>：同一梯度内，先投第一志愿考生，再投第二志愿考生……依此类推
+        </view>
+      </view>
+      <view class="rule-item">
+        <view class="rule-icon">📊</view>
+        <view class="rule-text">
+          <text class="rule-highlight">择优录取</text>：同一志愿内，按考生成绩从高到低录取
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="batch-tabs">
+    <view class="batch-tab {{activeBatch === 'all' ? 'active' : ''}}" bindtap="onBatchChange" data-batch="all">全部批次</view>
+    <view class="batch-tab {{activeBatch === item.id ? 'active' : ''}}" wx:for="{{batches}}" wx:key="id" bindtap="onBatchChange" data-batch="{{item.id}}" style="--batch-color: {{item.color}};">{{item.name}}</view>
+  </view>
+
+  <view class="batch-section" wx:for="{{batches}}" wx:key="id" wx:if="{{activeBatch === 'all' || activeBatch === item.id}}">
+    <view class="batch-header" style="background: {{item.color}};">
+      <view class="batch-name">{{item.name}}</view>
+    </view>
+    
+    <view class="category-list">
+      <view class="category-item" wx:for="{{item.categories}}" wx:for-item="category" wx:for-index="catIndex" wx:key="name">
+        <view class="category-header">
+          <view class="category-name">{{category.name}}</view>
+          <view class="category-volunteers" style="background: {{item.color}};">{{category.volunteers}}</view>
+        </view>
+        
+        <view class="category-content">
+          <view class="content-section">
+            <view class="section-label">📝 填报说明</view>
+            <view class="section-text">{{category.description}}</view>
+          </view>
+          
+          <view class="content-section">
+            <view class="section-label">📋 投档录取规定</view>
+            <view class="section-text">{{category.rule}}</view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="tips-card">
+    <view class="tips-title">💡 填报志愿注意事项</view>
+    <view class="tips-list">
+      <view class="tips-item">
+        <view class="tips-num">1</view>
+        <view class="tips-text">妥善保管密码，密码设置要有一定复杂度，不要使用生日等简单字符串</view>
+      </view>
+      <view class="tips-item">
+        <view class="tips-num">2</view>
+        <view class="tips-text">及时核对确认，建议先填写志愿模拟表，再登录系统录入</view>
+      </view>
+      <view class="tips-item">
+        <view class="tips-num">3</view>
+        <view class="tips-text">志愿填报与录取直接相关，每个志愿都有可能成为最终录取结果</view>
+      </view>
+      <view class="tips-item">
+        <view class="tips-num">4</view>
+        <view class="tips-text">充分利用最大志愿数，设置"保底"学校，增加被录取机会</view>
+      </view>
+    </view>
+  </view>
+
+  <view class="example-card">
+    <view class="example-title">📖 录取案例解析</view>
+    
+    <view class="example-item">
+      <view class="example-header">案例一：跨梯度录取</view>
+      <view class="example-content">
+        <view class="example-scenario">考生A总成绩710分（第一梯度），第一志愿学校录取线715分，第二志愿学校录取线710分、末位志愿序号1，第三志愿学校录取线698分（低于第一梯度控制线）</view>
+        <view class="example-result">
+          <text class="result-label">结果：</text>第三志愿录取。因为第三志愿学校在第一梯度投档时未完成计划，虽然填在第三志愿，仍可被录取，优先于第二梯度考生。
+        </view>
+      </view>
+    </view>
+    
+    <view class="example-item">
+      <view class="example-header">案例二：志愿顺序很重要</view>
+      <view class="example-content">
+        <view class="example-scenario">考生B总成绩638分（第三梯度），第一志愿学校录取线670分，第二志愿学校录取线630分、末位志愿序号1，第三志愿学校录取线627分、末位志愿序号3、末位分数642分</view>
+        <view class="example-result">
+          <text class="result-label">结果：</text>第三志愿落选。因为考生分数638分低于该校第三志愿录取的末位分数642分。这说明志愿顺序很重要，学校在某志愿招满后，后续志愿不再录取。
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="disclaimer">
+    <view class="disclaimer-icon">⚠️</view>
+    <view class="disclaimer-content">
+      <view class="disclaimer-title">免责声明</view>
+      <view class="disclaimer-text">本页面内容仅供参考，数据来源于广州市招生考试委员会办公室公开发布的《2026年广州市中考志愿填报问答》。实际录取规则请以官方最新政策为准。</view>
+    </view>
+  </view>
+</view>

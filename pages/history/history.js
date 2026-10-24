@@ -4,7 +4,7 @@ Page({
       {
         id: 'historical',
         title: '各学校历年录取数据',
-        desc: '2023-2025年各学校录取分数线、末位志愿等详细数据',
+        desc: '2023-2026年各学校录取分数线、末位志愿等详细数据',
         tag: '推荐',
         path: '/pages/historical/historical'
       },

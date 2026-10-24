@@ -1,6 +1,6 @@
-const { schools2025Full } = require('./data/schools.js')
+﻿const { schools2026Full } = require('./data/schools.js')
 
-const schoolsWithLastVolunteer3OrMore = schools2025Full.filter(s => {
+const schoolsWithLastVolunteer3OrMore = schools2026Full.filter(s => {
   if (!s.hukou) return false
   return s.hukou.lastVolunteer >= 3 && 
          s.hukou.lastScore < 639
@@ -21,3 +21,5 @@ schoolsWithLastVolunteer3OrMore.forEach(s => {
 })
 
 console.log(`共找到 ${schoolsWithLastVolunteer3OrMore.length} 所学校`)
+
+

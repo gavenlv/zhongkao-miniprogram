@@ -1,12 +1,12 @@
-const { schools2025Full } = require('./data/schools.js')
+﻿const { schools2026Full } = require('./data/schools.js')
 
-const thirdGradientLine = 627
+const thirdGradientLine = 632
 
-const schoolsWithLastVolunteer3OrMore = schools2025Full.filter(s => {
+const schoolsWithLastVolunteer3OrMore = schools2026Full.filter(s => {
   if (!s.hukou) return false
   return s.hukou.lastVolunteer >= 3 && 
          s.hukou.lastScore >= thirdGradientLine && 
-         s.hukou.lastScore < 667
+         s.hukou.lastScore < 672
 })
 
 console.log('=== 末位志愿序号>=3的学校（第三梯度） ===\n')
@@ -24,3 +24,5 @@ schoolsWithLastVolunteer3OrMore.forEach(s => {
 })
 
 console.log(`共找到 ${schoolsWithLastVolunteer3OrMore.length} 所学校`)
+
+

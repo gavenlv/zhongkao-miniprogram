@@ -5,6 +5,20 @@ Page({
   data: {
     menuItems: [
       {
+        id: 'volunteerTable2026',
+        title: '2026年中考志愿表',
+        desc: '查看各批次志愿设置、填报说明、投档录取规定',
+        tag: '新功能',
+        path: '/pages/volunteerTable2026/volunteerTable2026'
+      },
+      {
+        id: 'volunteer2026',
+        title: '2026年志愿填报模拟',
+        desc: '输入分数、选择学校，模拟录取结果，了解你能被哪所学校录取',
+        tag: '实用',
+        path: '/pages/volunteer2026/volunteer2026'
+      },
+      {
         id: 'flowchart',
         title: '梯度投档流程',
         desc: '了解广州市中考梯度投档、志愿优先、分数优先等录取规则',
@@ -14,7 +28,7 @@ Page({
       {
         id: 'cases',
         title: '志愿案例分析',
-        desc: '基于2025年实际数据的典型录取案例，帮助理解录取规则',
+        desc: '基于2026年实际数据的典型录取案例，帮助理解录取规则',
         tag: '实用',
         path: '/pages/cases/cases'
       }
