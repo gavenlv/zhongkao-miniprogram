@@ -1,0 +1,6 @@
+{
+  "component": true,
+  "usingComponents": {
+    "figure-view": "/components/figure-view/index"
+  }
+}

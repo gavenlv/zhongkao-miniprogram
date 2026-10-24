@@ -1,0 +1,45 @@
+<view wx:if="{{subject}}" class="page">
+  <view class="head" style="background: {{subject.color}}">
+    <view class="head-top">
+      <view class="head-icon">{{subject.icon}}</view>
+      <view class="head-info">
+        <view class="head-name">初中{{subject.name}}</view>
+        <view class="head-meta">中考 {{subject.score}} 分 · {{subject.examNote}}</view>
+      </view>
+    </view>
+    <view class="head-desc">{{subject.desc}}</view>
+    <view class="head-stat">
+      {{subject.readyCount}} / {{subject.moduleCount}} 个模块已上线
+    </view>
+  </view>
+
+  <view class="section-label">教材模块</view>
+
+  <view class="module-list">
+    <view
+      wx:for="{{modules}}"
+      wx:key="id"
+      class="module {{item.ready ? '' : 'pending'}}"
+      bindtap="onOpen"
+      data-id="{{item.id}}"
+      data-ready="{{item.ready}}"
+      data-pkg="{{item.pkg}}"
+    >
+      <view class="module-icon">{{item.icon}}</view>
+      <view class="module-main">
+        <view class="module-title-row">
+          <text class="module-title">{{item.name}}</text>
+          <text class="badge {{item.ready ? 'ok' : ''}}">{{item.ready ? '已上线' : '建设中'}}</text>
+        </view>
+        <view class="module-desc">{{item.desc}}</view>
+      </view>
+      <view class="module-arrow">{{item.ready ? '›' : '·'}}</view>
+    </view>
+  </view>
+
+  <view class="tip-card">
+    <view class="tip-title">说明</view>
+    <view class="tip-row">内容与页面分离维护：知识点正文以数据文件存放，补充模块时无需改动页面代码。</view>
+    <view class="tip-row">未上线模块会保留入口与规划，避免学习路径缺失。</view>
+  </view>
+</view>

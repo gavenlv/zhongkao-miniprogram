@@ -1,0 +1,5 @@
+<learn-detail
+  entry="{{entry}}"
+  subject-name="物理"
+  module-name="{{moduleName}}"
+/>

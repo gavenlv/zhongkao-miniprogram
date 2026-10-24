@@ -1,0 +1,8 @@
+<learn-list
+  subject-id="chemistry"
+  subject-name="化学"
+  module-id="{{moduleId}}"
+  module-name="{{moduleName}}"
+  entries="{{entries}}"
+  base="/learn/chemistry"
+/>

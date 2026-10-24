@@ -1,0 +1,5 @@
+<learn-detail
+  entry="{{entry}}"
+  subject-name="英语"
+  module-name="{{moduleName}}"
+/>

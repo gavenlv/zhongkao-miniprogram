@@ -1,65 +1,53 @@
+const { JUNIOR_SUBJECTS } = require('../../utils/learnCatalog')
+const { SENIOR_SUBJECTS } = require('../../utils/seniorCatalog')
 const app = getApp()
+
+const juniorReady = JUNIOR_SUBJECTS.reduce((n, s) => n + s.readyCount, 0)
+const seniorModules = SENIOR_SUBJECTS.reduce((n, s) => n + s.moduleCount, 0)
 
 Page({
   data: {
-    menuItems: [
+    version: (app.globalData && app.globalData.version) || '',
+    stats: {
+      junior: JUNIOR_SUBJECTS.length,
+      juniorReady,
+      senior: SENIOR_SUBJECTS.length,
+      seniorModules
+    },
+    modules: [
       {
-        id: 'rules',
-        title: '规则总览',
-        desc: '了解投档规则，科学填报志愿',
-        subMenus: [
-          { title: '梯度投档流程', path: '/pages/flowchart/flowchart' },
-          { title: '志愿案例分析', path: '/pages/cases/cases' }
-        ]
+        id: 'junior',
+        theme: 'blue',
+        icon: '📚',
+        title: '初中各科学习',
+        tag: '离线可用',
+        desc: '语文、数学、英语、物理、化学、道德与法治、历史，按教材模块与年级组织',
+        stat: `${JUNIOR_SUBJECTS.length} 个学科 · ${juniorReady} 个模块已上线`
       },
       {
-        id: 'simulate',
-        title: '模拟填报录取',
-        desc: '输入分数和志愿，模拟录取结果',
-        subMenus: [
-          { title: '2026第三批模拟填报', path: '/pages/volunteer2026/volunteer2026' },
-          { title: '2026年中考志愿表', path: '/pages/volunteerTable2026/volunteerTable2026' },
-          { title: '2026第二批模拟填报', path: '/pages/batch2simulate2026/batch2simulate2026' }
-        ]
+        id: 'senior',
+        theme: 'purple',
+        icon: '🎓',
+        title: '高中各科学习',
+        tag: '框架上线',
+        desc: '语数英、物化生、政史地九大学科，先提供模块大纲与学习路径',
+        stat: `${SENIOR_SUBJECTS.length} 个学科 · ${seniorModules} 个模块大纲`
       },
       {
-        id: 'history',
-        title: '历史数据分析',
-        desc: '参考历年数据，定位目标学校',
-        subMenus: [
-          { title: '各学校历年录取数据', path: '/pages/historical/historical' },
-          { title: '历年各分数段统计和排名', path: '/pages/scorestats/scorestats' },
-          { title: '学校历史录取分数变化', path: '/pages/ranking/ranking' }
-        ]
+        id: 'zhongkao',
+        theme: 'orange',
+        icon: '🎯',
+        title: '广州中考志愿',
+        tag: '2026 数据',
+        desc: '投档规则、第三批与第二批模拟填报、历年录取与分数段数据分析',
+        stat: '规则 · 模拟 · 历史数据 · 名额分配'
       }
     ],
-    officialLinks: [
-      {
-        id: 'gzzk',
-        title: '广州市招生考试委员会办公室',
-        desc: '中考政策发布、成绩查询、录取结果查询',
-        url: 'https://gzzk.gz.gov.cn',
-        icon: 'official'
-      },
-      {
-        id: 'gzedu',
-        title: '广州市教育局',
-        desc: '教育政策、招生计划、学校信息',
-        url: 'http://jyj.gz.gov.cn',
-        icon: 'education'
-      },
-      {
-        id: 'gdeea',
-        title: '广东省教育考试院',
-        desc: '省级教育考试政策、中考相关政策',
-        url: 'https://www.eeafj.cn',
-        icon: 'province'
-      }
+    tips: [
+      { icon: '①', text: '初中模块按“学科 → 教材模块 → 知识点”逐层进入，支持搜索与年级筛选' },
+      { icon: '②', text: '每个知识点都配有考点解析，带题目的内容可直接在页内练习并查看答案' },
+      { icon: '③', text: '高中栏目首期提供大纲，后续只需补充数据文件即可上线具体内容' }
     ]
-  },
-
-  onLoad() {
-    wx.setNavigationBarTitle({ title: '广州中考志愿模拟填报录取' })
   },
 
   onShow() {
@@ -68,45 +56,19 @@ Page({
     }
   },
 
-  onSubMenu(e) {
-    const path = e.currentTarget.dataset.path
-    wx.navigateTo({ url: path })
-  },
-
-  onTabNav(e) {
+  onEnter(e) {
     const id = e.currentTarget.dataset.id
     const paths = {
-      'rules': '/pages/rules/rules',
-      'simulate': '/pages/simulate/simulate',
-      'history': '/pages/history/history'
+      junior: '/pages/junior/junior',
+      senior: '/pages/senior/senior',
+      zhongkao: '/pages/zhongkao/zhongkao'
     }
     wx.switchTab({ url: paths[id] })
   },
 
-  onOpenLink(e) {
-    const url = e.currentTarget.dataset.url
-    wx.showModal({
-      title: '打开外部链接',
-      content: '即将跳转到官方网站',
-      success: (res) => {
-        if (res.confirm) {
-          wx.setClipboardData({
-            data: url,
-            success: () => {
-              wx.showToast({
-                title: '链接已复制',
-                icon: 'success'
-              })
-            }
-          })
-        }
-      }
-    })
-  },
-
   onShareAppMessage() {
     return {
-      title: '广州中考志愿模拟填报',
+      title: '初中高中学习与广州中考志愿助手',
       path: '/pages/index/index',
       imageUrl: '/images/aba.png'
     }
@@ -114,7 +76,7 @@ Page({
 
   onShareTimeline() {
     return {
-      title: '广州中考志愿模拟填报',
+      title: '初中高中学习与广州中考志愿助手',
       query: '',
       imageUrl: '/images/aba.png'
     }

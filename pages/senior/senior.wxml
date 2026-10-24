@@ -1,0 +1,45 @@
+<view class="page">
+  <view class="banner senior-banner">
+    <view class="banner-kicker">高中 · 必修与选择性必修</view>
+    <view class="banner-title">各科学习</view>
+    <view class="banner-desc">九大学科学习框架已上线，按模块梳理知识脉络与学习路径</view>
+    <view class="banner-meta">
+      <text>{{subjects.length}} 个学科</text>
+      <text class="dot">·</text>
+      <text>{{totalModules}} 个模块大纲</text>
+    </view>
+  </view>
+
+  <view class="section-label">选择学科</view>
+
+  <view class="grid">
+    <view
+      wx:for="{{subjects}}"
+      wx:key="id"
+      class="subject"
+      bindtap="onOpen"
+      data-id="{{item.id}}"
+    >
+      <view class="subject-top">
+        <view class="subject-icon" style="background: {{item.color}}">{{item.icon}}</view>
+        <view class="subject-name-wrap">
+          <view class="subject-name">{{item.name}}</view>
+          <view class="subject-score">高中</view>
+        </view>
+      </view>
+      <view class="subject-desc">{{item.desc}}</view>
+      <view class="subject-foot">
+        <text class="outline-badge">{{item.moduleCount}} 个模块大纲</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="note-card">
+    <view class="note-title">内容规划</view>
+    <view class="note-row">首期先提供学科框架与模块大纲，帮助建立高中三年的知识地图。</view>
+    <view class="note-row">后续按学科分批补充知识点、例题与练习；数据结构与初中一致，上线时无需调整入口。</view>
+    <view class="note-row">高一打基础、高二建体系、高三重整合，建议先从函数、力学、元素化合物等主干模块入手。</view>
+  </view>
+
+  <view class="footer">高中内容依据课程标准整理，仅供学习规划参考</view>
+</view>

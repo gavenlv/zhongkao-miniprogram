@@ -1,0 +1,10 @@
+<view class="fig">
+  <view wx:if="{{title}}" class="fig-title">{{title}}</view>
+  <block wx:if="{{ready}}">
+    <view class="fig-box" style="padding-top: {{ratio}}%">
+      <canvas type="2d" id="figCanvas" class="fig-canvas"></canvas>
+    </view>
+    <view wx:if="{{caption}}" class="fig-cap">{{caption}}</view>
+  </block>
+  <view wx:else class="fig-alt">{{alt || '图解'}}</view>
+</view>

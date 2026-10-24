@@ -10,23 +10,23 @@ Component({
         iconType: "home"
       },
       {
-        pagePath: "/pages/rules/rules",
-        text: "规则总览",
-        iconType: "rules"
+        pagePath: "/pages/junior/junior",
+        text: "初中",
+        iconType: "junior"
       },
       {
-        pagePath: "/pages/simulate/simulate",
-        text: "模拟填报",
-        iconType: "simulate"
+        pagePath: "/pages/senior/senior",
+        text: "高中",
+        iconType: "senior"
       },
       {
-        pagePath: "/pages/history/history",
-        text: "历史数据",
-        iconType: "history"
+        pagePath: "/pages/zhongkao/zhongkao",
+        text: "中考",
+        iconType: "exam"
       }
     ]
   },
-  
+
   methods: {
     switchTab(e) {
       const data = e.currentTarget.dataset

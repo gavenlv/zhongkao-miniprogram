@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "物理学习",
+  "usingComponents": {
+    "learn-list": "/components/learn-list/index"
+  }
+}

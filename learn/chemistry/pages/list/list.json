@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "化学学习",
+  "usingComponents": {
+    "learn-list": "/components/learn-list/index"
+  }
+}

@@ -1,0 +1,8 @@
+<learn-list
+  subject-id="chinese"
+  subject-name="语文"
+  module-id="{{moduleId}}"
+  module-name="{{moduleName}}"
+  entries="{{entries}}"
+  base="/learn/chinese3"
+/>

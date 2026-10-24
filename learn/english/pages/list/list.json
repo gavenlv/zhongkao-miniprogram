@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "英语学习",
+  "usingComponents": {
+    "learn-list": "/components/learn-list/index"
+  }
+}

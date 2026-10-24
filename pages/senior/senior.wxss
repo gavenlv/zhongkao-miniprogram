@@ -1,0 +1,15 @@
+@import "../junior/junior.wxss";
+
+.senior-banner {
+  background: linear-gradient(135deg, #3b2a6b 0%, #5b3f9e 55%, #7355cf 100%);
+  box-shadow: 0 12rpx 26rpx rgba(59, 42, 107, 0.22);
+}
+
+.outline-badge {
+  display: inline-block;
+  font-size: 21rpx;
+  color: #7355cf;
+  background: #f1edfd;
+  border-radius: 6rpx;
+  padding: 4rpx 12rpx;
+}

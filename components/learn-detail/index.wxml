@@ -1,0 +1,222 @@
+<view wx:if="{{entry}}" class="page">
+  <view class="head">
+    <view class="crumb">{{subjectName}} · {{moduleName}}</view>
+    <view class="title">{{entry.title}}</view>
+    <view wx:if="{{entry.subtitle}}" class="subtitle">{{entry.subtitle}}</view>
+    <view wx:if="{{entry.tags && entry.tags.length}}" class="tags">
+      <text wx:for="{{entry.tags}}" wx:key="*this" class="tag">{{item}}</text>
+    </view>
+    <view wx:if="{{questionCount}}" class="head-actions">
+      <view class="btn-practice" bindtap="onJumpPractice">开始练习 · {{questionCount}} 题</view>
+    </view>
+  </view>
+
+  <view class="body">
+    <block wx:for="{{blocks}}" wx:for-item="b" wx:for-index="bi" wx:key="_i">
+      <view wx:if="{{b.type === 'h'}}" class="h">{{b.text}}</view>
+
+      <view wx:elif="{{b.type === 'p'}}" class="p">{{b.text}}</view>
+
+      <view wx:elif="{{b.type === 'meta'}}" class="meta">
+        <view wx:for="{{b.items}}" wx:for-item="m" wx:key="k" class="meta-item">
+          <text class="meta-k">{{m.k}}</text>
+          <text class="meta-v">{{m.v}}</text>
+        </view>
+      </view>
+
+      <view wx:elif="{{b.type === 'note'}}" class="note">
+        <view wx:if="{{b.title}}" class="note-title">{{b.title}}</view>
+        <view class="note-text">{{b.text}}</view>
+      </view>
+
+      <view wx:elif="{{b.type === 'quote'}}" class="quote">
+        <view class="quote-text">{{b.text}}</view>
+        <view wx:if="{{b.source}}" class="quote-source">—— {{b.source}}</view>
+      </view>
+
+      <view wx:elif="{{b.type === 'list'}}" class="list-block">
+        <view wx:if="{{b.title}}" class="block-title">{{b.title}}</view>
+        <view wx:for="{{b.items}}" wx:for-item="li" wx:key="*this" class="list-item">
+          <text class="li-dot">•</text>
+          <text class="li-text">{{li}}</text>
+        </view>
+      </view>
+
+      <view wx:elif="{{b.type === 'kv'}}" class="kv-block">
+        <view wx:if="{{b.title}}" class="block-title">{{b.title}}</view>
+        <view wx:for="{{b.items}}" wx:for-item="kv" wx:key="k" class="kv-row">
+          <text class="kv-k">{{kv.k}}</text>
+          <text class="kv-v">{{kv.v}}</text>
+        </view>
+      </view>
+
+      <view wx:elif="{{b.type === 'points'}}" class="points-block">
+        <view wx:if="{{b.title}}" class="block-title">{{b.title}}</view>
+        <view wx:for="{{b.items}}" wx:for-item="pt" wx:key="text" class="point">
+          <view class="point-head">
+            <text class="level {{pt.cls}}">{{pt.level}}</text>
+            <text class="point-text">{{pt.text}}</text>
+          </view>
+          <view wx:if="{{pt.explain}}" class="point-explain">{{pt.explain}}</view>
+        </view>
+      </view>
+
+      <view wx:elif="{{b.type === 'lines'}}" class="lines-block">
+        <view class="lines-bar">
+          <text class="block-title inline">{{b.title || '原文'}}</text>
+          <view class="lines-tools">
+            <view wx:if="{{b.words && b.words.length}}" class="mask-btn" catchtap="onToggleCn">对照译文</view>
+            <view class="mask-btn" bindtap="onToggleMask">{{masked ? '显示原文' : '背诵自测'}}</view>
+          </view>
+        </view>
+        <view
+          wx:for="{{b.items}}"
+          wx:for-item="ln"
+          wx:for-index="li"
+          wx:key="_j"
+          class="line"
+          bindtap="onLineTap"
+          data-bi="{{bi}}"
+          data-li="{{li}}"
+        >
+          <view wx:if="{{masked && !ln.show}}" class="line-text blurred">轻点显示此句</view>
+          <block wx:else>
+            <view class="line-text">
+              <text
+                wx:for="{{ln.parts}}"
+                wx:for-item="pt"
+                wx:for-index="pi"
+                wx:key="_p"
+                class="seg-t {{pt.hot ? 'seg-w' : ''}}"
+                data-bi="{{bi}}"
+                data-li="{{li}}"
+                data-k="{{pt.k}}"
+                catchtap="onWordTap"
+              >{{pt.t}}</text>
+            </view>
+            <view wx:if="{{ln.cn}}" class="seg-tools">
+              <text class="seg-btn" catchtap="onSegCn" data-bi="{{bi}}" data-li="{{li}}">
+                {{ln.showCn ? '收起译文' : '显示译文'}}
+              </text>
+            </view>
+            <view wx:if="{{ln.showCn && ln.cn}}" class="line-cn">{{ln.cn}}</view>
+            <view wx:if="{{ln.n}}" class="line-note">{{ln.n}}</view>
+          </block>
+        </view>
+        <view wx:if="{{b.words && b.words.length}}" class="seg-tip">橙色字词可点击查看释义</view>
+      </view>
+
+      <view wx:elif="{{b.type === 'links'}}" class="links-block">
+        <view wx:if="{{b.title}}" class="block-title">{{b.title}}</view>
+        <view class="chips">
+          <view
+            wx:for="{{b.items}}"
+            wx:for-item="lk"
+            wx:key="url"
+            class="chip"
+            bindtap="onOpenLink"
+            data-url="{{lk.url}}"
+          >{{lk.t}}</view>
+        </view>
+      </view>
+
+      <figure-view wx:elif="{{b.type === 'figure'}}" figure="{{b.figure}}" />
+
+      <scroll-view wx:elif="{{b.type === 'table'}}" class="table-wrap" scroll-x>
+        <view class="table">
+          <view wx:if="{{b.title}}" class="block-title table-title">{{b.title}}</view>
+          <view class="tr th">
+            <view wx:for="{{b.head}}" wx:for-item="h" wx:key="*this" class="td">{{h}}</view>
+          </view>
+          <view wx:for="{{b.rows}}" wx:for-item="row" wx:key="_ri" class="tr">
+            <view wx:for="{{row.cells}}" wx:for-item="cell" wx:key="_ci" class="td">{{cell.text}}</view>
+          </view>
+        </view>
+      </scroll-view>
+    </block>
+
+    <view wx:if="{{questionCount}}" id="practice" class="practice">
+      <view class="practice-head">
+        <view class="practice-title">配套练习</view>
+        <view class="practice-stat">已答 {{answered}} / {{visibleCount}}<text wx:if="{{answered}}"> · 正确 {{correct}}</text></view>
+      </view>
+
+      <scroll-view wx:if="{{tagChips.length > 1}}" class="tag-bar" scroll-x>
+        <view class="tag-list">
+          <view
+            wx:for="{{tagChips}}"
+            wx:key="label"
+            class="tag-chip {{item.active ? 'on' : ''}}"
+            bindtap="onFilterTag"
+            data-name="{{item.name}}"
+          >{{item.label}} · {{item.count}}</view>
+        </view>
+      </scroll-view>
+
+      <block wx:for="{{questions}}" wx:for-item="q" wx:for-index="qidx" wx:key="id">
+        <view wx:if="{{!q.hidden}}" class="q">
+          <view class="q-head">
+            <text class="q-no">第 {{q.seq}} 题</text>
+            <text class="q-type">{{q.typeLabel}}</text>
+            <text wx:if="{{q.done}}" class="q-state {{q.ok ? 'ok' : 'none'}}">{{q.ok ? '答对了' : (q.isChoice ? '答错了' : '已看答案')}}</text>
+          </view>
+          <view class="q-stem">{{q.stem}}</view>
+          <figure-view wx:if="{{q.figure}}" figure="{{q.figure}}" />
+
+          <view wx:if="{{q.isChoice}}" class="opts">
+            <view
+              wx:for="{{q.opts}}"
+              wx:for-item="opt"
+              wx:key="label"
+              class="opt {{opt.state}}"
+              bindtap="onChoose"
+              data-q="{{qidx}}"
+              data-label="{{opt.label}}"
+            >
+              <text class="opt-label">{{opt.label}}</text>
+              <text class="opt-text">{{opt.text}}</text>
+            </view>
+          </view>
+          <view wx:else class="reveal-row">
+            <view wx:if="{{!q.shown}}" class="btn-reveal" bindtap="onReveal" data-q="{{qidx}}">查看参考答案</view>
+          </view>
+
+          <view wx:if="{{q.shown || q.done}}" class="answer">
+            <view class="ans-row">
+              <text class="ans-k">答案</text>
+              <text class="ans-v">{{q.answer}}</text>
+            </view>
+            <view wx:if="{{q.rubric.length}}" class="ans-block">
+              <text class="ans-k">踩分点</text>
+              <view class="ans-lines">
+                <view wx:for="{{q.rubric}}" wx:for-item="r" wx:key="*this" class="ans-line">· {{r}}</view>
+              </view>
+            </view>
+            <view wx:if="{{q.steps.length}}" class="ans-block">
+              <text class="ans-k">解题步骤</text>
+              <view class="ans-lines">
+                <view wx:for="{{q.steps}}" wx:for-item="s" wx:key="*this" class="ans-line">· {{s}}</view>
+              </view>
+            </view>
+            <view wx:if="{{q.explain}}" class="ans-explain">{{q.explain}}</view>
+            <figure-view wx:if="{{q.answerFigure}}" figure="{{q.answerFigure}}" />
+          </view>
+        </view>
+      </block>
+
+      <view class="reset" bindtap="onReset">重做本组练习</view>
+    </view>
+
+    <view class="source-tip">内容仅供学习参考，请以教材与官方发布为准。</view>
+  </view>
+
+  <view wx:if="{{wordPop.show}}" class="word-mask" bindtap="onCloseWord">
+    <view class="word-pop" catchtap="onNoop">
+      <view class="word-pop-head">
+        <text class="word-pop-word">{{wordPop.word}}</text>
+        <text class="word-pop-close" bindtap="onCloseWord">关闭</text>
+      </view>
+      <view class="word-pop-text">{{wordPop.explain}}</view>
+    </view>
+  </view>
+</view>

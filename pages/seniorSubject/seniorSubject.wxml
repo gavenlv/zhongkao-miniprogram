@@ -1,0 +1,42 @@
+<view wx:if="{{subject}}" class="page">
+  <view class="head senior-head" style="background: {{subject.color}}">
+    <view class="head-top">
+      <view class="head-icon">{{subject.icon}}</view>
+      <view class="head-info">
+        <view class="head-name">高中{{subject.name}}</view>
+        <view class="head-meta">模块大纲 · 内容建设中</view>
+      </view>
+    </view>
+    <view class="head-desc">{{subject.desc}}</view>
+    <view class="head-stat">{{subject.moduleCount}} 个模块大纲</view>
+  </view>
+
+  <view class="section-label">模块大纲</view>
+
+  <view class="module-list">
+    <view
+      wx:for="{{modules}}"
+      wx:key="id"
+      class="module"
+      bindtap="onOpen"
+      data-id="{{item.id}}"
+    >
+      <view class="module-index">{{index + 1}}</view>
+      <view class="module-main">
+        <view class="module-title-row">
+          <text class="module-title">{{item.name}}</text>
+          <text class="badge">大纲</text>
+        </view>
+        <view class="module-desc">{{item.desc}}</view>
+      </view>
+      <view class="module-arrow">›</view>
+    </view>
+  </view>
+
+  <view class="tip-card">
+    <view class="tip-title">学习建议</view>
+    <view class="tip-row">先看模块大纲建立整体框架，再结合教材逐章细化。</view>
+    <view class="tip-row">高中知识跨度大，建议按“概念 → 例题 → 变式 → 综合”四步推进。</view>
+    <view class="tip-row">内容上线后会同步补充练习与参考答案，可在页内直接自测。</view>
+  </view>
+</view>

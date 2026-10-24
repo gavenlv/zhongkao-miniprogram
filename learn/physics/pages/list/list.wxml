@@ -1,0 +1,8 @@
+<learn-list
+  subject-id="physics"
+  subject-name="物理"
+  module-id="{{moduleId}}"
+  module-name="{{moduleName}}"
+  entries="{{entries}}"
+  base="/learn/physics"
+/>

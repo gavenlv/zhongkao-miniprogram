@@ -1,0 +1,8 @@
+<learn-list
+  subject-id="english"
+  subject-name="英语"
+  module-id="{{moduleId}}"
+  module-name="{{moduleName}}"
+  entries="{{entries}}"
+  base="/learn/english"
+/>

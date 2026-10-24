@@ -17,10 +17,10 @@
   left: 0;
   right: 0;
   height: 2rpx;
-  background: linear-gradient(90deg, 
-    transparent 0%, 
-    #e8e8e8 20%, 
-    #e8e8e8 80%, 
+  background: linear-gradient(90deg,
+    transparent 0%,
+    #e8e8e8 20%,
+    #e8e8e8 80%,
     transparent 100%
   );
 }
@@ -75,10 +75,10 @@
   transform: scale(1.05);
 }
 
+/* 首页 */
 .tab-icon-home {
   background: #666;
   border-radius: 8rpx 8rpx 12rpx 12rpx;
-  position: relative;
 }
 
 .tab-icon-home::before {
@@ -114,39 +114,78 @@
   border-bottom-color: #1890ff;
 }
 
-.tab-icon-rules {
+/* 初中：书本 */
+.tab-icon-junior {
   border: 4rpx solid #666;
-  border-radius: 4rpx;
-  position: relative;
+  border-radius: 4rpx 10rpx 10rpx 4rpx;
 }
 
-.tab-icon-rules::before {
+.tab-icon-junior::before {
   content: '';
   position: absolute;
-  top: 8rpx;
-  left: 8rpx;
-  right: 8rpx;
-  height: 3rpx;
+  top: 6rpx;
+  bottom: 6rpx;
+  left: 50%;
+  width: 3rpx;
   background: #666;
-  box-shadow: 0 8rpx 0 #666, 0 16rpx 0 #666;
 }
 
-.tab-icon-rules.active {
+.tab-icon-junior::after {
+  content: '';
+  position: absolute;
+  top: 14rpx;
+  left: 8rpx;
+  width: 8rpx;
+  height: 3rpx;
+  background: #666;
+  box-shadow: 0 8rpx 0 #666;
+}
+
+.tab-icon-junior.active {
   border-color: #1890ff;
 }
 
-.tab-icon-rules.active::before {
+.tab-icon-junior.active::before,
+.tab-icon-junior.active::after {
   background: #1890ff;
-  box-shadow: 0 8rpx 0 #1890ff, 0 16rpx 0 #1890ff;
 }
 
-.tab-icon-simulate {
+/* 高中：学士帽 */
+.tab-icon-senior::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 4rpx;
+  width: 26rpx;
+  height: 26rpx;
+  border: 4rpx solid #666;
+  transform: rotate(45deg);
+}
+
+.tab-icon-senior::after {
+  content: '';
+  position: absolute;
+  bottom: 2rpx;
+  left: 2rpx;
+  width: 40rpx;
+  height: 14rpx;
+  border: 4rpx solid #666;
+  border-top: none;
+  border-radius: 0 0 8rpx 8rpx;
+}
+
+.tab-icon-senior.active::before,
+.tab-icon-senior.active::after {
+  border-color: #1890ff;
+}
+
+/* 中考：靶心 */
+.tab-icon-exam {
   border: 4rpx solid #666;
   border-radius: 50%;
-  position: relative;
 }
 
-.tab-icon-simulate::before {
+.tab-icon-exam::before {
   content: '';
   position: absolute;
   top: 50%;
@@ -158,7 +197,7 @@
   border-radius: 50%;
 }
 
-.tab-icon-simulate::after {
+.tab-icon-exam::after {
   content: '';
   position: absolute;
   top: 50%;
@@ -170,55 +209,14 @@
   border-radius: 50%;
 }
 
-.tab-icon-simulate.active {
+.tab-icon-exam.active {
   border-color: #1890ff;
 }
 
-.tab-icon-simulate.active::before {
+.tab-icon-exam.active::before {
   border-color: #1890ff;
 }
 
-.tab-icon-simulate.active::after {
+.tab-icon-exam.active::after {
   background: #1890ff;
-}
-
-.tab-icon-history {
-  position: relative;
-}
-
-.tab-icon-history::before {
-  content: '';
-  position: absolute;
-  top: 4rpx;
-  left: 4rpx;
-  width: 40rpx;
-  height: 40rpx;
-  border: 4rpx solid #666;
-  border-radius: 50%;
-  border-top-color: transparent;
-  border-right-color: transparent;
-  transform: rotate(-45deg);
-}
-
-.tab-icon-history::after {
-  content: '';
-  position: absolute;
-  top: 8rpx;
-  right: 8rpx;
-  width: 0;
-  height: 0;
-  border-left: 8rpx solid transparent;
-  border-right: 8rpx solid transparent;
-  border-bottom: 12rpx solid #666;
-  transform: rotate(45deg);
-}
-
-.tab-icon-history.active::before {
-  border-color: #1890ff;
-  border-top-color: transparent;
-  border-right-color: transparent;
-}
-
-.tab-icon-history.active::after {
-  border-bottom-color: #1890ff;
 }

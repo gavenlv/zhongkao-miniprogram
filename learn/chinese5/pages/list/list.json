@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "文言字词索引",
+  "usingComponents": {
+    "learn-list": "/components/learn-list/index"
+  }
+}

@@ -11,9 +11,9 @@ App({
       minimum: 492,
       privateMinimum: 412
     },
-    version: '2.0.0',
+    version: '3.3.0',
     shareConfig: {
-      title: '广州中考志愿模拟填报',
+      title: '初中高中学习与广州中考志愿助手',
       path: '/pages/index/index',
       imageUrl: '/images/aba.png'
     }

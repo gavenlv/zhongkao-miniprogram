@@ -1,9 +1,14 @@
 {
   "pages": [
     "pages/index/index",
+    "pages/junior/junior",
+    "pages/senior/senior",
+    "pages/zhongkao/zhongkao",
     "pages/rules/rules",
     "pages/simulate/simulate",
     "pages/history/history",
+    "pages/juniorSubject/juniorSubject",
+    "pages/seniorSubject/seniorSubject",
     "pages/volunteer/volunteer",
     "pages/volunteer2026/volunteer2026",
     "pages/volunteerTable2026/volunteerTable2026",
@@ -20,7 +25,7 @@
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#1890ff",
-    "navigationBarTitleText": "广州中考志愿模拟填报录取",
+    "navigationBarTitleText": "初中高中学习与广州中考",
     "navigationBarTextStyle": "white"
   },
   "tabBar": {
@@ -35,20 +40,104 @@
         "text": "首页"
       },
       {
-        "pagePath": "pages/rules/rules",
-        "text": "规则总览"
+        "pagePath": "pages/junior/junior",
+        "text": "初中"
       },
       {
-        "pagePath": "pages/simulate/simulate",
-        "text": "模拟填报录取"
+        "pagePath": "pages/senior/senior",
+        "text": "高中"
       },
       {
-        "pagePath": "pages/history/history",
-        "text": "历史数据分析"
+        "pagePath": "pages/zhongkao/zhongkao",
+        "text": "中考"
       }
     ]
   },
   "subpackages": [
+    {
+      "root": "learn/chinese",
+      "pages": [
+        "pages/list/list",
+        "pages/detail/detail"
+      ]
+    },
+    {
+      "root": "learn/chinese2",
+      "pages": [
+        "pages/list/list",
+        "pages/detail/detail"
+      ]
+    },
+    {
+      "root": "learn/chinese3",
+      "pages": [
+        "pages/list/list",
+        "pages/detail/detail"
+      ]
+    },
+    {
+      "root": "learn/chinese4",
+      "pages": [
+        "pages/list/list",
+        "pages/detail/detail"
+      ]
+    },
+    {
+      "root": "learn/chinese5",
+      "pages": [
+        "pages/list/list",
+        "pages/detail/detail"
+      ]
+    },
+    {
+      "root": "learn/math",
+      "pages": [
+        "pages/list/list",
+        "pages/detail/detail"
+      ]
+    },
+    {
+      "root": "learn/math2",
+      "pages": [
+        "pages/list/list",
+        "pages/detail/detail"
+      ]
+    },
+    {
+      "root": "learn/english",
+      "pages": [
+        "pages/list/list",
+        "pages/detail/detail"
+      ]
+    },
+    {
+      "root": "learn/history",
+      "pages": [
+        "pages/list/list",
+        "pages/detail/detail"
+      ]
+    },
+    {
+      "root": "learn/politics",
+      "pages": [
+        "pages/list/list",
+        "pages/detail/detail"
+      ]
+    },
+    {
+      "root": "learn/physics",
+      "pages": [
+        "pages/list/list",
+        "pages/detail/detail"
+      ]
+    },
+    {
+      "root": "learn/chemistry",
+      "pages": [
+        "pages/list/list",
+        "pages/detail/detail"
+      ]
+    },
     {
       "root": "quota",
       "pages": [

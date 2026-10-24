@@ -1,0 +1,50 @@
+<view class="page">
+  <view class="banner">
+    <view class="banner-kicker">初中 · 七至九年级</view>
+    <view class="banner-title">各科学习</view>
+    <view class="banner-desc">按教材模块整理知识点与考点，支持搜索、年级筛选和页内练习</view>
+    <view class="banner-meta">
+      <text>{{subjects.length}} 个学科</text>
+      <text class="dot">·</text>
+      <text>{{readyModules}} / {{totalModules}} 个模块已上线</text>
+    </view>
+  </view>
+
+  <view class="section-label">选择学科</view>
+
+  <view class="grid">
+    <view
+      wx:for="{{subjects}}"
+      wx:key="id"
+      class="subject"
+      bindtap="onOpen"
+      data-id="{{item.id}}"
+    >
+      <view class="subject-top">
+        <view class="subject-icon" style="background: {{item.color}}">{{item.icon}}</view>
+        <view class="subject-name-wrap">
+          <view class="subject-name">{{item.name}}</view>
+          <view class="subject-score">{{item.score}} 分</view>
+        </view>
+      </view>
+      <view class="subject-desc">{{item.desc}}</view>
+      <view class="subject-foot">
+        <text class="subject-count {{item.readyCount ? 'on' : ''}}">
+          {{item.readyCount ? '已上线 ' + item.readyCount : '内容建设中'}} / {{item.moduleCount}}
+        </text>
+        <view class="progress">
+          <view class="progress-in" style="width: {{item.percent}}%; background: {{item.color}}"></view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="note-card">
+    <view class="note-title">学习方式</view>
+    <view class="note-row">进入学科后按模块学习；页面顶部可搜索标题、作者或标签，也可按年级筛选。</view>
+    <view class="note-row">带“N 题”标记的知识点配有练习，选择题即时判分，简答题可查看参考答案与踩分点。</view>
+    <view class="note-row">物理、化学的图解（光路、电路、装置图等）由程序绘制，随内容数据一起更新。</view>
+  </view>
+
+  <view class="footer">内容依据教材与广州中考要求整理，仅供学习参考</view>
+</view>
