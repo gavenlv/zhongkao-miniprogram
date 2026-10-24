@@ -21,6 +21,13 @@ Page({
         desc: '各学校历年录取分数线变化趋势，分析录取难度走势',
         tag: '趋势',
         path: '/pages/ranking/ranking'
+      },
+      {
+        id: 'quota',
+        title: '第二批名额分配查询',
+        desc: '按送生学校查询2023-2026年名额分配录取分数、末位志愿与录取情况',
+        tag: '实用',
+        path: '/quota/pages/query/query'
       }
     ]
   },

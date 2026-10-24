@@ -141,6 +141,28 @@
   transform: rotate(30deg) translateY(8rpx) translateX(8rpx);
 }
 
+.icon-quota {
+  background: linear-gradient(135deg, #13c2c2 0%, #08979c 100%);
+}
+
+.icon-quota::before {
+  content: '';
+  position: absolute;
+  width: 36rpx;
+  height: 28rpx;
+  border: 4rpx solid #fff;
+  border-radius: 4rpx;
+}
+
+.icon-quota::after {
+  content: '';
+  position: absolute;
+  width: 20rpx;
+  height: 4rpx;
+  background: #fff;
+  box-shadow: 0 -10rpx 0 #fff;
+}
+
 .item-content {
   flex: 1;
 }

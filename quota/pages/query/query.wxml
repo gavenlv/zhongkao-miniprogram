@@ -1,0 +1,132 @@
+<view class="container">
+  <view class="header">
+    <view class="header-title">第二批名额分配查询</view>
+    <view class="header-desc">按送生学校查看{{currentYear}}年名额分配录取分数与志愿</view>
+  </view>
+
+  <view class="year-tabs">
+    <view
+      wx:for="{{years}}"
+      wx:key="*this"
+      class="year-tab {{item === currentYear ? 'active' : ''}}"
+      bindtap="onYearChange"
+      data-year="{{item}}"
+    >{{item}}</view>
+  </view>
+
+  <view class="year-summary" wx:if="{{yearInfo}}">
+    <view class="summary-item">
+      <text class="summary-num">{{yearInfo.schools}}</text>
+      <text class="summary-label">招生校区</text>
+    </view>
+    <view class="summary-item">
+      <text class="summary-num">{{yearInfo.plan}}</text>
+      <text class="summary-label">计划名额</text>
+    </view>
+    <view class="summary-item">
+      <text class="summary-num">{{yearInfo.admitted}}</text>
+      <text class="summary-label">全市录取</text>
+    </view>
+  </view>
+
+  <block wx:if="{{!selected}}">
+    <view class="search-bar">
+      <input
+        class="search-input"
+        placeholder="搜索送生学校（初中）名称"
+        placeholder-class="search-placeholder"
+        value="{{keyword}}"
+        bindinput="onSearch"
+      />
+    </view>
+
+    <view class="list-tip">共 {{filtered.length}} 所送生学校，点击查看名额分配录取明细</view>
+
+    <view class="junior-list">
+      <view
+        class="junior-item"
+        wx:for="{{filtered}}"
+        wx:key="id"
+        bindtap="onJuniorTap"
+        data-id="{{item.id}}"
+      >
+        <view class="junior-main">
+          <view class="junior-name">{{item.name}}</view>
+          <view class="junior-meta">分得 {{item.schoolCount}} 所高中名额 · {{item.admittedCount}} 所有录取</view>
+        </view>
+        <view class="junior-arrow"></view>
+      </view>
+    </view>
+
+    <view class="empty" wx:if="{{filtered.length === 0}}">未找到匹配的送生学校</view>
+  </block>
+
+  <block wx:else>
+    <view class="detail-head">
+      <view class="back-btn" bindtap="onBack">‹ 返回列表</view>
+      <view class="detail-name">{{selected.name}}</view>
+      <view class="detail-sub" wx:if="{{!selected.candidates.length}}">{{currentYear}}年 · 分得 {{selected.schoolCount}} 所高中名额 · {{selected.admittedCount}} 所有录取</view>
+      <view class="detail-sub" wx:else>{{currentYear}}年 · 当年校名存在多个校区</view>
+      <view class="detail-match" wx:if="{{selected.matchedFrom}}">由「{{selected.matchedFrom}}」匹配到该校当年名称</view>
+    </view>
+
+    <view class="candidate-card" wx:if="{{selected.candidates.length}}">
+      <view class="candidate-title">该校当年分设多个校区，请选择要查看的送生学校：</view>
+      <view class="candidate-list">
+        <view
+          class="candidate-item"
+          wx:for="{{selected.candidates}}"
+          wx:key="id"
+          bindtap="onCandidateTap"
+          data-id="{{item.id}}"
+        >{{item.name}}</view>
+      </view>
+    </view>
+
+    <view class="detail-stats" wx:if="{{selected.schoolCount > 0}}">
+      <view class="stat">
+        <text class="stat-num">{{selected.admittedCount}}</text>
+        <text class="stat-label">有录取高中</text>
+      </view>
+      <view class="stat">
+        <text class="stat-num">{{selected.lowestScore || '—'}}</text>
+        <text class="stat-label">最低录取分</text>
+      </view>
+      <view class="stat">
+        <text class="stat-num">{{selected.highestScore || '—'}}</text>
+        <text class="stat-label">最高录取分</text>
+      </view>
+    </view>
+
+    <view class="filter-row" wx:if="{{selected.schoolCount > 0}}">
+      <text class="filter-label">只看有录取</text>
+      <switch checked="{{onlyAdmitted}}" bindchange="onOnlyAdmittedChange" color="#1890ff" />
+    </view>
+
+    <view class="record-list" wx:if="{{selected.schoolCount > 0}}">
+      <view class="record {{item.admitted ? '' : 'empty-record'}}" wx:for="{{detailRows}}" wx:key="school">
+        <view class="record-top">
+          <text class="record-school">{{item.school}}</text>
+          <text class="record-score" wx:if="{{item.admitted}}">{{item.minScore}}分</text>
+          <text class="record-status" wx:else>未录取</text>
+        </view>
+        <view class="record-meta" wx:if="{{item.admitted}}">
+          <text>最低分同分序号 {{item.minSeq}}</text>
+          <text>末位志愿 第{{item.lastVolunteer}}志愿</text>
+          <text>末位分数 {{item.lastScore}}（同分 {{item.lastSeq}}）</text>
+        </view>
+        <view class="record-meta muted" wx:else>该校分得名额，但无考生被录取</view>
+      </view>
+      <view class="empty" wx:if="{{detailRows.length === 0}}">暂无可显示的录取记录</view>
+    </view>
+
+    <view class="empty" wx:if="{{selected.schoolCount === 0 && !selected.candidates.length}}">该校当年未分得名额分配计划</view>
+  </block>
+
+  <view class="note-card">
+    <view class="note-title">数据说明</view>
+    <view class="note-text">1. 数据来源：广州市招生考试委员会办公室公布的《第二批次招生学校录取分数（按初中学校排序）》。</view>
+    <view class="note-text">2. 官方分数表未公布每所送生学校的实际录取人数，本页展示录取最低分、末位志愿和是否有录取；“全市录取”为官方公布的当批次总录取人数。</view>
+    <view class="note-text">3. 学校名称按当年官方公布名称展示；切换年份时已选送生学校会保留，若当年校名不同则自动匹配，存在多个校区时需手动选择。</view>
+  </view>
+</view>
