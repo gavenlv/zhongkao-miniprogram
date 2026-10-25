@@ -310,8 +310,8 @@
   color: #3a4353;
   border-bottom: 1rpx solid #eef1f5;
   white-space: pre-wrap;
-  word-break: break-word;
-  overflow-wrap: anywhere;
+  word-break: break-all;
+  overflow-wrap: break-word;
   vertical-align: top;
 }
 
@@ -702,4 +702,136 @@
   text-align: center;
   font-size: 21rpx;
   color: #a2aab8;
+}
+
+/* 零基础自学：把概念讲成画面 */
+.teach {
+  margin: 22rpx 0;
+  padding: 24rpx;
+  background: linear-gradient(160deg, #f5f9ff 0%, #fdfbff 100%);
+  border: 2rpx solid #dbe6fb;
+  border-radius: 16rpx;
+}
+
+.teach-head {
+  display: flex;
+  align-items: center;
+  margin-bottom: 16rpx;
+}
+
+.teach-badge {
+  flex-shrink: 0;
+  font-size: 22rpx;
+  font-weight: 700;
+  color: #ffffff;
+  background: #2f66d6;
+  border-radius: 8rpx;
+  padding: 4rpx 12rpx;
+  margin-right: 12rpx;
+}
+
+.teach-title {
+  flex: 1;
+  font-size: 28rpx;
+  font-weight: 700;
+  color: #23345a;
+}
+
+.teach-tag {
+  display: block;
+  font-size: 22rpx;
+  font-weight: 700;
+  color: #7a5ad6;
+  margin-bottom: 8rpx;
+}
+
+.teach-hook {
+  background: #ffffff;
+  border-radius: 12rpx;
+  padding: 18rpx 20rpx;
+  margin-bottom: 16rpx;
+}
+
+.teach-hooktext {
+  font-size: 27rpx;
+  line-height: 1.85;
+  color: #38404f;
+}
+
+.teach-step {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 14rpx;
+}
+
+.teach-no {
+  flex-shrink: 0;
+  width: 40rpx;
+  height: 40rpx;
+  line-height: 40rpx;
+  text-align: center;
+  font-size: 22rpx;
+  font-weight: 700;
+  color: #ffffff;
+  background: #7a5ad6;
+  border-radius: 50%;
+  margin-right: 14rpx;
+}
+
+.teach-text {
+  flex: 1;
+  font-size: 27rpx;
+  line-height: 1.8;
+  color: #38404f;
+}
+
+.teach-try {
+  margin-top: 6rpx;
+  background: #f2fbf7;
+  border-left: 6rpx solid #1a9a6c;
+  border-radius: 10rpx;
+  padding: 16rpx 20rpx;
+  margin-bottom: 14rpx;
+}
+
+.teach-try .teach-tag {
+  color: #1a9a6c;
+}
+
+.teach-trytext {
+  font-size: 26rpx;
+  line-height: 1.8;
+  color: #35544a;
+}
+
+.teach-use {
+  background: #fff9ef;
+  border-left: 6rpx solid #d98b1f;
+  border-radius: 10rpx;
+  padding: 16rpx 20rpx;
+}
+
+.teach-use .teach-tag {
+  color: #b3720f;
+}
+
+.teach-useline {
+  display: flex;
+  align-items: flex-start;
+  margin-top: 6rpx;
+}
+
+.teach-dot {
+  flex-shrink: 0;
+  width: 24rpx;
+  font-size: 26rpx;
+  color: #d98b1f;
+  line-height: 1.7;
+}
+
+.teach-utext {
+  flex: 1;
+  font-size: 26rpx;
+  line-height: 1.75;
+  color: #5a4a30;
 }

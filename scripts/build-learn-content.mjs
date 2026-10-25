@@ -30,6 +30,9 @@ import { getHistoryExtra } from './history-extras.mjs';
 import { WRITING_ESSAYS_1 } from './chinese-writing-essays-1.mjs';
 import { WRITING_ESSAYS_2 } from './chinese-writing-essays-2.mjs';
 import { WRITING_ESSAY_FIXES } from './chinese-writing-essay-fixes.mjs';
+import { PHYSICS_TEACH } from './sci-teach-physics.mjs';
+import { CHEMISTRY_TEACH } from './sci-teach-chemistry.mjs';
+import { MATH_TEACH } from './sci-teach-math.mjs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, '..');
@@ -257,8 +260,12 @@ const MODULES = [
 /* 2. 数学公式转可读文本（小程序没有 KaTeX）                            */
 /* ------------------------------------------------------------------ */
 
-const SUP = { 0: '⁰', 1: '¹', 2: '²', 3: '³', 4: '⁴', 5: '⁵', 6: '⁶', 7: '⁷', 8: '⁸', 9: '⁹', n: 'ⁿ' };
-const SUB = { 0: '₀', 1: '₁', 2: '₂', 3: '₃', 4: '₄', 5: '₅', 6: '₆', 7: '₇', 8: '₈', 9: '₉', n: 'ₙ' };
+const SUP = { 0: '⁰', 1: '¹', 2: '²', 3: '³', 4: '⁴', 5: '⁵', 6: '⁶', 7: '⁷', 8: '⁸', 9: '⁹', n: 'ⁿ', '-': '⁻', '−': '⁻', '+': '⁺', '′': '′', '°': '°' };
+const SUB = { 0: '₀', 1: '₁', 2: '₂', 3: '₃', 4: '₄', 5: '₅', 6: '₆', 7: '₇', 8: '₈', 9: '₉', n: 'ₙ', '-': '₋', '−': '₋', '+': '₊' };
+const SUP_LETTER = {
+  a: 'ᵃ', b: 'ᵇ', c: 'ᶜ', d: 'ᵈ', e: 'ᵉ', f: 'ᶠ', g: 'ᵍ', h: 'ʰ', i: 'ⁱ', j: 'ʲ', k: 'ᵏ', l: 'ˡ',
+  m: 'ᵐ', n: 'ⁿ', o: 'ᵒ', p: 'ᵖ', r: 'ʳ', s: 'ˢ', t: 'ᵗ', u: 'ᵘ', v: 'ᵛ', w: 'ʷ', x: 'ˣ', y: 'ʸ', z: 'ᶻ',
+};
 
 const SYMBOLS = {
   times: '×', div: '÷', pm: '±', mp: '∓', cdot: '·', le: '≤', leq: '≤', ge: '≥', geq: '≥',
@@ -268,31 +275,100 @@ const SYMBOLS = {
   theta: 'θ', lambda: 'λ', mu: 'μ', rho: 'ρ', sigma: 'σ', phi: 'φ', omega: 'ω', Delta: 'Δ',
   because: '∵', therefore: '∴', rightarrow: '→', Rightarrow: '⇒', leftrightarrow: '↔',
   dots: '…', ldots: '…', cdots: '…', propto: '∝', sim: '∽', cong: '≌', anglemark: '∠',
+  prime: '′', dprime: '″', lbrace: '', rbrace: '',
+  eta: 'η', odot: '⊙', to: '→', longmapsto: '⟼', otimes: '⊗', oplus: '⊕', backsim: '∽', square: '□',
+  sin: 'sin', cos: 'cos', tan: 'tan', cot: 'cot', log: 'log', ln: 'ln',
 };
+
+/** 指数整体可映射成 Unicode 上标时返回上标文本，否则 null */
+function supOf(inner) {
+  const mapped = [...inner].map((c) => SUP[c] ?? SUP_LETTER[c.toLowerCase()] ?? null);
+  return mapped.every(Boolean) ? mapped.join('') : null;
+}
 
 function texToText(input) {
   if (typeof input !== 'string' || !input) return input;
   let s = input;
-  // 行内公式 $...$
+  // 行内公式 $...$（内容递归处理）
   s = s.replace(/\$([^$]+)\$/g, (_, inner) => texToText(inner));
 
-  // 分式：\frac{a}{b} → (a)/(b)，支持一层嵌套
-  s = s.replace(/\\[dt]?frac\s*\{([^{}]*)\}\s*\{([^{}]*)\}/g, '($1)/($2)');
-  s = s.replace(/\\sqrt\s*\{([^{}]*)\}/g, '√($1)');
-  s = s.replace(/\\sqrt\s*\[([^\]]*)\]\s*\{([^{}]*)\}/g, '($2)^(1/$1)');
-  // 上标/下标
-  s = s.replace(/\^\{?(\d+)\}?/g, (_, d) => [...d].map((c) => SUP[c] ?? c).join(''));
-  s = s.replace(/_\{?(\d+)\}?/g, (_, d) => [...d].map((c) => SUB[c] ?? c).join(''));
-  s = s.replace(/\^\{([^{}]*)\}/g, '^($1)');
+  // 环境标记：\begin{cases} … \end{cases} 之类直接去掉外壳
+  s = s.replace(/\\begin\{[a-zA-Z*]+\}/g, '').replace(/\\end\{[a-zA-Z*]+\}/g, '');
+  // 换行（\\）当作分句；\ 与 \, \; \! \: 等间距命令当空格；\% 等还原为普通字符
+  s = s.replace(/\\\\/g, '；');
+  s = s.replace(/\\[,;!:\s]/g, ' ');
+  s = s.replace(/\\([%&_#$])/g, '$1');
+  s = s.replace(/\\(?:quad|qquad|left|right|displaystyle|textstyle)/g, '');
+
+  // 先剥掉 \mathrm{…} 一类外壳，避免内层花括号挡住分式的匹配
+  s = s.replace(/\\(?:mathrm|text|mathbf|mathit|textbf|operatorname|overline|underline|vec|widehat|overrightarrow|bar|hat|tilde)\s*\{([^{}]*)\}/g, '$1');
+
+  // 分式/根式：反复从内层替换，兼容 \frac{\sqrt{2}}{2} 这类嵌套
+  for (let round = 0; round < 4; round += 1) {
+    const before = s;
+    s = s.replace(/\\[dt]?frac\s*\{([^{}]*)\}\s*\{([^{}]*)\}/g, '($1)/($2)');
+    s = s.replace(/\\sqrt\s*\[3\]\s*\{([^{}]*)\}/g, '∛($1)');
+    s = s.replace(/\\sqrt\s*\[([^\]]*)\]\s*\{([^{}]*)\}/g, '($2)^(1/$1)');
+    s = s.replace(/\\sqrt\s*\{([^{}]*)\}/g, '√($1)');
+    if (s === before) break;
+  }
+
+  // 剥壳后可能又露出新的 \mathrm{…}，再剥一次
+  s = s.replace(/\\(?:mathrm|text|mathbf|mathit|textbf|operatorname|overline|underline|vec|widehat|overrightarrow|bar|hat|tilde)\s*\{([^{}]*)\}/g, '$1');
+  // 角度：30^\circ 之前会被拆成 30^°，这里先整体换成 30°
+  s = s.replace(/\^\s*\{?\\circ\}?/g, '°');
+  s = s.replace(/\^\s*°/g, '°');
+  // 上标/下标：数字（含负号）转 Unicode；单个字母也尽量转
+  s = s.replace(/\^\{?(-?\d+)\}?/g, (_, d) => [...d].map((c) => SUP[c] ?? c).join(''));
+  s = s.replace(/_\{?(-?\d+)\}?/g, (_, d) => [...d].map((c) => SUB[c] ?? c).join(''));
+  s = s.replace(/\^\{([A-Za-z])\}/g, (_, c) => SUP_LETTER[c.toLowerCase()] || `^(${c})`);
+  // 裸写字母指数：a^m → aᵐ（后面紧跟字母也按惯例视为一个指数，如 a^nbⁿ）
+  s = s.replace(/\^([A-Za-z])/g, (m, c) => SUP_LETTER[c.toLowerCase()] || m);
+  // 指数是「字母/数字/正负号」的组合时整体转上标，否则退回括号形式
+  s = s.replace(/\^\{([^{}]*)\}/g, (m, inner) => supOf(inner) ?? `^(${inner})`);
+  s = s.replace(/\^\(([^()]*)\)/g, (m, inner) => supOf(inner) ?? m);
   s = s.replace(/_\{([^{}]*)\}/g, '_($1)');
-  // 文本类命令：只保留内容
-  s = s.replace(/\\(?:mathrm|text|mathbf|mathit|textbf|operatorname|overline|underline|vec|widehat|bar)\s*\{([^{}]*)\}/g, '$1');
-  // 符号
-  s = s.replace(/\\([a-zA-Z]+)/g, (m, name) => SYMBOLS[name] ?? (name.length <= 3 ? name : ''));
-  // 剩下的排版命令
-  s = s.replace(/\\[,;!:]|\\quad|\\qquad|\\left|\\right/g, '');
+
+  // 重音、包裹类命令：去掉命令保留内容（\bar{v}、\mathrm{Rt}、\overline{AB}）
+  s = s.replace(/\\(?:mathrm|text|mathbf|mathit|textbf|operatorname|overline|underline|vec|widehat|overrightarrow|bar|hat|tilde)\s*\{([^{}]*)\}/g, '$1');
+  // 无花括号的单字母重音写法：\bar v → v、\vec v → v
+  s = s.replace(/\\(?:bar|vec|hat|tilde|dot)\s+([A-Za-z])/g, '$1');
+  // 符号命令（命令与英文粘连时按已知符号前缀拆开，如 \congRt → ≌Rt）
+  s = s.replace(/\\([a-zA-Z]+)/g, (m, name) => {
+    if (SYMBOLS[name] !== undefined) return SYMBOLS[name];
+    for (let n = name.length - 1; n >= 2; n -= 1) {
+      const head = name.slice(0, n);
+      if (SYMBOLS[head] !== undefined) return SYMBOLS[head] + name.slice(n);
+    }
+    return name.length <= 3 ? name : '';
+  });
   s = s.replace(/[{}]/g, '');
+  // 符号替换后，像 26^(′) 这类先转成括号的指数再收一次
+  s = s.replace(/\^\(([^()]*)\)/g, (m, inner) => supOf(inner) ?? m);
+  // ∠ EGB → ∠EGB，公式符号后不留空格
+  s = s.replace(/([∠△∽≌∥⊥∟⊙⊗⊕])\s+/g, '$1');
   return s.replace(/\s{2,}/g, ' ').trim();
+}
+
+/** 只清洗真的带公式或加粗标记的字符串，避免误伤诗词换行等正文 */
+function fixText(value) {
+  if (typeof value !== 'string' || !value) return value;
+  let s = value;
+  if (/\$|\\[a-zA-Z]|\^/.test(s)) s = texToText(s);
+  if (s.includes('**')) s = s.replace(/\*\*([^*\n]+)\*\*/g, '$1').replace(/\*\*|\*/g, '');
+  return s;
+}
+
+/** 深度清洗条目里的全部字符串（正文、表格、题目、图注都走同一条规则） */
+function fixDeep(value) {
+  if (typeof value === 'string') return fixText(value);
+  if (Array.isArray(value)) return value.map(fixDeep);
+  if (value && typeof value === 'object') {
+    const out = {};
+    for (const k of Object.keys(value)) out[k] = fixDeep(value[k]);
+    return out;
+  }
+  return value;
 }
 
 /* ------------------------------------------------------------------ */
@@ -316,6 +392,22 @@ const B = {
   links: (items, title) => (items && items.length ? { type: 'links', title: title || '', items } : null),
   fig: (figure) => (figure && figure.prims && figure.prims.length ? { type: 'figure', figure } : null),
 };
+
+/* 数理化：零基础讲解增补层（按条目 id 索引，见 scripts/sci-teach-*.mjs） */
+const SCI_TEACH = Object.assign({}, PHYSICS_TEACH, CHEMISTRY_TEACH, MATH_TEACH);
+
+function teachBlock(id) {
+  const t = SCI_TEACH[id];
+  if (!t || !t.walk || !t.walk.length) return null;
+  return {
+    type: 'teach',
+    title: t.title || '零基础也能看懂：这一节到底在说什么',
+    hook: texToText(t.hook || ''),
+    walk: t.walk.map(texToText),
+    try: texToText(t.try || ''),
+    use: (t.use || []).map(texToText),
+  };
+}
 
 /* 图元里的数字保留两位小数：视觉无差别，体积可省一成左右 */
 function roundDeep(value) {
@@ -1005,6 +1097,7 @@ function mathEntry(d, module) {
   const blocks = [
     B.note(d.chapter, '教材章节'),
     B.note(d.summary, '一句话概述'),
+    teachBlock(d.id),
     ...(d.steps || []).flatMap((s) => [
       B.h(s.heading),
       B.p(texToText(s.body)),
@@ -3022,6 +3115,7 @@ function scienceEntry(d) {
     B.note([d.unit, d.grade].filter(Boolean).join(' · '), '教材位置'),
     B.note(d.question, '问题切入'),
     B.note(d.keyIdea, '一句话抓住关键'),
+    teachBlock(d.id),
     ...(d.steps || []).flatMap((s) => [
       B.h(s.representation ? `【${s.representation}】${s.heading}` : s.heading),
       B.p(texToText(s.body)),
@@ -3164,28 +3258,35 @@ function sciRetotal(list, total) {
 }
 
 function buildScienceCatalog(subject, chapters) {
+  const clean = (v) => (typeof v === 'string' ? texToText(v).replace(/\*\*/g, '') : '');
   const meta = SCI_SUBJECT_META[subject];
   return chapters.map((g, index) => {
     const bookLabel = SCI_BOOK_LABELS[subject][g.grade] || g.book;
     const first = g.items[0].d;
     const examRows = [];
     const formulaRows = [];
+    const equationRows = [];
     const confusionRows = [];
     const experiments = [];
     const seen = new Set();
     for (const it of g.items) {
       for (const e of it.d.examAngles || []) {
-        const row = [e.angle || '', texToText(e.detail || '')];
+        const row = [clean(e.angle), clean(e.detail)];
         const key = row.join('|');
         if (row[0] && !seen.has(`e${key}`)) { seen.add(`e${key}`); examRows.push(row); }
       }
       for (const f of it.d.formulas || []) {
-        const row = [f.name || '', texToText(f.tex || f.text || ''), [f.units, texToText(f.usage || '')].filter(Boolean).join(' · ')];
+        const row = [clean(f.name), clean(f.tex || f.text || ''), [clean(f.units), clean(f.usage)].filter(Boolean).join(' · ')];
         const key = row.join('|');
         if (row[0] && !seen.has(`f${key}`)) { seen.add(`f${key}`); formulaRows.push(row); }
       }
+      for (const e of it.d.equations || []) {
+        const row = [clean(e.equation), clean(e.condition), clean(e.phenomenon), clean(e.note)];
+        const key = row.join('|');
+        if (row[0] && !seen.has(`q${key}`)) { seen.add(`q${key}`); equationRows.push(row); }
+      }
       for (const c of it.d.confusions || []) {
-        const row = [c.wrong || '', c.right || '', texToText(c.why || '')];
+        const row = [clean(c.wrong), clean(c.right), clean(c.why)];
         const key = row.join('|');
         if (row[0] && !seen.has(`c${key}`)) { seen.add(`c${key}`); confusionRows.push(row); }
       }
@@ -3203,11 +3304,12 @@ function buildScienceCatalog(subject, chapters) {
         { k: '节数', v: `${g.items.length} 节` },
         { k: '所属模块', v: g.moduleNames.join('、') },
       ]),
-      first.keyIdea ? B.note(texToText(first.keyIdea), '本章主线') : null,
+      first.keyIdea ? B.note(clean(first.keyIdea), '本章主线') : null,
       B.list(g.items.map((it) => it.d.title), '本章各节（按教材顺序）'),
-      B.table(['命题角度', '说明'], examRows.slice(0, 8), '中考命题角度 · 本章汇总'),
-      B.table(['公式/关系', '表达式', '单位与用法'], formulaRows.slice(0, 8), '核心公式与结论'),
-      B.table(['错误理解', '正确理解', '原因'], confusionRows.slice(0, 8), '易错辨析'),
+      examRows.length ? B.table(['命题角度', '说明'], examRows.slice(0, 8), '中考命题角度 · 本章汇总') : null,
+      formulaRows.length ? B.table(['公式/关系', '表达式', '单位与用法'], formulaRows.slice(0, 8), '核心公式与结论') : null,
+      equationRows.length ? B.table(['化学方程式', '反应条件', '现象', '说明'], equationRows.slice(0, 10), '本章核心化学方程式') : null,
+      confusionRows.length ? B.table(['错误理解', '正确理解', '原因'], confusionRows.slice(0, 8), '易错辨析') : null,
       experiments.length ? B.list(experiments.slice(0, 6), '本章必做实验') : null,
       B.links(
         g.items.map((it) => ({
@@ -3236,6 +3338,13 @@ function buildScienceCatalog(subject, chapters) {
 
 function sciPaper(opts) {
   const meta = SCI_SUBJECT_META[opts.subject];
+  const isPhysics = opts.subject === 'physics';
+  const choiceDesc = isPhysics
+    ? '概念辨析、公式适用条件、图像与生活情境判断'
+    : '概念辨析、化学用语、实验现象与生活情境判断';
+  const nonDesc = isPhysics
+    ? '填空、实验探究、作图与计算，规范表达与单位'
+    : '填空、实验探究、化学方程式书写与计算，规范表达';
   const choice = sciPickRotate(sciQuestionsOf(opts.chapters, 'choice'), opts.nChoice, opts.offset || 0);
   const non = sciPickRotate(
     sciQuestionsOf(opts.chapters, 'non'),
@@ -3257,8 +3366,8 @@ function sciPaper(opts) {
     B.table(
       ['题型', '题量', '分值', '主要考查'],
       [
-        ['选择题', `${scoredChoice.length} 题`, `${scoredChoice.length * opts.choiceScore} 分`, '概念辨析、公式适用条件、图像与生活情境判断'],
-        ['非选择题', `${scoredNon.length} 题`, `${nonTotal} 分`, '填空、实验探究、作图与计算，规范表达与单位'],
+        ['选择题', `${scoredChoice.length} 题`, `${scoredChoice.length * opts.choiceScore} 分`, choiceDesc],
+        ['非选择题', `${scoredNon.length} 题`, `${nonTotal} 分`, nonDesc],
       ],
       '试卷结构',
     ),
@@ -3318,7 +3427,9 @@ function buildSciencePapers(subject, chapters) {
       minutes: unitCfg.minutes,
       offset: gi,
       range: `${bookLabel} ${g.chapter}`,
-      note: `以「${g.chapter}」的 ${g.items.length} 节内容为主组卷：先考概念与公式适用条件，再用实验和计算考查迁移；本章题量不足时，从同册相邻章补充少量综合题。`,
+      note: subject === 'physics'
+        ? `以「${g.chapter}」的 ${g.items.length} 节内容为主组卷：先考概念与公式适用条件，再用实验和计算考查迁移；本章题量不足时，从同册相邻章补充少量综合题。`
+        : `以「${g.chapter}」的 ${g.items.length} 节内容为主组卷：先考概念、化学用语与实验现象，再用方程式和计算考查迁移；本章题量不足时，从同册相邻章补充少量综合题。`,
       coverage: [`${bookLabel} ${g.chapter}`, g.items.map((it) => it.d.title).join('、')],
       tip: subject === 'physics'
         ? '计算题先写公式再代数，结果带单位；实验题按「目的—器材—步骤—现象—结论」作答，作图用铅笔和直尺。'
@@ -3383,14 +3494,14 @@ function buildSciencePapers(subject, chapters) {
   for (let p = 0; p < mockCount; p += 1) {
     const picked = [];
     const used = new Set();
-    for (let k = 0; k < 5 && picked.length < 5; k += 1) {
-      const idx = (p * 3 + k * 4) % chapters.length;
-      const g = chapters[idx];
+    const target = Math.min(5, chapters.length);
+    for (let k = 0; k < chapters.length && picked.length < target; k += 1) {
+      const g = chapters[(p * 3 + k * 4) % chapters.length];
       if (!g || used.has(g.key)) continue;
       used.add(g.key);
       picked.push(g);
     }
-    for (let idx = 0; picked.length < 4; idx += 1) {
+    for (let idx = 0; picked.length < target && idx < chapters.length; idx += 1) {
       const g = chapters[(p + idx) % chapters.length];
       if (!used.has(g.key)) { used.add(g.key); picked.push(g); }
     }
@@ -3562,7 +3673,8 @@ function emitModule(module, entries) {
   fs.mkdirSync(outDir, { recursive: true });
   const file = path.join(outDir, `${module.moduleId}.js`);
   const header = `/* 自动生成，请勿手工修改。来源：DSH ${module.subject}/${module.moduleId}；重新生成：node scripts/build-learn-content.mjs */\n`;
-  fs.writeFileSync(file, header + 'module.exports = ' + JSON.stringify(entries) + ';\n', 'utf8');
+  const cleaned = fixDeep(entries);
+  fs.writeFileSync(file, header + 'module.exports = ' + JSON.stringify(cleaned) + ';\n', 'utf8');
 
   return {
     moduleId: module.moduleId,

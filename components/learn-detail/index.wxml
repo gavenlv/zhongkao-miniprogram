@@ -106,6 +106,34 @@
         <view wx:if="{{b.words && b.words.length}}" class="seg-tip">橙色字词可点击查看释义</view>
       </view>
 
+      <view wx:elif="{{b.type === 'teach'}}" class="teach">
+        <view class="teach-head">
+          <text class="teach-badge">零基础自学</text>
+          <text class="teach-title">{{b.title}}</text>
+        </view>
+        <view wx:if="{{b.hook}}" class="teach-hook">
+          <text class="teach-tag">先想个画面</text>
+          <text class="teach-hooktext">{{b.hook}}</text>
+        </view>
+        <view wx:if="{{b.walk.length}}" class="teach-steps">
+          <view wx:for="{{b.walk}}" wx:for-item="w" wx:key="*this" class="teach-step">
+            <text class="teach-no">{{index + 1}}</text>
+            <text class="teach-text">{{w}}</text>
+          </view>
+        </view>
+        <view wx:if="{{b.try}}" class="teach-try">
+          <text class="teach-tag">动手试试</text>
+          <text class="teach-trytext">{{b.try}}</text>
+        </view>
+        <view wx:if="{{b.use.length}}" class="teach-use">
+          <text class="teach-tag">这样用就对了</text>
+          <view wx:for="{{b.use}}" wx:for-item="u" wx:key="*this" class="teach-useline">
+            <text class="teach-dot">›</text>
+            <text class="teach-utext">{{u}}</text>
+          </view>
+        </view>
+      </view>
+
       <view wx:elif="{{b.type === 'links'}}" class="links-block">
         <view wx:if="{{b.title}}" class="block-title">{{b.title}}</view>
         <view class="chips">

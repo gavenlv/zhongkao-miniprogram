@@ -174,7 +174,35 @@
       ]
     },
     {
+      "root": "learn/physics-catalog",
+      "pages": [
+        "pages/list/list",
+        "pages/detail/detail"
+      ]
+    },
+    {
+      "root": "learn/physics-exam",
+      "pages": [
+        "pages/list/list",
+        "pages/detail/detail"
+      ]
+    },
+    {
       "root": "learn/chemistry",
+      "pages": [
+        "pages/list/list",
+        "pages/detail/detail"
+      ]
+    },
+    {
+      "root": "learn/chemistry-catalog",
+      "pages": [
+        "pages/list/list",
+        "pages/detail/detail"
+      ]
+    },
+    {
+      "root": "learn/chemistry-exam",
       "pages": [
         "pages/list/list",
         "pages/detail/detail"

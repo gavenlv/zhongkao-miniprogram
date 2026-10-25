@@ -1,0 +1,5 @@
+<learn-detail
+  entry="{{entry}}"
+  subject-name="化学"
+  module-name="{{moduleName}}"
+/>

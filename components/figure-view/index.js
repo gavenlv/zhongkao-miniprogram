@@ -37,8 +37,32 @@ const CHEM_COLOR = {
 
 const FONT = 4.2;
 
+/** 当前画布的坐标范围（画布按 0—100 的 x 单位绘制，高度随 view 变），供文字防越界用 */
+let ACTIVE_VIEW = VIEW.wide;
+
 const toneOf = (t) => TONE[t || 'main'] || TONE.main;
 const rad = (deg) => (-deg * Math.PI) / 180;
+
+/** 图元实际占用的最大纵坐标（有些图会超出默认画布高度，需要把画布加高，避免图或字被裁掉） */
+function contentHeight(f) {
+  const base = (VIEW[f.view] || VIEW.wide)[1];
+  let maxY = base;
+  const take = (y) => {
+    if (typeof y === 'number' && y > maxY) maxY = y;
+  };
+  for (const p of (f && f.prims) || []) {
+    take(p.y);
+    take(p.y1);
+    take(p.y2);
+    take(p.cy);
+    // axis 的 h 是向上延伸的，其余容器类图元的 h 才是向下；坐标轴额外留出刻度文字的位置
+    if (p.t === 'axis') take(p.y + 6);
+    else if (typeof p.y === 'number' && typeof p.h === 'number') take(p.y + p.h + 5);
+    if (Array.isArray(p.pts)) p.pts.forEach((pt) => take(pt[1]));
+    if (Array.isArray(p.points)) p.points.forEach((pt) => take(pt[1]));
+  }
+  return Math.ceil(maxY + 3);
+}
 
 function polar(x, y, r, deg) {
   return [x + r * Math.cos(rad(deg)), y + r * Math.sin(rad(deg))];
@@ -98,14 +122,73 @@ function arrowHead(ctx, x1, y1, x2, y2, tone, size) {
   polygon(ctx, headPoints(x1, y1, x2, y2, size), tone, { closed: true, fill: true, stroke: false, width: 0 });
 }
 
+/** 按可用宽度把文字折成多行，返回每行的最大宽度 */
+function textWidth(ctx, str, fs) {
+  ctx.font = `${fs}px sans-serif`;
+  return ctx.measureText(str).width;
+}
+
+function wrapLabel(ctx, str, maxW, fs) {
+  ctx.font = `${fs}px sans-serif`;
+  const lines = [];
+  let cur = '';
+  for (const ch of str) {
+    const next = cur + ch;
+    if (cur && ctx.measureText(next).width > maxW) {
+      lines.push(cur);
+      cur = ch;
+    } else {
+      cur = next;
+    }
+  }
+  if (cur) lines.push(cur);
+  return lines;
+}
+
 function label(ctx, x, y, text, anchor, tone, size) {
   if (text === undefined || text === null || text === '') return;
+  const str = String(text);
+  const align = anchor || 'middle';
+  const vw = ACTIVE_VIEW[0];
+  const vh = ACTIVE_VIEW[1];
+  const pad = 1.2;
+  const maxW = vw - pad * 2;
   ctx.save();
+  let fs = size || FONT;
+  let lines = [str];
+  let widest = textWidth(ctx, str, fs);
+  if (widest > maxW) {
+    // 太长就折行（最多 3 行），免得越出画布或被裁掉
+    let wrapped = wrapLabel(ctx, str, maxW, fs);
+    while (wrapped.length > 3 && fs > 2.6) {
+      fs = +(fs - 0.2).toFixed(1);
+      wrapped = wrapLabel(ctx, str, maxW, fs);
+    }
+    lines = wrapped;
+    widest = Math.max(...lines.map((ln) => textWidth(ctx, ln, fs)));
+  }
+  const lh = fs * 1.28;
+  const half = (lines.length * lh) / 2;
+  const cy = Math.min(Math.max(y, half + pad * 0.5), vh - half - pad * 0.5);
+  let cx = x;
+  if (lines.length > 1) {
+    ctx.textAlign = 'center';
+    cx = Math.min(Math.max(x, widest / 2 + pad), vw - widest / 2 - pad);
+  } else if (align === 'left' || align === 'start') {
+    ctx.textAlign = align;
+    cx = Math.min(Math.max(x, pad), vw - widest - pad);
+  } else if (align === 'right' || align === 'end') {
+    ctx.textAlign = align;
+    cx = Math.min(Math.max(x, widest + pad), vw - pad);
+  } else {
+    ctx.textAlign = align;
+    cx = Math.min(Math.max(x, widest / 2 + pad), vw - widest / 2 - pad);
+  }
   ctx.fillStyle = toneOf(tone);
-  ctx.font = `${size || FONT}px sans-serif`;
-  ctx.textAlign = anchor || 'middle';
   ctx.textBaseline = 'middle';
-  ctx.fillText(String(text), x, y);
+  lines.forEach((ln, i) => {
+    ctx.fillText(ln, cx, cy - half + lh * (i + 0.5));
+  });
   ctx.restore();
 }
 
@@ -1292,9 +1375,11 @@ Component({
       const f = this.data.figure;
       if (!f) return;
       const view = VIEW[f.view] || VIEW.wide;
+      const vh = contentHeight(f);
+      this._viewH = vh;
       this.setData(
         {
-          ratio: +((view[1] / view[0]) * 100).toFixed(2),
+          ratio: +((vh / view[0]) * 100).toFixed(2),
           title: f.title || '',
           caption: f.caption || '',
           alt: f.alt || '',
@@ -1308,7 +1393,8 @@ Component({
       if (!this._ready || !this._mounted) return;
       const f = this.data.figure;
       if (!f || !f.prims || !f.prims.length) return;
-      const view = VIEW[f.view] || VIEW.wide;
+      const base = VIEW[f.view] || VIEW.wide;
+      const view = [base[0], this._viewH || contentHeight(f)];
       this.createSelectorQuery()
         .select('#figCanvas')
         .fields({ node: true, size: true })
@@ -1332,6 +1418,7 @@ Component({
           ctx.scale(s, s);
           ctx.lineCap = 'round';
           ctx.lineJoin = 'round';
+          ACTIVE_VIEW = view;
           f.prims.forEach((prim) => {
             const fn = DRAWERS[prim && prim.t];
             if (fn) {
