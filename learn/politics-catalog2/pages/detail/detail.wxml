@@ -1,0 +1,5 @@
+<learn-detail
+  entry="{{entry}}"
+  subject-name="道德与法治"
+  module-name="{{moduleName}}"
+/>

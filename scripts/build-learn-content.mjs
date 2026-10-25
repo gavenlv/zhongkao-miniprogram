@@ -22,7 +22,14 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { HISTORY_BOOKS, HISTORY_METHODS, UNIT_TOPICS, UNIT_CROSS } from './history-lessons.mjs';
+import { POL_BOOKS } from './politics-lessons.mjs';
+import { POL_EXAM_BANK_A } from './politics-exam-bank-a.mjs';
+import { POL_EXAM_BANK_B } from './politics-exam-bank-b.mjs';
 import { HISTORY_DRILLS, ORIGINAL_ESSAY_QUESTIONS } from './history-drills.mjs';
+import { getHistoryExtra } from './history-extras.mjs';
+import { WRITING_ESSAYS_1 } from './chinese-writing-essays-1.mjs';
+import { WRITING_ESSAYS_2 } from './chinese-writing-essays-2.mjs';
+import { WRITING_ESSAY_FIXES } from './chinese-writing-essay-fixes.mjs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, '..');
@@ -195,7 +202,7 @@ const MODULES = [
   // 历史 · 按 2024 部编版目录逐课检索（数据来自六册单元，不自编）
   {
     subject: 'history',
-    pkg: 'learn/history',
+    pkg: 'learn/history-catalog',
     moduleId: 'hist-catalog',
     name: '课本目录索引',
     kind: 'historyCatalog',
@@ -335,7 +342,7 @@ function normFigure(f) {
 }
 
 function compact(blocks) {
-  return blocks.filter(Boolean);
+  return blocks.flat().filter(Boolean);
 }
 
 function gradeOf(d) {
@@ -972,7 +979,29 @@ function classicalEntry(d) {
   };
 }
 
-function mathEntry(d) {
+const MATH_DOMAIN = {
+  'math-number': '数与代数',
+  'math-geometry': '图形与几何',
+  'math-stats': '统计与概率',
+  'math-formula': '公式与定理',
+  'math-model': '应用题建模',
+  'math-exam': '中考应试',
+  'math-topics': '题型专题',
+};
+
+/** 章节名去掉册别前缀与「第 N 章」，作为可筛选的标签 */
+function chapterTag(chapter) {
+  const tail = String(chapter || '').split('·').pop() || '';
+  return tail.replace(/第\s*\d+\s*章\s*/g, '').trim();
+}
+
+function mathEntry(d, module) {
+  const chapter = chapterTag(d.chapter);
+  const subtitleTail = String(d.subtitle || '').split('·').pop().trim();
+  const tags = [
+    module && MATH_DOMAIN[module.moduleId],
+    chapter || (subtitleTail.length <= 12 ? subtitleTail : d.title),
+  ].filter(Boolean);
   const blocks = [
     B.note(d.chapter, '教材章节'),
     B.note(d.summary, '一句话概述'),
@@ -1005,7 +1034,7 @@ function mathEntry(d) {
     title: d.title,
     subtitle: d.chapter || '',
     grade: gradeOf(d),
-    tags: [],
+    tags,
     blocks: compact(blocks),
     questions: normQuestions(d.questions),
   };
@@ -1126,9 +1155,282 @@ function pickByKeys(list, keys, toText, limit, fallbackLimit, fallbackNote, excl
   };
 }
 
+/**
+ * 道法目录用：按命中关键词数量排序，避免单元条目里其他课的观点排在本课前面。
+ * 命中 2 个以上关键词的观点优先；不足 3 条时才退回单关键词命中。
+ */
+function pickByKeysScored(list, keys, toText, limit, fallbackLimit, fallbackNote) {
+  const scored = (list || []).map((x, idx) => {
+    const s = String(toText(x) || '');
+    const n = (keys || []).reduce((c, k) => c + (k && s.includes(k) ? 1 : 0), 0);
+    return { x, idx, n };
+  });
+  const hit = scored.filter((s) => s.n > 0).sort((a, b) => b.n - a.n || a.idx - b.idx);
+  if (hit.length) {
+    const strong = hit.filter((s) => s.n >= 2);
+    const use = strong.length >= Math.min(3, limit) ? strong : hit;
+    return { list: use.slice(0, limit).map((s) => s.x), fallback: false, note: '' };
+  }
+  const fb = (list || []).slice(0, fallbackLimit || 0);
+  return {
+    list: fb,
+    fallback: fb.length > 0,
+    note: fb.length ? fallbackNote || '（本课单独考点较少，以下取本单元整体内容）' : '',
+  };
+}
+
 function historyMaterialBlock(material, title) {
   if (!material || !material.material) return [];
   return [B.quote(material.material, title)];
+}
+
+/* ---------- 历史：拓展学习与示意图 ---------- */
+
+function clipText(text, max) {
+  const s = String(text || '').replace(/\s+/g, ' ').trim();
+  return s.length > max ? `${s.slice(0, max)}…` : s;
+}
+
+/**
+ * 纵向示意图：左侧一条竖线串起节点，右侧时间 + 事件。
+ * 节点 ≤4 用 100×62.5（wide），更多用 100×140（tall）。
+ * 时间轴、历史现场流程共用这套画法，保证同一课里的图风格一致。
+ */
+function historyFigure(rows, opts) {
+  const o = opts || {};
+  const list = (rows || []).slice(0, 7);
+  if (list.length < 2) return null;
+  const wide = list.length <= 4;
+  const height = wide ? 62.5 : 140;
+  const top = wide ? 10 : 14;
+  const gap = (height - top * 2) / (list.length - 1);
+  const x = 14;
+  const prims = [];
+  list.forEach((r, i) => {
+    const y = top + gap * i;
+    prims.push({ t: 'dot', x, y, r: i === 0 ? 2 : 1.4, tone: i === 0 ? 'accent' : 'main' });
+    prims.push({ t: 'text', x: x + 4.5, y: y - 3, text: clipText(r.time, 12), anchor: 'start', size: 3.5, tone: r.tone || 'accent' });
+    prims.push({ t: 'text', x: x + 4.5, y: y + 3, text: clipText(r.event, 18), anchor: 'start', size: 3.5, tone: 'main' });
+    if (i < list.length - 1) {
+      prims.push({ t: 'arrow', x1: x, y1: y + 3.4, x2: x, y2: y + gap - 3.4, tone: 'muted', width: 0.4 });
+    }
+  });
+  return {
+    view: wide ? 'wide' : 'tall',
+    title: o.title || '示意图',
+    caption: o.caption || '',
+    alt: o.alt || o.caption || '',
+    prims,
+  };
+}
+
+/** 拓展块全部放在「考点」之后，与应试内容分开，每条都带出处 */
+function historyExtraBlocks(extra) {
+  if (!extra) return [];
+  const blocks = [];
+  if (extra.scene) {
+    blocks.push(B.table(
+      ['时间', '经过'],
+      extra.scene.steps.map((s) => [s.time, s.event]),
+      `历史现场 · ${extra.scene.t}`,
+    ));
+    if (extra.scene.note) blocks.push(B.note(extra.scene.note, '现场解说'));
+  }
+  if (extra.allu && extra.allu.length) {
+    blocks.push(B.table(
+      ['典故／成语', '释义', '出处'],
+      extra.allu.map((a) => [a.t, a.d, a.s]),
+      '典故与成语',
+    ));
+  }
+  if (extra.ppl && extra.ppl.length) {
+    blocks.push(B.kv(extra.ppl.map((p) => ({ k: p.n, v: `${p.d} 出处：${p.s}` })), '人物卡片'));
+  }
+  if (extra.read && extra.read.length) {
+    blocks.push(B.list(extra.read.map((r) => `${r.t}：${r.c} 出处：${r.s}`), '延伸阅读'));
+  }
+  if (extra.src && extra.src.length) {
+    blocks.push(B.list(extra.src, '本课拓展出处'));
+  }
+  return blocks.length ? [B.h('拓展学习 · 课本之外'), ...blocks] : [];
+}
+
+/* ---------- 历史：每课练习补题 ---------- */
+
+const CHOICE_MARK = ['①', '②', '③', '④', '⑤', '⑥'];
+const trimDot = (s) => String(s || '').replace(/。+$/, '');
+
+/**
+ * 每课练习补题。
+ *
+ * 原则：题干和选项只用本课已核对过的数据（时间轴、考点、必背结论、易错、拓展阅读），
+ * 不做史实推断，也不写数据里没有的情节。时间排序题按单元时间线的既有顺序出题。
+ */
+function buildHistoryPractice(ctx) {
+  const { lesson, bookName, unitNo, tlPick, points, ccPick, cfPick, extra, siblingConclusions } = ctx;
+  const out = [];
+  const baseId = ctx.entryId;
+  const tags = [bookName, unitNo, '本课练习'];
+  const siblingTimes = (ctx.siblingTimes || []).filter(Boolean);
+  const siblingPoints = (ctx.siblingPoints || []).filter(Boolean);
+  // 已有课内练习（单元选择题 + 材料题）数量；兜底题只在不足 5 题时补充
+  const existingCount = ctx.existingCount || 0;
+  const need = () => 5 - (existingCount + out.length);
+
+  // 1. 时间排序题：题干列事件，选项排顺序
+  const evs = (tlPick.list || []).filter((t) => t.event).slice(0, 4);
+  if (evs.length >= 3) {
+    const order = evs.map((_, i) => CHOICE_MARK[i]).join('');
+    const wrongs = [
+      evs.map((_, i) => CHOICE_MARK[[1, 0, 2, 3][i] || i]).join(''),
+      evs.map((_, i) => CHOICE_MARK[[2, 1, 0, 3][i] || i]).join(''),
+      evs.map((_, i) => CHOICE_MARK[[0, 2, 1, 3][i] || i]).join(''),
+    ].filter((x, i, arr) => x !== order && arr.indexOf(x) === i).slice(0, 3);
+    if (wrongs.length === 3) {
+      out.push({
+        id: `${baseId}-g1`,
+        type: 'choice',
+        stem: `按时间先后排列下列事件，正确的是\n${evs.map((e, i) => `${CHOICE_MARK[i]} ${clipText(e.event, 24)}`).join('\n')}`,
+        options: [order, ...wrongs],
+        answer: 'A',
+        explanation: `按时间顺序应为：${evs.map((e, i) => `${CHOICE_MARK[i]}${e.event}（${e.time}）`).join('→')}。`,
+        difficulty: 2,
+        tags,
+      });
+    }
+  }
+
+  // 2. 易错表述判断题：错项取自本课易错，正确项取自正确表述与考点
+  const cf = (cfPick.list || [])[0];
+  if (cf && cf.wrong && cf.right) {
+    const rights = [
+      cf.right,
+      ...(ccPick.list || []),
+      ...(points || []).map((p) => p.text),
+    ].filter((x) => x && x !== cf.wrong).slice(0, 3);
+    if (rights.length >= 3) {
+      out.push({
+        id: `${baseId}-g2`,
+        type: 'choice',
+        stem: `下列关于「${clipText(lesson.title, 16)}」的表述，错误的是`,
+        options: [cf.wrong, ...rights],
+        answer: 'A',
+        explanation: `${trimDot(cf.wrong)}——${trimDot(texToText(cf.why || '与本课史实不符'))}。正确表述：${trimDot(cf.right)}。`,
+        difficulty: 2,
+        tags,
+      });
+    }
+  }
+
+  // 3. 结论辨识题：正确项是本课结论，干扰项取同单元其他课时的真实结论（不属于本课）
+  const cc = (ccPick.list || [])[0];
+  if (cc) {
+    const others = (siblingConclusions || [])
+      .filter((x) => x !== cc && !textHasKeys(x, [clipText(lesson.title, 10)]))
+      .slice(0, 3);
+    if (others.length >= 3) {
+      out.push({
+        id: `${baseId}-g3`,
+        type: 'choice',
+        stem: `下列结论中，属于「${clipText(lesson.title, 16)}」的是`,
+        options: [cc, ...others],
+        answer: 'A',
+        explanation: `本课结论：${cc}。其余三项是同一单元相邻课时的结论，不属于本课。`,
+        difficulty: 2,
+        tags,
+      });
+    }
+  }
+
+  // 4. 材料题：材料取本课拓展阅读，答案取考点与结论
+  const read = extra && extra.read && extra.read[0];
+  if (read) {
+    const answerText = (points && points[0] && points[0].text) || cc || read.c;
+    out.push({
+      id: `${baseId}-g4`,
+      type: 'short',
+      stem: `阅读材料，回答问题。\n材料：${read.c}（${read.s}）\n（1）材料所述内容与哪一历史事件（现象）相关？\n（2）结合所学，概括这一事件（现象）的影响。`,
+      answer: `${clipText(lesson.title, 20)}；${answerText}`,
+      explanation: `材料出自${read.s}。作答时先据材料定位事件，再从课本结论归纳影响。`,
+      rubric: ['准确写出事件名称', '影响至少答出两个角度（政治、经济、社会、文化）', '结合材料，不只抄结论'],
+      difficulty: 3,
+      tags: [...tags, '材料题'],
+    });
+  }
+
+  // 5. 时间匹配题（时间线不足三事件时兜底）：正确项取自本课时间线，干扰项取同单元相邻课时的真实时间
+  if (evs.length && need() > 0) {
+    const ev = evs[0];
+    const wrongTimes = siblingTimes
+      .filter((t) => t !== ev.time)
+      .filter((t, i, arr) => arr.indexOf(t) === i)
+      .slice(0, 3);
+    if (wrongTimes.length === 3) {
+      out.push({
+        id: `${baseId}-g5`,
+        type: 'choice',
+        stem: `「${clipText(ev.event, 30)}」发生于`,
+        options: [ev.time, ...wrongTimes],
+        answer: 'A',
+        explanation: `本课时间轴：${ev.event}（${ev.time}）${ev.note ? `。${trimDot(texToText(ev.note))}` : ''}。其余三个时间是同一单元相邻课时的事件时间。`,
+        difficulty: 1,
+        tags,
+      });
+    }
+  }
+
+  // 6. 考点归属题（结论干扰项不足时兜底）：正确项为本课考点，干扰项取同单元相邻课时的真实考点
+  if (points.length && need() > 0) {
+    const own = points[0];
+    const wrongs = siblingPoints
+      .filter((t) => t !== own.text)
+      .filter((t, i, arr) => arr.indexOf(t) === i)
+      .slice(0, 3);
+    if (wrongs.length === 3) {
+      out.push({
+        id: `${baseId}-g6`,
+        type: 'choice',
+        stem: `下列考点中，属于「${clipText(lesson.title, 16)}」的是`,
+        options: [clipText(own.text, 44), ...wrongs.map((t) => clipText(t, 44))],
+        answer: 'A',
+        explanation: `本课考点（${own.level}）：${trimDot(own.text)}。其余三项是同一单元相邻课时的考点。`,
+        difficulty: 2,
+        tags,
+      });
+    }
+  }
+
+  // 7. 组合选择题（同单元题目较少时兜底）：三条正确表述取自本课结论与考点，一条错项取自本课易错
+  const cfWrong = (cfPick.list || [])[0];
+  if (cfWrong && cfWrong.wrong && need() > 0) {
+    const truths = [
+      ...(ccPick.list || []),
+      ...(points || []).map((p) => p.text),
+    ]
+      .filter((x) => x && x !== cfWrong.wrong)
+      .filter((x, i, arr) => arr.indexOf(x) === i)
+      .slice(0, 3);
+    if (truths.length === 3) {
+      out.push({
+        id: `${baseId}-g7`,
+        type: 'choice',
+        stem: [
+          `关于「${clipText(lesson.title, 16)}」，下列表述正确的有`,
+          `① ${clipText(truths[0], 40)}`,
+          `② ${clipText(truths[1], 40)}`,
+          `③ ${clipText(truths[2], 40)}`,
+          `④ ${clipText(cfWrong.wrong, 40)}`,
+        ].join('\n'),
+        options: ['①②③', '①②④', '①③④', '②③④'],
+        answer: 'A',
+        explanation: `①②③均取本课必背结论与考点；④错误——${trimDot(texToText(cfWrong.why || '与本课史实不符'))}，正确表述应为：${trimDot(cfWrong.right)}。`,
+        difficulty: 3,
+        tags,
+      });
+    }
+  }
+
+  return out;
 }
 
 function buildHistoryCatalog(units, topicTitles) {
@@ -1236,18 +1538,48 @@ function buildHistoryCatalog(units, topicTitles) {
           url: historyUrl('hist-topics', id),
         }));
 
+        const extra = getHistoryExtra(book.id, lesson.no);
+        const sceneFig = extra && extra.scene
+          ? historyFigure(extra.scene.steps, {
+            title: `历史现场 · ${extra.scene.t}`,
+            caption: `示意图：${extra.scene.t}，详见下方「历史现场」`,
+          })
+          : null;
+        // 时间线不足两条的课（多为活动课、单元导语课），改用考点与必背结论做要点图
+        const outlineRows = [
+          ...points.map((p) => ({
+            time: p.level,
+            event: p.text,
+            tone: p.level === '重点' ? 'danger' : p.level === '次重点' ? 'accent' : 'muted',
+          })),
+          ...ccPick.list.map((c) => ({ time: '必背结论', event: c, tone: 'ok' })),
+        ].slice(0, 6);
+        const fig = B.fig(normFigure(
+          sceneFig
+          || historyFigure(tlPick.list, {
+            title: '本课时间轴示意图',
+            caption: '示意图：按时间先后排列，详见上方时间轴表',
+          })
+          || historyFigure(outlineRows, {
+            title: '本课要点示意图',
+            caption: '示意图：考点层级与必背结论，详见下方',
+          }),
+        ));
+
         const blocks = [
           B.meta([
             { k: '册次', v: book.name },
             { k: '单元', v: `${unitDef.no} ${unitDef.title}` },
             { k: '课时', v: `${lesson.no} ${lesson.title}` },
           ]),
+          extra ? B.note(extra.bg, '背景导读 · 这件事为什么会发生') : null,
           B.note(primary.mainline, '本课主线 · 因果链'),
           B.table(
             ['时间', '事件', '原因／影响'],
             tlPick.list.map((t) => [t.time, t.event, [t.note, t.key ? '重点' : ''].filter(Boolean).join(' · ')]),
             `时间轴 · 时间—事件—原因／影响${tlPick.note}`,
           ),
+          fig,
           B.points(points, `中考考点分层 · 重点／次重点／选择题${ptNote}`),
           B.note('「重点」要能默写结论；「次重点」要能再认细节；「选择题」对应教材「了解」层级，多以单项选择、识图判断出现。', '考点分级说明'),
           B.list(ccPick.list, `必背结论与答题术语${ccPick.note}`),
@@ -1261,13 +1593,65 @@ function buildHistoryCatalog(units, topicTitles) {
           ]),
           examAngleTable(primary.examAngles, '本单元命题角度（广州中考常见考法）'),
           UNIT_CROSS[primary.id] ? B.note(UNIT_CROSS[primary.id], '跨学科视角') : null,
+          ...historyExtraBlocks(extra),
           B.links([...topicLinks, ...drillLinks], '跨章节专题与专项训练'),
           ...historyMaterialBlock(material && material.group, `材料研读 · ${material ? material.unitTitle : ''}`),
         ];
 
+        // 同单元相邻课时的必背结论，用作结论辨识题的干扰项（均为真实结论，只是不属于本课）
+        const siblingConclusions = unitDef.lessons
+          .filter((_, idx) => idx !== li)
+          .flatMap((other) => {
+            const oKeys = other.keys || [];
+            const oEx = other.exclude || [];
+            if (!oKeys.length) return [];
+            return ccAll.filter((s) => textHasKeys(s, oKeys) && !textHasKeys(s, oEx));
+          })
+          .filter((s, idx, arr) => arr.indexOf(s) === idx);
+
+        // 同单元相邻课时的真实时间与考点，用作时间匹配题、考点归属题的干扰项
+        const siblingTimes = unitDef.lessons
+          .filter((_, idx) => idx !== li)
+          .flatMap((other) => {
+            const oKeys = other.keys || [];
+            const oEx = other.exclude || [];
+            if (!oKeys.length) return [];
+            return tlAll
+              .filter((t) => textHasKeys(`${t.time} ${t.event} ${t.note || ''}`, oKeys) && !textHasKeys(`${t.time} ${t.event} ${t.note || ''}`, oEx))
+              .map((t) => t.time);
+          })
+          .filter((s, idx, arr) => arr.indexOf(s) === idx);
+
+        const siblingPoints = unitDef.lessons
+          .filter((_, idx) => idx !== li)
+          .flatMap((other) => {
+            const oKeys = other.keys || [];
+            const oEx = other.exclude || [];
+            if (!oKeys.length) return [];
+            return ptAll
+              .filter((p) => textHasKeys(`${p.text} ${p.explain || ''}`, oKeys) && !textHasKeys(`${p.text} ${p.explain || ''}`, oEx))
+              .map((p) => p.text);
+          })
+          .filter((s, idx, arr) => arr.indexOf(s) === idx);
+
         const questions = [
           ...normQuestions(materialQs.map((q) => ({ ...q, type: 'short', explanation: q.explanation || '' }))),
           ...normQuestions(mcPick.list),
+          ...normQuestions(buildHistoryPractice({
+            entryId: `cat-${book.id}-${ui + 1}-${li + 1}`,
+            lesson,
+            bookName: book.name,
+            unitNo: unitDef.no,
+            tlPick,
+            points,
+            ccPick,
+            cfPick,
+            extra,
+            siblingConclusions,
+            siblingTimes,
+            siblingPoints,
+            existingCount: materialQs.length + mcPick.list.length,
+          })),
         ];
 
         entries.push({
@@ -1301,6 +1685,549 @@ function buildHistoryCatalog(units, topicTitles) {
   }
 
   return entries;
+}
+
+/* ------------------------------ 历史：试卷组卷 ------------------------------ */
+
+const HISTORY_GRADE_LABEL = {
+  '7a': '七上', '7b': '七下', '8a': '八上', '8b': '八下', '9a': '九上', '9b': '九下',
+};
+
+function pickRotate(pool, n, offset, used) {
+  const out = [];
+  if (!pool.length) return out;
+  for (let i = 0; i < pool.length && out.length < n; i++) {
+    const q = pool[(offset + i) % pool.length];
+    if (used.has(q.id)) continue;
+    used.add(q.id);
+    out.push(q);
+  }
+  return out;
+}
+
+/**
+ * 按广州中考历史卷结构组卷。
+ *
+ * 题目全部取自目录索引里已核对过的课内练习，不另写新题；
+ * 同一套卷内不重复，不同试卷之间允许复用（复习定位不同）。
+ */
+function buildHistoryPapers(catalogEntries) {
+  const labels = new Map();
+  const gradeUnits = new Map(); // grade -> Map(ui -> { no, title, choice, short })
+  for (const e of catalogEntries) {
+    const m = /^cat-([a-z0-9]+)-(\d+)-(\d+)$/.exec(e.id || '');
+    if (!m) continue;
+    const grade = m[1];
+    const ui = Number(m[2]) - 1;
+    const parts = String(e.subtitle || '').split(' · ');
+    const unitLabel = (parts[1] || `单元 ${ui + 1}`).trim();
+    if (!gradeUnits.has(grade)) gradeUnits.set(grade, new Map());
+    const map = gradeUnits.get(grade);
+    if (!map.has(ui)) {
+      map.set(ui, {
+        seq: ui + 1,
+        no: unitLabel.split(' ')[0],
+        title: unitLabel.split(' ').slice(1).join(' ') || unitLabel,
+        label: unitLabel,
+        choice: [],
+        short: [],
+      });
+    }
+    const bucket = map.get(ui);
+    for (const q of e.questions || []) {
+      (q.type === 'choice' ? bucket.choice : bucket.short).push(q);
+    }
+    labels.set(grade, (e.subtitle || '').split(' · ')[0] || HISTORY_GRADE_LABEL[grade] || grade);
+  }
+
+  const paperMeta = (type, nChoice, nShort, minutes) => B.meta([
+    { k: '卷型', v: type },
+    { k: '题量', v: `选择题 ${nChoice} 题 · 材料题 ${nShort} 题` },
+    { k: '赋分', v: '选择题每题 2 分；材料题按小问赋分（广州卷非选择题共 40 分）' },
+    { k: '建议用时', v: `${minutes} 分钟` },
+  ]);
+  const answerHint = B.note(
+    '先做选择题（控制在 20 分钟内），再按「材料—设问—分值」顺序作答材料题；材料题分点作答、写清关键词。',
+    '作答提示',
+  );
+
+  const papers = [];
+  const grades = [...gradeUnits.keys()];
+
+  // 1) 单元测试：每单元一套
+  for (const grade of grades) {
+    for (const [, u] of [...gradeUnits.get(grade).entries()].sort((a, b) => a[0] - b[0])) {
+      const used = new Set();
+      const nChoice = 10;
+      const nShort = 2;
+      const qs = [
+        ...pickRotate(u.choice, nChoice, 0, used),
+        ...pickRotate(u.short, nShort, 0, used),
+      ];
+      if (qs.length < 8) continue;
+      papers.push({
+        id: `hp-${grade}-u${u.seq}`,
+        title: `${u.title} 单元测试`,
+        subtitle: `${labels.get(grade)} · ${u.no || `第 ${u.seq} 单元`}`,
+        grade,
+        tags: [labels.get(grade), '单元测试', '本课同步'],
+        blocks: compact([
+          paperMeta('单元测试', qs.filter((q) => q.type === 'choice').length, qs.filter((q) => q.type !== 'choice').length, 45),
+          answerHint,
+        ]),
+        questions: qs,
+      });
+    }
+  }
+
+  // 2) 跨单元测试：每册一套，覆盖本册各单元
+  for (const grade of grades) {
+    const units = [...gradeUnits.get(grade).values()];
+    const used = new Set();
+    const qs = [];
+    const rounds = Math.ceil(16 / Math.max(units.length, 1));
+    for (let r = 0; r < rounds; r += 1) {
+      for (const u of units) {
+        qs.push(...pickRotate(u.choice, 1, r, used));
+      }
+    }
+    qs.push(...pickRotate(units.flatMap((u) => u.short), 2, 0, used));
+    const choice = qs.filter((q) => q.type === 'choice').slice(0, 16);
+    const short = qs.filter((q) => q.type !== 'choice').slice(0, 2);
+    if (!choice.length) continue;
+    papers.push({
+      id: `hp-${grade}-cross`,
+      title: `${labels.get(grade)} 跨单元测试`,
+      subtitle: `${labels.get(grade)} · 全册跨单元`,
+      grade,
+      tags: [labels.get(grade), '跨单元测试', '综合'],
+      blocks: compact([
+        paperMeta('跨单元测试', choice.length, short.length, 60),
+        answerHint,
+      ]),
+      questions: [...choice, ...short],
+    });
+  }
+
+  // 3) 期中／期末：每册各一套，全册轮转抽题
+  for (const grade of grades) {
+    const units = [...gradeUnits.get(grade).values()];
+    const choicePool = units.flatMap((u) => u.choice);
+    const shortPool = units.flatMap((u) => u.short);
+    const nChoice = 20;
+    const nShort = 2;
+    const used = new Set();
+    const midChoice = pickRotate(choicePool, nChoice, 0, used);
+    const midShort = pickRotate(shortPool, nShort, 0, used);
+    papers.push({
+      id: `hp-${grade}-mid`,
+      title: `${labels.get(grade)} 期中测试`,
+      subtitle: `${labels.get(grade)} · 期中`,
+      grade,
+      tags: [labels.get(grade), '期中测试', '阶段检测'],
+      blocks: compact([
+        paperMeta('期中测试', midChoice.length, midShort.length, 60),
+        answerHint,
+      ]),
+      questions: [...midChoice, ...midShort],
+    });
+
+    const used2 = new Set();
+    const finChoice = pickRotate(choicePool, 25, Math.floor(choicePool.length / 2), used2);
+    const finShort = pickRotate(shortPool, 3, Math.floor(shortPool.length / 2), used2);
+    papers.push({
+      id: `hp-${grade}-fin`,
+      title: `${labels.get(grade)} 期末测试`,
+      subtitle: `${labels.get(grade)} · 期末`,
+      grade,
+      tags: [labels.get(grade), '期末测试', '全册检测'],
+      blocks: compact([
+        paperMeta('期末测试', finChoice.length, finShort.length, 90),
+        answerHint,
+      ]),
+      questions: [...finChoice, ...finShort],
+    });
+  }
+
+  // 4) 中考模拟卷 10 套：六册轮转，按广州卷 25 选择 + 3 材料
+  const perGradeChoice = grades.map((g) => ({
+    grade: g,
+    pool: [...gradeUnits.get(g).values()].flatMap((u) => u.choice),
+  }));
+  const perGradeShort = grades.map((g) => ({
+    grade: g,
+    pool: [...gradeUnits.get(g).values()].flatMap((u) => u.short),
+  }));
+
+  for (let p = 0; p < 10; p += 1) {
+    const used = new Set();
+    const choice = [];
+    let round = 0;
+    while (choice.length < 25 && round < 12) {
+      for (const g of perGradeChoice) {
+        const q = pickRotate(g.pool, 1, p + round, used);
+        choice.push(...q);
+        if (choice.length >= 25) break;
+      }
+      round += 1;
+    }
+    const short = [];
+    let sr = 0;
+    while (short.length < 3 && sr < 12) {
+      for (const g of perGradeShort) {
+        short.push(...pickRotate(g.pool, 1, p + sr, used));
+        if (short.length >= 3) break;
+      }
+      sr += 1;
+    }
+    papers.push({
+      id: `hp-mock-${p + 1}`,
+      title: `广州中考历史模拟卷（第 ${p + 1} 套）`,
+      subtitle: `整卷模拟 · 选择题 ${choice.length} 题 + 材料题 ${short.length} 题`,
+      grade: 'all',
+      tags: ['中考模拟', `第 ${p + 1} 套`, '整卷'],
+      blocks: compact([
+        paperMeta('中考模拟', choice.length, short.length, 60),
+        B.note('按广州中考历史卷面结构组卷：选择题覆盖六册，材料题取自各册重点课时。建议计时完成后再看解析。', '组卷说明'),
+        answerHint,
+      ]),
+      questions: [...choice, ...short],
+    });
+  }
+
+  return papers;
+}
+
+/* ------------------------------ 道法：试卷组卷 ------------------------------ */
+
+const POL_EXAM_BANK = { ...POL_EXAM_BANK_A, ...POL_EXAM_BANK_B };
+
+/** 情境化程度打分：优先选带具体人物、场景和任务动作的题 */
+const POL_SCENE_RE = /某校|某班|小明|小华|小文|小宇|小航|小杰|小丽|小强|同学|社区|小区|网络|案例|漫画|数据|图表|新闻|班级|学校|家庭|村民|居民|企业|政府|市民|情境|材料|班主任|妈妈|爸爸|父母|老师|记者|志愿者|村民|消费者/;
+const POL_TASK_RE = /下列做法|评析|启示|体现|表明|说明|建议|如何|怎样|有利于|意义|作用|原因|认识|看法|应该|恰当|选择|判断|分析/;
+
+function polChoiceScore(q) {
+  if (!q || q.type !== 'choice' || /-combo$/.test(q.id || '')) return -99;
+  const stem = q.stem || '';
+  let score = 0;
+  if (POL_SCENE_RE.test(stem)) score += 5;
+  if (POL_TASK_RE.test(stem)) score += 2;
+  if ((q.options || []).some((o) => POL_SCENE_RE.test(o))) score += 1;
+  return score;
+}
+
+/** 单元内全部已有题目：条目练习 + 目录里内置的独立课练习 */
+function polUnitQuestions(unit, entryMap) {
+  const ids = new Set(unit.entryIds || []);
+  for (const l of unit.lessons || []) {
+    for (const id of l.entryIds || []) ids.add(id);
+  }
+  const out = [];
+  const seen = new Set();
+  const push = (q) => {
+    if (!q || !q.id || seen.has(q.id)) return;
+    seen.add(q.id);
+    out.push(q);
+  };
+  for (const id of ids) {
+    const e = entryMap.get(id);
+    if (e) (e.questions || []).forEach(push);
+  }
+  for (const l of unit.lessons || []) (l.questions || []).forEach(push);
+  return out;
+}
+
+function polExistingChoices(units, entryMap) {
+  const out = [];
+  const seen = new Set();
+  for (const u of units) {
+    for (const q of polUnitQuestions(u, entryMap)) {
+      if (q.type !== 'choice' || /-combo$/.test(q.id || '') || seen.has(q.id)) continue;
+      seen.add(q.id);
+      out.push({ q, s: polChoiceScore(q) });
+    }
+  }
+  return out.sort((a, b) => b.s - a.s).map((x) => x.q);
+}
+
+/** 题库选择题统一带上情境正文，并按单元轮流取题，保证各单元覆盖均衡 */
+function polBankChoices(unitKeys, offset = 0, withScenario = true) {
+  const groups = unitKeys.map((key) => {
+    const bu = POL_EXAM_BANK[key];
+    if (!bu || !bu.scenario) return [];
+    return (bu.questions || [])
+      .filter((q) => q.type === 'choice')
+      .map((q) => Object.assign({}, q, {
+        stem: withScenario ? `【情境】${bu.scenario.text}\n${q.stem}` : q.stem,
+      }));
+  });
+  const out = [];
+  const seen = new Set();
+  const maxLen = groups.reduce((n, g) => Math.max(n, g.length), 0);
+  for (let r = 0; r < maxLen; r += 1) {
+    for (const g of groups) {
+      if (!g.length) continue;
+      const q = g[(r + offset) % g.length];
+      if (!q || seen.has(q.id)) continue;
+      seen.add(q.id);
+      out.push(q);
+    }
+  }
+  return out;
+}
+
+function polPickChoices(n, unitKeys, units, entryMap, offset, withScenario = true) {
+  const used = new Set();
+  const out = [];
+  for (const q of polBankChoices(unitKeys, offset, withScenario)) {
+    if (out.length >= n) break;
+    if (used.has(q.id)) continue;
+    used.add(q.id);
+    out.push(q);
+  }
+  if (out.length < n) {
+    const pool = polExistingChoices(units, entryMap);
+    out.push(...pickRotate(pool, n - out.length, offset, used));
+  }
+  return out;
+}
+
+function polStripNumber(stem) {
+  return String(stem || '').replace(/^（\s*\d+\s*）\s*/, '');
+}
+
+function polPointValue(stem) {
+  const m = /（\s*(\d+)\s*分）\s*$/.exec(String(stem || ''));
+  return m ? Number(m[1]) : 0;
+}
+
+function polSetPoints(stem, pts) {
+  const s = String(stem || '');
+  if (/（\s*\d+\s*分）\s*$/.test(s)) return s.replace(/（\s*\d+\s*分）\s*$/, `（${pts}分）`);
+  return `${s}（${pts}分）`;
+}
+
+/** 把一组材料题的小问按原分值比例重新分配总分 */
+function polRetotal(list, total) {
+  if (!list.length || !total) return list;
+  const weights = list.map((q) => polPointValue(q.stem) || 1);
+  const sum = weights.reduce((a, b) => a + b, 0) || list.length;
+  const raw = weights.map((w) => (total * w) / sum);
+  const nums = raw.map((v) => Math.floor(v));
+  let rest = total - nums.reduce((a, b) => a + b, 0);
+  const order = raw
+    .map((v, i) => ({ i, f: v - Math.floor(v) }))
+    .sort((a, b) => b.f - a.f);
+  for (let k = 0; k < rest; k += 1) nums[order[k % order.length].i] += 1;
+  return list.map((q, i) => Object.assign({}, q, { stem: polSetPoints(q.stem, nums[i]) }));
+}
+
+function polMaterialQuestions(unitKeys, total, withScenario = true) {
+  const out = [];
+  for (const key of unitKeys) {
+    const bu = POL_EXAM_BANK[key];
+    if (!bu || !bu.scenario) continue;
+    const shorts = (bu.questions || []).filter((q) => q.type === 'short').slice(0, 3);
+    shorts.forEach((q, i) => {
+      out.push(Object.assign({}, q, {
+        stem: withScenario
+          ? `【材料】${bu.scenario.text}\n（${i + 1}）${polStripNumber(q.stem)}`
+          : `（${i + 1}）${polStripNumber(q.stem)}`,
+      }));
+    });
+  }
+  return polRetotal(out, total);
+}
+
+function polPaper(opts) {
+  const single = !!opts.singleScenario;
+  const choice = polPickChoices(
+    opts.nChoice,
+    opts.choiceUnits,
+    opts.choiceUnits.map((k) => opts.unitByKey.get(k)).filter(Boolean),
+    opts.entryMap,
+    opts.offset || 0,
+    !single,
+  );
+  const short = polMaterialQuestions(opts.materialUnits, opts.materialTotal, !single);
+  const nSets = opts.materialUnits.length;
+  const total = choice.length * 2 + opts.materialTotal;
+  const blocks = [
+    B.meta([
+      { k: '卷型', v: opts.type },
+      { k: '题量', v: `选择题 ${choice.length} 题 · 材料题 ${nSets} 题（${short.length} 小问）` },
+      { k: '赋分', v: `选择题每题 2 分，共 ${choice.length * 2} 分；材料题 ${opts.materialTotal} 分；满分 ${total} 分` },
+      { k: '建议用时', v: `${opts.minutes} 分钟` },
+    ]),
+    B.table(
+      ['题型', '题量', '分值', '主要考查'],
+      [
+        ['单项选择题', `${choice.length} 题`, `${choice.length * 2} 分`, '情境判断、观点辨析、做法选择、后果分析'],
+        ['材料分析题', `${nSets} 题（${short.length} 小问）`, `${opts.materialTotal} 分`, '信息提取、教材观点运用、评析与建议'],
+      ],
+      '试卷结构',
+    ),
+  ];
+  if (single) {
+    const bu = POL_EXAM_BANK[opts.materialUnits[0]];
+    if (bu && bu.scenario) blocks.push(B.quote(bu.scenario.text, `情境材料：${bu.scenario.title}`));
+  }
+  blocks.push(
+    B.note(opts.note, '组卷说明'),
+    B.note('基础题约 40%，中等题约 40%，较难题约 20%；选择题干扰项多设置「绝对化表述」「主体错位」「以偏概全」，避免只考背诵。', '难度与命题'),
+    B.list(opts.coverage, '覆盖范围'),
+    B.note(
+      '选择题先排除绝对化、主体错位的选项；材料题按「材料关键信息—对应教材观点—结合材料分析」三步作答，分点写清术语。',
+      '作答提示',
+    ),
+  );
+  return {
+    id: opts.id,
+    title: opts.title,
+    subtitle: opts.subtitle,
+    grade: opts.grade,
+    tags: opts.tags,
+    blocks: compact(blocks),
+    questions: [...choice, ...short],
+  };
+}
+
+/**
+ * 按广州中考道法卷结构组卷：情境选择题 + 材料分析题。
+ *
+ * 单元测试：10 道选择（20 分）+ 1 组材料题（3 小问，30 分），45 分钟。
+ * 期中/期末/模拟：20 道选择（40 分）+ 3 组材料题（9 小问，50 分），60 分钟。
+ * 情境选择题优先取广州中考风格题库，不足部分从教材条目里按情境化程度补足；
+ * 材料题统一使用题库里的原始情境，避免出现没有材料的「材料题」。
+ */
+function buildPoliticsPapers(groups) {
+  const entryMap = new Map();
+  for (const g of groups) {
+    for (const e of g.entries || []) entryMap.set(e.id, e);
+  }
+
+  const papers = [];
+  const allUnits = POL_BOOKS.flatMap((book) => book.units.map((unit, ui) => ({
+    book,
+    unit,
+    key: `${book.id}-u${ui + 1}`,
+  })));
+  const allUnitByKey = new Map(allUnits.map((x) => [x.key, x.unit]));
+
+  // 1) 单元测试：24 个教材单元各一套
+  for (const book of POL_BOOKS) {
+    const unitByKey = new Map(book.units.map((unit, ui) => [`${book.id}-u${ui + 1}`, unit]));
+    book.units.forEach((unit, ui) => {
+      const key = `${book.id}-u${ui + 1}`;
+      papers.push(polPaper({
+        id: `pp-unit-${key}`,
+        title: `${book.name} ${unit.no} ${unit.title} 单元测试`,
+        subtitle: `广州中考题型 · ${unit.lessons.length} 课 · 情境选择题 + 材料分析`,
+        grade: book.id,
+        tags: [book.name, unit.no, unit.title, '单元测试'],
+        type: '单元测试',
+        choiceUnits: [key],
+        materialUnits: [key],
+        singleScenario: true,
+        unitByKey,
+        entryMap,
+        offset: 0,
+        nChoice: 10,
+        materialTotal: 30,
+        minutes: 45,
+        note: `参照广州中考道法卷“无情境不出题”的命题方式，以「${unit.title}」的校园、家庭与社会情境为载体，重点考查观点辨析、做法选择与材料分析，减少单纯记忆性设问。`,
+        coverage: [
+          `${book.name} ${unit.no} ${unit.title}`,
+          unit.lessons.map((l) => `${l.no} ${l.title}`).join('、'),
+        ],
+      }));
+    });
+  }
+
+  // 2) 期中／期末：六册各一套
+  POL_BOOKS.forEach((book, bi) => {
+    const n = book.units.length;
+    const unitByKey = new Map(book.units.map((unit, ui) => [`${book.id}-u${ui + 1}`, unit]));
+    const keys = book.units.map((_, ui) => `${book.id}-u${ui + 1}`);
+    const midCount = Math.ceil(n / 2);
+    const midKeys = keys.slice(0, midCount);
+    const midMaterial = [...midKeys];
+    for (let i = midCount; midMaterial.length < 3 && i < n; i += 1) midMaterial.push(keys[i]);
+    while (midMaterial.length < 3) midMaterial.push(keys[0]);
+
+    papers.push(polPaper({
+      id: `pp-${book.id}-mid`,
+      title: `${book.name} 期中测试`,
+      subtitle: `前半册为主 + 跨单元综合 · 广州中考题型`,
+      grade: book.id,
+      tags: [book.name, '期中测试', '阶段检测'],
+      type: '期中测试',
+      choiceUnits: midMaterial,
+      materialUnits: midMaterial,
+      unitByKey,
+      entryMap,
+      offset: 0,
+      nChoice: 20,
+      materialTotal: 50,
+      minutes: 60,
+      note: `参照广州中考道法卷结构组卷：20 道情境选择题（每题 2 分）+ 3 道材料分析题（共 50 分），以${book.name}前半册为主，第 3 组材料题兼顾跨单元综合。`,
+      coverage: midMaterial.map((k) => `${book.name} ${allUnitByKey.get(k).no} ${allUnitByKey.get(k).title}`),
+    }));
+
+    const finStart = n > 3 ? (bi + 1) % n : 0;
+    const finMaterial = [0, 1, 2].map((i) => keys[(finStart + i) % n]);
+    papers.push(polPaper({
+      id: `pp-${book.id}-fin`,
+      title: `${book.name} 期末测试`,
+      subtitle: `全册（${n} 个单元）· 广州中考题型`,
+      grade: book.id,
+      tags: [book.name, '期末测试', '全册检测'],
+      type: '期末测试',
+      choiceUnits: keys,
+      materialUnits: finMaterial,
+      unitByKey,
+      entryMap,
+      offset: 1,
+      nChoice: 20,
+      materialTotal: 50,
+      minutes: 60,
+      note: `参照广州中考道法卷结构组卷：20 道情境选择题覆盖全册 + 3 道材料分析题（共 50 分），重点考查在真实情境中调用教材观点分析和解决问题的能力。`,
+      coverage: keys.map((k) => `${book.name} ${allUnitByKey.get(k).no} ${allUnitByKey.get(k).title}`),
+    }));
+  });
+
+  // 3) 中考模拟卷 10 套：跨册交叉，每套覆盖 5 册、20 题 + 3 组材料
+  for (let p = 0; p < 10; p += 1) {
+    const skipped = p % POL_BOOKS.length;
+    const picked = [];
+    POL_BOOKS.forEach((book, bi) => {
+      if (bi === skipped) return;
+      const ui = (p + bi) % book.units.length;
+      picked.push({ book, unit: book.units[ui], key: `${book.id}-u${ui + 1}` });
+    });
+    const choiceKeys = picked.map((x) => x.key);
+    const materialKeys = picked.slice(0, 3).map((x) => x.key);
+    papers.push(polPaper({
+      id: `pp-mock-${p + 1}`,
+      title: `广州中考道法模拟卷（第 ${p + 1} 套）`,
+      subtitle: '跨册交叉 · 20 道情境选择题 + 3 道材料分析题',
+      grade: 'all',
+      tags: ['中考模拟', `第 ${p + 1} 套`, '整卷'],
+      type: '中考模拟',
+      choiceUnits: choiceKeys,
+      materialUnits: materialKeys,
+      unitByKey: allUnitByKey,
+      entryMap,
+      offset: p,
+      nChoice: 20,
+      materialTotal: 50,
+      minutes: 60,
+      note: '参照广州中考道法卷结构组卷：20 道情境选择题 + 3 道材料分析题，跨册交叉覆盖，情境取自校园、家庭、社区、网络与公共生活，突出知识应用和场景迁移。',
+      coverage: picked.map((x) => `${x.book.name} ${x.unit.no} ${x.unit.title}`),
+    }));
+  }
+
+  return papers;
 }
 
 function dedupeQuestions(list) {
@@ -1427,6 +2354,50 @@ function buildHistoryDrills(unitRaw, topicRaw, paperRaw) {
   return entries;
 }
 
+/** 用「核心观点」与「易错辨析」生成组合选择题，题干与选项均取教材原文 */
+function politicsComboQuestion(blocks, id, title) {
+  const pts = blocks
+    .filter((b) => b && b.type === 'points')
+    .flatMap((b) => b.items || [])
+    .map((i) => i.text)
+    .filter(Boolean);
+  const cf = blocks
+    .filter((b) => b && b.type === 'table' && /易错/.test(b.title || ''))
+    .flatMap((b) => b.rows || []);
+  if (pts.length < 3 || !cf.length) return null;
+  const truths = pts.slice(0, 3);
+  const [wrong, right, why] = cf[0];
+  return {
+    id: `${id}-combo`,
+    type: 'choice',
+    stem: [
+      '关于本专题，下列表述正确的有',
+      `① ${clipText(truths[0], 40)}`,
+      `② ${clipText(truths[1], 40)}`,
+      `③ ${clipText(truths[2], 40)}`,
+      `④ ${clipText(wrong, 40)}`,
+    ].join('\n'),
+    options: ['①②③', '①②④', '①③④', '②③④'],
+    answer: 'A',
+    explanation: `①②③取自本专题「核心观点与考点」；④属易错表述——${trimDot(texToText(why || '与教材不一致'))}；正确表述应为：${trimDot(texToText(right || ''))}。`,
+    difficulty: 3,
+    tags: [title],
+  };
+}
+
+/* 时政热点专题只有统一大类标签，补一个分领域标签便于筛选 */
+const POL_EXTRA_TAGS = {
+  'pol-current-1': '经济发展',
+  'pol-current-2': '政治建设',
+  'pol-current-3': '生态文明',
+  'pol-current-4': '文化建设',
+  'pol-current-5': '国家安全',
+  'pol-current-6': '国际视野',
+  'pol-exam-strategy-1': '时间分配',
+  'pol-exam-strategy-2': '答题模板',
+  'pol-exam-strategy-3': '时政材料',
+};
+
 function politicsEntry(d) {
   const blocks = [
     B.note(d.mainline, '单元主线'),
@@ -1449,15 +2420,258 @@ function politicsEntry(d) {
     ]),
   ];
   const extraQs = (d.materials || []).flatMap((m) => normQuestions(m.questions.map((q) => ({ ...q, type: 'short', explanation: q.explanation || '' }))));
+  const combo = politicsComboQuestion(blocks, d.id, d.title);
   return {
     id: d.id,
     title: d.title,
     subtitle: [d.unit, d.period].filter(Boolean).join(' · '),
     grade: gradeOf(d),
-    tags: [d.unit].filter(Boolean),
+    tags: [...new Set([d.unit, POL_EXTRA_TAGS[d.id]])].filter(Boolean),
     blocks: compact(blocks),
-    questions: [...normQuestions(d.questions), ...extraQs],
+    questions: [...normQuestions(d.questions), ...extraQs, ...normQuestions(combo ? [combo] : [])],
   };
+}
+
+/* ------------------------------ 道法：课本目录索引 ------------------------------ */
+
+/** 取出条目里指定类型的块（可按标题正则过滤） */
+function blocksOf(entry, type, titleRe) {
+  return (entry && entry.blocks ? entry.blocks : []).filter(
+    (b) => b && b.type === type && (!titleRe || titleRe.test(b.title || '')),
+  );
+}
+
+/** 本课练习不足 5 题或缺少材料题时，用本课核心观点生成一道开放情境题 */
+function politicsLessonShort(lesson, points, id) {
+  const truths = (points || []).map((p) => p.text).filter(Boolean).slice(0, 2);
+  if (!truths.length) return null;
+  const frames = lesson.frames || [];
+  const frameHint = frames.length ? `，围绕${frames.map((f) => `「${f}」`).join('、')}` : '';
+  return {
+    id,
+    type: 'short',
+    stem: `某班围绕「${lesson.title}」开展主题探究活动${frameHint}。请运用本课所学，谈谈你的认识。`,
+    answer: truths.join(''),
+    explain: '',
+    rubric: (points || []).slice(0, 3).map((p) => clipText(p.text, 40)),
+    tags: [lesson.title],
+  };
+}
+
+/**
+ * 道法课本目录索引。
+ *
+ * 与历史目录同一套结构：每课一条，元信息 + 框题 + 本课核心知识 + 必背金句
+ * + 易错辨析 + 本单元命题角度 + 专题链接 + 练习。
+ * 内容全部从已有单元条目按 `keys` 抽取；单元条目没有单列的课（七上第四单元）
+ * 会从关联单元取材并在页面上标注，不另行编造考点。
+ */
+function buildPoliticsCatalog(groups) {
+  const entryById = new Map();
+  const moduleByEntry = new Map();
+  for (const g of groups) {
+    for (const e of g.entries || []) {
+      entryById.set(e.id, e);
+      moduleByEntry.set(e.id, g.moduleId);
+    }
+  }
+  const politicsUrl = (moduleId, entryId) =>
+    `/learn/politics/pages/detail/detail?moduleId=${moduleId}&entryId=${encodeURIComponent(entryId)}`;
+  const extraLinks = [
+    { t: '模块测试与模拟卷', url: '/learn/politics-exam/pages/list/list?moduleId=pol-papers' },
+    { t: '道法中考题型专题', url: '/learn/politics/pages/list/list?moduleId=pol-exam' },
+  ];
+  const entries = [];
+
+  for (const book of POL_BOOKS) {
+    book.units.forEach((unitDef, ui) => {
+      const unitEntries = (unitDef.entryIds || []).map((id) => entryById.get(id)).filter(Boolean);
+      unitDef.lessons.forEach((lesson, li) => {
+        const standalone = Array.isArray(lesson.points) && lesson.points.length > 0;
+        const ids = standalone
+          ? []
+          : lesson.entryIds && lesson.entryIds.length
+            ? lesson.entryIds
+            : unitDef.entryIds;
+        const srcEntries = (ids || []).map((id) => entryById.get(id)).filter(Boolean);
+        const keys = lesson.keys || [];
+        const baseId = `cat-pol-${book.id}-${ui + 1}-${li + 1}`;
+
+        const ptAll = standalone
+          ? lesson.points
+          : srcEntries.flatMap((e) => blocksOf(e, 'points').flatMap((b) => b.items || []));
+        const ptPick = standalone
+          ? { list: lesson.points, note: '' }
+          : pickByKeysScored(
+              ptAll,
+              keys,
+              (p) => `${p.text} ${p.explain || ''}`,
+              6,
+              4,
+              '（本课考点未单列，以下取所属单元核心观点）',
+            );
+        const points = ptPick.list.map((p) => ({
+          level: p.level || '重点',
+          text: p.text || '',
+          explain: texToText(p.explain || ''),
+        }));
+
+        const ksAll = standalone
+          ? lesson.keySentences || []
+          : srcEntries.flatMap((e) => blocksOf(e, 'list', /必背/).flatMap((b) => b.items || []));
+        const ksPick = standalone
+          ? { list: lesson.keySentences || [], note: '' }
+          : pickByKeysScored(
+              ksAll,
+              keys,
+              (s) => s,
+              5,
+              4,
+              '（本课金句未单列，以下取所属单元必背金句）',
+            );
+
+        const cfAll = standalone
+          ? (lesson.confusions || []).map((c) => [c.wrong, c.right, c.why])
+          : srcEntries.flatMap((e) => blocksOf(e, 'table', /易错/).flatMap((b) => b.rows || []));
+        const cfPick = standalone
+          ? { list: cfAll, note: '' }
+          : pickByKeysScored(
+              cfAll,
+              keys,
+              (r) => r.join(' '),
+              3,
+              2,
+              '（本课易错点未单列，以下取所属单元易错辨析）',
+            );
+
+        // 概念对比表：与易错、命题角度区分开，命中本课关键词才放
+        const cmpBlock = srcEntries
+          .flatMap((e) => blocksOf(e, 'table'))
+          .filter((b) => !/易错|命题角度/.test(b.title || ''))
+          .find((b) => textHasKeys((b.rows || []).map((r) => r.join(' ')).join(' '), keys));
+
+        const examBlock = (unitEntries.length ? unitEntries : srcEntries)
+          .flatMap((e) => blocksOf(e, 'table', /命题角度/))[0];
+
+        const materialBlock = srcEntries
+          .flatMap((e) => blocksOf(e, 'quote'))
+          .find((b) => textHasKeys(b.text || '', keys));
+
+        const mainline = unitEntries.length && unitDef.entryIds.length
+          ? blocksOf(unitEntries[0], 'note', /单元主线/).map((b) => b.text)[0] || ''
+          : '';
+
+        const linkEntries = [
+          ...srcEntries,
+          ...(lesson.relatedEntryIds || []).map((id) => entryById.get(id)).filter(Boolean),
+        ];
+        const seenLink = new Set();
+        const srcLinks = linkEntries
+          .filter((e) => (seenLink.has(e.id) ? false : seenLink.add(e.id)))
+          .map((e) => ({
+            t: `专题精讲 · ${e.title}`,
+            url: politicsUrl(moduleByEntry.get(e.id) || book.moduleId, e.id),
+          }));
+
+        const blocks = [
+          B.meta([
+            { k: '册次', v: book.name },
+            { k: '单元', v: `${unitDef.no} ${unitDef.title}` },
+            { k: '课题', v: `${lesson.no} ${lesson.title}` },
+            { k: '框题', v: (lesson.frames || []).join(' / ') },
+          ]),
+          lesson.note ? B.note(lesson.note, '内容说明') : null,
+          mainline ? B.note(mainline, '本课在单元中的位置') : null,
+          B.h('课本框题'),
+          B.list(lesson.frames || [], '本课框题（按课本顺序）'),
+          B.points(points, `本课核心知识 · 中考考点分层${ptPick.note}`),
+          !standalone && ptPick.list.length < 3
+            ? B.note(
+                '现有单元条目对本课只单列了少量核心观点，其余内容请结合本课框题和单元主线学习；配套练习中含所属单元的综合题。',
+                '考点覆盖说明',
+              )
+            : null,
+          B.note(
+            '「重点」要能默写教材规范表述；「次重点」要能再认细节；「了解」层级多以选择题、判断题出现。',
+            '考点分级说明',
+          ),
+          B.list(ksPick.list, `必背金句与答题术语${ksPick.note}`),
+          B.table(
+            ['错误表述', '正确表述', '原因'],
+            cfPick.list.map((r) => [r[0], r[1], texToText(r[2] || '')]),
+            `易错辨析${cfPick.note}`,
+          ),
+          cmpBlock
+            ? B.table(cmpBlock.head, cmpBlock.rows, `${cmpBlock.title}（本单元概念对比）`)
+            : null,
+          examBlock
+            ? B.table(examBlock.head, examBlock.rows, '中考命题角度 · 所属单元常见考法')
+            : null,
+          materialBlock ? B.quote(materialBlock.text, '材料研读 · 与本课相关的教材素材') : null,
+          B.links([...srcLinks, ...extraLinks], '专题精讲与配套练习'),
+        ];
+
+        const qAll = standalone ? lesson.questions || [] : srcEntries.flatMap((e) => e.questions || []);
+        const qText = (q) => `${q.stem || ''} ${(q.options || []).join(' ')} ${(q.tags || []).join(' ')}`;
+        const choicePool = qAll.filter((q) => q.type === 'choice');
+        const shortPool = qAll.filter((q) => q.type !== 'choice');
+        const used = new Set();
+        const picked = [];
+        const add = (q) => {
+          if (!q || used.has(q.id)) return;
+          used.add(q.id);
+          picked.push(q);
+        };
+
+        if (standalone) {
+          qAll.forEach(add);
+        } else {
+          shortPool.filter((q) => textHasKeys(qText(q), keys)).slice(0, 2).forEach(add);
+          choicePool.filter((q) => textHasKeys(qText(q), keys)).slice(0, 4).forEach(add);
+        }
+
+        // 命中的题不足时，按课序错开轮转同一单元的题目，避免每课题目完全一样
+        const fillChoices = (target) => {
+          if (!choicePool.length) return;
+          let count = picked.filter((q) => q.type === 'choice').length;
+          const offset = (ui * 3 + li * 2) % choicePool.length;
+          for (let i = 0; i < choicePool.length && count < target; i++) {
+            const q = choicePool[(offset + i) % choicePool.length];
+            if (used.has(q.id)) continue;
+            add(q);
+            count += 1;
+          }
+        };
+
+        if (picked.filter((q) => q.type === 'choice').length < 3) fillChoices(3);
+
+        const hasShort = () => picked.some((q) => q.type !== 'choice');
+        if (!hasShort()) {
+          const generated = politicsLessonShort(lesson, points, `${baseId}-short`);
+          if (generated) add(generated);
+          else shortPool.slice(0, 1).forEach(add);
+        }
+
+        if (picked.length < 5) {
+          const combo = politicsComboQuestion(blocks, baseId, `${lesson.no} ${lesson.title}`);
+          add(combo);
+        }
+        if (picked.length < 5) fillChoices(picked.filter((q) => q.type === 'choice').length + (5 - picked.length));
+
+        entries.push({
+          id: baseId,
+          title: `${lesson.no} ${lesson.title}`,
+          subtitle: `${book.name} · ${unitDef.no} ${unitDef.title}`,
+          grade: book.id,
+          tags: [book.name, unitDef.no, ...(lesson.note ? ['教材新增'] : [])],
+          blocks: compact(blocks),
+          questions: dedupeQuestions(picked),
+        });
+      });
+    });
+  }
+
+  return entries;
 }
 
 /* ------------------------------ 语文：阅读 / 作文 / 名著 ------------------------------ */
@@ -1507,15 +2721,44 @@ function exampleBlocks(e, index) {
   ];
 }
 
+const WRITING_ESSAY_SUPPLEMENT = { ...WRITING_ESSAYS_1, ...WRITING_ESSAYS_2 };
+
+/** 既有范文不足 700 字时的补写：在 after 之后插入一段，保持结尾不变 */
+function writingExample(d, e, index) {
+  const fix = WRITING_ESSAY_FIXES[d.id];
+  if (!fix || index !== 0) return e;
+  const text = String(e.text || '');
+  if (!text.includes(fix.after)) {
+    throw new Error(`范文补写锚点未找到：${d.id}`);
+  }
+  return { ...e, text: text.replace(fix.after, fix.after + fix.text) };
+}
+
+/** 完整范文：正文 + 总评 + 分项点评 + 亮点句 */
+function writingEssayBlocks(s) {
+  const paragraphs = (s.paragraphs || []).filter(Boolean);
+  const text = paragraphs.join('\n');
+  const len = Array.from(text.replace(/\s/g, '')).length;
+  return [
+    B.h(`范文 · 完整篇（约 ${len} 字）`),
+    ...paragraphsOf(paragraphs),
+    B.note(s.comment, '完整篇总评'),
+    B.table(['评分维度', '点评'], s.review || [], '完整篇分项点评'),
+    B.table(['亮点句', '为什么好'], s.highlights || [], '完整篇亮点句'),
+  ];
+}
+
 function writingEntry(d) {
   const method = WRITING_METHOD[d.category] || null;
+  const supplement = WRITING_ESSAY_SUPPLEMENT[d.id] || null;
   const blocks = [
     method ? B.h('方法论') : null,
     method ? B.list(method.steps, '怎么做') : null,
     method ? B.list(method.points, '考查点') : null,
     B.note(d.summary, '写作要点'),
     ...paragraphsOf(d.content),
-    ...(d.examples || []).flatMap((e, i) => exampleBlocks(e, i)),
+    ...(d.examples || []).map((e, i) => writingExample(d, e, i)).flatMap((e, i) => exampleBlocks(e, i)),
+    supplement ? writingEssayBlocks(supplement) : null,
     B.table(['主题', '可用素材'], (d.materials || []).map((m) => [m.theme, (m.items || []).join('；')]), '素材库'),
     d.exercise ? B.note(texToText(d.exercise.prompt), '练笔任务') : null,
     d.exercise ? B.list(d.exercise.tips, '写作提示') : null,
@@ -1525,10 +2768,20 @@ function writingEntry(d) {
     title: d.title,
     subtitle: [d.category, d.theme].filter(Boolean).join(' · '),
     grade: gradeOf(d),
-    tags: [d.category, d.theme].filter(Boolean),
+    tags: [...new Set([d.category, ...((supplement && supplement.tags) || []), d.theme].filter(Boolean))],
     blocks: compact(blocks),
     questions: normQuestions(d.questions),
   };
+}
+
+function literatureTags(d) {
+  if (d.category) return [d.category];
+  const id = String(d.id || '');
+  let group = '文化常识';
+  if (id.startsWith('ext-bg-')) group = '名著背景';
+  else if (id.startsWith('ext-cmp-')) group = '名著比较';
+  else if (/^ext-(dictation|classical-compare|reading-points|situational-writing|losing-details|reciting-methods|classical-three-steps|classics-real-reading|wrongbook)/.test(id)) group = '学法指导';
+  return [group, '拓展阅读'];
 }
 
 function literatureEntry(d) {
@@ -1561,7 +2814,7 @@ function literatureEntry(d) {
     title: d.title,
     subtitle: d.category || '',
     grade: gradeOf(d),
-    tags: [d.category].filter(Boolean),
+    tags: literatureTags(d),
     blocks: compact(blocks),
     questions: normQuestions(d.questions),
   };
@@ -1742,7 +2995,7 @@ function examTopicEntry(d) {
     title: d.title,
     subtitle: d.paper || '',
     grade: gradeOf(d),
-    tags: [],
+    tags: ['题型专题', d.title].filter(Boolean),
     blocks: compact(blocks),
     questions: [...normQuestions(d.questions), ...extraQs],
   };
@@ -1822,7 +3075,359 @@ function scienceEntry(d) {
   };
 }
 
-/* ------------------------------ 整卷模拟 ------------------------------ */
+/* ---------------- 物理 / 化学：课本章节索引与章节试卷 ---------------- */
+
+const SCI_BOOK_LABELS = {
+  physics: { '8a': '八年级上册', '8b': '八年级下册', '9a': '九年级上册', '9b': '九年级下册' },
+  chemistry: { '9a': '九年级上册', '9b': '九年级下册' },
+};
+const SCI_SUBJECT_META = {
+  physics: { full: '物理', total: 90, prefix: 'phy' },
+  chemistry: { full: '化学', total: 60, prefix: 'chem' },
+};
+const SCI_GRADE_ORDER = { '8a': 1, '8b': 2, '9a': 3, '9b': 4 };
+const CN_NUM = {
+  一: 1, 二: 2, 三: 3, 四: 4, 五: 5, 六: 6, 七: 7, 八: 8, 九: 9, 十: 10,
+  十一: 11, 十二: 12, 十三: 13, 十四: 14, 十五: 15, 十六: 16, 十七: 17,
+  十八: 18, 十九: 19, 二十: 20,
+};
+
+function sciChapterNum(chapter) {
+  const m = /第\s*([一二三四五六七八九十]+|\d+)/.exec(String(chapter || ''));
+  if (!m) return 99;
+  if (/^\d+$/.test(m[1])) return Number(m[1]);
+  return CN_NUM[m[1]] || 99;
+}
+
+/** 把「人教版八上 · 第 2 章 声现象 · 8a」拆成册次与章节 */
+function sciChapterMeta(d) {
+  const parts = String(d.unit || '').split(' · ');
+  if (parts.length < 2) return null;
+  const chapter = parts.slice(1).join(' · ');
+  if (!/第\s*[\d一二三四五六七八九十]+\s*[章单元]/.test(chapter)) return null;
+  return { book: parts[0], chapter, num: sciChapterNum(chapter), grade: d.grade || 'all' };
+}
+
+function groupSciChapters(items) {
+  const map = new Map();
+  for (const item of items) {
+    const meta = sciChapterMeta(item.d);
+    if (!meta || meta.grade === 'all') continue;
+    const key = `${meta.grade}|${meta.chapter}`;
+    if (!map.has(key)) map.set(key, { ...meta, key, items: [], moduleNames: [] });
+    const g = map.get(key);
+    g.items.push(item);
+    if (item.moduleName && !g.moduleNames.includes(item.moduleName)) g.moduleNames.push(item.moduleName);
+  }
+  return [...map.values()].sort(
+    (a, b) => (SCI_GRADE_ORDER[a.grade] - SCI_GRADE_ORDER[b.grade]) || (a.num - b.num),
+  );
+}
+
+/** 按固定步长轮转取题，保证同一题库在不同试卷里取到不同组合 */
+function sciPickRotate(pool, n, offset) {
+  const out = [];
+  const used = new Set();
+  if (!pool.length || n <= 0) return out;
+  const step = Math.max(1, Math.floor(pool.length / n));
+  for (let i = 0; i < pool.length && out.length < n; i += 1) {
+    const q = pool[(offset + i * step) % pool.length];
+    if (!q || used.has(q.id)) continue;
+    used.add(q.id);
+    out.push(q);
+  }
+  return out;
+}
+
+function sciQuestionsOf(chapters, kind) {
+  const all = chapters.flatMap((g) => g.items.flatMap((it) => normQuestions(it.d.questions || [])));
+  const seen = new Set();
+  return all.filter((q) => {
+    if (!q || seen.has(q.id)) return false;
+    if (kind === 'choice' && q.type !== 'choice') return false;
+    if (kind === 'non' && q.type === 'choice') return false;
+    seen.add(q.id);
+    return true;
+  });
+}
+
+function sciRetotal(list, total) {
+  if (!list.length || !total) return list;
+  const weights = list.map((q) => (q.type === 'fill' ? 1 : 3));
+  const sum = weights.reduce((a, b) => a + b, 0) || list.length;
+  const raw = weights.map((w) => (total * w) / sum);
+  const nums = raw.map((v) => Math.floor(v));
+  let rest = total - nums.reduce((a, b) => a + b, 0);
+  const order = raw.map((v, i) => ({ i, f: v - Math.floor(v) })).sort((a, b) => b.f - a.f);
+  for (let k = 0; k < rest; k += 1) nums[order[k % order.length].i] += 1;
+  return list.map((q, i) => Object.assign({}, q, { stem: polSetPoints(q.stem, nums[i]) }));
+}
+
+function buildScienceCatalog(subject, chapters) {
+  const meta = SCI_SUBJECT_META[subject];
+  return chapters.map((g, index) => {
+    const bookLabel = SCI_BOOK_LABELS[subject][g.grade] || g.book;
+    const first = g.items[0].d;
+    const examRows = [];
+    const formulaRows = [];
+    const confusionRows = [];
+    const experiments = [];
+    const seen = new Set();
+    for (const it of g.items) {
+      for (const e of it.d.examAngles || []) {
+        const row = [e.angle || '', texToText(e.detail || '')];
+        const key = row.join('|');
+        if (row[0] && !seen.has(`e${key}`)) { seen.add(`e${key}`); examRows.push(row); }
+      }
+      for (const f of it.d.formulas || []) {
+        const row = [f.name || '', texToText(f.tex || f.text || ''), [f.units, texToText(f.usage || '')].filter(Boolean).join(' · ')];
+        const key = row.join('|');
+        if (row[0] && !seen.has(`f${key}`)) { seen.add(`f${key}`); formulaRows.push(row); }
+      }
+      for (const c of it.d.confusions || []) {
+        const row = [c.wrong || '', c.right || '', texToText(c.why || '')];
+        const key = row.join('|');
+        if (row[0] && !seen.has(`c${key}`)) { seen.add(`c${key}`); confusionRows.push(row); }
+      }
+      for (const e of it.d.experiments || []) {
+        if (e.title && !experiments.includes(e.title)) experiments.push(e.title);
+      }
+    }
+    const qs = sciPickRotate(sciQuestionsOf([g], 'choice'), 4, index * 2);
+    const nonQs = sciPickRotate(sciQuestionsOf([g], 'non'), 2, index);
+
+    const blocks = [
+      B.meta([
+        { k: '册次', v: bookLabel },
+        { k: '章节', v: g.chapter },
+        { k: '节数', v: `${g.items.length} 节` },
+        { k: '所属模块', v: g.moduleNames.join('、') },
+      ]),
+      first.keyIdea ? B.note(texToText(first.keyIdea), '本章主线') : null,
+      B.list(g.items.map((it) => it.d.title), '本章各节（按教材顺序）'),
+      B.table(['命题角度', '说明'], examRows.slice(0, 8), '中考命题角度 · 本章汇总'),
+      B.table(['公式/关系', '表达式', '单位与用法'], formulaRows.slice(0, 8), '核心公式与结论'),
+      B.table(['错误理解', '正确理解', '原因'], confusionRows.slice(0, 8), '易错辨析'),
+      experiments.length ? B.list(experiments.slice(0, 6), '本章必做实验') : null,
+      B.links(
+        g.items.map((it) => ({
+          t: `精讲 · ${it.d.title}`,
+          url: `/learn/${subject}/pages/detail/detail?moduleId=${it.moduleId}&entryId=${encodeURIComponent(it.d.id)}`,
+        })),
+        '本章各节精讲',
+      ),
+      B.note(
+        `先按本章主线建立框架，再逐节补细节；中考复习时重点看「${examRows.slice(0, 2).map((r) => r[0]).join('」「') || '核心考点'}」对应的典型题。`,
+        '学习建议',
+      ),
+    ];
+
+    return {
+      id: `cat-${meta.prefix}-${g.grade}-${g.num}`,
+      title: g.chapter,
+      subtitle: `${bookLabel} · ${g.items.length} 节`,
+      grade: g.grade,
+      tags: [bookLabel, ...g.moduleNames],
+      blocks: compact(blocks),
+      questions: [...qs, ...nonQs],
+    };
+  });
+}
+
+function sciPaper(opts) {
+  const meta = SCI_SUBJECT_META[opts.subject];
+  const choice = sciPickRotate(sciQuestionsOf(opts.chapters, 'choice'), opts.nChoice, opts.offset || 0);
+  const non = sciPickRotate(
+    sciQuestionsOf(opts.chapters, 'non'),
+    opts.nNon,
+    (opts.offset || 0) * 2 + 1,
+  );
+  const scoredChoice = choice.map((q) => Object.assign({}, q, { stem: polSetPoints(q.stem, opts.choiceScore) }));
+  const nonTotal = opts.total - scoredChoice.length * opts.choiceScore;
+  const scoredNon = sciRetotal(non, nonTotal);
+  const total = scoredChoice.length * opts.choiceScore + nonTotal;
+  const blocks = [
+    B.meta([
+      { k: '卷型', v: opts.type },
+      { k: '范围', v: opts.range },
+      { k: '题量', v: `选择题 ${scoredChoice.length} 题 · 非选择题 ${scoredNon.length} 题` },
+      { k: '赋分', v: `选择题每题 ${opts.choiceScore} 分，共 ${scoredChoice.length * opts.choiceScore} 分；非选择题 ${nonTotal} 分；满分 ${total} 分` },
+      { k: '建议用时', v: `${opts.minutes} 分钟` },
+    ]),
+    B.table(
+      ['题型', '题量', '分值', '主要考查'],
+      [
+        ['选择题', `${scoredChoice.length} 题`, `${scoredChoice.length * opts.choiceScore} 分`, '概念辨析、公式适用条件、图像与生活情境判断'],
+        ['非选择题', `${scoredNon.length} 题`, `${nonTotal} 分`, '填空、实验探究、作图与计算，规范表达与单位'],
+      ],
+      '试卷结构',
+    ),
+    B.note(opts.note, '组卷说明'),
+    B.note(
+      '题目按「基础—中档—综合」排列；选择题每个干扰项都对应一个典型错误，非选择题保留原有评分要点，可对照自评。',
+      '难度与命题',
+    ),
+    B.list(opts.coverage, '覆盖范围'),
+    B.note(opts.tip, '作答提示'),
+  ];
+  return {
+    id: opts.id,
+    title: opts.title,
+    subtitle: opts.subtitle,
+    grade: opts.grade,
+    tags: opts.tags,
+    blocks: compact(blocks),
+    questions: [...scoredChoice, ...scoredNon],
+  };
+}
+
+function sciSiblings(chapter, chapters) {
+  return chapters
+    .filter((g) => g !== chapter && g.grade === chapter.grade)
+    .sort((a, b) => Math.abs(a.num - chapter.num) - Math.abs(b.num - chapter.num));
+}
+
+function buildSciencePapers(subject, chapters) {
+  const meta = SCI_SUBJECT_META[subject];
+  const papers = [];
+  const choiceScore = subject === 'physics' ? 3 : 2;
+  const unitCfg = subject === 'physics'
+    ? { nChoice: 10, nNon: 4, minutes: 45 }
+    : { nChoice: 10, nNon: 6, minutes: 40 };
+  const examCfg = subject === 'physics'
+    ? { nChoice: 10, nNon: 6, minutes: 60 }
+    : { nChoice: 14, nNon: 6, minutes: 60 };
+
+  // 1) 章节测试：每章一套，本章为主，题量不足时补同册相邻章
+  chapters.forEach((g, gi) => {
+    const bookLabel = SCI_BOOK_LABELS[subject][g.grade] || g.book;
+    const scope = [g, ...sciSiblings(g, chapters).slice(0, 2)];
+    papers.push(sciPaper({
+      subject,
+      id: `sci-${meta.prefix}-unit-${g.grade}-${g.num}`,
+      title: `${bookLabel} ${g.chapter} 章节测试`,
+      subtitle: `广州中考题型 · 选择 + 非选择 · ${unitCfg.minutes} 分钟`,
+      grade: g.grade,
+      tags: [bookLabel, g.chapter, '章节测试'],
+      type: '章节测试',
+      chapters: scope,
+      nChoice: unitCfg.nChoice,
+      nNon: unitCfg.nNon,
+      choiceScore,
+      total: meta.total,
+      minutes: unitCfg.minutes,
+      offset: gi,
+      range: `${bookLabel} ${g.chapter}`,
+      note: `以「${g.chapter}」的 ${g.items.length} 节内容为主组卷：先考概念与公式适用条件，再用实验和计算考查迁移；本章题量不足时，从同册相邻章补充少量综合题。`,
+      coverage: [`${bookLabel} ${g.chapter}`, g.items.map((it) => it.d.title).join('、')],
+      tip: subject === 'physics'
+        ? '计算题先写公式再代数，结果带单位；实验题按「目的—器材—步骤—现象—结论」作答，作图用铅笔和直尺。'
+        : '化学用语书写规范（元素符号、下标、条件、↑↓）；实验题答清操作、现象与结论，计算题保留解题步骤。',
+    }));
+  });
+
+  // 2) 期中 / 期末：按册组卷
+  const grades = [...new Set(chapters.map((g) => g.grade))]
+    .sort((a, b) => SCI_GRADE_ORDER[a] - SCI_GRADE_ORDER[b]);
+  grades.forEach((grade) => {
+    const gs = chapters.filter((g) => g.grade === grade);
+    const bookLabel = SCI_BOOK_LABELS[subject][grade] || gs[0].book;
+    const midCount = Math.ceil(gs.length / 2);
+    if (gs.length >= 4) {
+      const midChapters = gs.slice(0, midCount);
+      papers.push(sciPaper({
+        subject,
+        id: `sci-${meta.prefix}-mid-${grade}`,
+        title: `${bookLabel} 期中测试`,
+        subtitle: `前半册为主 · 广州中考题型`,
+        grade,
+        tags: [bookLabel, '期中测试', '阶段检测'],
+        type: '期中测试',
+        chapters: midChapters,
+        nChoice: examCfg.nChoice,
+        nNon: examCfg.nNon,
+        choiceScore,
+        total: meta.total,
+        minutes: examCfg.minutes,
+        offset: 0,
+        range: `${bookLabel} 前半册（${midChapters.length} 章）`,
+        note: `覆盖${bookLabel}前半册 ${midChapters.length} 章，末段加入跨章综合题，考查前后知识的衔接。`,
+        coverage: midChapters.map((g) => g.chapter),
+        tip: '先做选择和非选择题中的填空题，把实验与计算留足时间；遇到陌生情境先回到对应公式或实验原理。',
+      }));
+    }
+    papers.push(sciPaper({
+      subject,
+      id: `sci-${meta.prefix}-final-${grade}`,
+      title: `${bookLabel} 期末测试`,
+      subtitle: `全册（${gs.length} 章）· 广州中考题型`,
+      grade,
+      tags: [bookLabel, '期末测试', '全册检测'],
+      type: '期末测试',
+      chapters: gs,
+      nChoice: examCfg.nChoice,
+      nNon: examCfg.nNon,
+      choiceScore,
+      total: meta.total,
+      minutes: examCfg.minutes,
+      offset: 1,
+      range: `${bookLabel} 全册（${gs.length} 章）`,
+      note: `覆盖${bookLabel}全册 ${gs.length} 章，按册末统考结构组卷，重点考查全册主干知识与综合计算。`,
+      coverage: gs.map((g) => g.chapter),
+      tip: '按册末考试节奏作答；计算题写出依据公式，实验题写全操作与结论，避免只写结果。',
+    }));
+  });
+
+  // 3) 中考模拟：每套跨章抽取，若干套覆盖全部章节
+  const mockCount = subject === 'physics' ? 6 : 5;
+  for (let p = 0; p < mockCount; p += 1) {
+    const picked = [];
+    const used = new Set();
+    for (let k = 0; k < 5 && picked.length < 5; k += 1) {
+      const idx = (p * 3 + k * 4) % chapters.length;
+      const g = chapters[idx];
+      if (!g || used.has(g.key)) continue;
+      used.add(g.key);
+      picked.push(g);
+    }
+    for (let idx = 0; picked.length < 4; idx += 1) {
+      const g = chapters[(p + idx) % chapters.length];
+      if (!used.has(g.key)) { used.add(g.key); picked.push(g); }
+    }
+    papers.push(sciPaper({
+      subject,
+      id: `sci-${meta.prefix}-mock-${p + 1}`,
+      title: `广州中考${meta.full}模拟卷（第 ${p + 1} 套）`,
+      subtitle: '跨册交叉 · 按广州卷面结构组卷',
+      grade: 'all',
+      tags: ['中考模拟', '跨册综合'],
+      type: '中考模拟',
+      chapters: picked,
+      nChoice: examCfg.nChoice,
+      nNon: examCfg.nNon,
+      choiceScore,
+      total: meta.total,
+      minutes: examCfg.minutes,
+      offset: p + 2,
+      range: picked.map((g) => `${SCI_BOOK_LABELS[subject][g.grade] || g.book} ${g.chapter}`).join('；'),
+      note: `跨册抽取 ${picked.length} 章组卷，模拟广州中考${meta.full}卷的题型比例与难度梯度。`,
+      coverage: picked.map((g) => g.chapter),
+      tip: subject === 'physics'
+        ? '选择题控制在 15 分钟内完成；实验题注意控制变量与读数，计算题先列公式再代入数据。'
+        : '选择题控制在 15 分钟内完成；化学方程式先配平再算，实验探究题答全「操作—现象—结论」。',
+    }));
+  }
+
+  return papers;
+}
+
+
+function paperTopicTag(d) {
+  const title = String(d.title || '');
+  if (!title.includes('·')) return '';
+  const tail = title.split('·').pop().trim();
+  return tail.length <= 20 ? tail : '';
+}
 
 function paperEntry(d) {
   // 物理/化学的「中考专题」模块同时收了讲评文章和整卷，按字段区分
@@ -1846,7 +3451,7 @@ function paperEntry(d) {
     title: d.title,
     subtitle: `${d.duration || '—'} 分钟 · 满分 ${d.totalScore || '—'}`,
     grade: gradeOf(d),
-    tags: ['整卷套题'],
+    tags: [...new Set(['整卷套题', paperTopicTag(d)])].filter(Boolean),
     blocks: compact(blocks),
     questions: [...normQuestions(d.questions), ...materialQuestions(d.materials)],
   };
@@ -1947,7 +3552,7 @@ function writeModule(module, raw) {
   for (const d of all) {
     if (!d || !d.id || seen.has(d.id)) continue;
     seen.add(d.id);
-    entries.push(normalize(d));
+    entries.push(normalize(d, module));
   }
   return emitModule(module, entries);
 }
@@ -2009,14 +3614,69 @@ async function main() {
   const topicTitles = new Map(topicRaw.map((t) => [t.id, t.title]));
   const historyCatalogEntries = buildHistoryCatalog(historyUnits, topicTitles);
   const historyDrillEntries = buildHistoryDrills(historyUnits, topicRaw, paperRaw);
+  const historyPaperEntries = buildHistoryPapers(historyCatalogEntries);
+  const politicsGroups = MODULES
+    .filter((m) => m.subject === 'politics')
+    .map((m) => ({ moduleId: m.moduleId, name: m.name, entries: collectRaw(m, raw).map(politicsEntry) }));
+  const politicsPaperEntries = buildPoliticsPapers(politicsGroups);
+  const politicsCatalogEntries = buildPoliticsCatalog(politicsGroups);
+
+  // 物理/化学：按教材章节聚合出「章节索引」，再由章节题库组建章节测试与模拟卷
+  const sciItemsOf = (subject) => MODULES
+    .filter((m) => m.subject === subject)
+    .flatMap((m) => collectRaw(m, raw).map((d) => ({ d, moduleId: m.moduleId, moduleName: m.name })));
+  const physicsChapters = groupSciChapters(sciItemsOf('physics'));
+  const chemistryChapters = groupSciChapters(sciItemsOf('chemistry'));
+  const physicsCatalogEntries = buildScienceCatalog('physics', physicsChapters);
+  const chemistryCatalogEntries = buildScienceCatalog('chemistry', chemistryChapters);
+  const physicsPaperEntries = buildSciencePapers('physics', physicsChapters);
+  const chemistryPaperEntries = buildSciencePapers('chemistry', chemistryChapters);
 
   const stats = [];
   for (const m of MODULES) {
     if (m.kind === 'wordIndex') stats.push(emitModule(m, wordEntries));
-    else if (m.kind === 'historyCatalog') stats.push(emitModule(m, historyCatalogEntries));
-    else if (m.kind === 'historyDrills') stats.push(emitModule(m, historyDrillEntries));
+    else if (m.kind === 'historyCatalog') {
+      // 目录数据超 2MB 分包上限，按年级拆成两个分包：七—八年级 / 九年级
+      stats.push(emitModule(m, historyCatalogEntries.filter((e) => /^[78]/.test(e.grade))));
+    } else if (m.kind === 'historyDrills') stats.push(emitModule(m, historyDrillEntries));
     else stats.push(writeModule(m, raw));
   }
+  stats.push(emitModule(
+    { subject: 'history', pkg: 'learn/history-catalog2', moduleId: 'hist-catalog-9' },
+    historyCatalogEntries.filter((e) => !/^[78]/.test(e.grade)),
+  ));
+  stats.push(emitModule(
+    { subject: 'history', pkg: 'learn/history-exam', moduleId: 'hist-papers' },
+    historyPaperEntries,
+  ));
+  stats.push(emitModule(
+    { subject: 'politics', pkg: 'learn/politics-catalog', moduleId: 'pol-catalog' },
+    politicsCatalogEntries.filter((e) => /^[78]/.test(e.grade)),
+  ));
+  stats.push(emitModule(
+    { subject: 'politics', pkg: 'learn/politics-catalog2', moduleId: 'pol-catalog-9' },
+    politicsCatalogEntries.filter((e) => !/^[78]/.test(e.grade)),
+  ));
+  stats.push(emitModule(
+    { subject: 'politics', pkg: 'learn/politics-exam', moduleId: 'pol-papers' },
+    politicsPaperEntries,
+  ));
+  stats.push(emitModule(
+    { subject: 'physics', pkg: 'learn/physics-catalog', moduleId: 'phy-catalog' },
+    physicsCatalogEntries,
+  ));
+  stats.push(emitModule(
+    { subject: 'physics', pkg: 'learn/physics-exam', moduleId: 'phy-papers' },
+    physicsPaperEntries,
+  ));
+  stats.push(emitModule(
+    { subject: 'chemistry', pkg: 'learn/chemistry-catalog', moduleId: 'chem-catalog' },
+    chemistryCatalogEntries,
+  ));
+  stats.push(emitModule(
+    { subject: 'chemistry', pkg: 'learn/chemistry-exam', moduleId: 'chem-papers' },
+    chemistryPaperEntries,
+  ));
   stats.sort((a, b) => a.subject.localeCompare(b.subject));
   console.table(stats);
   const total = stats.reduce((n, s) => n + s.kb, 0);

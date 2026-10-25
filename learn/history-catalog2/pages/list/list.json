@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "历史学习",
+  "usingComponents": {
+    "learn-list": "/components/learn-list/index"
+  }
+}

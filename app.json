@@ -118,7 +118,49 @@
       ]
     },
     {
+      "root": "learn/history-catalog",
+      "pages": [
+        "pages/list/list",
+        "pages/detail/detail"
+      ]
+    },
+    {
+      "root": "learn/history-catalog2",
+      "pages": [
+        "pages/list/list",
+        "pages/detail/detail"
+      ]
+    },
+    {
+      "root": "learn/history-exam",
+      "pages": [
+        "pages/list/list",
+        "pages/detail/detail"
+      ]
+    },
+    {
       "root": "learn/politics",
+      "pages": [
+        "pages/list/list",
+        "pages/detail/detail"
+      ]
+    },
+    {
+      "root": "learn/politics-catalog",
+      "pages": [
+        "pages/list/list",
+        "pages/detail/detail"
+      ]
+    },
+    {
+      "root": "learn/politics-catalog2",
+      "pages": [
+        "pages/list/list",
+        "pages/detail/detail"
+      ]
+    },
+    {
+      "root": "learn/politics-exam",
       "pages": [
         "pages/list/list",
         "pages/detail/detail"

@@ -108,6 +108,36 @@
   font-weight: 600;
 }
 
+.tag-scroll {
+  margin-top: 14rpx;
+  white-space: nowrap;
+}
+
+.tag-chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 8rpx 20rpx;
+  margin-right: 12rpx;
+  border-radius: 8rpx;
+  background: #fff;
+  color: #6b7486;
+  font-size: 23rpx;
+  border: 2rpx solid #e6eaf0;
+}
+
+.tag-chip.on {
+  background: #1a9a6c;
+  border-color: #1a9a6c;
+  color: #fff;
+  font-weight: 600;
+}
+
+.tag-count {
+  margin-left: 8rpx;
+  font-size: 19rpx;
+  opacity: 0.65;
+}
+
 .list {
   margin-top: 18rpx;
 }

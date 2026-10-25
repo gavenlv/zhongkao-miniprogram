@@ -1,0 +1,8 @@
+<learn-list
+  subject-id="politics"
+  subject-name="道德与法治"
+  module-id="{{moduleId}}"
+  module-name="{{moduleName}}"
+  entries="{{entries}}"
+  base="/learn/politics-exam"
+/>

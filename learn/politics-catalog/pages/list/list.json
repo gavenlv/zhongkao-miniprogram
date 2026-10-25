@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "道德与法治",
+  "usingComponents": {
+    "learn-list": "/components/learn-list/index"
+  }
+}

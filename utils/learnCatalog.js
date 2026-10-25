@@ -112,6 +112,8 @@ const JUNIOR_SUBJECTS = [
     examNote: '闭卷笔试',
     pkg: 'learn/politics',
     modules: [
+      { id: 'pol-catalog', name: '课本目录索引·七—八年级', icon: '📖', desc: '按七上—八下逐课检索：课本框题、考点分层、易错辨析与配套题', ready: true, pkg: 'learn/politics-catalog' },
+      { id: 'pol-catalog-9', name: '课本目录索引·九年级', icon: '📖', desc: '按九上—九下逐课检索：课本框题、考点分层、易错辨析与配套题', ready: true, pkg: 'learn/politics-catalog2' },
       { id: 'pol-growth', name: '七上·成长与自我', icon: '🌱', desc: '少年有梦、成长的时空、珍爱生命、追求美好人生', ready: true, pkg: 'learn/politics' },
       { id: 'pol-youth', name: '七下·青春与法治', icon: '🌿', desc: '珍惜青春、焕发活力、传承文化、法治社会', ready: true, pkg: 'learn/politics' },
       { id: 'pol-moral', name: '八上·社会与道德', icon: '🤝', desc: '走进社会生活、维护秩序、勇担社会责任', ready: true, pkg: 'learn/politics' },
@@ -119,6 +121,7 @@ const JUNIOR_SUBJECTS = [
       { id: 'pol-nation', name: '九上·党的领导与新时代', icon: '🇨🇳', desc: '党的全面领导、新时代、新征程、中国梦', ready: true, pkg: 'learn/politics' },
       { id: 'pol-world', name: '九下·世界与时代新人', icon: '🌍', desc: '共同的世界、美好世界、争做时代新人', ready: true, pkg: 'learn/politics' },
       { id: 'pol-current', name: '时政热点专题', icon: '📰', desc: '本年重大时政与常考热点的答题角度', ready: true, pkg: 'learn/politics' },
+      { id: 'pol-papers', name: '单元测试与中考模拟卷', icon: '📝', desc: '24 套单元测试、6 册期中期末与 10 套广州中考情境模拟卷', ready: true, pkg: 'learn/politics-exam' },
       { id: 'pol-exam', name: '中考专题', icon: '🎯', desc: '卷面时间分配、非选择题模板与整卷模拟', ready: true, pkg: 'learn/politics' },
     ],
   },
@@ -132,7 +135,9 @@ const JUNIOR_SUBJECTS = [
     examNote: '闭卷笔试',
     pkg: 'learn/history',
     modules: [
-      { id: 'hist-catalog', name: '课本目录索引（2024 部编版）', icon: '📖', desc: '按七上—九下逐课检索：时间轴、考点分层、必背结论与配套题', ready: true, pkg: 'learn/history' },
+      { id: 'hist-catalog', name: '课本目录索引·七—八年级', icon: '📖', desc: '按七上—八下逐课检索：背景导读、时间轴、考点分层与配套题', ready: true, pkg: 'learn/history-catalog' },
+      { id: 'hist-catalog-9', name: '课本目录索引·九年级', icon: '📖', desc: '按九上—九下逐课检索：背景导读、时间轴、考点分层与配套题', ready: true, pkg: 'learn/history-catalog2' },
+      { id: 'hist-papers', name: '单元测试与模拟卷', icon: '📝', desc: '每单元同步测试、跨单元测试、期中期末与 10 套广州中考模拟卷', ready: true, pkg: 'learn/history-exam' },
       { id: 'hist-drills', name: '中考专题训练', icon: '🧩', desc: '小论文、原因、影响、比较、启示、材料题：理论指导＋实战题', ready: true, pkg: 'learn/history' },
       { id: 'hist-7a', name: '七上·中国古代史（史前—南北朝）', icon: '🏺', desc: '中华文明起源、夏商周、秦汉统一、三国两晋南北朝', ready: true, pkg: 'learn/history' },
       { id: 'hist-7b', name: '七下·中国古代史（隋唐—明清前期）', icon: '🏯', desc: '隋唐繁荣、宋元民族关系、明清统一多民族国家', ready: true, pkg: 'learn/history' },

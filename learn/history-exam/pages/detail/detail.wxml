@@ -1,0 +1,5 @@
+<learn-detail
+  entry="{{entry}}"
+  subject-name="历史"
+  module-name="{{moduleName}}"
+/>

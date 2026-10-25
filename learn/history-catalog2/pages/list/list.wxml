@@ -1,0 +1,8 @@
+<learn-list
+  subject-id="history"
+  subject-name="历史"
+  module-id="{{moduleId}}"
+  module-name="{{moduleName}}"
+  entries="{{entries}}"
+  base="/learn/history-catalog2"
+/>

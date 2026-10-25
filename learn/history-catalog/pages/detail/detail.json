@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "学习详情",
+  "usingComponents": {
+    "learn-detail": "/components/learn-detail/index"
+  }
+}

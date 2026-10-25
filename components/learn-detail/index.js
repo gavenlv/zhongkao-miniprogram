@@ -2,6 +2,10 @@ const LETTERS = ['A', 'B', 'C', 'D', 'E', 'F'];
 const TYPE_LABELS = { choice: '单项选择', fill: '填空', short: '简答/材料题' };
 const LEVEL_CLASS = { 重点: 'lv-key', 次重点: 'lv-sub', 了解: 'lv-info', 选择题: 'lv-choice' };
 
+// 表格列宽权重：说明/影响类长文本列更宽，时间/序号类短列更窄
+const TABLE_WIDE = /说明|影响|内容|意义|措施|原因|结果|作用|表现|评价|解析|备注|要点|经过|背景|特点|主张|贡献|过程|认识/;
+const TABLE_NARROW = /时间|年份|日期|世纪|阶段|序号|编号|年级|课时|朝代|地点|国家|地区|人物|姓名|作者/;
+
 Component({
   properties: {
     entry: { type: Object, value: null },
@@ -70,11 +74,23 @@ Component({
           });
         }
         if (b.type === 'table') {
+          const head = b.head || [];
+          const rows = b.rows || [];
+          const cols = head.map((h, ci) => {
+            const avg = rows.reduce((n, row) => {
+              const v = (row || [])[ci];
+              return n + String(v == null ? '' : v).length;
+            }, 0) / Math.max(rows.length, 1);
+            const headW = TABLE_WIDE.test(h) ? 2.2 : TABLE_NARROW.test(h) ? 1.0 : 1.5;
+            const bodyW = Math.max(0.8, Math.min(2.6, avg / 12));
+            return Number((headW * 0.55 + bodyW * 0.45).toFixed(2));
+          });
           return Object.assign({}, b, {
             _i: i,
-            rows: (b.rows || []).map((row, ri) => ({
+            heads: head.map((h, ci) => ({ _ci: ci, text: h, flex: cols[ci] || 1 })),
+            rows: rows.map((row, ri) => ({
               _ri: ri,
-              cells: (row || []).map((cell, ci) => ({ _ci: ci, text: cell })),
+              cells: (row || []).map((cell, ci) => ({ _ci: ci, text: cell, flex: cols[ci] || 1 })),
             })),
           });
         }

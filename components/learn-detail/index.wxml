@@ -122,17 +122,15 @@
 
       <figure-view wx:elif="{{b.type === 'figure'}}" figure="{{b.figure}}" />
 
-      <scroll-view wx:elif="{{b.type === 'table'}}" class="table-wrap" scroll-x>
-        <view class="table">
-          <view wx:if="{{b.title}}" class="block-title table-title">{{b.title}}</view>
-          <view class="tr th">
-            <view wx:for="{{b.head}}" wx:for-item="h" wx:key="*this" class="td">{{h}}</view>
-          </view>
-          <view wx:for="{{b.rows}}" wx:for-item="row" wx:key="_ri" class="tr">
-            <view wx:for="{{row.cells}}" wx:for-item="cell" wx:key="_ci" class="td">{{cell.text}}</view>
-          </view>
+      <view wx:elif="{{b.type === 'table'}}" class="table-wrap">
+        <view wx:if="{{b.title}}" class="block-title table-title">{{b.title}}</view>
+        <view class="tr th">
+          <view wx:for="{{b.heads}}" wx:for-item="h" wx:key="_ci" class="td" style="flex: {{h.flex}}">{{h.text}}</view>
         </view>
-      </scroll-view>
+        <view wx:for="{{b.rows}}" wx:for-item="row" wx:key="_ri" class="tr">
+          <view wx:for="{{row.cells}}" wx:for-item="cell" wx:key="_ci" class="td" style="flex: {{cell.flex}}">{{cell.text}}</view>
+        </view>
+      </view>
     </block>
 
     <view wx:if="{{questionCount}}" id="practice" class="practice">

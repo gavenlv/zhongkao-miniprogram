@@ -9,7 +9,6 @@ const DATA = {
   'hist-9b': () => require('../../data/hist-9b'),
   'hist-topics': () => require('../../data/hist-topics'),
   'hist-exam': () => require('../../data/hist-exam'),
-  'hist-catalog': () => require('../../data/hist-catalog'),
   'hist-drills': () => require('../../data/hist-drills'),
 };
 
