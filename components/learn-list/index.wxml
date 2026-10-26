@@ -22,22 +22,22 @@
       <view wx:if="{{keyword}}" class="search-clear" bindtap="onClear">×</view>
     </view>
     <scroll-view wx:if="{{grades.length > 1}}" class="grade-scroll" scroll-x enable-flex>
-      <view class="grade-chip {{grade === 'all' ? 'on' : ''}}" bindtap="onGrade" data-id="all">全部</view>
+      <view class="grade-chip {{grade === 'all' ? 'on' : ''}}" catchtap="onGrade" data-id="all">全部</view>
       <view
         wx:for="{{grades}}"
         wx:key="id"
         class="grade-chip {{grade === item.id ? 'on' : ''}}"
-        bindtap="onGrade"
+        catchtap="onGrade"
         data-id="{{item.id}}"
       >{{item.label}}</view>
     </scroll-view>
     <scroll-view wx:if="{{tags.length > 1}}" class="tag-scroll" scroll-x enable-flex>
-      <view class="tag-chip {{tag === '' ? 'on' : ''}}" bindtap="onTag" data-id="">全部标签</view>
+      <view class="tag-chip {{tag === '' ? 'on' : ''}}" catchtap="onTag" data-id="">全部标签</view>
       <view
         wx:for="{{tags}}"
         wx:key="id"
         class="tag-chip {{tag === item.id ? 'on' : ''}}"
-        bindtap="onTag"
+        catchtap="onTag"
         data-id="{{item.id}}"
       >{{item.label}}<text class="tag-count">{{item.count}}</text></view>
     </scroll-view>
@@ -55,7 +55,14 @@
         <view class="item-title">{{item.title}}</view>
         <view wx:if="{{item.subtitle}}" class="item-sub">{{item.subtitle}}</view>
         <view wx:if="{{item.tags.length}}" class="tags">
-          <text wx:for="{{item.tags}}" wx:for-item="tag" wx:key="*this" class="tag">{{tag}}</text>
+          <text
+            wx:for="{{item.tags}}"
+            wx:for-item="tag"
+            wx:key="*this"
+            class="tag {{tag === currentTag ? 'on' : ''}}"
+            catchtap="onTagPick"
+            data-tag="{{tag}}"
+          >{{tag}}</text>
         </view>
       </view>
       <view class="item-side">

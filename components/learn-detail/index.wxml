@@ -173,7 +173,7 @@
             wx:for="{{tagChips}}"
             wx:key="label"
             class="tag-chip {{item.active ? 'on' : ''}}"
-            bindtap="onFilterTag"
+            catchtap="onFilterTag"
             data-name="{{item.name}}"
           >{{item.label}} · {{item.count}}</view>
         </view>

@@ -435,22 +435,28 @@
 }
 
 .tag-bar {
+  height: 64rpx;
   margin-bottom: 14rpx;
   white-space: nowrap;
 }
 
 .tag-list {
   display: inline-flex;
+  height: 64rpx;
 }
 
 .tag-chip {
   flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  height: 56rpx;
   font-size: 23rpx;
   color: #5d6b82;
   background: #f1f4f9;
-  border-radius: 26rpx;
-  padding: 8rpx 18rpx;
+  border-radius: 28rpx;
+  padding: 0 22rpx;
   margin-right: 12rpx;
+  box-sizing: border-box;
 }
 
 .tag-chip.on {

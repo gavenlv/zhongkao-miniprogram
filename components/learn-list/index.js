@@ -18,6 +18,7 @@ Component({
     grade: 'all',
     grades: [],
     tag: '',
+    currentTag: '',
     tags: [],
     list: [],
     total: 0,
@@ -61,6 +62,7 @@ Component({
         grades: grades.map((g) => ({ id: g, label: GRADE_LABELS[g] || g })),
         tags,
         tag: '',
+        currentTag: '',
         list: this.filter(entries, this.data.keyword, this.data.grade, ''),
       });
     },
@@ -96,8 +98,22 @@ Component({
       const tag = e.currentTarget.dataset.id || '';
       this.setData({
         tag,
+        currentTag: tag,
         list: this.filter(this.data.entries, this.data.keyword, this.data.grade, tag),
       });
+    },
+
+    // 点击条目上的标签：只筛选该标签，不打开条目
+    onTagPick(e) {
+      const picked = e.currentTarget.dataset.tag || '';
+      if (!picked) return;
+      const tag = this.data.tag === picked ? '' : picked;
+      this.setData({
+        tag,
+        currentTag: tag,
+        list: this.filter(this.data.entries, this.data.keyword, this.data.grade, tag),
+      });
+      wx.pageScrollTo({ scrollTop: 0, duration: 200 });
     },
 
     onOpen(e) {
@@ -112,6 +128,7 @@ Component({
         keyword: '',
         grade: 'all',
         tag: '',
+        currentTag: '',
         list: this.data.entries || [],
       });
     },
