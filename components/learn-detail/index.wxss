@@ -710,6 +710,60 @@
   color: #a2aab8;
 }
 
+/* 朗读（文科） */
+.page.has-tts {
+  padding-bottom: 190rpx;
+}
+
+.tts-dock {
+  position: fixed;
+  left: 24rpx;
+  right: 24rpx;
+  bottom: calc(24rpx + env(safe-area-inset-bottom));
+  z-index: 60;
+  display: flex;
+  align-items: center;
+  background: rgba(29, 63, 143, 0.94);
+  border-radius: 44rpx;
+  padding: 12rpx 14rpx 12rpx 24rpx;
+  box-shadow: 0 8rpx 28rpx rgba(29, 63, 143, 0.28);
+}
+
+.tts-dock.on {
+  background: #1d3f8f;
+}
+
+.tts-main {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 64rpx;
+}
+
+.tts-label {
+  color: #ffffff;
+  font-size: 27rpx;
+  font-weight: 600;
+}
+
+.tts-progress {
+  color: #c9d7f5;
+  font-size: 22rpx;
+  margin-left: 14rpx;
+}
+
+.tts-stop {
+  flex-shrink: 0;
+  height: 64rpx;
+  line-height: 64rpx;
+  padding: 0 26rpx;
+  background: rgba(255, 255, 255, 0.16);
+  border-radius: 32rpx;
+  color: #ffffff;
+  font-size: 24rpx;
+}
+
 /* 零基础自学：把概念讲成画面 */
 .teach {
   margin: 22rpx 0;

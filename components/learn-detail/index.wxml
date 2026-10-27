@@ -1,4 +1,4 @@
-<view wx:if="{{entry}}" class="page">
+<view wx:if="{{entry}}" class="page {{ttsEnabled ? 'has-tts' : ''}}">
   <view class="head">
     <view class="crumb">{{subjectName}} · {{moduleName}}</view>
     <view class="title">{{entry.title}}</view>
@@ -234,6 +234,14 @@
     </view>
 
     <view class="source-tip">内容仅供学习参考，请以教材与官方发布为准。</view>
+  </view>
+
+  <view wx:if="{{ttsEnabled}}" class="tts-dock {{ttsState === 'idle' ? '' : 'on'}}">
+    <view class="tts-main" catchtap="onTtsTap">
+      <text class="tts-label">{{ttsState === 'playing' ? '暂停朗读' : ttsState === 'paused' ? '继续朗读' : '朗读本节'}}</text>
+      <text wx:if="{{ttsState !== 'idle'}}" class="tts-progress">{{ttsIndex}} / {{ttsTotal}}</text>
+    </view>
+    <view wx:if="{{ttsState !== 'idle'}}" class="tts-stop" catchtap="onTtsStop">停止</view>
   </view>
 
   <view wx:if="{{wordPop.show}}" class="word-mask" bindtap="onCloseWord">

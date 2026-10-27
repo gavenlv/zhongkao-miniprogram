@@ -1,6 +1,11 @@
+const tts = require('../../utils/tts');
+
 const LETTERS = ['A', 'B', 'C', 'D', 'E', 'F'];
 const TYPE_LABELS = { choice: '单项选择', fill: '填空', short: '简答/材料题' };
 const LEVEL_CLASS = { 重点: 'lv-key', 次重点: 'lv-sub', 了解: 'lv-info', 选择题: 'lv-choice' };
+
+// 文科科目开启朗读（语文、历史、道德与法治、英语）
+const TTS_SUBJECTS = ['语文', '历史', '道德与法治', '政治', '英语'];
 
 // 表格列宽权重：说明/影响类长文本列更宽，时间/序号类短列更窄
 const TABLE_WIDE = /说明|影响|内容|意义|措施|原因|结果|作用|表现|评价|解析|备注|要点|经过|背景|特点|主张|贡献|过程|认识/;
@@ -24,6 +29,10 @@ Component({
     tagChips: [],
     filterTag: '',
     wordPop: { show: false, word: '', explain: '' },
+    ttsEnabled: false,
+    ttsState: 'idle',
+    ttsIndex: 0,
+    ttsTotal: 0,
   },
 
   observers: {
@@ -34,11 +43,91 @@ Component({
 
   lifetimes: {
     attached() {
+      tts.onChange((s) => {
+        this.setData({ ttsState: s.state, ttsIndex: s.index, ttsTotal: s.total });
+        if (s.error) {
+          wx.showToast({ title: '朗读失败，请检查网络后重试', icon: 'none' });
+        }
+      });
       this.build(this.data.entry);
+    },
+
+    detached() {
+      tts.onChange(null);
+      tts.stop();
+    },
+  },
+
+  pageLifetimes: {
+    hide() {
+      tts.stop();
     },
   },
 
   methods: {
+    /** 把讲解内容拼成一段可朗读的文本（跳过题目与链接） */
+    readText(entry) {
+      const parts = [];
+      const push = (v) => {
+        if (v === undefined || v === null) return;
+        const s = String(v).trim();
+        if (s) parts.push(s);
+      };
+      push(entry.title);
+      push(entry.subtitle);
+      for (const b of entry.blocks || []) {
+        if (b.type === 'h' || b.type === 'p') {
+          push(b.text);
+        } else if (b.type === 'note' || b.type === 'quote') {
+          push(b.title);
+          push(b.text);
+        } else if (b.type === 'list') {
+          push(b.title);
+          for (const x of b.items || []) push(typeof x === 'string' ? x : x.t);
+        } else if (b.type === 'points') {
+          push(b.title);
+          for (const x of b.items || []) push(x.text);
+        } else if (b.type === 'lines') {
+          push(b.title);
+          for (const x of b.items || []) push(x.t);
+        } else if (b.type === 'kv') {
+          push(b.title);
+          for (const x of b.items || []) push(`${x.k}：${x.v}`);
+        } else if (b.type === 'table') {
+          push(b.title);
+          for (const r of b.rows || []) push((r || []).join('，'));
+        } else if (b.type === 'teach') {
+          push(b.hook);
+          for (const x of b.walk || []) push(x);
+          push(b.try);
+          for (const x of b.use || []) push(x);
+        } else if (b.type === 'figure') {
+          push(b.figure && (b.figure.title || b.figure.caption));
+        }
+      }
+      return parts.join('。');
+    },
+
+    onTtsTap() {
+      const state = this.data.ttsState;
+      if (state === 'playing') {
+        tts.pause();
+        return;
+      }
+      if (state === 'paused') {
+        tts.resume();
+        return;
+      }
+      const text = this.readText(this.data.entry || {});
+      if (!tts.speak(text)) {
+        wx.showToast({ title: '暂不支持朗读', icon: 'none' });
+      }
+    },
+
+    onTtsStop() {
+      tts.stop();
+    },
+
     build(entry) {
       if (!entry) return;
       const blocks = (entry.blocks || []).map((b, i) => {
@@ -147,6 +236,10 @@ Component({
         tagChips,
         filterTag: '',
         wordPop: { show: false, word: '', explain: '' },
+        ttsEnabled: TTS_SUBJECTS.indexOf(this.data.subjectName) >= 0 && tts.isAvailable(),
+        ttsState: 'idle',
+        ttsIndex: 0,
+        ttsTotal: 0,
       });
     },
 

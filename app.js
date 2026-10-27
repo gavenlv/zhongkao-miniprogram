@@ -11,7 +11,7 @@ App({
       minimum: 492,
       privateMinimum: 412
     },
-    version: '3.10.1',
+    version: '3.11.1',
     shareConfig: {
       title: '初中高中学习与广州中考志愿助手',
       path: '/pages/index/index',
